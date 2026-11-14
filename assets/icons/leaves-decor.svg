@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" fill="none">
+  <!-- Foliage Branch with botanical leaves -->
+  <path d="M40 210 Q 75 140 120 40" stroke="#3da86c" stroke-width="4" stroke-linecap="round"/>
+  <!-- Leaf 1 -->
+  <path d="M120 40 C 145 35 155 60 135 75 C 115 65 110 50 120 40 Z" fill="url(#leafG1)"/>
+  <!-- Leaf 2 -->
+  <path d="M100 85 C 130 80 142 105 118 120 C 98 110 95 95 100 85 Z" fill="url(#leafG2)"/>
+  <!-- Leaf 3 -->
+  <path d="M85 125 C 115 130 120 155 98 165 C 80 155 80 140 85 125 Z" fill="url(#leafG1)"/>
+  <!-- Leaf 4 (back small leaf) -->
+  <path d="M70 160 C 50 150 45 130 65 122 C 75 135 72 150 70 160 Z" fill="url(#leafG3)"/>
+  <!-- Leaf 5 -->
+  <path d="M110 50 C 95 30 80 32 85 52 C 95 55 105 52 110 50 Z" fill="url(#leafG2)"/>
+  <defs>
+    <linearGradient id="leafG1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="leafG2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="leafG3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#86efac"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+</svg>
+

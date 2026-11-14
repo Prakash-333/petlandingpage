@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Center Main Pad -->
+  <path d="M24 21C18.5 21 15 25 15 30.5C15 35 18.5 39 24 39C29.5 39 33 35 33 30.5C33 25 29.5 21 24 21Z" fill="url(#pawGrad)"/>
+  <!-- Top Left Outer Toe -->
+  <ellipse cx="12.5" cy="19.5" rx="4.5" ry="6" transform="rotate(-20 12.5 19.5)" fill="url(#pawGrad)"/>
+  <!-- Top Left Inner Toe -->
+  <ellipse cx="19.5" cy="13.5" rx="4.5" ry="6.5" transform="rotate(-8 19.5 13.5)" fill="url(#pawGrad)"/>
+  <!-- Top Right Inner Toe -->
+  <ellipse cx="28.5" cy="13.5" rx="4.5" ry="6.5" transform="rotate(8 28.5 13.5)" fill="url(#pawGrad)"/>
+  <!-- Top Right Outer Toe -->
+  <ellipse cx="35.5" cy="19.5" rx="4.5" ry="6" transform="rotate(20 35.5 19.5)" fill="url(#pawGrad)"/>
+  <defs>
+    <linearGradient id="pawGrad" x1="12" y1="8" x2="36" y2="39" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#6424cc"/>
+    </linearGradient>
+  </defs>
+</svg>
+

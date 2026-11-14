@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Greenlane | Precision in Ecology</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#00714d",
+                    "on-primary-fixed-variant": "#005137",
+                    "surface-bright": "#faf8ff",
+                    "tertiary-fixed-dim": "#ffb3ae",
+                    "inverse-surface": "#283044",
+                    "surface-variant": "#dae2fd",
+                    "on-error-container": "#93000a",
+                    "primary": "#006948",
+                    "primary-container": "#00855d",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#dae2fd",
+                    "secondary-fixed": "#6ffbbe",
+                    "primary-fixed-dim": "#68dba9",
+                    "outline-variant": "#bccac0",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-tertiary-container": "#fffbff",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-secondary-fixed": "#002113",
+                    "tertiary-container": "#ba5551",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#6cf8bb",
+                    "surface-tint": "#006c4a",
+                    "on-primary-container": "#f5fff7",
+                    "surface-container": "#eaedff",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d2d9f4",
+                    "surface": "#faf8ff",
+                    "on-tertiary-fixed-variant": "#7f2928",
+                    "background": "#faf8ff",
+                    "surface-container-low": "#f2f3ff",
+                    "on-surface-variant": "#3d4a42",
+                    "on-primary-fixed": "#002114",
+                    "on-tertiary-fixed": "#410004",
+                    "on-background": "#131b2e",
+                    "inverse-primary": "#68dba9",
+                    "surface-container-high": "#e2e7ff",
+                    "primary-fixed": "#85f8c4",
+                    "on-secondary": "#ffffff",
+                    "outline": "#6d7a72",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#eef0ff",
+                    "tertiary": "#9b3e3b",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#006c49",
+                    "on-surface": "#131b2e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xs": "8px",
+                    "md": "24px",
+                    "max-width": "1280px",
+                    "sm": "16px",
+                    "margin": "32px",
+                    "lg": "48px",
+                    "xl": "80px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "button": ["Inter"],
+                    "h2": ["Manrope"],
+                    "h3": ["Manrope"],
+                    "h1": ["Manrope"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "button": ["15px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "h2": ["36px", {"lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-emerald-100 bg-white/95 backdrop-blur-sm shadow-[0_20px_40px_-15px_rgba(5,150,105,0.05)]">
+<div class="max-w-[1280px] mx-auto flex justify-between items-center h-20 px-6 md:px-12">
+<div class="flex items-center gap-2">
+<span class="text-xl font-bold text-emerald-900 font-h2">Green<span class="text-emerald-500 font-normal">lane</span></span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-emerald-900/70 font-manrope font-medium text-sm tracking-tight hover:text-emerald-600 transition-all duration-200" href="#">Features</a>
+<a class="text-emerald-900/70 font-manrope font-medium text-sm tracking-tight hover:text-emerald-600 transition-all duration-200" href="#">How it Works</a>
+<a class="text-emerald-900/70 font-manrope font-medium text-sm tracking-tight hover:text-emerald-600 transition-all duration-200" href="#">Testimonials</a>
+<a class="text-emerald-900/70 font-manrope font-medium text-sm tracking-tight hover:text-emerald-600 transition-all duration-200" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:block text-emerald-600 font-button text-button hover:bg-emerald-50 px-4 py-2 rounded-lg transition-colors">Log In</button>
+<button class="bg-primary text-on-primary font-button text-button px-6 py-2.5 rounded-lg shadow-sm hover:bg-primary-container transition-all active:opacity-80">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-white pt-xl pb-xl">
+<div class="max-w-[1280px] mx-auto px-6 md:px-12 flex flex-col items-center text-center">
+<span class="bg-secondary-container text-on-secondary-container text-label-caps font-label-caps px-4 py-1.5 rounded-full mb-6">NEW: ECOLOGICAL INSIGHTS 2.0</span>
+<h1 class="font-h1 text-h1 text-emerald-900 max-w-4xl mb-6">
+                    Precision Analytics for the <span class="text-primary">Sustainable Enterprise</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-10">
+                    Harness the power of data-driven ecology. Greenlane provides the tools to monitor, report, and optimize your environmental footprint with surgical precision.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 mb-20">
+<button class="bg-primary text-on-primary font-button text-button px-8 py-4 rounded-lg shadow-lg hover:bg-primary-container transition-all">Start Your Free Trial</button>
+<button class="border border-outline-variant text-emerald-900 font-button text-button px-8 py-4 rounded-lg hover:bg-emerald-50 transition-all">Book a Demo</button>
+</div>
+<!-- Dashboard Preview -->
+<div class="w-full relative">
+<div class="absolute -inset-4 bg-emerald-500/5 blur-3xl rounded-full"></div>
+<div class="relative bg-white rounded-xl border border-emerald-100 shadow-2xl overflow-hidden">
+<img class="w-full h-auto object-cover" data-alt="A clean, sophisticated software dashboard interface shown on a high-resolution screen. The UI features a sidebar with emerald accents, minimalist line charts displaying environmental data trends in shades of green, and clean data grids with high-key lighting. The overall atmosphere is professional, tech-focused, and reflects a modern SaaS aesthetic for ecological precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl0_J-kpp9pYTOCdkjgu52MVeotH4K5CzNlRljxZUc7R0KpWTbfbmO88GLXSpIMMk--mPTvFaU2K-Yn9K8VkfuSzxSJIBB8fvi2yjl3Uys7f7uPQAhtkGq-tm-pExU6joVzw06xck2WJ2YccKe8j-MeltQdP6E74mhXcmNQLDPRV8A-_I4CdBopTGNqvn_V1YvAdiHQcGs5c7WXrWFigsxtewsDCQP6JlRND77Uymd6E1Ehu23sNoa0JcldTswp9qj64EApyzld9tZ"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="bg-emerald-50 py-xl">
+<div class="max-w-[1280px] mx-auto px-6 md:px-12">
+<div class="text-center mb-16">
+<h2 class="font-h2 text-h2 text-emerald-900 mb-4">Engineered for Accuracy</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Comprehensive features designed to transform complex ecological data into actionable business intelligence.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Card -->
+<div class="md:col-span-8 bg-white p-lg rounded-xl border border-emerald-100 shadow-sm flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary text-3xl mb-6" data-icon="monitoring">monitoring</span>
+<h3 class="font-h3 text-h3 text-emerald-900 mb-4">Real-time Biosphere Monitoring</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md">Our proprietary sensor network and satellite integration provide a 24/7 view of your regional ecological health with millimeter precision.</p>
+</div>
+<img class="w-full h-48 object-cover rounded-lg" data-alt="A close-up of high-tech ecological sensors placed in a lush green forest, captured in crisp, daylight photography. The scene is clean and emphasizes the intersection of nature and technology. The lighting is bright and natural, using a color palette of deep forest greens and sleek metallic tech surfaces to represent advanced environmental monitoring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcuFVec7uLk4iGtLnN4sxld1lZiuilFdijqKHwj5RfSxjb_j5SN4KHTghiomQS0SnTw9e5ASlv2260o9cXbc9rIFhRio_FF-fnnE3rKJ6eOjLpfWQhpWaj-lig8tU00GOYy307AA093RWu2u9hhgkCs0bKw_J3xNQ2q5KuHS6av0zKAjaCYWTllv5_GNxd8sGtmnMI-txJX6s4hkmJbt-HrWoarHB41KTuDHrXJpMrSKDDcHSQuG_xj_mF0KnFsj5w8NqNUkNpYUWN"/>
+</div>
+<!-- Small Card -->
+<div class="md:col-span-4 bg-primary p-lg rounded-xl shadow-sm text-on-primary">
+<span class="material-symbols-outlined text-4xl mb-6" data-icon="security">security</span>
+<h3 class="font-h3 text-h3 mb-4">Compliance Assurance</h3>
+<p class="font-body-md text-body-md opacity-90">Automated reporting that meets global ESG standards and local environmental regulations, ensuring your enterprise stays ahead of legal requirements.</p>
+</div>
+<!-- Vertical Card -->
+<div class="md:col-span-4 bg-white p-lg rounded-xl border border-emerald-100 shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl mb-6" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-h3 text-h3 text-emerald-900 mb-4">AI Predictive Modeling</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Forecast environmental impacts before they occur using our deep-learning neural networks trained on decades of ecological data.</p>
+</div>
+<!-- Horizontal Card -->
+<div class="md:col-span-8 bg-white p-lg rounded-xl border border-emerald-100 shadow-sm flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<span class="material-symbols-outlined text-primary text-3xl mb-6" data-icon="hub">hub</span>
+<h3 class="font-h3 text-h3 text-emerald-900 mb-4">Ecosystem Collaboration</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Connect with suppliers and partners in a secure environment to manage shared sustainability goals across your entire supply chain.</p>
+</div>
+<div class="flex-1 w-full h-full min-h-[160px] bg-emerald-50 rounded-lg border border-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary/20 text-6xl" data-icon="share">share</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How it Works -->
+<section class="py-xl bg-white">
+<div class="max-w-[1280px] mx-auto px-6 md:px-12">
+<div class="flex flex-col md:flex-row gap-xl items-center">
+<div class="md:w-1/2">
+<h2 class="font-h2 text-h2 text-emerald-900 mb-8">Three steps to ecological mastery.</h2>
+<div class="space-y-12">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-primary font-bold">1</div>
+<div>
+<h4 class="font-h3 text-xl text-emerald-900 mb-2">Integrate Assets</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Connect your existing IoT sensors, satellite feeds, and manual logs into the Greenlane central hub in minutes.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-primary font-bold">2</div>
+<div>
+<h4 class="font-h3 text-xl text-emerald-900 mb-2">Analyze &amp; Process</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Our algorithms clean, normalize, and interpret your data through the lens of ecological science.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-primary font-bold">3</div>
+<div>
+<h4 class="font-h3 text-xl text-emerald-900 mb-2">Generate Insights</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Receive automated, high-fidelity reports and real-time alerts to guide your strategic environmental decisions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="md:w-1/2">
+<div class="relative p-xs bg-emerald-50 rounded-2xl">
+<img class="rounded-xl shadow-xl" data-alt="A cinematic, wide-angle landscape showing misty green mountains at dawn. The image has a calm, majestic mood with soft atmospheric lighting. The color palette is composed of various shades of emerald and teal, reflecting a pristine and preserved natural environment that reinforces the brand's commitment to ecological health and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4sSZpVt3IRJ6-o5IrMxF1UitQXj61Ft0dw1OYaUyuxrawz_tW-dnvqB5tSXE7KLBybG1_Vjc-2M8rZmeanuN60Sm6A2SyNM8bliunRNV-V_YmRXfz_QN02RbwA4PtWsXmiWgyyxY0PGNv2vChcwI3O4kIrogpqHX0X9BeAssckHUmGjqjfSi0M4qCFST9wMrvM22mgaKSMZxl75rfg0fDGH3il_ZydCiYtyjG_3tG7_Ez2dezMmgBSwo9cLIDVZjTl63KqwVHaBCT"/>
+<div class="absolute -bottom-8 -right-8 bg-white p-6 rounded-xl shadow-lg border border-emerald-100 hidden lg:block">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-sm font-semibold text-emerald-900">Live Restoration Feed</span>
+</div>
+<div class="h-2 w-32 bg-emerald-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-xl bg-emerald-50">
+<div class="max-w-[1280px] mx-auto px-6 md:px-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-white p-lg rounded-xl border border-emerald-100">
+<div class="flex text-primary mb-4">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+</div>
+<p class="font-body-md text-body-md text-emerald-900 italic mb-8">"Greenlane has transformed our ESG reporting from a quarterly headache into a real-time strategic asset. The precision is unmatched."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-emerald-200"></div>
+<div>
+<p class="font-bold text-emerald-900">Dr. Sarah Chen</p>
+<p class="text-xs text-on-surface-variant">Director of Sustainability, Terrafirma Corp</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-lg rounded-xl border border-emerald-100">
+<div class="flex text-primary mb-4">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+</div>
+<p class="font-body-md text-body-md text-emerald-900 italic mb-8">"The UI is incredibly clean for such complex data. Our team was up and running in less than a week without any formal training."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-emerald-200"></div>
+<div>
+<p class="font-bold text-emerald-900">Marcus Sterling</p>
+<p class="text-xs text-on-surface-variant">Chief Operations Officer, EcoLogix</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-lg rounded-xl border border-emerald-100">
+<div class="flex text-primary mb-4">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+</div>
+<p class="font-body-md text-body-md text-emerald-900 italic mb-8">"Finally, a tool that speaks the language of both ecologists and enterprise executives. It's bridge-building software at its best."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-emerald-200"></div>
+<div>
+<p class="font-bold text-emerald-900">Linda Vanhoutte</p>
+<p class="text-xs text-on-surface-variant">Head of Global Impact, Green Ventures</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Table -->
+<section class="py-xl bg-white">
+<div class="max-w-[1280px] mx-auto px-6 md:px-12">
+<div class="text-center mb-16">
+<h2 class="font-h2 text-h2 text-emerald-900 mb-4">Simple, Transparent Scaling</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Choose the plan that matches your organization's environmental commitment.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Basic -->
+<div class="p-lg rounded-xl border border-outline-variant hover:border-primary transition-all flex flex-col">
+<h4 class="font-bold text-emerald-900 mb-2">Growth</h4>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-3xl font-bold text-emerald-900">$499</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+                                5 Managed Sites
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+                                Core ESG Reporting
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+                                Weekly Email Summaries
+                            </li>
+</ul>
+<button class="w-full py-3 rounded-lg border border-primary text-primary font-bold hover:bg-emerald-50 transition-all">Get Started</button>
+</div>
+<!-- Pro -->
+<div class="p-lg rounded-xl border-2 border-primary bg-emerald-50 shadow-lg flex flex-col relative transform scale-105 z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
+<h4 class="font-bold text-emerald-900 mb-2">Enterprise</h4>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-3xl font-bold text-emerald-900">$1,299</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+                                Unlimited Sites
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+                                Advanced AI Analytics
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+                                Real-time Webhooks &amp; API
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+                                24/7 Priority Support
+                            </li>
+</ul>
+<button class="w-full py-3 rounded-lg bg-primary text-on-primary font-bold hover:bg-primary-container shadow-md transition-all">Start Free Trial</button>
+</div>
+<!-- Custom -->
+<div class="p-lg rounded-xl border border-outline-variant hover:border-primary transition-all flex flex-col">
+<h4 class="font-bold text-emerald-900 mb-2">Custom</h4>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-3xl font-bold text-emerald-900">Custom</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6">Tailored solutions for global multinational corporations and government agencies.</p>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+                                On-premise Deployment
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+                                Dedicated Success Manager
+                            </li>
+</ul>
+<button class="w-full py-3 rounded-lg border border-emerald-200 text-emerald-900 font-bold hover:bg-emerald-50 transition-all">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-xl bg-primary">
+<div class="max-w-[1280px] mx-auto px-6 md:px-12 text-center text-on-primary">
+<h2 class="font-h2 text-h2 mb-6">Ready to lead the ecological revolution?</h2>
+<p class="font-body-lg text-body-lg mb-10 opacity-90 max-w-2xl mx-auto">Join over 500 companies using Greenlane to secure a sustainable future for their business and the planet.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-white text-primary font-button text-button px-10 py-4 rounded-lg shadow-xl hover:bg-emerald-50 transition-all">Get Started Today</button>
+<button class="border border-on-primary text-on-primary font-button text-button px-10 py-4 rounded-lg hover:bg-primary-container transition-all">Speak with an Expert</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-emerald-200 bg-emerald-50">
+<div class="max-w-[1280px] mx-auto py-16 px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col gap-4">
+<span class="text-lg font-bold text-emerald-900 font-h2">Green<span class="text-emerald-500 font-normal">lane</span></span>
+<p class="text-emerald-700/60 font-manrope text-sm">© 2024 Greenlane. Precision in Ecology.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-emerald-700/60 font-manrope text-sm hover:text-emerald-600 underline decoration-2 underline-offset-4 transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="text-emerald-700/60 font-manrope text-sm hover:text-emerald-600 underline decoration-2 underline-offset-4 transition-colors duration-200" href="#">Terms of Service</a>
+<a class="text-emerald-700/60 font-manrope text-sm hover:text-emerald-600 underline decoration-2 underline-offset-4 transition-colors duration-200" href="#">Contact</a>
+<a class="text-emerald-700/60 font-manrope text-sm hover:text-emerald-600 underline decoration-2 underline-offset-4 transition-colors duration-200" href="#">Careers</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-emerald-600 cursor-pointer hover:opacity-80" data-icon="public">public</span>
+<span class="material-symbols-outlined text-emerald-600 cursor-pointer hover:opacity-80" data-icon="mail">mail</span>
+</div>
+</div>
+</footer>
+</body></html>

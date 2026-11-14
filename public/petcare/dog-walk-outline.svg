@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Leash lead -->
+  <path d="M19 3a1.5 1.5 0 0 1-2 2l-3.5 3.5" />
+  <!-- Dog head & ear -->
+  <path d="M13.5 8.5l1.5-1.5 2 1v1.5l-2 1" />
+  <!-- Collar -->
+  <path d="M13.5 10.5l1.5 1.5" />
+  <!-- Dog body -->
+  <path d="M13 12H7.5a2 2 0 0 0-2 2v1" />
+  <!-- Tail -->
+  <path d="M5.5 12c-1.5-1.5-2-3-.5-4" />
+  <!-- 4 Walking legs -->
+  <path d="M6.5 15l-1 6" />
+  <path d="M9 15l1 6" />
+  <path d="M11.5 12v9" />
+  <path d="M13.5 12l1.5 7" />
+</svg>

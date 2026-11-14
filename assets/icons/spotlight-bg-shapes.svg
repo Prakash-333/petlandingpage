@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 500" fill="none">
+  <defs>
+    <!-- Main Center Blob Gradient -->
+    <linearGradient id="blobGradMain" x1="120" y1="40" x2="420" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#dcc9f9"/>
+      <stop offset="60%" stop-color="#be9ef2"/>
+      <stop offset="100%" stop-color="#b08eed"/>
+    </linearGradient>
+
+    <!-- Left Soaring Petal Gradient -->
+    <linearGradient id="petalLeftGrad" x1="40" y1="50" x2="200" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ecdffa"/>
+      <stop offset="50%" stop-color="#d3bbf7"/>
+      <stop offset="100%" stop-color="#b893f0"/>
+    </linearGradient>
+
+    <!-- Right Curve Gradient -->
+    <linearGradient id="curveRightGrad" x1="320" y1="120" x2="460" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e9dcfa"/>
+      <stop offset="100%" stop-color="#c8a7f5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Far Left Botanical Petal Leaves -->
+  <!-- Leaf 1 (Top Left) -->
+  <path d="M 50 160 C 15 130, 20 80, 55 60 C 80 90, 75 135, 50 160 Z" fill="#e5d4fb" opacity="0.95"/>
+  <!-- Leaf 2 (Mid Left) -->
+  <path d="M 35 250 C 0 220, 5 170, 40 150 C 65 175, 60 225, 35 250 Z" fill="#ddcaf8" opacity="0.9"/>
+  <!-- Leaf 3 (Bottom Left) -->
+  <path d="M 65 340 C 25 320, 15 270, 45 250 C 75 265, 80 310, 65 340 Z" fill="#ecdffb" opacity="0.85"/>
+
+  <!-- Left Large Soaring Petal (Visible on left of phone) -->
+  <path d="M 160 300 C 90 260, 35 170, 75 90 C 115 25, 175 60, 205 150 C 225 210, 210 270, 160 300 Z" fill="url(#petalLeftGrad)"/>
+
+  <!-- Right Organic Fluid Wing (Visible on right of phone) -->
+  <path d="M 330 130 C 420 140, 475 220, 450 310 C 425 380, 360 370, 325 290 C 310 240, 315 170, 330 130 Z" fill="url(#curveRightGrad)"/>
+
+  <!-- Main Center Organic Blob Cradling the Phone -->
+  <path d="M 170 140 C 130 50, 240 15, 360 45 C 460 75, 480 200, 420 320 C 370 420, 210 430, 150 350 C 110 300, 190 200, 170 140 Z" fill="url(#blobGradMain)"/>
+
+  <!-- Extra soft accent petal floating on far left -->
+  <path d="M 85 80 C 60 55, 65 25, 90 15 C 105 35, 100 65, 85 80 Z" fill="#f0e5fd" opacity="0.9"/>
+</svg>
+
