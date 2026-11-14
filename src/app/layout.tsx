@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
+import { Providers } from "./Providers";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -23,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${inter.variable} ${manrope.variable} font-sans antialiased bg-white text-[#111827]`} suppressHydrationWarning>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
