@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder_for_build';
-const stripe = new Stripe(stripeSecretKey);
+export const dynamic = 'force-dynamic';
 
 const PRODUCT_IDS_EU_LIVE: Record<string, Record<string, string>> = {
   starter: {
@@ -97,12 +96,14 @@ const PRICE_IDS_TEST: Record<string, Record<string, Record<string, string>>> = {
 
 export async function POST(request: NextRequest) {
   try {
-    if (!process.env.STRIPE_SECRET_KEY) {
+    const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+    if (!stripeSecretKey) {
       return NextResponse.json(
         { error: 'Stripe secret key not configured on server' },
         { status: 500 }
       );
     }
+    const stripe = new Stripe(stripeSecretKey);
 
     const body = await request.json().catch(() => ({}));
     const { plan, interval, country = 'EU' } = body;
