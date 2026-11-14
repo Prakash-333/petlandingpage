@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY || '';
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder_for_build';
 const stripe = new Stripe(stripeSecretKey);
 
 const PRODUCT_IDS_EU_LIVE: Record<string, Record<string, string>> = {
@@ -97,7 +97,7 @@ const PRICE_IDS_TEST: Record<string, Record<string, Record<string, string>>> = {
 
 export async function POST(request: NextRequest) {
   try {
-    if (!stripeSecretKey) {
+    if (!process.env.STRIPE_SECRET_KEY) {
       return NextResponse.json(
         { error: 'Stripe secret key not configured on server' },
         { status: 500 }
