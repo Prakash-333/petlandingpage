@@ -2,60 +2,76 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/petcare/Navbar';
 import Hero from '@/components/petcare/Hero';
-import Services from '@/components/petcare/Services';
-import About from '@/components/petcare/About';
-import Testimonials from '@/components/petcare/Testimonials';
+import Ecosystem from '@/components/petcare/Ecosystem';
+import AIAssistant from '@/components/petcare/AIAssistant';
+import VeterinaryCare from '@/components/petcare/VeterinaryCare';
+import StatsSection from '@/components/petcare/StatsSection';
+import PreFooterCTA from '@/components/petcare/PreFooterCTA';
 import Footer from '@/components/petcare/Footer';
-import BookingModal from '@/components/petcare/BookingModal';
-import LoginModal from '@/components/petcare/LoginModal';
+import DemoModal from '@/components/petcare/DemoModal';
 
-export default function PetCareLandingPage() {
-  const [bookingOpen, setBookingOpen] = useState(false);
-  const [loginOpen, setLoginOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState('Pet Sitting');
+export default function GreenLaneLandingPage() {
+  const [demoOpen, setDemoOpen] = useState(false);
 
-  const handleOpenBooking = (service?: string) => {
-    if (service) setSelectedService(service);
-    setBookingOpen(true);
+  const handleOpenDemo = () => {
+    setDemoOpen(true);
   };
 
-  const handleExploreServices = () => {
-    const el = document.getElementById('services');
+  const handleExploreFeatures = () => {
+    const el = document.getElementById('features');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleLearnMore = () => {
-    const el = document.getElementById('about');
+    const el = document.getElementById('veterinary');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#111827] font-sans selection:bg-[#faeedd] selection:text-[#111827]">
-      <Navbar 
-        onOpenBooking={() => handleOpenBooking()} 
-        onOpenLogin={() => setLoginOpen(true)} 
-      />
+    <div className="min-h-screen bg-white text-[#111827] font-sans selection:bg-[#ecfdf5] selection:text-[#064e3b]">
+      {/* Navigation */}
+      <Navbar onOpenDemo={handleOpenDemo} />
 
+      {/* Main Content Sections */}
       <main>
+        {/* Section 1: Hero */}
         <Hero 
-          onExploreServices={handleExploreServices} 
+          onOpenDemo={handleOpenDemo} 
+          onExploreFeatures={handleExploreFeatures} 
         />
-        <Services />
-        <About onLearnMore={handleLearnMore} />
-        <Testimonials />
+
+        {/* Section 2: Platform Ecosystem (6 Features) */}
+        <Ecosystem 
+          onExploreFeatures={handleExploreFeatures} 
+        />
+
+        {/* Section 3: AI Pet Health Assistant (Mobile Mockup & Chat) */}
+        <AIAssistant 
+          onBookAppointment={handleOpenDemo} 
+        />
+
+        {/* Section 4: Veterinary Care (Simplified Care & Ecosystem Pillars) */}
+        <VeterinaryCare 
+          onOpenDemo={handleOpenDemo} 
+        />
+
+        {/* Section 5: Stats & Impact */}
+        <StatsSection />
+
+        {/* Section 6: Pre-Footer CTA */}
+        <PreFooterCTA 
+          onOpenDemo={handleOpenDemo} 
+          onLearnMore={handleLearnMore} 
+        />
       </main>
 
+      {/* Footer */}
       <Footer />
 
-      <BookingModal 
-        isOpen={bookingOpen} 
-        onClose={() => setBookingOpen(false)} 
-        initialService={selectedService}
-      />
-
-      <LoginModal 
-        isOpen={loginOpen} 
-        onClose={() => setLoginOpen(false)} 
+      {/* Interactive Demo Scheduling Modal */}
+      <DemoModal 
+        isOpen={demoOpen} 
+        onClose={() => setDemoOpen(false)} 
       />
     </div>
   );

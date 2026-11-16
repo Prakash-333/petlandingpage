@@ -1,86 +1,184 @@
 'use client';
 import React from 'react';
-import { ArrowRight, Star } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Bot, ShieldCheck, Share2, Sparkles, TrendingUp } from 'lucide-react';
 
 interface HeroProps {
-  onExploreServices: () => void;
-  onBookNow?: () => void;
+  onOpenDemo?: () => void;
+  onExploreFeatures?: () => void;
 }
 
-export default function Hero({ onExploreServices }: HeroProps) {
+export default function Hero({ onOpenDemo, onExploreFeatures }: HeroProps) {
   return (
-    <section id="home" className="relative pt-6 pb-14 md:pt-10 md:pb-20 lg:py-16 overflow-hidden bg-[#fdf9f8]">
-      
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
+    <section id="home" className="relative pt-8 pb-16 lg:pt-14 lg:pb-24 overflow-hidden bg-gradient-to-b from-emerald-50/30 via-white to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Main 2-column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Column: Headline, Subtitle & Action */}
-          <div className="lg:col-span-5 flex flex-col items-start py-2 lg:py-6 max-w-[460px] z-10">
+          {/* Left Column: Headline & Intro */}
+          <div className="lg:col-span-6 space-y-6">
             
-            {/* Main Headline */}
-            <div className="relative">
-              <h1 className="text-5xl sm:text-6xl lg:text-[66px] font-black text-[#111827] leading-[1.08] tracking-[-0.035em]">
-                Happy Pets,<br />
-                <span className="relative inline-block">
-                  Happy You
-                  {/* Amber Hand-drawn Curved Underline */}
-                  <span className="absolute left-0 -bottom-2 w-full block">
-                    <img 
-                      src="/petcare/curved-underline.svg" 
-                      alt="" 
-                      className="w-full h-auto object-contain"
-                    />
-                  </span>
-                </span>
-              </h1>
+            {/* Tag badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-bold tracking-wider text-emerald-800 uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              AI-Powered Pet Healthcare
             </div>
 
-            {/* Subtitle Description */}
-            <p className="mt-7 text-[#4b5563] text-base sm:text-lg md:text-[18px] leading-relaxed font-normal">
-              Trusted pet care services — from pet sitting to dog walking, we&apos;re here for your furry friends.
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight text-[#0f2a24] leading-[1.08]">
+              Healthier Pets.<br />
+              <span className="text-[#064e3b]">Happier Lives.</span>
+            </h1>
+
+            {/* Subheading */}
+            <p className="text-base sm:text-lg text-gray-600 max-w-xl leading-relaxed font-normal">
+              GreenLane Pet is the AI platform that connects pet owners, veterinarians and care teams — making pet healthcare smarter, simpler and more proactive.
             </p>
 
-            {/* CTA Button */}
-            <div className="mt-8">
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
-                onClick={onExploreServices}
-                className="inline-flex items-center gap-2.5 bg-[#111827] hover:bg-black text-white font-semibold text-[15.5px] px-8 py-3.5 rounded-full transition-all duration-200 hover:shadow-lg active:scale-95 group cursor-pointer shadow-xs"
+                onClick={onOpenDemo}
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-white bg-[#064e3b] hover:bg-[#04382a] active:scale-95 transition-all duration-150 rounded-full shadow-md shadow-emerald-950/20 group"
               >
-                <span>Explore Services</span>
-                <ArrowRight size={17} strokeWidth={2.2} className="transition-transform group-hover:translate-x-1" />
+                Book a Demo
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
+
+              <button
+                onClick={onExploreFeatures}
+                className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50 active:scale-95 transition-all duration-150 rounded-full border border-gray-200 shadow-sm"
+              >
+                Learn More
+              </button>
+            </div>
+
+            {/* Trust / Feature Badges */}
+            <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-gray-100">
+              <div className="flex flex-col items-start gap-2">
+                <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+                  <Bot className="w-4 h-4" />
+                </div>
+                <span className="text-xs font-medium text-gray-700 leading-snug">
+                  AI-Powered Health Assistant
+                </span>
+              </div>
+
+              <div className="flex flex-col items-start gap-2">
+                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <span className="text-xs font-medium text-gray-700 leading-snug">
+                  Secure & GDPR Compliant
+                </span>
+              </div>
+
+              <div className="flex flex-col items-start gap-2">
+                <div className="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center">
+                  <Share2 className="w-4 h-4" />
+                </div>
+                <span className="text-xs font-medium text-gray-700 leading-snug">
+                  Connected Pet Care Ecosystem
+                </span>
+              </div>
+
+              <div className="flex flex-col items-start gap-2">
+                <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+                  <Sparkles className="w-4 h-4" />
+                </div>
+                <span className="text-xs font-medium text-gray-700 leading-snug">
+                  Smarter Workflows
+                </span>
+              </div>
             </div>
 
           </div>
 
-          {/* Right Column: Exact Pets Visual matching original reference design */}
-          <div className="lg:col-span-7 relative flex justify-center lg:justify-start items-center lg:-ml-6 xl:-ml-10 z-0">
+          {/* Right Column: Hero Visual with Pets & AI Floating Badges */}
+          <div className="lg:col-span-6 relative flex justify-center items-center">
             
-            {/* Seamless, 100% Borderless Pets Visual */}
-            <div className="relative w-full max-w-[750px] lg:max-w-[850px] xl:max-w-[920px] flex items-center justify-center">
+            {/* Soft mint backdrop glow blob */}
+            <div className="relative w-full max-w-[500px] aspect-square flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-tr from-emerald-100/70 via-teal-100/50 to-emerald-50/20 rounded-full blur-2xl transform -translate-y-4"></div>
               
-              {/* Subtle Soft Left Feather: blends the left background into text area */}
-              <div 
-                className="absolute inset-y-0 left-0 w-20 sm:w-28 bg-gradient-to-r from-[#fdf9f8] via-[#fdf9f8]/60 to-transparent pointer-events-none z-10" 
-                aria-hidden="true"
-              />
-              
-              {/* Natural Pets Image: Dog's head fully visible, ears & smile unobstructed */}
-              <img
-                src="/petcare/hero-pets-exact.jpg"
-                alt="Happy Golden Retriever dog and domestic Cat lying together peacefully"
-                className="w-full h-auto object-contain select-none pointer-events-none transform scale-[1.06] sm:scale-[1.08] lg:scale-[1.10] origin-bottom transition-transform duration-300"
-              />
+              {/* Central Pets Image */}
+              <div className="relative z-10 w-full h-full flex items-end justify-center">
+                <Image
+                  src="/petcare/greenlane-hero-pets-2x.png"
+                  alt="Golden retriever and domestic cat - GreenLane Pet Healthcare"
+                  width={500}
+                  height={430}
+                  priority
+                  className="object-contain drop-shadow-xl select-none"
+                />
+              </div>
+
+              {/* Floating Card 1: GreenLane AI Consultation (Top Right) */}
+              <div className="absolute -top-4 -right-2 sm:right-2 z-20 max-w-[260px] sm:max-w-[280px] bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-xl border border-gray-100/80 animate-fade-in transition-transform hover:-translate-y-1">
+                <div className="flex items-center gap-2.5 mb-2.5">
+                  <div className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px] font-bold">
+                    <Sparkles className="w-3.5 h-3.5" />
+                  </div>
+                  <span className="text-xs font-semibold text-gray-900">GreenLane AI</span>
+                </div>
+                <p className="text-[12px] text-gray-600 leading-relaxed mb-3">
+                  Your pet&apos;s health looks good! Next vaccination is due in 3 months. Would you like to book an appointment?
+                </p>
+                <button
+                  onClick={onOpenDemo}
+                  className="w-full py-1.5 px-3 text-xs font-semibold text-white bg-[#064e3b] hover:bg-[#04382a] rounded-lg transition-colors text-center shadow-sm"
+                >
+                  Book appointment
+                </button>
+              </div>
+
+              {/* Floating Card 2: Health Score Gauge (Bottom Right) */}
+              <div className="absolute -bottom-4 right-0 sm:right-4 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-3.5 shadow-xl border border-gray-100/80 flex items-center gap-3 transition-transform hover:-translate-y-1">
+                {/* Circular Score Badge */}
+                <div className="relative w-12 h-12 flex items-center justify-center">
+                  <svg className="w-12 h-12 transform -rotate-90" viewBox="0 0 36 36">
+                    <path
+                      className="text-emerald-100"
+                      strokeWidth="3.5"
+                      stroke="currentColor"
+                      fill="none"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path
+                      className="text-emerald-500"
+                      strokeDasharray="92, 100"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                      stroke="currentColor"
+                      fill="none"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                  </svg>
+                  <span className="absolute font-extrabold text-sm text-[#0f2a24]">92</span>
+                </div>
+                
+                <div>
+                  <span className="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Health Score</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-xs font-bold text-gray-900">Excellent</span>
+                    <span className="text-[10px] text-gray-500">for your pet</span>
+                  </div>
+                </div>
+
+                {/* Sparkline icon */}
+                <div className="pl-2 border-l border-gray-100">
+                  <TrendingUp className="w-5 h-5 text-emerald-500" />
+                </div>
+              </div>
+
             </div>
 
           </div>
 
         </div>
+
       </div>
     </section>
   );
 }
-
-
-
-

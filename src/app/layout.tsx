@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 
 export const metadata: Metadata = {
-  title: "PetCare — Happy Pets, Happy You",
-  description: "Trusted pet care services — from pet sitting to dog walking, we're here for your furry friends.",
+  title: "GreenLane Pet — AI-Powered Pet Healthcare | Healthier Pets. Happier Lives.",
+  description: "GreenLane Pet is the AI platform that connects pet owners, veterinarians and care teams — making pet healthcare smarter, simpler and more proactive.",
   icons: {
     icon: "/petcare/paw-black.svg",
     shortcut: "/petcare/paw-black.svg",
