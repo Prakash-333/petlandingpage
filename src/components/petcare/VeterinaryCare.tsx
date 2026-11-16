@@ -93,9 +93,9 @@ export default function VeterinaryCare({ onOpenDemo }: VeterinaryCareProps) {
 
           {/* Center Column: Vet Exam Photo */}
           <div className="lg:col-span-4 relative flex justify-center">
-            <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100 w-full max-w-[340px] aspect-[4/3] sm:aspect-square flex items-center justify-center bg-gray-50">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100 w-full max-w-[340px] aspect-[4/3] flex items-center justify-center bg-gray-50">
               <Image
-                src="/petcare/greenlane-vet-exam-2x.png"
+                src="/petcare/vet-exam-hd.png"
                 alt="Veterinarian examining golden retriever dog"
                 fill
                 className="object-cover object-center"
@@ -141,3 +141,4 @@ export default function VeterinaryCare({ onOpenDemo }: VeterinaryCareProps) {
     </section>
   );
 }
+

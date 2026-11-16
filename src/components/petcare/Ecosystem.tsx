@@ -116,3 +116,4 @@ export default function Ecosystem({ onExploreFeatures }: EcosystemProps) {
     </section>
   );
 }
+

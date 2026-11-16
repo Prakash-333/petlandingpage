@@ -210,3 +210,4 @@ export default function AIAssistant({ onBookAppointment }: AIAssistantProps) {
     </section>
   );
 }
+

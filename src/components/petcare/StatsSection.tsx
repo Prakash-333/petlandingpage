@@ -72,7 +72,7 @@ export default function StatsSection() {
           <div className="lg:col-span-2 flex justify-center lg:justify-end">
             <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-emerald-100/60 border-2 border-emerald-200/50 flex items-center justify-center overflow-hidden shadow-inner group">
               <Image
-                src="/petcare/greenlane-stat-cat-2x.png"
+                src="/petcare/stat-cat-hd.png"
                 alt="Happy domestic cat"
                 width={120}
                 height={120}
@@ -90,3 +90,4 @@ export default function StatsSection() {
     </section>
   );
 }
+

@@ -58,7 +58,7 @@ export default function PreFooterCTA({ onOpenDemo, onLearnMore }: PreFooterCTAPr
               <div className="relative w-44 sm:w-52 h-36 sm:h-44 flex items-end justify-center">
                 <div className="absolute inset-0 bg-emerald-100/50 rounded-full blur-xl -z-10"></div>
                 <Image
-                  src="/petcare/greenlane-cta-pets-2x.png"
+                  src="/petcare/cta-pets-hd.png"
                   alt="Golden retriever dog and domestic cat"
                   width={220}
                   height={160}
@@ -85,3 +85,4 @@ export default function PreFooterCTA({ onOpenDemo, onLearnMore }: PreFooterCTAPr
     </section>
   );
 }
+
