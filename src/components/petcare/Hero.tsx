@@ -1,7 +1,14 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { ArrowRight, Bot, ShieldCheck, Share2, Sparkles, TrendingUp } from 'lucide-react';
+import { 
+  ArrowRight, 
+  Sparkles, 
+  ShieldCheck, 
+  Network, 
+  Zap, 
+  TrendingUp 
+} from 'lucide-react';
 
 interface HeroProps {
   onOpenDemo?: () => void;
@@ -14,10 +21,10 @@ export default function Hero({ onOpenDemo, onExploreFeatures }: HeroProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main 2-column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
           
           {/* Left Column: Headline, Description & Badges */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-6 z-10">
             
             {/* Tag badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50/80 border border-emerald-200/50 text-[11px] font-bold tracking-wider text-emerald-800 uppercase">
@@ -54,87 +61,97 @@ export default function Hero({ onOpenDemo, onExploreFeatures }: HeroProps) {
               </button>
             </div>
 
-            {/* Trust / Feature Badges */}
-            <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-gray-100">
-              <div className="flex flex-col items-start gap-1.5">
-                <div className="w-7 h-7 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
-                  <Bot className="w-3.5 h-3.5" />
+            {/* 4 Feature Icons Row */}
+            <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 border-t border-gray-100">
+              
+              {/* Icon 1: AI-Powered Health Assistant */}
+              <div className="flex flex-col items-start gap-2 group">
+                <div className="w-8 h-8 rounded-full bg-[#f3e8ff] text-[#9333ea] flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
+                  <Sparkles className="w-4 h-4" />
                 </div>
-                <span className="text-[11px] font-medium text-gray-700 leading-snug">
-                  AI-Powered<br />Health Assistant
-                </span>
+                <div className="text-[11px] sm:text-xs font-semibold text-gray-700 leading-snug">
+                  AI-Powered<br />
+                  <span className="font-medium text-gray-500">Health Assistant</span>
+                </div>
               </div>
 
-              <div className="flex flex-col items-start gap-1.5">
-                <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                  <ShieldCheck className="w-3.5 h-3.5" />
+              {/* Icon 2: Secure & GDPR Compliant */}
+              <div className="flex flex-col items-start gap-2 group">
+                <div className="w-8 h-8 rounded-full bg-[#d1fae5] text-[#059669] flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
+                  <ShieldCheck className="w-4 h-4" />
                 </div>
-                <span className="text-[11px] font-medium text-gray-700 leading-snug">
-                  Secure &<br />GDPR Compliant
-                </span>
+                <div className="text-[11px] sm:text-xs font-semibold text-gray-700 leading-snug">
+                  Secure &<br />
+                  <span className="font-medium text-gray-500">GDPR Compliant</span>
+                </div>
               </div>
 
-              <div className="flex flex-col items-start gap-1.5">
-                <div className="w-7 h-7 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center">
-                  <Share2 className="w-3.5 h-3.5" />
+              {/* Icon 3: Connected Pet Care Ecosystem */}
+              <div className="flex flex-col items-start gap-2 group">
+                <div className="w-8 h-8 rounded-full bg-[#e0f2fe] text-[#0284c7] flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
+                  <Network className="w-4 h-4" />
                 </div>
-                <span className="text-[11px] font-medium text-gray-700 leading-snug">
-                  Connected Pet<br />Care Ecosystem
-                </span>
+                <div className="text-[11px] sm:text-xs font-semibold text-gray-700 leading-snug">
+                  Connected Pet<br />
+                  <span className="font-medium text-gray-500">Care Ecosystem</span>
+                </div>
               </div>
 
-              <div className="flex flex-col items-start gap-1.5">
-                <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
-                  <Sparkles className="w-3.5 h-3.5" />
+              {/* Icon 4: Smarter Workflows */}
+              <div className="flex flex-col items-start gap-2 group">
+                <div className="w-8 h-8 rounded-full bg-[#fef3c7] text-[#d97706] flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
+                  <Zap className="w-4 h-4" />
                 </div>
-                <span className="text-[11px] font-medium text-gray-700 leading-snug">
-                  Smarter<br />Workflows
-                </span>
+                <div className="text-[11px] sm:text-xs font-semibold text-gray-700 leading-snug">
+                  Smarter<br />
+                  <span className="font-medium text-gray-500">Workflows</span>
+                </div>
               </div>
+
             </div>
 
           </div>
 
-          {/* Right Column: TRUE 4K HD Visual Composition */}
+          {/* Right Column: Seamlessly Blended Visual (NO Border, True Dissolve into Left Text) */}
           <div className="lg:col-span-6 relative flex justify-center items-center">
             
-            {/* Main Visual Stage */}
-            <div className="relative w-full max-w-[540px] aspect-[1.15/1] flex items-end justify-center select-none">
+            <div className="relative w-full max-w-[620px] aspect-[16/10] select-none">
               
-              {/* Crisp Vector Organic Background Blobs */}
-              <div className="absolute inset-0 -z-10 flex items-center justify-center pointer-events-none">
-                <svg className="w-full h-full max-w-[500px]" viewBox="0 0 500 450" fill="none">
-                  {/* Soft Cyan/Teal Organic Blob */}
-                  <path
-                    d="M180,60 C280,30 420,90 440,210 C460,330 360,420 220,410 C90,400 40,320 60,200 C80,80 120,80 180,60 Z"
-                    fill="#e0f7f4"
-                    opacity="0.85"
-                  />
-                  {/* Soft Mint/Lime Organic Accent Blob */}
-                  <path
-                    d="M320,160 C420,180 480,260 460,350 C440,430 350,440 280,420 C220,400 240,320 260,240 C280,180 290,160 320,160 Z"
-                    fill="#dcfce7"
-                    opacity="0.75"
-                  />
-                </svg>
-              </div>
+              {/* Soft Ambient Glow in the background */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-emerald-100/40 via-teal-100/30 to-transparent rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
-              {/* 4K Studio Pets Cutout (Golden Retriever & Tabby Cat) */}
-              <div className="relative z-10 w-[72%] max-w-[380px] mb-2 flex items-end justify-center">
+              {/* The Image Container - NO BORDER, NO BOX, MASK-FADED INTO WHITE */}
+              <div 
+                className="relative w-full h-full overflow-hidden"
+                style={{
+                  maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.8) 18%, rgba(0,0,0,1) 32%, rgba(0,0,0,1) 92%, transparent 100%), linear-gradient(to bottom, rgba(0,0,0,1) 82%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.8) 18%, rgba(0,0,0,1) 32%, rgba(0,0,0,1) 92%, transparent 100%), linear-gradient(to bottom, rgba(0,0,0,1) 82%, transparent 100%)',
+                  maskComposite: 'intersect',
+                  WebkitMaskComposite: 'destination-in'
+                }}
+              >
                 <Image
-                  src="/petcare/pets-4k-cutout.png"
-                  alt="Golden Retriever dog and Tabby Cat"
-                  width={702}
-                  height={816}
+                  src="/petcare/hero-pets-greenlane-4k.jpg"
+                  alt="GreenLane Pet - Happy Golden Retriever and Tabby Cat with Mint and Teal Healthcare Background"
+                  fill
                   priority
                   quality={100}
-                  className="w-full h-auto object-contain drop-shadow-md"
+                  className="object-cover object-center scale-102 hover:scale-105 transition-transform duration-700 ease-out"
                 />
+
+                {/* Left Edge Dissolve: Extra feathered blend merging softly with the left column */}
+                <div className="absolute inset-y-0 left-0 w-44 sm:w-60 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none"></div>
+
+                {/* Bottom Edge Dissolve: Melts into the section whitespace */}
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white via-white/70 to-transparent pointer-events-none"></div>
+
+                {/* Top Edge Dissolve: Soft transition */}
+                <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-white/50 to-transparent pointer-events-none"></div>
               </div>
 
-              {/* Floating Card 1: GreenLane AI Consultation (Top Right - 100% Vector HTML) */}
-              <div className="absolute top-2 right-0 sm:-right-2 z-20 w-[240px] sm:w-[260px] bg-white/95 backdrop-blur-md rounded-2xl p-3.5 shadow-xl border border-gray-100 transition-transform duration-200 hover:-translate-y-1">
-                <div className="flex items-center gap-2 mb-2">
+              {/* Floating Card 1: GreenLane AI Consultation (Top Right - 100% Vector Subpixel HTML) */}
+              <div className="absolute top-2 right-2 sm:-right-2 z-20 max-w-[240px] sm:max-w-[260px] bg-white/95 backdrop-blur-md rounded-2xl p-3.5 shadow-xl border border-gray-100/90 transition-transform duration-200 hover:-translate-y-1">
+                <div className="flex items-center gap-2 mb-1.5">
                   <div className="w-5 h-5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px] shadow-xs">
                     <Sparkles className="w-3 h-3" />
                   </div>
@@ -151,11 +168,11 @@ export default function Hero({ onOpenDemo, onExploreFeatures }: HeroProps) {
                 </button>
               </div>
 
-              {/* Floating Card 2: Health Score Gauge (Bottom Right - 100% Vector HTML) */}
-              <div className="absolute bottom-4 right-0 sm:right-2 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-3 shadow-xl border border-gray-100 flex items-center gap-3 transition-transform duration-200 hover:-translate-y-1">
+              {/* Floating Card 2: Health Score Gauge (Bottom Right - 100% Vector Subpixel HTML) */}
+              <div className="absolute bottom-3 right-2 sm:-right-2 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-xl border border-gray-100/90 flex items-center gap-2.5 transition-transform duration-200 hover:-translate-y-1">
                 {/* Circular Score Gauge */}
-                <div className="relative w-11 h-11 flex items-center justify-center">
-                  <svg className="w-11 h-11 transform -rotate-90" viewBox="0 0 36 36">
+                <div className="relative w-10 h-10 flex items-center justify-center">
+                  <svg className="w-10 h-10 transform -rotate-90" viewBox="0 0 36 36">
                     <path
                       className="text-emerald-100"
                       strokeWidth="3.5"
@@ -177,15 +194,15 @@ export default function Hero({ onOpenDemo, onExploreFeatures }: HeroProps) {
                 </div>
                 
                 <div>
-                  <span className="block text-[9px] font-bold text-gray-400 uppercase tracking-wider">Health Score</span>
+                  <span className="block text-[8px] font-bold text-gray-400 uppercase tracking-wider">Health Score</span>
                   <div className="flex items-center gap-1">
                     <span className="text-[11px] font-bold text-gray-900">Excellent</span>
-                    <span className="text-[9px] text-gray-500">for your pet</span>
+                    <span className="text-[8px] text-gray-500">for your pet</span>
                   </div>
                 </div>
 
                 {/* Sparkline icon */}
-                <div className="pl-2 border-l border-gray-100 flex items-center">
+                <div className="pl-1.5 border-l border-gray-100 flex items-center">
                   <TrendingUp className="w-4 h-4 text-emerald-500" />
                 </div>
               </div>
