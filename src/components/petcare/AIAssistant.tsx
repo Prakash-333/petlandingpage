@@ -1,14 +1,15 @@
 'use client';
 import React from 'react';
 import { 
-  CheckCircle2, 
+  Check, 
   ArrowRight, 
-  Sparkles, 
+  PawPrint, 
   Calendar, 
   ShieldCheck, 
   Pill,
   ChevronRight,
-  TrendingUp
+  TrendingUp,
+  CheckCircle2
 } from 'lucide-react';
 
 interface AIAssistantProps {
@@ -24,7 +25,7 @@ export default function AIAssistant({ onBookAppointment }: AIAssistantProps) {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-[#fbfdfc] relative overflow-hidden border-t border-b border-gray-100">
+    <section className="py-20 lg:py-28 bg-[#f2f9f5] relative overflow-hidden border-t border-b border-emerald-100/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -33,7 +34,7 @@ export default function AIAssistant({ onBookAppointment }: AIAssistantProps) {
           <div className="lg:col-span-7 relative flex flex-col md:flex-row items-center justify-center gap-6">
             
             {/* Soft background glow */}
-            <div className="absolute w-[360px] h-[360px] bg-emerald-100/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+            <div className="absolute w-[380px] h-[380px] bg-emerald-200/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
             {/* Smartphone Mockup */}
             <div className="w-[260px] sm:w-[280px] bg-white rounded-[40px] p-3.5 shadow-2xl border-[6px] border-gray-900/90 relative shrink-0">
@@ -122,44 +123,50 @@ export default function AIAssistant({ onBookAppointment }: AIAssistantProps) {
             {/* Floating Chat Conversation Cards */}
             <div className="space-y-3.5 max-w-[320px] w-full">
               
-              {/* Bot Message 1 */}
+              {/* Bot Message 1: Purple circle with Paw Print logo */}
               <div className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100 space-y-2.5">
                 <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px]">
-                    <Sparkles className="w-3 h-3" />
+                  <div className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs shadow-xs">
+                    <PawPrint className="w-3.5 h-3.5 fill-white text-white" />
                   </div>
-                  <span className="text-xs font-semibold text-gray-900">GreenLane AI</span>
+                  <span className="text-xs font-bold text-gray-900">GreenLane AI</span>
                 </div>
                 <p className="text-xs text-gray-600 leading-relaxed">
                   Luna&apos;s last check-up was 6 months ago. Would you like to schedule a wellness check-up or discuss any concerns?
                 </p>
                 <button
                   onClick={onBookAppointment}
-                  className="w-full py-1.5 px-3 text-xs font-semibold text-white bg-[#064e3b] hover:bg-[#04382a] rounded-lg transition-colors text-center"
+                  className="w-full py-2 px-3 text-xs font-semibold text-white bg-[#064e3b] hover:bg-[#04382a] rounded-xl transition-colors text-center shadow-xs"
                 >
                   Book an appointment
                 </button>
               </div>
 
-              {/* User Reply Bubble */}
-              <div className="flex justify-end">
-                <div className="bg-emerald-50 text-emerald-950 border border-emerald-200/60 rounded-2xl rounded-tr-sm px-4 py-2.5 shadow-sm max-w-[260px]">
-                  <p className="text-xs font-medium">
+              {/* User Reply Bubble: Centered and cleanly aligned */}
+              <div className="flex justify-center sm:justify-end">
+                <div className="bg-[#e7f7ee] border border-emerald-200/90 rounded-xl py-3 px-4 shadow-sm max-w-[270px] w-full flex items-center justify-between gap-3">
+                  <p className="text-xs font-semibold text-emerald-950 text-left leading-normal">
                     Book a wellness check-up for next week.
                   </p>
+                  <div className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <Check className="w-3 h-3 stroke-[3]" />
+                  </div>
                 </div>
               </div>
 
-              {/* Bot Response Bubble */}
-              <div className="bg-white rounded-2xl p-3.5 shadow-md border border-gray-100 space-y-1.5 max-w-[290px]">
-                <div className="flex items-center gap-1.5 text-purple-600">
-                  <Sparkles className="w-3 h-3" />
-                  <span className="text-[10px] font-bold">GreenLane AI</span>
+              {/* Bot Response Bubble: Sky-blue circle with Paw Print logo placed side-by-side */}
+              <div className="bg-white rounded-xl p-3.5 sm:p-4 shadow-md border border-gray-100 max-w-[290px] w-full">
+                <div className="flex items-start gap-2.5">
+                  <div className="w-6 h-6 rounded-full bg-[#38bdf8] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                    <PawPrint className="w-3.5 h-3.5 fill-white text-white" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs text-gray-800 leading-relaxed font-normal">
+                      Great! I&apos;ve found 3 available slots for next week. Which one works best for you?
+                    </p>
+                    <span className="text-[10px] text-gray-400 font-medium block mt-1">14:24</span>
+                  </div>
                 </div>
-                <p className="text-xs text-gray-700 leading-relaxed">
-                  Great! I&apos;ve found 3 available slots for next week. Which one works best for you?
-                </p>
-                <span className="text-[10px] text-gray-400 block pt-0.5">14:24</span>
               </div>
 
             </div>
@@ -168,7 +175,7 @@ export default function AIAssistant({ onBookAppointment }: AIAssistantProps) {
 
           {/* Right Column: AI Assistant Copy */}
           <div className="lg:col-span-5 space-y-6">
-            <span className="text-[11px] font-bold tracking-wider text-emerald-700 uppercase block">
+            <span className="text-xs font-bold tracking-wider text-[#059669] uppercase block">
               AI Pet Health Assistant
             </span>
 
@@ -181,10 +188,13 @@ export default function AIAssistant({ onBookAppointment }: AIAssistantProps) {
               Our AI assistant helps pet owners with instant advice, health insights, appointment booking and more — anytime, anywhere.
             </p>
 
+            {/* Checkmarks with Solid Green Ticks */}
             <div className="space-y-3.5 pt-2">
               {checkmarks.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div className="w-5 h-5 rounded-full bg-[#059669] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                  </div>
                   <span className="text-sm font-medium text-gray-800 leading-snug">
                     {item}
                   </span>
@@ -195,7 +205,7 @@ export default function AIAssistant({ onBookAppointment }: AIAssistantProps) {
             <div className="pt-4">
               <a
                 href="#features"
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-[#064e3b] hover:text-emerald-600 transition-colors group"
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-[#064e3b] hover:text-[#059669] transition-colors group"
               >
                 See how it works
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -210,4 +220,3 @@ export default function AIAssistant({ onBookAppointment }: AIAssistantProps) {
     </section>
   );
 }
-
