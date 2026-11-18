@@ -14,70 +14,71 @@ export default function StatsSection() {
       label: 'More proactive care',
       subtext: 'of health issues detected earlier with AI insights',
       icon: HeartPulse,
-      color: 'bg-purple-100 text-purple-700 border border-purple-200/60 shadow-xs',
+      color: 'bg-purple-200/70 text-purple-800 border border-purple-300/70 shadow-xs',
     },
     {
       value: '50%',
       label: 'Less admin time',
       subtext: 'reduction in paperwork and manual tasks',
       icon: Clock,
-      color: 'bg-violet-100 text-violet-700 border border-violet-200/60 shadow-xs',
+      color: 'bg-violet-200/70 text-violet-800 border border-violet-300/70 shadow-xs',
     },
     {
       value: '+90%',
       label: 'Happier pets',
       subtext: 'owner satisfaction with digital care tools',
       icon: PawPrint,
-      color: 'bg-pink-100 text-pink-700 border border-pink-200/60 shadow-xs',
+      color: 'bg-pink-200/70 text-pink-800 border border-pink-300/70 shadow-xs',
     },
   ];
 
   return (
-    <section className="py-20 lg:py-24 bg-[#faf8fe] border-t border-b border-purple-100/50 relative overflow-hidden">
-      {/* Very soft ambient lavender glow */}
-      <div className="absolute top-1/2 -translate-y-1/2 right-1/4 w-[420px] h-[420px] bg-purple-100/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+    <section className="py-3 sm:py-4 lg:py-5 bg-gradient-to-r from-[#faf5ff] via-[#f4edff] to-[#faf5ff] border-t border-b border-purple-200/50 relative overflow-hidden">
+      {/* Soft atmospheric ambient light violet glow */}
+      <div className="absolute -top-24 left-1/4 w-[480px] h-[480px] bg-purple-200/25 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+      <div className="absolute -bottom-24 right-1/4 w-[500px] h-[500px] bg-violet-200/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-center">
           
           {/* Left Title Area */}
-          <div className="lg:col-span-3 space-y-3">
-            <span className="text-xs font-bold tracking-wider text-purple-600 uppercase block">
+          <div className="lg:col-span-3 space-y-1.5">
+            <span className="text-xs font-bold tracking-wider text-purple-800 uppercase block">
               Impact & Outcomes
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#1a1033] leading-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#1a0e33] leading-tight">
               A healthier future<br />
               for every pet.
             </h2>
-            <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+            <p className="text-xs sm:text-sm text-gray-700/90 leading-relaxed">
               With AI at the heart, GreenLane Pet is building a smarter, more connected future for pet healthcare.
             </p>
           </div>
 
-          {/* Center: 3 Stats (Open Columns - No White Boxes/Cards) */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 sm:divide-x sm:divide-purple-200/50">
+          {/* Center: 3 Stats (Open Columns on Light Violet Gradient) */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-4 sm:divide-x sm:divide-purple-200/80">
             {stats.map((st, idx) => {
               const Icon = st.icon;
               return (
                 <div 
                   key={st.label} 
-                  className={`space-y-2.5 ${idx !== 0 ? 'sm:pl-6' : ''}`}
+                  className={`space-y-1.5 ${idx !== 0 ? 'sm:pl-4' : ''}`}
                 >
                   {/* Rich App Icon Badge */}
-                  <div className={`w-10 h-10 rounded-xl ${st.color} flex items-center justify-center`}>
-                    <Icon className="w-5 h-5" />
+                  <div className={`w-8 h-8 rounded-xl ${st.color} flex items-center justify-center`}>
+                    <Icon className="w-4 h-4" />
                   </div>
                   
-                  <span className="text-xs font-semibold text-gray-700 block">
+                  <span className="text-xs font-semibold text-gray-800 block">
                     {st.label}
                   </span>
                   
-                  <div className="text-2xl sm:text-3xl font-extrabold text-[#059669]">
+                  <div className="text-2xl sm:text-3xl font-extrabold text-[#059669] leading-tight">
                     {st.value}
                   </div>
                   
-                  <p className="text-[11px] text-gray-500 leading-snug">
+                  <p className="text-[11px] text-gray-600 leading-snug">
                     {st.subtext}
                   </p>
                 </div>
@@ -85,21 +86,15 @@ export default function StatsSection() {
             })}
           </div>
 
-          {/* Right: Golden Retriever Puppy & Kitten - Merges directly with text and background (NO BOX) */}
-          <div className="lg:col-span-3 flex justify-center lg:justify-end">
-            <div 
-              className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[4/3] flex items-center justify-center"
-              style={{
-                maskImage: 'linear-gradient(to right, transparent 0%, black 18%, black 88%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 18%, black 88%, transparent 100%)',
-              }}
-            >
+          {/* Right: Golden Retriever Puppy & Kitten - Full Height in Box (Top & Bottom) */}
+          <div className="lg:col-span-4 relative self-stretch flex items-center justify-center lg:justify-end -my-3 sm:-my-4 lg:-my-5">
+            <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[440px] h-full min-h-[190px] sm:min-h-[210px] lg:min-h-[230px] flex items-center justify-center select-none">
               <Image
-                src="/petcare/pets-stats-violet.jpg"
+                src="/petcare/pets-stats-violet-full.png"
                 alt="Adorable golden retriever puppy and British Shorthair kitten"
                 fill
-                sizes="(max-width: 1024px) 100vw, 25vw"
-                className="object-contain mix-blend-multiply hover:scale-105 transition-transform duration-500 select-none"
+                sizes="(max-width: 1024px) 100vw, 35vw"
+                className="object-contain object-center scale-110 sm:scale-115 lg:scale-120 hover:scale-125 transition-transform duration-500 select-none"
                 priority
               />
             </div>

@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, PawPrint } from 'lucide-react';
 
 interface NavbarProps {
   onOpenDemo?: () => void;
@@ -23,26 +23,28 @@ export default function Navbar({ onOpenDemo }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo */}
-          <Link href="#home" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#10b981] to-[#059669] flex items-center justify-center shadow-sm shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-              <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 10.5c1.4 0 2.5 1.1 2.5 2.5 0 1.2-.8 2.2-2 2.4l-.5 2.6h-2l-.5-2.6c-1.2-.2-2-1.2-2-2.4 0-1.4 1.1-2.5 2.5-2.5h2zm-4-3.5c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5S6.5 9.3 6.5 8.5 7.2 7 8 7zm8 0c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5zm-10 4c.8 0 1.5.7 1.5 1.5S6.8 14 6 14s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5zm12 0c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5z" />
-              </svg>
+          {/* Logo matching the reference design */}
+          <Link href="#home" className="flex items-center gap-2 group">
+            <div className="text-[#10b981] group-hover:scale-105 transition-transform">
+              <PawPrint className="w-7 h-7 stroke-[2.3] fill-[#10b981]/15 text-[#10b981]" />
             </div>
-            <div className="flex items-baseline gap-1">
-              <span className="font-bold text-xl tracking-tight text-[#0f2a24]">GreenLane</span>
-              <span className="font-semibold text-xl tracking-tight text-[#10b981]">Pet</span>
+            <div className="flex items-baseline">
+              <span className="font-bold text-xl sm:text-2xl tracking-tight text-[#0f2a24]">GreenLane</span>
+              <span className="font-semibold text-xl sm:text-2xl tracking-tight text-[#10b981] ml-0.5">Pet</span>
             </div>
           </Link>
 
-          {/* Desktop Nav Links */}
+          {/* Desktop Nav Links (High-contrast dark color) */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {navLinks.map((link, idx) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-gray-600 hover:text-[#064e3b] transition-colors relative py-1"
+                className={`text-sm font-semibold transition-colors relative py-1 text-[#0f2a24] hover:text-[#059669] ${
+                  idx === 0
+                    ? 'after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#0f2a24]'
+                    : ''
+                }`}
               >
                 {link.name}
               </a>
@@ -80,7 +82,7 @@ export default function Navbar({ onOpenDemo }: NavbarProps) {
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#064e3b] hover:bg-emerald-50/50"
+              className="block px-3 py-2 rounded-md text-base font-semibold text-[#0f2a24] hover:text-[#059669] hover:bg-emerald-50/50"
             >
               {link.name}
             </a>

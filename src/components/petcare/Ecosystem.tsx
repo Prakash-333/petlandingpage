@@ -1,13 +1,13 @@
 'use client';
 import React from 'react';
-import { 
-  Sparkles, 
-  MessageSquare, 
-  CalendarDays, 
-  ClipboardList, 
-  Pill, 
-  Activity, 
-  ArrowRight 
+import {
+  Sparkles,
+  MessageSquare,
+  CalendarDays,
+  ClipboardList,
+  Pill,
+  Activity,
+  ArrowRight
 } from 'lucide-react';
 
 interface EcosystemProps {
@@ -61,12 +61,12 @@ export default function Ecosystem({ onExploreFeatures }: EcosystemProps) {
   ];
 
   return (
-    <section id="features" className="py-16 lg:py-24 bg-white relative">
+    <section id="features" className="pt-6 sm:pt-8 lg:pt-10 pb-8 sm:pb-10 lg:pb-12 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* 2-Column Side-by-Side Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          
+
           {/* Left Side: Headline, Description & Explore Features Button */}
           <div className="lg:col-span-4 space-y-5">
             {/* 1. Green color tag */}
@@ -79,7 +79,7 @@ export default function Ecosystem({ onExploreFeatures }: EcosystemProps) {
               for pet health and wellbeing.
             </h2>
 
-            <p className="text-sm text-gray-600 leading-relaxed max-w-md">
+            <p className="text-sm text-gray-800 leading-relaxed max-w-md">
               From everyday care to advanced treatment, GreenLane Pet brings together AI, veterinary expertise and digital tools — all in one intelligent platform.
             </p>
 
@@ -114,9 +114,9 @@ export default function Ecosystem({ onExploreFeatures }: EcosystemProps) {
                         {item.title}
                       </h3>
 
-                      <p className="text-[11px] sm:text-xs text-gray-500 leading-relaxed">
-                        {item.description}
-                      </p>
+                        <p className="text-[11px] sm:text-xs text-gray-700 font-medium leading-relaxed">
+                          {item.description}
+                        </p>
                     </div>
                   </div>
                 );

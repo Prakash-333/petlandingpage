@@ -50,10 +50,10 @@ export default function VeterinaryCare({ onOpenDemo }: VeterinaryCareProps) {
   ];
 
   return (
-    <section id="veterinary" className="py-20 lg:py-24 bg-white relative">
+    <section id="veterinary" className="pt-8 sm:pt-10 lg:pt-12 pb-8 sm:pb-10 lg:pb-12 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* 3-Column Grid stretched to equal full height (no empty space below image) */}
+        {/* 3-Column Grid stretched to equal full height */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Left Column: Description & Value Props */}
@@ -111,39 +111,41 @@ export default function VeterinaryCare({ onOpenDemo }: VeterinaryCareProps) {
             </div>
           </div>
 
-          {/* Right Column: Built for the entire pet care ecosystem (Light Blue Theme & Compact Spacing) */}
+          {/* Right Column: Built for the entire pet care ecosystem - Fills box completely with only the 4 items */}
           <div className="lg:col-span-4 flex flex-col">
-            <div className="bg-[#f0f6ff] border border-blue-100/90 rounded-2xl p-5 sm:p-6 shadow-xs h-full flex flex-col justify-between">
+            <div className="bg-[#f0f7f9] border border-[#e1eff2] rounded-3xl p-6 sm:p-7 shadow-xs h-full flex flex-col justify-between">
               
-              {/* Card Main Heading - reduced space below */}
-              <div>
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 leading-snug mb-3.5">
+              {/* Card Main Heading */}
+              <div className="mb-4">
+                <h3 className="text-lg sm:text-xl font-bold text-[#0e382f] leading-snug">
                   Built for the entire<br />
                   pet care ecosystem.
                 </h3>
+              </div>
 
-                {/* Ecosystem Rows: Tight & Clean Spacing between Heading and Subheading */}
-                <div className="space-y-3">
-                  {ecosystemAudience.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={item.title} className="flex items-start gap-3 group">
-                        {/* Rich App Icon Badge */}
-                        <div className={`w-9 h-9 rounded-xl ${item.color} flex items-center justify-center shrink-0 transition-transform group-hover:scale-105 mt-0.5`}>
-                          <Icon className="w-4 h-4" />
+              {/* Ecosystem Rows: Distributed vertically to fill the full box height evenly */}
+              <div className="flex-1 flex flex-col justify-between gap-4 py-1">
+                {ecosystemAudience.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.title} className="flex items-center gap-3.5 group">
+                      {/* Rich App Icon Badge */}
+                      <div className={`w-10 h-10 rounded-2xl ${item.color} flex items-center justify-center shrink-0 transition-transform group-hover:scale-105 shadow-xs`}>
+                        <Icon className="w-5 h-5 stroke-[2.2]" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        {/* Heading */}
+                        <div className="text-sm sm:text-base font-bold text-gray-900 leading-snug">
+                          {item.title}
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-tight">
-                            {item.title}
-                          </h4>
-                          <p className="text-[11px] sm:text-xs text-gray-600 leading-tight mt-0.5">
-                            {item.desc}
-                          </p>
+                        {/* Subheading directly beneath heading */}
+                        <div className="text-xs sm:text-sm text-gray-600 leading-snug mt-0.5">
+                          {item.desc}
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                  );
+                })}
               </div>
 
             </div>
