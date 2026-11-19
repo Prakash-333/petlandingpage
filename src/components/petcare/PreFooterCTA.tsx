@@ -38,12 +38,12 @@ export default function PreFooterCTA({ onOpenDemo, onLearnMore }: PreFooterCTAPr
               </div>
 
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-[#0f2a24] leading-tight">
-                Join the future of<br />
-                pet healthcare.
+                Experience the Future of<br />
+                AI-Powered Pet Healthcare.
               </h2>
 
-              <p className="text-xs sm:text-sm text-gray-600 leading-snug max-w-sm">
-                Be part of a smarter, healthier and more connected pet ecosystem.
+              <p className="text-xs sm:text-sm text-gray-700 leading-snug max-w-sm">
+                Join pet parents and veterinary practices using intelligent AI to provide proactive, personalized, and connected pet care.
               </p>
 
               <div className="flex flex-wrap items-center gap-2.5 pt-1">

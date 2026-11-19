@@ -16,34 +16,34 @@ interface VeterinaryCareProps {
 
 export default function VeterinaryCare({ onOpenDemo }: VeterinaryCareProps) {
   const checkmarks = [
-    'Secure messaging & teleconsultations',
-    'AI-assisted clinical insights',
-    'Shared health records',
-    'Better collaboration across care teams',
+    'AI-assisted patient triage & messaging',
+    'Automated post-visit follow-ups and care plans',
+    'Unified digital health records across teams',
+    'Smart calendar coordination to reduce no-shows',
   ];
 
   const ecosystemAudience = [
     {
       title: 'Pet Owners',
-      desc: 'Manage your pet\'s health with ease',
+      desc: 'AI-guided daily wellness and proactive health tracking',
       icon: UserCheck,
       color: 'bg-purple-100 text-purple-700 border border-purple-200/80 shadow-xs',
     },
     {
       title: 'Veterinary Clinics',
-      desc: 'Work smarter, deliver better care',
+      desc: 'Automated front-desk triage and streamlined clinical workflows',
       icon: Building2,
       color: 'bg-sky-100 text-sky-700 border border-sky-200/80 shadow-xs',
     },
     {
-      title: 'Labs & Pharmacies',
-      desc: 'Faster diagnostics and treatment',
+      title: 'Labs & Diagnostics',
+      desc: 'Instant digital test results synced to patient files with AI summaries',
       icon: FlaskConical,
       color: 'bg-teal-100 text-teal-700 border border-teal-200/80 shadow-xs',
     },
     {
       title: 'Pet Care Networks',
-      desc: 'Connected, collaborative, proactive',
+      desc: 'Connected multi-clinic data and seamless care collaboration',
       icon: Network,
       color: 'bg-emerald-100 text-emerald-700 border border-emerald-200/80 shadow-xs',
     },
@@ -60,15 +60,15 @@ export default function VeterinaryCare({ onOpenDemo }: VeterinaryCareProps) {
           <div className="lg:col-span-4 flex flex-col justify-between space-y-5">
             <div>
               <span className="text-xs font-bold tracking-wider text-[#059669] uppercase block mb-1">
-                Veterinary Care
+                AI FOR VETERINARY PRACTICES
               </span>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0f2a24] leading-tight">
-                Professional care, simplified
+                AI-Powered Clinic Operations & Better Care
               </h2>
 
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mt-3">
-                Connect with trusted veterinary professionals and clinics. Enable better communication, faster decisions and improved outcomes for every pet.
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed mt-3">
+                Equip your practice with AI triage, automated patient follow-ups, and unified digital records — eliminating administrative burden so your team can focus on patients.
               </p>
 
               {/* Checkmarks with Solid Green Ticks */}

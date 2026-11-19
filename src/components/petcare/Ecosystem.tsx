@@ -18,42 +18,42 @@ export default function Ecosystem({ onExploreFeatures }: EcosystemProps) {
   const features = [
     {
       title: 'AI Health Assistant',
-      description: 'Get instant answers, care advice and personalised recommendations.',
+      description: 'Instant AI guidance, symptom triage, and tailored care recommendations available anytime.',
       icon: Sparkles,
       cardBg: 'bg-[#faf5ff] border-purple-100/70',
       iconBg: 'bg-[#f3e8ff] text-[#9333ea] border-purple-200/60',
     },
     {
       title: 'Pet Messaging',
-      description: 'Secure chat with your vet, care team or clinic.',
+      description: 'AI-assisted communication connecting you directly with your vet clinic with smart message summaries.',
       icon: MessageSquare,
       cardBg: 'bg-[#f0f9ff] border-sky-100/70',
       iconBg: 'bg-[#e0f2fe] text-[#0284c7] border-sky-200/60',
     },
     {
       title: 'Appointments',
-      description: 'Book, reschedule and manage appointments with ease.',
+      description: 'Intelligent appointment scheduling that syncs with clinic availability and automates reminders.',
       icon: CalendarDays,
       cardBg: 'bg-[#fff7ed] border-orange-100/70',
       iconBg: 'bg-[#ffedd5] text-[#ea580c] border-orange-200/60',
     },
     {
       title: 'Health Records',
-      description: 'Vaccinations, medical history, prescriptions and documents — all in one place.',
+      description: 'AI-organized digital health memory unifying records, vaccine history, and diagnostic reports.',
       icon: ClipboardList,
       cardBg: 'bg-[#f0fdf4] border-emerald-100/70',
       iconBg: 'bg-[#dcfce7] text-[#059669] border-emerald-200/60',
     },
     {
       title: 'Medication Reminders',
-      description: 'Never miss a dose. Automatic reminders for your pet\'s medication.',
+      description: 'Smart dosage tracking and predictive reminder alerts so your pet\'s treatment stays on track.',
       icon: Pill,
       cardBg: 'bg-[#fdf2f8] border-pink-100/70',
       iconBg: 'bg-[#fce7f3] text-[#db2777] border-pink-200/60',
     },
     {
       title: 'Health Insights',
-      description: 'Track wellness, get alerts and stay ahead of potential issues.',
+      description: 'Predictive wellness analytics that detect subtle health trends and alert you to potential issues early.',
       icon: Activity,
       cardBg: 'bg-[#f5f3ff] border-indigo-100/70',
       iconBg: 'bg-[#ede9fe] text-[#7c3aed] border-indigo-200/60',
@@ -71,16 +71,16 @@ export default function Ecosystem({ onExploreFeatures }: EcosystemProps) {
           <div className="lg:col-span-4 space-y-5">
             {/* 1. Green color tag */}
             <span className="text-xs font-bold tracking-wider text-[#059669] uppercase block mb-1">
-              The GreenLane Pet Platform
+              THE INTELLIGENT CARE PLATFORM
             </span>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0f2a24] leading-tight">
-              A connected ecosystem<br />
-              for pet health and wellbeing.
+              An AI-driven platform<br />
+              for pet wellbeing.
             </h2>
 
             <p className="text-sm text-gray-800 leading-relaxed max-w-md">
-              From everyday care to advanced treatment, GreenLane Pet brings together AI, veterinary expertise and digital tools — all in one intelligent platform.
+              From everyday symptom questions to continuous medical monitoring, GreenLane Pet combines clinical AI with veterinary expertise to deliver proactive, data-informed care.
             </p>
 
             <div className="pt-2">

@@ -39,13 +39,13 @@ export default function Hero({ onOpenDemo, onExploreFeatures }: HeroProps) {
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-[#0f2a24] leading-[1.08]">
-              Healthier Pets.<br />
-              <span className="text-[#064e3b]">Happier Lives.</span>
+              Smarter Care with AI.<br />
+              <span className="text-[#064e3b]">Healthier, Happier Pets.</span>
             </h1>
 
             {/* Subheading - Darker text for improved contrast */}
             <p className="text-sm sm:text-base text-gray-800 max-w-xl leading-relaxed font-normal">
-              GreenLane Pet is the AI platform that connects pet owners, veterinarians and care teams — making pet healthcare smarter, simpler and more proactive.
+              Powered by clinical AI, GreenLane Pet connects pet parents, veterinarians, and care teams — turning daily health tracking, clinic triage, and care workflows into a proactive, intelligent experience.
             </p>
 
             {/* CTA Buttons */}
@@ -69,47 +69,47 @@ export default function Hero({ onOpenDemo, onExploreFeatures }: HeroProps) {
             {/* 4 Feature Icons Row (Vector SVG icons, All text in solid black) */}
             <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 border-t border-gray-100">
               
-              {/* Icon 1: AI-Powered Health Assistant (Solid Black Text) */}
+              {/* Icon 1: 24/7 AI Health Assistant (Solid Black Text) */}
               <div className="flex flex-col items-start gap-2 group">
                 <div className="w-8 h-8 rounded-full bg-[#f3e8ff] text-[#9333ea] flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
                   <MessageCircle className="w-4 h-4 stroke-[2.3]" />
                 </div>
                 <div className="text-[11px] sm:text-xs font-bold text-black leading-snug">
-                  AI-Powered<br />
+                  24/7 AI<br />
                   <span className="font-bold text-black">Health Assistant</span>
                 </div>
               </div>
 
-              {/* Icon 2: Secure & GDPR Compliant (Solid Black Text) */}
+              {/* Icon 2: Secure & Privacy-First AI (Solid Black Text) */}
               <div className="flex flex-col items-start gap-2 group">
                 <div className="w-8 h-8 rounded-full bg-[#d1fae5] text-[#059669] flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
                   <ShieldCheck className="w-4 h-4 stroke-[2.3]" />
                 </div>
                 <div className="text-[11px] sm:text-xs font-bold text-black leading-snug">
                   Secure &<br />
-                  <span className="font-bold text-black">GDPR Compliant</span>
+                  <span className="font-bold text-black">Privacy-First AI</span>
                 </div>
               </div>
 
-              {/* Icon 3: Connected Pet Care Ecosystem (Solid Black Text) */}
+              {/* Icon 3: AI-Connected Care Network (Solid Black Text) */}
               <div className="flex flex-col items-start gap-2 group">
                 <div className="w-8 h-8 rounded-full bg-[#e0f2fe] text-[#0284c7] flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
                   <PawPrint className="w-4 h-4 stroke-[2.3] fill-sky-500/10" />
                 </div>
                 <div className="text-[11px] sm:text-xs font-bold text-black leading-snug">
-                  Connected Pet<br />
-                  <span className="font-bold text-black">Care Ecosystem</span>
+                  AI-Connected<br />
+                  <span className="font-bold text-black">Care Network</span>
                 </div>
               </div>
 
-              {/* Icon 4: Smarter Workflows (Solid Black Text) */}
+              {/* Icon 4: Automated Care Workflows (Solid Black Text) */}
               <div className="flex flex-col items-start gap-2 group">
                 <div className="w-8 h-8 rounded-full bg-[#fef3c7] text-[#d97706] flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
                   <Workflow className="w-4 h-4 stroke-[2.3]" />
                 </div>
                 <div className="text-[11px] sm:text-xs font-bold text-black leading-snug">
-                  Smarter<br />
-                  <span className="font-bold text-black">Workflows</span>
+                  Automated<br />
+                  <span className="font-bold text-black">Care Workflows</span>
                 </div>
               </div>
 

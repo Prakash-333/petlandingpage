@@ -11,22 +11,22 @@ export default function StatsSection() {
   const stats = [
     {
       value: '70%',
-      label: 'More proactive care',
-      subtext: 'of health issues detected earlier with AI insights',
+      label: 'Earlier detection',
+      subtext: 'of health anomalies with predictive AI insights',
       icon: HeartPulse,
       color: 'bg-purple-200/70 text-purple-800 border border-purple-300/70 shadow-xs',
     },
     {
       value: '50%',
-      label: 'Less admin time',
-      subtext: 'reduction in paperwork and manual tasks',
+      label: 'Less admin burden',
+      subtext: 'reduction in paperwork through smart automation',
       icon: Clock,
       color: 'bg-violet-200/70 text-violet-800 border border-violet-300/70 shadow-xs',
     },
     {
       value: '+90%',
-      label: 'Happier pets',
-      subtext: 'owner satisfaction with digital care tools',
+      label: 'Higher adherence',
+      subtext: 'owner compliance with digital care & wellness tools',
       icon: PawPrint,
       color: 'bg-pink-200/70 text-pink-800 border border-pink-300/70 shadow-xs',
     },
@@ -45,14 +45,14 @@ export default function StatsSection() {
           {/* Left Title Area */}
           <div className="lg:col-span-3 space-y-1.5">
             <span className="text-xs font-bold tracking-wider text-purple-800 uppercase block">
-              Impact & Outcomes
+              MEASURABLE AI IMPACT
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#1a0e33] leading-tight">
-              A healthier future<br />
-              for every pet.
+              Better connected care.<br />
+              Real AI outcomes.
             </h2>
             <p className="text-xs sm:text-sm text-gray-700/90 leading-relaxed">
-              With AI at the heart, GreenLane Pet is building a smarter, more connected future for pet healthcare.
+              By placing intelligent technology at the core, GreenLane Pet delivers measurable improvements for pets, owners, and clinics.
             </p>
           </div>
 

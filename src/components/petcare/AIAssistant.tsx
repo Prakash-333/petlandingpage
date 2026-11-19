@@ -19,10 +19,10 @@ interface AIAssistantProps {
 
 export default function AIAssistant({ onBookAppointment }: AIAssistantProps) {
   const checkmarks = [
-    'Answer health questions in natural language',
-    'Provide personalised care recommendations',
-    'Remind about vaccinations, medication and check-ups',
-    'Escalate to a vet when needed',
+    'Natural-language AI answers for everyday pet health concerns',
+    'Personalized preventive care routines tailored to your pet\'s profile',
+    'Automated tracking for vaccinations, prescription cycles, and check-ups',
+    'Intelligent human-in-the-loop escalation directly to licensed vets',
   ];
 
   return (
@@ -264,16 +264,16 @@ export default function AIAssistant({ onBookAppointment }: AIAssistantProps) {
           {/* Right Column: AI Assistant Copy */}
           <div className="lg:col-span-5 space-y-6">
             <span className="text-xs font-bold tracking-wider text-[#059669] uppercase block">
-              AI Pet Health Assistant
+              INTELLIGENT PET HEALTH ASSISTANT
             </span>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0f2a24]">
-              Personalised care,<br />
-              24/7.
+              Instant answers.<br />
+              Proactive care, 24/7.
             </h2>
 
-            <p className="text-base text-gray-600 leading-relaxed">
-              Our AI assistant helps pet owners with instant advice, health insights, appointment booking and more — anytime, anywhere.
+            <p className="text-base text-gray-700 leading-relaxed">
+              Trained on veterinary knowledge, our conversational AI assists pet parents with real-time symptom triage, health monitoring, and seamless clinic coordination.
             </p>
 
             {/* Checkmarks with Solid Green Ticks */}
