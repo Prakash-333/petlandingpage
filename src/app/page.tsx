@@ -95,6 +95,26 @@ export default function GreenLaneLandingPage() {
   const [demoSubmitted, setDemoSubmitted] = useState(false);
   const [demoFormData, setDemoFormData] = useState({ name: '', email: '', org: '' });
 
+  // Custom Dropdowns state & refs
+  const [regionDropdownOpen, setRegionDropdownOpen] = useState(false);
+  const [planDropdownOpen, setPlanDropdownOpen] = useState(false);
+  const regionDropdownRef = useRef<HTMLDivElement>(null);
+  const planDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdowns on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (regionDropdownRef.current && !regionDropdownRef.current.contains(event.target as Node)) {
+        setRegionDropdownOpen(false);
+      }
+      if (planDropdownRef.current && !planDropdownRef.current.contains(event.target as Node)) {
+        setPlanDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   // Analytics event log
   const [analyticsEvents, setAnalyticsEvents] = useState<Array<{ eventName: string; timestamp: string; payload: any }>>([
     {
@@ -321,9 +341,9 @@ export default function GreenLaneLandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20 gap-3 sm:gap-4">
             {/* Brand Logo */}
-            <a href="#" className="flex items-center gap-2 sm:gap-2.5 shrink-0 group">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-900 flex items-center justify-center text-white shadow-sm group-hover:bg-emerald-800 transition-colors">
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <a href="#" className="flex items-center gap-2.5 sm:gap-3 shrink-0 group">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-900 flex items-center justify-center text-white shadow-sm group-hover:bg-emerald-800 transition-colors">
+                <svg className="w-6 h-6 sm:w-7 sm:h-7 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 13.5c-2.33 0-4.31 1.46-5.11 3.5-.42 1.07.37 2.25 1.52 2.25h7.18c1.15 0 1.94-1.18 1.52-2.25-.8-2.04-2.78-3.5-5.11-3.5zm-5.5-2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
                 </svg>
               </div>
@@ -969,8 +989,8 @@ export default function GreenLaneLandingPage() {
                   <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
                     <AlertTriangle className="w-4 h-4" />
                   </div>
-                  <div className="min-w-0 flex-1 flex flex-col justify-center">
-                    <p className="text-xs font-bold text-[#0F172A] truncate leading-none mb-1">Emergency Triage: Ate dark chocolate</p>
+                  <div className="min-w-0 flex-1 flex flex-col justify-center pt-2">
+                    <p className="text-xs font-bold text-[#0F172A] truncate leading-none mb-1.5">Emergency Triage: Ate dark chocolate</p>
                     <p className="text-[11px] text-slate-500 truncate leading-none">Instant toxicity calculator &amp; urgent vet slot</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600" />
@@ -983,8 +1003,8 @@ export default function GreenLaneLandingPage() {
                   <div className="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 group-hover:bg-emerald-900 group-hover:text-amber-400 transition-colors">
                     <CalendarPlus className="w-4 h-4" />
                   </div>
-                  <div className="min-w-0 flex-1 flex flex-col justify-center">
-                    <p className="text-xs font-bold text-[#0F172A] truncate leading-none mb-1">Routine Care: Annual booster &amp; grooming</p>
+                  <div className="min-w-0 flex-1 flex flex-col justify-center pt-2">
+                    <p className="text-xs font-bold text-[#0F172A] truncate leading-none mb-1.5">Routine Care: Annual booster &amp; grooming</p>
                     <p className="text-[11px] text-slate-500 truncate leading-none">Smart calendar sync + bundled service booking</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-700" />
@@ -997,8 +1017,8 @@ export default function GreenLaneLandingPage() {
                   <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
                     <Scale className="w-4 h-4" />
                   </div>
-                  <div className="min-w-0 flex-1 flex flex-col justify-center">
-                    <p className="text-xs font-bold text-[#0F172A] truncate leading-none mb-1">Smart Diet: Renal nutrition comparison</p>
+                  <div className="min-w-0 flex-1 flex flex-col justify-center pt-2">
+                    <p className="text-xs font-bold text-[#0F172A] truncate leading-none mb-1.5">Smart Diet: Renal nutrition comparison</p>
                     <p className="text-[11px] text-slate-500 truncate leading-none">AI-matched prescription &amp; partner food options</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600" />
@@ -1439,7 +1459,7 @@ export default function GreenLaneLandingPage() {
       </section>
 
       {/* 6. PRICING SECTION */}
-      <section id="pricing" className="py-20 lg:py-24 bg-[#FFFBF5]/70 relative overflow-hidden">
+      <section id="pricing" className="pt-16 sm:pt-20 pb-8 sm:pb-12 bg-[#FFFBF5]/70 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
             <div className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-amber-600">
@@ -1495,20 +1515,23 @@ export default function GreenLaneLandingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 items-stretch">
             {/* Tier 1 */}
             <div className="rounded-3xl bg-white border border-slate-200/90 p-7 sm:p-8 shadow-soft flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full">
-                    For Pet Parents
-                  </span>
-                  <span className="text-xs font-semibold text-amber-700">Free Base + Optional Pass</span>
+              <div className="flex flex-col flex-1">
+                <div className="h-[180px] lg:h-[195px] flex flex-col justify-start">
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full">
+                      For Pet Parents
+                    </span>
+                    <span className="text-xs font-semibold text-amber-700">Free Base + Optional Pass</span>
+                  </div>
+
+                  <h3 className="font-display font-extrabold text-2xl text-[#0F172A] leading-tight">GreenLane AI Plus</h3>
+                  <p className="text-xs font-bold text-amber-700 mt-0.5">For Pet Parents &amp; Families</p>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                    Free digital pet passport, vaccine reminders &amp; AI triage—upgrade for 24/7 continuous health tracking, priority slots &amp; smart refills.
+                  </p>
                 </div>
 
-                <h3 className="font-display font-extrabold text-2xl text-[#0F172A]">GreenLane AI Plus (Pet Parents)</h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1.5">
-                  Free base digital pet passport, vaccine reminders, and AI triage guidance—upgrade to Plus for 24/7 continuous health tracking, priority slots &amp; smart refills.
-                </p>
-
-                <div className="mt-6 pb-6 border-b border-slate-100">
+                <div className="mt-6 h-[88px] pb-6 border-b border-slate-100 flex flex-col justify-center">
                   <div className="flex items-baseline gap-2">
                     <span className="font-display font-extrabold text-3xl sm:text-4xl text-[#0F172A]">Free</span>
                     <span className="text-xs font-semibold text-slate-500">/ base profile</span>
@@ -1518,17 +1541,23 @@ export default function GreenLaneLandingPage() {
                   </p>
                 </div>
 
-                <ul className="mt-6 space-y-3 text-xs sm:text-sm text-slate-700">
-                  <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                <ul className="mt-6 space-y-3.5 text-xs sm:text-sm text-slate-700 flex-1">
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                      <Check className="w-3 h-3 stroke-[2.5]" />
+                    </div>
                     <span>Unlimited pet profiles, digital health history &amp; automated vaccine reminders</span>
                   </li>
-                  <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                      <Check className="w-3 h-3 stroke-[2.5]" />
+                    </div>
                     <span>24/7 AI symptom triage, toxicity checker &amp; food safety assistant</span>
                   </li>
-                  <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                      <Check className="w-3 h-3 stroke-[2.5]" />
+                    </div>
                     <span>Plus: Priority clinic slot holding, multi-service bookings &amp; auto-refill delivery alerts</span>
                   </li>
                 </ul>
@@ -1556,39 +1585,48 @@ export default function GreenLaneLandingPage() {
                 Most Popular for Clinics &amp; Studios
               </div>
 
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-amber-300 bg-emerald-900 px-3 py-1 rounded-full">
-                    Clinics, Groomers &amp; Trainers
-                  </span>
+              <div className="flex flex-col flex-1">
+                <div className="h-[180px] lg:h-[195px] flex flex-col justify-start">
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="text-xs font-bold uppercase tracking-wider text-amber-300 bg-emerald-900 px-3 py-1 rounded-full">
+                      Clinics, Groomers &amp; Trainers
+                    </span>
+                  </div>
+
+                  <h3 className="font-display font-extrabold text-2xl text-white leading-tight">Clinic AI Starter</h3>
+                  <p className="text-xs font-bold text-amber-300 mt-0.5">Single Clinic or Care Studio</p>
+                  <p className="text-xs sm:text-sm text-emerald-100/85 mt-2 leading-relaxed">
+                    Built for independent vet clinics, grooming salons, and care studios automating reminders, AI pre-visit intake, and seamless bookings.
+                  </p>
                 </div>
 
-                <h3 className="font-display font-extrabold text-2xl text-white">Clinic AI Starter</h3>
-                <p className="text-xs sm:text-sm text-emerald-100/85 mt-1.5">
-                  Built for independent vet clinics, grooming salons, and care studios automating reminders, AI pre-visit intake, and seamless bookings.
-                </p>
-
-                <div className="mt-6 pb-6 border-b border-emerald-800/80">
+                <div className="mt-6 h-[88px] pb-6 border-b border-emerald-800/80 flex flex-col justify-center">
                   <div className="flex items-baseline gap-2">
                     <span className="font-display font-extrabold text-3xl sm:text-4xl text-amber-400">
                       {isAnnual ? currentPricing.starterAnnual : currentPricing.starterMonthly}
                     </span>
                     <span className="text-xs text-emerald-200">{isAnnual ? '/ mo billed annually' : '/ mo billed monthly'}</span>
                   </div>
-                  <p className="text-xs text-emerald-300/80 mt-1.5">{currentPricing.subStarter}</p>
+                  <p className="text-xs text-emerald-300/80 mt-2">{currentPricing.subStarter}</p>
                 </div>
 
-                <ul className="mt-6 space-y-3 text-xs sm:text-sm text-emerald-50">
-                  <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                <ul className="mt-6 space-y-3.5 text-xs sm:text-sm text-emerald-50 flex-1">
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                      <Check className="w-3 h-3 stroke-[2.5]" />
+                    </div>
                     <span>AI pre-visit clinical triage briefs &amp; digital pet health timeline sync</span>
                   </li>
-                  <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                      <Check className="w-3 h-3 stroke-[2.5]" />
+                    </div>
                     <span>Automated multi-channel vaccine, wellness &amp; grooming rebooking reminders</span>
                   </li>
-                  <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                      <Check className="w-3 h-3 stroke-[2.5]" />
+                    </div>
                     <span>14-day guided AI onboarding + no-show reduction &amp; retention analytics</span>
                   </li>
                 </ul>
@@ -1612,40 +1650,49 @@ export default function GreenLaneLandingPage() {
 
             {/* Tier 3 */}
             <div className="rounded-3xl bg-white border border-slate-200/90 p-7 sm:p-8 shadow-soft flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full">
-                    Multi-Site &amp; Enterprise
-                  </span>
-                  <span className="text-xs font-semibold text-emerald-800">Custom Workflows</span>
+              <div className="flex flex-col flex-1">
+                <div className="h-[180px] lg:h-[195px] flex flex-col justify-start">
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full">
+                      Multi-Site &amp; Enterprise
+                    </span>
+                    <span className="text-xs font-semibold text-emerald-800">Custom Workflows</span>
+                  </div>
+
+                  <h3 className="font-display font-extrabold text-2xl text-[#0F172A] leading-tight">Practice AI Pro</h3>
+                  <p className="text-xs font-bold text-emerald-700 mt-0.5">Multi-Location &amp; Hospital Networks</p>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                    For veterinary clinic groups, hospital networks, and pet brands requiring custom AI triage, PMS/CRM webhooks, and SLA support.
+                  </p>
                 </div>
 
-                <h3 className="font-display font-extrabold text-2xl text-[#0F172A]">Practice AI Pro (Multi-Location &amp; Hospital Networks)</h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1.5">
-                  For veterinary clinic groups, hospital networks, and pet brands requiring custom AI triage protocols, PMS/CRM webhooks, and SLA support.
-                </p>
-
-                <div className="mt-6 pb-6 border-b border-slate-100">
+                <div className="mt-6 h-[88px] pb-6 border-b border-slate-100 flex flex-col justify-center">
                   <div className="flex items-baseline gap-2">
                     <span className="font-display font-extrabold text-3xl sm:text-4xl text-[#0F172A]">
                       {isAnnual ? currentPricing.proAnnual : currentPricing.proMonthly}
                     </span>
                     <span className="text-xs font-semibold text-slate-500">/ mo starting · billed annually</span>
                   </div>
-                  <p className="text-xs font-semibold text-emerald-700 mt-1.5">{currentPricing.subPro}</p>
+                  <p className="text-xs font-semibold text-emerald-700 mt-2">{currentPricing.subPro}</p>
                 </div>
 
-                <ul className="mt-6 space-y-3 text-xs sm:text-sm text-slate-700">
-                  <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                <ul className="mt-6 space-y-3.5 text-xs sm:text-sm text-slate-700 flex-1">
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                      <Check className="w-3 h-3 stroke-[2.5]" />
+                    </div>
                     <span>Custom AI triage protocols, brand nutrition engines &amp; multi-language packs</span>
                   </li>
-                  <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                      <Check className="w-3 h-3 stroke-[2.5]" />
+                    </div>
                     <span>Real-time PMS/CRM webhook integrations, EMR sync &amp; custom analytics streams</span>
                   </li>
-                  <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                      <Check className="w-3 h-3 stroke-[2.5]" />
+                    </div>
                     <span>Dedicated AI implementation engineer, staff training workshops &amp; 99.9% uptime SLA</span>
                   </li>
                 </ul>
@@ -1671,7 +1718,7 @@ export default function GreenLaneLandingPage() {
       </section>
 
       {/* 7. DEMO & ONBOARDING FLOW */}
-      <section id="demo" className="py-20 lg:py-24 bg-white relative overflow-hidden">
+      <section id="demo" className="pt-8 sm:pt-12 pb-6 sm:pb-8 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5 space-y-6">
@@ -1694,9 +1741,9 @@ export default function GreenLaneLandingPage() {
               <div className="space-y-3">
                 <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-emerald-900 text-white shadow-sm">
                   <span className="w-7 h-7 rounded-full bg-amber-400 text-emerald-950 font-extrabold text-xs flex items-center justify-center shrink-0">1</span>
-                  <div>
-                    <p className="text-xs font-bold">Track, Region &amp; Plan</p>
-                    <p className="text-[11px] text-emerald-200">
+                  <div className="flex flex-col justify-center text-left pt-2">
+                    <p className="text-xs font-bold leading-none mb-1.5">Track, Region &amp; Plan</p>
+                    <p className="text-[11px] text-emerald-200 leading-none">
                       {demoTrack === 'clinic' ? 'Veterinary Clinic' : demoTrack === 'partner' ? 'Service Partner' : 'Pet Parent'} · {demoRegion.split('(')[0].trim()} · {demoPlan}
                     </p>
                   </div>
@@ -1704,17 +1751,17 @@ export default function GreenLaneLandingPage() {
 
                 <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#FFFBF5] border border-slate-200/80 text-[#0F172A]">
                   <span className="w-7 h-7 rounded-full bg-amber-100 text-amber-800 font-extrabold text-xs flex items-center justify-center shrink-0">2</span>
-                  <div>
-                    <p className="text-xs font-bold">Demo Format &amp; Focus</p>
-                    <p className="text-[11px] text-slate-500">{demoFormat}</p>
+                  <div className="flex flex-col justify-center text-left pt-2">
+                    <p className="text-xs font-bold leading-none mb-1.5">Demo Format &amp; Focus</p>
+                    <p className="text-[11px] text-slate-500 leading-none">{demoFormat}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#FFFBF5] border border-slate-200/80 text-[#0F172A]">
                   <span className="w-7 h-7 rounded-full bg-amber-100 text-amber-800 font-extrabold text-xs flex items-center justify-center shrink-0">3</span>
-                  <div>
-                    <p className="text-xs font-bold">Contact &amp; Launch Checklist</p>
-                    <p className="text-[11px] text-slate-500">Instant confirmation + CRM/webhook dispatch</p>
+                  <div className="flex flex-col justify-center text-left pt-2">
+                    <p className="text-xs font-bold leading-none mb-1.5">Contact &amp; Launch Checklist</p>
+                    <p className="text-[11px] text-slate-500 leading-none">Instant confirmation + CRM/webhook dispatch</p>
                   </div>
                 </div>
               </div>
@@ -1758,43 +1805,184 @@ export default function GreenLaneLandingPage() {
                           key={t.key}
                           type="button"
                           onClick={() => setDemoTrack(t.key)}
-                          className={`p-3.5 rounded-2xl text-left transition-all ${demoTrack === t.key
+                          className={`px-3.5 pt-4 pb-3 rounded-2xl text-left transition-all flex flex-col justify-center ${demoTrack === t.key
                             ? 'border-2 border-emerald-900 bg-emerald-900 text-white'
                             : 'border border-slate-200 bg-white hover:border-amber-400 text-[#0F172A]'
                             }`}
                         >
-                          <p className="text-xs font-extrabold">{t.title}</p>
-                          <p className={`text-[11px] mt-0.5 ${demoTrack === t.key ? 'text-emerald-200' : 'text-slate-500'}`}>{t.sub}</p>
+                          <div className="pt-2">
+                            <p className="text-xs font-extrabold leading-none mb-1.5">{t.title}</p>
+                            <p className={`text-[11px] leading-none ${demoTrack === t.key ? 'text-emerald-200' : 'text-slate-500'}`}>{t.sub}</p>
+                          </div>
                         </button>
                       ))}
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                      <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1.5">Region &amp; Language Pack</label>
-                        <select
-                          value={demoRegion}
-                          onChange={(e) => setDemoRegion(e.target.value)}
-                          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-medium text-[#0F172A] focus:border-emerald-700 focus:outline-none"
+                      {/* Region & Language Pack Custom Dropdown */}
+                      <div ref={regionDropdownRef} className="relative">
+                        <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                          <Globe className="w-3.5 h-3.5 text-emerald-700" />
+                          <span>Region &amp; Language Pack</span>
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setRegionDropdownOpen(!regionDropdownOpen);
+                            setPlanDropdownOpen(false);
+                          }}
+                          className={`w-full flex items-center justify-between pl-3.5 pr-3 py-2.5 rounded-xl border bg-white text-xs sm:text-sm font-semibold text-[#0F172A] shadow-2xs transition-all text-left ${
+                            regionDropdownOpen
+                              ? 'border-emerald-700 ring-2 ring-emerald-800/10'
+                              : 'border-slate-200/90 hover:border-emerald-600'
+                          }`}
                         >
-                          <option value="Belgium / EU (EN/FR/NL · GDPR)">Belgium / EU (EN/FR/NL · GDPR)</option>
-                          <option value="Bulgaria / EU Digital Health (BG/EN)">Bulgaria / EU Digital Health (BG/EN)</option>
-                          <option value="India / High-Volume Care (EN/HI)">India / High-Volume Care (EN/HI)</option>
-                          <option value="Global Standard (EN · ISO-27001)">Global Standard (EN · ISO-27001)</option>
-                        </select>
+                          <span className="truncate">{demoRegion}</span>
+                          <ChevronDown
+                            className={`w-4 h-4 text-emerald-800 shrink-0 transition-transform duration-200 ${
+                              regionDropdownOpen ? 'rotate-180' : ''
+                            }`}
+                          />
+                        </button>
+
+                        {regionDropdownOpen && (
+                          <div className="absolute left-0 right-0 top-full mt-2 z-50 bg-white rounded-2xl shadow-xl border border-slate-200/90 p-1.5 space-y-1 animate-in fade-in zoom-in-95 duration-150">
+                            {[
+                              {
+                                value: 'Belgium / EU (EN/FR/NL · GDPR)',
+                                title: 'Belgium / EU',
+                                desc: 'Trilingual AI triage (EN/FR/NL) · GDPR verified',
+                                badge: 'GDPR'
+                              },
+                              {
+                                value: 'Bulgaria / EU Digital Health (BG/EN)',
+                                title: 'Bulgaria / EU Digital Health',
+                                desc: 'EU Pet Passport sync · BG/EN multilingual triage',
+                                badge: 'EU Health'
+                              },
+                              {
+                                value: 'India / High-Volume Care (EN/HI)',
+                                title: 'India / High-Volume Care',
+                                desc: 'WhatsApp triage, UPI integration & rabies protocols',
+                                badge: 'High-Vol'
+                              },
+                              {
+                                value: 'Global Standard (EN · ISO-27001)',
+                                title: 'Global Standard',
+                                desc: 'Universal triage workflows & ISO-27001 security',
+                                badge: 'Global'
+                              }
+                            ].map((opt) => {
+                              const isSelected = demoRegion === opt.value;
+                              return (
+                                <button
+                                  key={opt.value}
+                                  type="button"
+                                  onClick={() => {
+                                    setDemoRegion(opt.value);
+                                    setRegionDropdownOpen(false);
+                                  }}
+                                  className={`w-full text-left p-2.5 rounded-xl transition-all flex items-start justify-between gap-2 ${
+                                    isSelected
+                                      ? 'bg-emerald-50 text-emerald-950 font-bold'
+                                      : 'hover:bg-slate-50 text-slate-800'
+                                  }`}
+                                >
+                                  <div className="min-w-0 flex-1">
+                                    <div className="flex items-center gap-2">
+                                      <p className="text-xs font-bold text-[#0F172A]">{opt.title}</p>
+                                      <span className="text-[10px] font-extrabold uppercase px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800">
+                                        {opt.badge}
+                                      </span>
+                                    </div>
+                                    <p className="text-[11px] text-slate-500 truncate mt-0.5">{opt.desc}</p>
+                                  </div>
+                                  {isSelected && <Check className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        )}
                       </div>
 
-                      <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1.5">Target Plan</label>
-                        <select
-                          value={demoPlan}
-                          onChange={(e) => setDemoPlan(e.target.value)}
-                          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-medium text-[#0F172A] focus:border-emerald-700 focus:outline-none"
+                      {/* Target Plan Custom Dropdown */}
+                      <div ref={planDropdownRef} className="relative">
+                        <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                          <span>Target Plan</span>
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setPlanDropdownOpen(!planDropdownOpen);
+                            setRegionDropdownOpen(false);
+                          }}
+                          className={`w-full flex items-center justify-between pl-3.5 pr-3 py-2.5 rounded-xl border bg-white text-xs sm:text-sm font-semibold text-[#0F172A] shadow-2xs transition-all text-left ${
+                            planDropdownOpen
+                              ? 'border-emerald-700 ring-2 ring-emerald-800/10'
+                              : 'border-slate-200/90 hover:border-emerald-600'
+                          }`}
                         >
-                          <option value="GreenLane AI Plus (Pet Parents)">GreenLane AI Plus (Pet Parents)</option>
-                          <option value="Clinic AI Starter">Clinic AI Starter</option>
-                          <option value="Practice AI Pro (Multi-Location &amp; Hospital Networks)">Practice AI Pro (Multi-Location &amp; Hospital Networks)</option>
-                        </select>
+                          <span className="truncate">{demoPlan}</span>
+                          <ChevronDown
+                            className={`w-4 h-4 text-emerald-800 shrink-0 transition-transform duration-200 ${
+                              planDropdownOpen ? 'rotate-180' : ''
+                            }`}
+                          />
+                        </button>
+
+                        {planDropdownOpen && (
+                          <div className="absolute left-0 right-0 top-full mt-2 z-50 bg-white rounded-2xl shadow-xl border border-slate-200/90 p-1.5 space-y-1 animate-in fade-in zoom-in-95 duration-150">
+                            {[
+                              {
+                                value: 'GreenLane AI Plus (Pet Parents)',
+                                title: 'GreenLane AI Plus',
+                                desc: 'Digital pet passport, vaccine reminders & 24/7 triage',
+                                badge: 'Free / Pass'
+                              },
+                              {
+                                value: 'Clinic AI Starter',
+                                title: 'Clinic AI Starter',
+                                desc: 'AI pre-visit intake, calendar sync & retention analytics',
+                                badge: 'Most Popular'
+                              },
+                              {
+                                value: 'Practice AI Pro (Multi-Location & Hospital Networks)',
+                                title: 'Practice AI Pro',
+                                desc: 'Multi-location networks, PMS/CRM webhooks & SLA',
+                                badge: 'Enterprise'
+                              }
+                            ].map((opt) => {
+                              const isSelected = demoPlan === opt.value;
+                              return (
+                                <button
+                                  key={opt.value}
+                                  type="button"
+                                  onClick={() => {
+                                    setDemoPlan(opt.value);
+                                    setPlanDropdownOpen(false);
+                                  }}
+                                  className={`w-full text-left p-2.5 rounded-xl transition-all flex items-start justify-between gap-2 ${
+                                    isSelected
+                                      ? 'bg-amber-50 text-amber-950 font-bold'
+                                      : 'hover:bg-slate-50 text-slate-800'
+                                  }`}
+                                >
+                                  <div className="min-w-0 flex-1">
+                                    <div className="flex items-center gap-2">
+                                      <p className="text-xs font-bold text-[#0F172A]">{opt.title}</p>
+                                      <span className="text-[10px] font-extrabold uppercase px-1.5 py-0.2 rounded bg-amber-100 text-amber-900">
+                                        {opt.badge}
+                                      </span>
+                                    </div>
+                                    <p className="text-[11px] text-slate-500 truncate mt-0.5">{opt.desc}</p>
+                                  </div>
+                                  {isSelected && <Check className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -1811,13 +1999,15 @@ export default function GreenLaneLandingPage() {
                           key={f.label}
                           type="button"
                           onClick={() => setDemoFormat(f.label)}
-                          className={`p-3 rounded-2xl text-left transition-all ${demoFormat === f.label
+                          className={`px-3.5 pt-4 pb-3 rounded-2xl text-left transition-all flex flex-col justify-center ${demoFormat === f.label
                             ? 'border-2 border-amber-500 bg-amber-50/80'
                             : 'border border-slate-200 bg-white hover:border-amber-400'
                             }`}
                         >
-                          <p className="text-xs font-extrabold text-[#0F172A]">{f.label}</p>
-                          <p className="text-[11px] text-slate-600 mt-0.5">{f.sub}</p>
+                          <div className="pt-2">
+                            <p className="text-xs font-extrabold text-[#0F172A] leading-none mb-1.5">{f.label}</p>
+                            <p className="text-[11px] text-slate-600 leading-none">{f.sub}</p>
+                          </div>
                         </button>
                       ))}
                     </div>
@@ -1929,7 +2119,7 @@ export default function GreenLaneLandingPage() {
       </section>
 
       {/* 8. BOTTOM CTA BANNER */}
-      <section className="py-12 lg:py-16 bg-white">
+      <section className="pt-2 sm:pt-4 pb-12 lg:pb-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-r from-emerald-100/90 via-emerald-50 to-amber-50/90 border border-emerald-200/60 shadow-card">
             <svg className="absolute inset-0 w-full h-full object-cover pointer-events-none" viewBox="0 0 1200 320" preserveAspectRatio="none" aria-hidden="true">
@@ -1998,11 +2188,13 @@ export default function GreenLaneLandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-emerald-800/60">
             <div className="space-y-2">
-              <a href="#" className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-amber-500 text-emerald-950 flex items-center justify-center">
-                  <Sparkles className="w-5 h-5" />
+              <a href="#" className="flex items-center gap-3 group">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-amber-400 text-emerald-950 flex items-center justify-center shadow-sm group-hover:bg-amber-300 transition-colors">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 13.5c-2.33 0-4.31 1.46-5.11 3.5-.42 1.07.37 2.25 1.52 2.25h7.18c1.15 0 1.94-1.18 1.52-2.25-.8-2.04-2.78-3.5-5.11-3.5zm-5.5-2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
+                  </svg>
                 </div>
-                <span className="font-display font-extrabold text-xl tracking-tight text-white">
+                <span className="font-display font-extrabold text-xl sm:text-2xl tracking-tight text-white">
                   GreenLane<span className="text-amber-400">Pet</span>
                 </span>
               </a>
