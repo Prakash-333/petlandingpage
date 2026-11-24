@@ -1,600 +1,2980 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenLanePet — One Intelligent Ecosystem for Every Pet</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GreenLane Pet — Trusted care for happier, healthier pets</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
 
-<body>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Main Wrapper -->
-  <div class="page-wrapper">
+    <!-- Lucide Icons CDN -->
+    <script
+      src="https://unpkg.com/lucide@latest"
+      crossorigin="anonymous"
+    ></script>
 
-    <!-- Navigation Header -->
-    <header class="site-header">
-      <div class="header-container">
+    <!-- Tailwind Custom Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              display: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            colors: {
+              emerald: {
+                50: "#ECFDF5",
+                100: "#D1FAE5",
+                200: "#A7F3D0",
+                500: "#10B981",
+                600: "#059669",
+                700: "#047857",
+                800: "#065F46",
+                900: "#064E3B",
+                950: "#022C22",
+              },
+              amber: {
+                50: "#FFFBEB",
+                100: "#FEF3C7",
+                400: "#FBBF24",
+                500: "#F59E0B",
+                600: "#D97706",
+              },
+              cream: "#FFFBF5",
+              slateDark: "#0F172A",
+            },
+            boxShadow: {
+              soft: "0 10px 40px -10px rgba(6, 78, 59, 0.08)",
+              card: "0 20px 50px -12px rgba(6, 78, 59, 0.12)",
+              glow: "0 0 35px rgba(16, 185, 129, 0.22)",
+            },
+            animation: {
+              float: "float 5s ease-in-out infinite",
+              "float-delayed": "float 6s ease-in-out 2s infinite",
+              "float-slow": "float 7s ease-in-out 1s infinite",
+              "pulse-soft": "pulseSoft 3s ease-in-out infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              pulseSoft: {
+                "0%, 100%": { opacity: 1, transform: "scale(1)" },
+                "50%": { opacity: 0.85, transform: "scale(1.04)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
 
-        <!-- Logo -->
-        <a href="#" class="brand-logo" aria-label="GreenLane Pet Home">
-          <div class="logo-icon">
-            <img src="assets/icons/paw-purple.svg" alt="GreenLane Pet Paw Logo" width="48" height="48">
+    <style>
+      body {
+        background-color: #ffffff;
+        color: #0f172a;
+        overflow-x: hidden;
+      }
+
+      .hero-gradient {
+        background: radial-gradient(
+          circle at 75% 35%,
+          rgba(209, 250, 229, 0.65) 0%,
+          rgba(255, 251, 245, 0.85) 48%,
+          #ffffff 100%
+        );
+      }
+
+      .glass-node {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 12px 30px -6px rgba(6, 78, 59, 0.12);
+      }
+
+      .orbit-ring {
+        border: 1.5px dashed rgba(5, 150, 105, 0.25);
+      }
+
+      .chat-scroll::-webkit-scrollbar {
+        width: 4px;
+      }
+      .chat-scroll::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .chat-scroll::-webkit-scrollbar-thumb {
+        background: rgba(6, 78, 59, 0.2);
+        border-radius: 9999px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans antialiased selection:bg-emerald-900 selection:text-white"
+  >
+    <!-- 1. STICKY TOP NAVIGATION BAR -->
+    <header
+      id="navbar"
+      class="sticky top-0 z-50 w-full transition-all duration-300 bg-white/85 backdrop-blur-md border-b border-emerald-900/5"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- Brand Logo -->
+          <a href="#" class="flex items-center gap-2.5 group">
+            <div
+              class="w-10 h-10 rounded-xl bg-emerald-900 flex items-center justify-center text-white shadow-sm group-hover:bg-emerald-800 transition-colors"
+            >
+              <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 13.5c-2.33 0-4.31 1.46-5.11 3.5-.42 1.07.37 2.25 1.52 2.25h7.18c1.15 0 1.94-1.18 1.52-2.25-.8-2.04-2.78-3.5-5.11-3.5zm-5.5-2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"
+                ></path>
+              </svg>
+            </div>
+            <span class="font-display font-extrabold text-xl tracking-tight text-slateDark">
+              GreenLane<span class="text-emerald-600">Pet</span>
+            </span>
+          </a>
+
+          <!-- Desktop Navigation Links -->
+          <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+            <a href="#home" class="text-emerald-900 font-semibold border-b-2 border-amber-500 pb-1">Home</a>
+            <a href="#ai-features" class="hover:text-emerald-900 transition-colors">Features</a>
+
+            <!-- Ecosystem Dropdown -->
+            <div class="relative group">
+              <button
+                type="button"
+                class="flex items-center gap-1 hover:text-emerald-900 transition-colors py-2"
+              >
+                <span>Ecosystem</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-hover:text-emerald-700 transition-transform group-hover:rotate-180"></i>
+              </button>
+              <div
+                class="absolute left-0 mt-1 w-72 rounded-2xl bg-white shadow-card border border-slate-100 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0"
+              >
+                <a
+                  href="#pillars"
+                  class="flex items-start gap-3 p-3 rounded-xl hover:bg-emerald-50/80 transition-colors"
+                >
+                  <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-slateDark">Day-One Core vs. Ecosystem</p>
+                    <p class="text-xs text-slate-500">See what is live on Day 1 vs. connected network</p>
+                  </div>
+                </a>
+                <a
+                  href="#ai-assistant"
+                  class="flex items-start gap-3 p-3 rounded-xl hover:bg-amber-50/80 transition-colors"
+                >
+                  <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-0.5">
+                    <i data-lucide="bot" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-slateDark">AI Pet Companion &amp; Guardrails</p>
+                    <p class="text-xs text-slate-500">Everyday care vs. urgent vet escalation</p>
+                  </div>
+                </a>
+                <a
+                  href="#connected-ecosystem"
+                  class="flex items-start gap-3 p-3 rounded-xl hover:bg-emerald-50/80 transition-colors"
+                >
+                  <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                    <i data-lucide="network" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-slateDark">Connected Network &amp; Partners</p>
+                    <p class="text-xs text-slate-500">Clinics, hardware, brands &amp; welfare</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <a href="#workflow" class="hover:text-emerald-900 transition-colors">Workflow</a>
+            <a href="#pricing" class="hover:text-emerald-900 transition-colors">Pricing</a>
+            <a href="#demo" class="hover:text-emerald-900 transition-colors">Demo</a>
+          </nav>
+
+          <!-- Right CTA & Mobile Menu Toggle -->
+          <div class="flex items-center gap-2.5">
+            <button
+              onclick="openDemoModal('parent')"
+              class="hidden sm:inline-flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200/80 text-sm font-semibold px-4 py-2.5 rounded-full transition-all active:scale-95"
+            >
+              <span>Get Early Access</span>
+            </button>
+
+            <button
+              onclick="openDemoModal('clinic')"
+              class="inline-flex items-center gap-2 bg-emerald-900 hover:bg-emerald-800 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
+            >
+              <span>Book a Demo</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-amber-400"></i>
+            </button>
+
+            <!-- Mobile Hamburger -->
+            <button
+              id="mobileMenuBtn"
+              type="button"
+              aria-label="Toggle Menu"
+              class="md:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
+            >
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
           </div>
-          <span class="logo-text">
-            <span class="text-greenlane">GreenLane</span> <span class="text-pet">Pet</span>
-          </span>
-        </a>
-
-        <!-- Desktop Navigation Links -->
-        <nav class="nav-links">
-          <a href="#home" class="nav-item active">Home</a>
-          <a href="#features" class="nav-item">Features</a>
-          <a href="#vets" class="nav-item">For Vets</a>
-          <a href="#contact" class="nav-item">About</a>
-        </nav>
-
-        <!-- Right Actions / Mobile Toggle -->
-        <div class="nav-actions">
-          <!-- Mobile Menu Toggle -->
-          <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
         </div>
-
       </div>
 
-      <!-- Mobile Dropdown Navigation -->
-      <div class="mobile-nav-drawer" id="mobileNav">
-        <a href="#home" class="mobile-nav-link active">Home</a>
-        <a href="#features" class="mobile-nav-link">Features</a>
-        <a href="#vets" class="mobile-nav-link">For Vets</a>
-        <a href="#contact" class="mobile-nav-link">About</a>
+      <!-- Mobile Navigation Drawer -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-2 shadow-lg"
+      >
+        <a href="#home" class="block px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-900 font-semibold">Home</a>
+        <a href="#pillars" class="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">8 Care Pillars</a>
+        <a href="#ai-assistant" class="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">AI Pet Assistant</a>
+        <a href="#ai-features" class="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">AI Platform Features</a>
+        <a href="#workflow" class="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">Onboarding Workflow</a>
+        <a href="#pricing" class="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">Plans &amp; Pricing</a>
+        <a href="#demo" class="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">Book Demo &amp; Onboarding</a>
+        <a href="#connected-ecosystem" class="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">Ecosystem &amp; Partners</a>
+        <div class="pt-2 grid grid-cols-2 gap-2">
+          <button
+            onclick="openDemoModal('parent')"
+            class="w-full flex items-center justify-center bg-amber-100 text-amber-900 font-semibold py-3 rounded-full text-sm"
+          >
+            Early Access
+          </button>
+          <button
+            onclick="openDemoModal('clinic')"
+            class="w-full flex items-center justify-center gap-1.5 bg-emerald-900 text-white font-semibold py-3 rounded-full text-sm"
+          >
+            <span>Book a Demo</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-amber-400"></i>
+          </button>
+        </div>
       </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
+    <!-- 2. HERO SECTION WITH DUAL-AUDIENCE TOGGLE -->
+    <section
+      id="home"
+      class="relative hero-gradient pt-8 pb-24 lg:pt-14 lg:pb-32 overflow-hidden"
+    >
+      <div class="absolute top-12 right-1/4 w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-10 left-10 w-72 h-72 bg-amber-200/25 rounded-full blur-3xl pointer-events-none"></div>
 
-      <!-- HERO SECTION -->
-      <section class="hero-section" id="home">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <!-- Left Column -->
+          <div class="lg:col-span-6 text-left space-y-6">
+            <!-- Dual-Audience Switcher Pill -->
+            <div class="inline-flex items-center p-1 rounded-full bg-white/95 border border-emerald-900/10 shadow-soft">
+              <button
+                id="btnAudienceParent"
+                type="button"
+                onclick="switchHeroAudience('parent')"
+                class="flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-emerald-900 text-white shadow-xs"
+              >
+                <i data-lucide="heart" class="w-3.5 h-3.5 text-amber-400"></i>
+                <span>For Pet Parents</span>
+              </button>
+              <button
+                id="btnAudienceClinic"
+                type="button"
+                onclick="switchHeroAudience('clinic')"
+                class="flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-emerald-900"
+              >
+                <i data-lucide="stethoscope" class="w-3.5 h-3.5 text-emerald-700"></i>
+                <span>For Vet Clinics &amp; Partners</span>
+              </button>
+            </div>
 
-        <!-- Integrated Panoramic Banner Image that merges with the words -->
-        <div class="hero-banner-container">
-          <img src="assets/images/hero-banner.jpg" alt="Trusted care for happier, healthier pets"
-            class="hero-banner-img">
-          <!-- Organic lilac curves flowing behind the left letters -->
-          <div class="hero-left-curves">
-            <div class="curve-petal-top"></div>
-            <div class="curve-petal-bottom"></div>
-          </div>
-          <div class="hero-banner-gradient-overlay"></div>
-        </div>
-
-        <div class="hero-container">
-
-          <!-- Left Column: Copy & CTAs directly blending with the banner -->
-          <div class="hero-content">
-            <h1 class="hero-title">
-              Trusted care for<br>
-              happier pets.
+            <!-- Dynamic Bold Headline -->
+            <h1
+              id="heroHeadline"
+              class="font-display font-extrabold text-4xl sm:text-5xl lg:text-[3.55rem] leading-[1.12] tracking-tight text-slateDark transition-all duration-300"
+            >
+              One Intelligent<br />
+              Ecosystem<br />
+              for
+              <span class="bg-gradient-to-r from-amber-500 via-amber-500 to-emerald-600 bg-clip-text text-transparent">Every Pet</span>
             </h1>
-            <p class="hero-description">
-              Book vet appointments, manage health records, get expert advice and access a full range of pet care
-              services — all in one place.
+
+            <p
+              id="heroSubheadline"
+              class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl"
+            >
+              AI care guidance, smart health reminders, and connected clinic
+              &amp; pet-service workflows—giving pet parents calm confidence and
+              clinics effortless coordination.
             </p>
-            <div class="hero-cta-group">
-              <button type="button" class="btn-primary-green btn-with-arrow" id="heroGetStartedBtn">
-                <span>Get Started</span>
-                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
+
+            <!-- Dual CTAs -->
+            <div class="flex flex-wrap items-center gap-3.5 pt-1">
+              <button
+                id="heroPrimaryCta"
+                onclick="handleHeroPrimaryCta()"
+                class="inline-flex items-center gap-2.5 bg-emerald-900 hover:bg-emerald-800 text-white font-semibold px-6 py-3.5 rounded-full shadow-lg shadow-emerald-900/20 hover:shadow-xl transition-all active:scale-95"
+              >
+                <span id="heroPrimaryCtaText">Try AI Assistant</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 text-amber-400"></i>
+              </button>
+
+              <button
+                id="heroSecondaryCta"
+                onclick="handleHeroSecondaryCta()"
+                class="inline-flex items-center gap-2.5 bg-amber-50 hover:bg-amber-100 text-amber-950 font-semibold px-6 py-3.5 rounded-full border border-amber-300/80 shadow-2xs transition-all active:scale-95"
+              >
+                <i data-lucide="stethoscope" class="w-4 h-4 text-amber-600"></i>
+                <span id="heroSecondaryCtaText">For Clinics &amp; Partners</span>
+              </button>
+
+              <button
+                onclick="openVideoModal()"
+                class="inline-flex items-center gap-2 bg-white hover:bg-cream text-slateDark font-semibold px-4 py-3.5 rounded-full border border-slate-200/90 shadow-2xs hover:border-amber-300 transition-all active:scale-95 group"
+              >
+                <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                  <i data-lucide="play" class="w-3 h-3 fill-current ml-0.5"></i>
+                </span>
+                <span class="text-sm">60s Tour</span>
+              </button>
+            </div>
+
+            <!-- Trust Micro-metrics -->
+            <div
+              id="heroTrustMetrics"
+              class="pt-3 flex flex-wrap items-center gap-5 text-xs sm:text-sm text-slate-500 border-t border-slate-200/60 max-w-xl"
+            >
+              <div class="flex items-center gap-2">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+                <span>AI Supports—Never Replaces Vets</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="bell-ring" class="w-4 h-4 text-amber-500"></i>
+                <span>Day-1 Health &amp; Vaccine Sync</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="network" class="w-4 h-4 text-emerald-600"></i>
+                <span>Connected Care Network</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Visual Stage with Golden Retriever & Tabby Cat -->
+          <div class="lg:col-span-6 relative">
+            <div class="relative mx-auto max-w-lg lg:max-w-none">
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="w-[340px] h-[340px] sm:w-[450px] sm:h-[450px] rounded-full orbit-ring"></div>
+                <div class="absolute w-[260px] h-[260px] sm:w-[350px] sm:h-[350px] rounded-full border border-amber-400/30"></div>
+              </div>
+
+              <div
+                class="relative z-10 rounded-[2rem] overflow-hidden bg-gradient-to-b from-emerald-100/70 via-cream to-amber-50/80 p-3 sm:p-4 shadow-card border border-white"
+              >
+                <div
+                  class="relative rounded-[1.5rem] overflow-hidden aspect-[4/3] bg-gradient-to-br from-emerald-50 via-cream to-amber-100/80 flex items-center justify-center"
+                >
+                  <!-- SVG illustration -->
+                  <svg
+                    id="heroPetComposition"
+                    class="w-full h-full object-cover"
+                    viewBox="0 0 800 600"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Golden retriever and tabby cat in Emerald and Amber lighting"
+                  >
+                    <defs>
+                      <radialGradient id="studioAura" cx="52%" cy="42%" r="58%">
+                        <stop offset="0%" stop-color="#FFFBF5"></stop>
+                        <stop offset="52%" stop-color="#ECFDF5" stop-opacity="0.92"></stop>
+                        <stop offset="100%" stop-color="#FEF3C7" stop-opacity="0.75"></stop>
+                      </radialGradient>
+                      <radialGradient id="amberWarmth" cx="72%" cy="55%" r="42%">
+                        <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.22"></stop>
+                        <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"></stop>
+                      </radialGradient>
+                      <linearGradient id="emeraldRug" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#D1FAE5" stop-opacity="0.75"></stop>
+                        <stop offset="50%" stop-color="#FFFBF5"></stop>
+                        <stop offset="100%" stop-color="#FDE68A" stop-opacity="0.7"></stop>
+                      </linearGradient>
+                      <linearGradient id="goldenFur" x1="25%" y1="15%" x2="65%" y2="85%">
+                        <stop offset="0%" stop-color="#FBBF24"></stop>
+                        <stop offset="55%" stop-color="#D97706"></stop>
+                        <stop offset="100%" stop-color="#92400E"></stop>
+                      </linearGradient>
+                      <linearGradient id="goldenLight" x1="30%" y1="10%" x2="60%" y2="65%">
+                        <stop offset="0%" stop-color="#FEF3C7"></stop>
+                        <stop offset="65%" stop-color="#F59E0B"></stop>
+                        <stop offset="100%" stop-color="#B45309"></stop>
+                      </linearGradient>
+                      <linearGradient id="tabbyFur" x1="45%" y1="25%" x2="80%" y2="85%">
+                        <stop offset="0%" stop-color="#E5E7EB"></stop>
+                        <stop offset="50%" stop-color="#9CA3AF"></stop>
+                        <stop offset="100%" stop-color="#4B5563"></stop>
+                      </linearGradient>
+                      <linearGradient id="tabbyWarm" x1="40%" y1="30%" x2="78%" y2="85%">
+                        <stop offset="0%" stop-color="#FDE68A" stop-opacity="0.45"></stop>
+                        <stop offset="100%" stop-color="#78350F" stop-opacity="0.22"></stop>
+                      </linearGradient>
+                      <filter id="softDrop" x="-15%" y="-15%" width="130%" height="130%">
+                        <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#064E3B" flood-opacity="0.14"></feDropShadow>
+                      </filter>
+                    </defs>
+
+                    <rect width="800" height="600" fill="url(#studioAura)"></rect>
+                    <rect width="800" height="600" fill="url(#amberWarmth)"></rect>
+
+                    <g fill="#064E3B" opacity="0.07">
+                      <path d="M65 110 C120 75, 175 105, 185 160 C130 175, 80 155, 65 110 Z"></path>
+                      <path d="M735 95 C680 65, 625 95, 615 150 C670 165, 720 140, 735 95 Z"></path>
+                      <path d="M710 215 C748 195, 775 220, 772 258 C735 262, 712 245, 710 215 Z"></path>
+                    </g>
+
+                    <ellipse cx="415" cy="508" rx="285" ry="44" fill="url(#emeraldRug)" stroke="#064E3B" stroke-opacity="0.08" stroke-width="2"></ellipse>
+                    <ellipse cx="415" cy="508" rx="235" ry="26" fill="none" stroke="#F59E0B" stroke-opacity="0.22" stroke-width="1.5" stroke-dasharray="6 6"></ellipse>
+
+                    <!-- GOLDEN RETRIEVER -->
+                    <g filter="url(#softDrop)">
+                      <ellipse cx="275" cy="442" rx="92" ry="58" fill="url(#goldenFur)"></ellipse>
+                      <path d="M235 320 C295 305, 375 325, 398 395 C412 442, 392 492, 345 502 L225 502 C192 495, 188 455, 205 410 Z" fill="url(#goldenFur)"></path>
+                      <path d="M312 342 C345 352, 368 388, 364 438 C345 452, 315 446, 298 418 C288 390, 294 358, 312 342 Z" fill="url(#goldenLight)"></path>
+
+                      <g fill="url(#goldenLight)">
+                        <path d="M275 462 C292 462, 306 474, 306 492 C306 502, 294 507, 276 507 C258 507, 250 499, 252 486 C254 472, 262 462, 275 462 Z"></path>
+                        <path d="M336 466 C355 466, 370 478, 370 496 C370 506, 356 511, 336 511 C318 511, 310 502, 312 489 C314 475, 323 466, 336 466 Z"></path>
+                      </g>
+                      <g stroke="#92400E" stroke-width="1.6" stroke-linecap="round" opacity="0.45">
+                        <line x1="274" y1="494" x2="274" y2="506"></line>
+                        <line x1="288" y1="494" x2="288" y2="506"></line>
+                        <line x1="336" y1="498" x2="336" y2="510"></line>
+                        <line x1="351" y1="498" x2="351" y2="510"></line>
+                      </g>
+
+                      <path d="M254 316 Q315 338 372 315" stroke="#064E3B" stroke-width="11" stroke-linecap="round"></path>
+                      <path d="M254 316 Q315 338 372 315" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 8" opacity="0.65"></path>
+                      <circle cx="332" cy="336" r="10" fill="#F59E0B" stroke="#FFFBF5" stroke-width="2.5"></circle>
+                      <circle cx="332" cy="336" r="3" fill="#064E3B"></circle>
+
+                      <path d="M246 185 C215 195, 202 248, 214 295 C220 315, 238 312, 246 286 C254 256, 258 215, 246 185 Z" fill="#B45309"></path>
+                      <path d="M364 185 C395 195, 408 248, 396 295 C390 315, 372 312, 364 286 C356 256, 352 215, 364 185 Z" fill="#B45309"></path>
+
+                      <path d="M244 184 C268 158, 342 158, 366 184 C382 204, 380 256, 362 288 C344 318, 266 318, 248 288 C230 256, 228 204, 244 184 Z" fill="url(#goldenLight)"></path>
+                      <ellipse cx="305" cy="182" rx="44" ry="18" fill="#FFFBEB" opacity="0.55"></ellipse>
+                      <ellipse cx="272" cy="252" rx="22" ry="16" fill="#FEF3C7" opacity="0.6"></ellipse>
+                      <ellipse cx="338" cy="252" rx="22" ry="16" fill="#FEF3C7" opacity="0.6"></ellipse>
+
+                      <g>
+                        <circle cx="277" cy="222" r="10.5" fill="#1E1B18"></circle>
+                        <circle cx="274" cy="218.5" r="3.5" fill="#FFFFFF"></circle>
+                        <circle cx="280" cy="225" r="1.5" fill="#FBBF24"></circle>
+                        <circle cx="333" cy="222" r="10.5" fill="#1E1B18"></circle>
+                        <circle cx="330" cy="218.5" r="3.5" fill="#FFFFFF"></circle>
+                        <circle cx="336" cy="225" r="1.5" fill="#FBBF24"></circle>
+                      </g>
+
+                      <path d="M266 206 Q277 201 287 206" stroke="#92400E" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+                      <path d="M323 206 Q333 201 344 206" stroke="#92400E" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+
+                      <ellipse cx="305" cy="254" rx="34" ry="25" fill="#FEF3C7" opacity="0.75"></ellipse>
+                      <path d="M291 244 C291 237, 319 237, 319 244 C319 252, 311 258, 305 258 C299 258, 291 252, 291 244 Z" fill="#1E293B"></path>
+                      <ellipse cx="301" cy="242" rx="3.5" ry="1.8" fill="#94A3B8" opacity="0.7"></ellipse>
+
+                      <path d="M283 266 Q294 277 305 267 Q316 277 327 266" stroke="#451A03" stroke-width="2.6" stroke-linecap="round" fill="none"></path>
+                      <path d="M296 270 C296 286, 314 286, 314 270 Z" fill="#FB7185"></path>
+                      <line x1="305" y1="270" x2="305" y2="281" stroke="#E11D48" stroke-width="1.6" stroke-linecap="round"></line>
+                    </g>
+
+                    <!-- TABBY CAT -->
+                    <g filter="url(#softDrop)">
+                      <path d="M565 468 C618 468, 636 425, 616 392 C604 374, 586 382, 594 400 C600 414, 592 445, 558 448 Z" fill="url(#tabbyFur)"></path>
+                      <path d="M598 432 C608 428, 615 418, 614 408" stroke="#374151" stroke-width="5" stroke-linecap="round" opacity="0.55"></path>
+
+                      <path d="M448 358 C488 350, 542 368, 558 422 C568 456, 555 492, 524 498 L442 498 C416 492, 412 456, 424 414 Z" fill="url(#tabbyFur)"></path>
+                      <path d="M448 358 C488 350, 542 368, 558 422 C568 456, 555 492, 524 498 L442 498 C416 492, 412 456, 424 414 Z" fill="url(#tabbyWarm)"></path>
+                      <path d="M466 368 C484 374, 496 402, 492 435 C478 442, 458 436, 452 412 C448 392, 454 376, 466 368 Z" fill="#FFFBF5"></path>
+
+                      <g stroke="#374151" stroke-width="3.5" stroke-linecap="round" opacity="0.45">
+                        <path d="M518 386 Q534 390 544 398"></path>
+                        <path d="M526 404 Q544 408 553 418"></path>
+                        <path d="M528 424 Q546 428 555 438"></path>
+                      </g>
+
+                      <ellipse cx="464" cy="488" rx="18" ry="12" fill="#FFFBF5" stroke="#CBD5E1" stroke-width="1"></ellipse>
+                      <ellipse cx="508" cy="489" rx="18" ry="12" fill="#FFFBF5" stroke="#CBD5E1" stroke-width="1"></ellipse>
+
+                      <path d="M438 255 L428 202 L474 236 Z" fill="url(#tabbyFur)"></path>
+                      <path d="M442 248 L435 214 L466 238 Z" fill="#FDE68A" opacity="0.65"></path>
+
+                      <path d="M538 255 L548 202 L502 236 Z" fill="url(#tabbyFur)"></path>
+                      <path d="M534 248 L541 214 L510 238 Z" fill="#FDE68A" opacity="0.65"></path>
+
+                      <path d="M432 256 C452 232, 524 232, 544 256 C558 274, 554 318, 534 342 C514 366, 462 366, 442 342 C422 318, 418 274, 432 256 Z" fill="url(#tabbyFur)"></path>
+                      <path d="M432 256 C452 232, 524 232, 544 256 C558 274, 554 318, 534 342 C514 366, 462 366, 442 342 C422 318, 418 274, 432 256 Z" fill="url(#tabbyWarm)"></path>
+
+                      <g stroke="#334155" stroke-width="3.2" stroke-linecap="round" fill="none" opacity="0.65">
+                        <path d="M488 242 L488 264"></path>
+                        <path d="M476 244 L480 264"></path>
+                        <path d="M500 244 L496 264"></path>
+                        <path d="M465 250 L472 266"></path>
+                        <path d="M511 250 L504 266"></path>
+                      </g>
+
+                      <g>
+                        <ellipse cx="464" cy="288" rx="11.5" ry="12.5" fill="#F59E0B"></ellipse>
+                        <ellipse cx="464" cy="288" rx="4" ry="10.5" fill="#0F172A"></ellipse>
+                        <circle cx="460.5" cy="284" r="3" fill="#FFFFFF"></circle>
+                        <ellipse cx="512" cy="288" rx="11.5" ry="12.5" fill="#F59E0B"></ellipse>
+                        <ellipse cx="512" cy="288" rx="4" ry="10.5" fill="#0F172A"></ellipse>
+                        <circle cx="508.5" cy="284" r="3" fill="#FFFFFF"></circle>
+                      </g>
+
+                      <ellipse cx="474" cy="316" rx="14" ry="10" fill="#FFFBF5" opacity="0.85"></ellipse>
+                      <ellipse cx="502" cy="316" rx="14" ry="10" fill="#FFFBF5" opacity="0.85"></ellipse>
+                      <path d="M482 306 L494 306 L488 313 Z" fill="#F472B6"></path>
+                      <path d="M488 313 L488 320 M480 321 Q484 325 488 320 Q492 325 496 321" stroke="#475569" stroke-width="2" stroke-linecap="round" fill="none"></path>
+
+                      <g stroke="#64748B" stroke-width="1.5" stroke-linecap="round" opacity="0.65">
+                        <line x1="446" y1="312" x2="412" y2="306"></line>
+                        <line x1="446" y1="319" x2="410" y2="321"></line>
+                        <line x1="530" y1="312" x2="564" y2="306"></line>
+                        <line x1="530" y1="319" x2="566" y2="321"></line>
+                      </g>
+                    </g>
+
+                    <path d="M362 162 Q435 125 512 178" stroke="#059669" stroke-width="2" stroke-dasharray="5 5" opacity="0.45" fill="none"></path>
+                    <circle cx="436" cy="147" r="5" fill="#F59E0B" opacity="0.75"></circle>
+                  </svg>
+
+                  <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-emerald-950/35 to-transparent pointer-events-none"></div>
+
+                  <div class="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-auto glass-node rounded-2xl px-3.5 py-2 flex items-center gap-3">
+                    <span class="relative flex h-2.5 w-2.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
+                    </span>
+                    <div class="text-xs">
+                      <p id="heroPhotoBannerTitle" class="font-bold text-slateDark">AI Wellness Sync Active</p>
+                      <p id="heroPhotoBannerSub" class="text-[11px] text-slate-500">Vitals, Diet &amp; Vaccine Schedule Optimal</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating Badges -->
+              <div class="hidden sm:flex glass-node rounded-2xl px-4 py-3 items-center gap-3 absolute -top-5 right-4 z-20 animate-float">
+                <div class="w-10 h-10 rounded-xl bg-emerald-900 text-amber-400 flex items-center justify-center shadow-sm">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 13.5c-2.33 0-4.31 1.46-5.11 3.5-.42 1.07.37 2.25 1.52 2.25h7.18c1.15 0 1.94-1.18 1.52-2.25-.8-2.04-2.78-3.5-5.11-3.5zm-5.5-2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="font-display font-bold text-sm text-slateDark">GreenLane Pet AI</span>
+                    <span class="px-1.5 py-0.5 text-[10px] font-bold bg-amber-100 text-amber-700 rounded-md">LIVE</span>
+                  </div>
+                  <p class="text-[11px] font-medium text-emerald-700">Understand · Connect · Care</p>
+                </div>
+              </div>
+
+              <div class="glass-node rounded-2xl p-3 flex items-center gap-2.5 absolute -top-4 left-2 sm:-left-5 z-20 animate-float-delayed">
+                <div id="badge1Icon" class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
+                  <i data-lucide="heart-pulse" class="w-5 h-5"></i>
+                </div>
+                <div class="pr-1">
+                  <p id="badge1Label" class="text-[11px] text-slate-500 font-medium">Resting Vitals</p>
+                  <p id="badge1Value" class="text-xs font-bold text-slateDark">78 BPM · <span class="text-emerald-600">Normal</span></p>
+                </div>
+              </div>
+
+              <div class="hidden sm:flex glass-node rounded-2xl p-3 items-center gap-2.5 absolute top-1/2 -left-7 -translate-y-1/2 z-20 animate-float-slow">
+                <div id="badge2Icon" class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200/70">
+                  <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                </div>
+                <div class="pr-1">
+                  <p id="badge2Label" class="text-[11px] text-slate-500 font-medium">Smart Reminder</p>
+                  <p id="badge2Value" class="text-xs font-bold text-slateDark">Booster Due in 5d</p>
+                </div>
+              </div>
+
+              <div class="hidden sm:flex glass-node rounded-2xl p-3 items-center gap-2.5 absolute top-1/3 -right-5 z-20 animate-float">
+                <div id="badge3Icon" class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200/70">
+                  <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p id="badge3Label" class="text-[11px] text-slate-500 font-medium">AI Auto-Refill</p>
+                  <p id="badge3Value" class="text-xs font-bold text-slateDark">Joint &amp; Coat Diet</p>
+                </div>
+              </div>
+
+              <div class="glass-node rounded-2xl p-3 flex items-center gap-2.5 absolute -bottom-5 right-3 sm:-right-4 z-20 animate-float-delayed">
+                <div id="badge4Icon" class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center border border-emerald-100">
+                  <i data-lucide="home" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p id="badge4Label" class="text-[11px] text-slate-500 font-medium">Safe Boarding</p>
+                  <p id="badge4Value" class="text-xs font-bold text-slateDark">3 Verified Hosts</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. DAY-ONE CORE VS. CONNECTED ECOSYSTEM + 8-PILLAR STRIP -->
+    <section id="pillars" class="relative z-20 -mt-10 sm:-mt-14 pb-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl shadow-card border border-slate-100 p-4 sm:p-5">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 mb-4 border-b border-slate-100">
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-wider text-amber-700">
+                Scope Clarity · What’s Live on Day 1 vs. Connected Network
+              </p>
+              <p id="scopeFilterSummary" class="text-xs sm:text-sm text-slate-600 mt-0.5">
+                <strong>Day-One Core</strong> powers AI guidance, reminders, booking &amp; clinic intake immediately;
+                <strong>Connected Ecosystem</strong> links care services, hardware &amp; partners.
+              </p>
+            </div>
+            <div class="inline-flex items-center p-1 rounded-full bg-cream border border-slate-200/90 shrink-0 self-start md:self-auto">
+              <button
+                id="scopeBtnAll"
+                type="button"
+                onclick="setPillarScopeFilter('all')"
+                class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-900 text-white transition-all"
+              >
+                All (8)
+              </button>
+              <button
+                id="scopeBtnDayOne"
+                type="button"
+                onclick="setPillarScopeFilter('day_one')"
+                class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-600 hover:text-emerald-900 transition-all"
+              >
+                Day-One Core
+              </button>
+              <button
+                id="scopeBtnEcosystem"
+                type="button"
+                onclick="setPillarScopeFilter('ecosystem')"
+                class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-600 hover:text-amber-800 transition-all"
+              >
+                Connected Ecosystem
               </button>
             </div>
           </div>
 
-          <!-- Right Column: Interactive Area & Floating Badge -->
-          <div class="hero-visual-space">
-            <!-- Floating Top-Right Speech Badge -->
-            <div class="floating-badge badge-healthy-pets">
-              <div class="badge-icon-box">
-                <img src="assets/icons/paw-purple.svg" alt="Paw icon" width="20" height="20">
+          <div id="pillarTabs" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2"></div>
+
+          <!-- Dynamic Preview Drawer -->
+          <div
+            id="pillarPreviewCard"
+            class="mt-4 pt-4 border-t border-slate-100 px-3 sm:px-5 py-3.5 rounded-2xl bg-gradient-to-r from-cream via-white to-emerald-50/60 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all duration-300"
+          >
+            <div class="flex items-start sm:items-center gap-3.5">
+              <div
+                id="pillarPreviewIcon"
+                class="w-11 h-11 rounded-2xl bg-emerald-900 text-amber-400 flex items-center justify-center shrink-0 shadow-sm"
+              >
+                <i data-lucide="heart-handshake" class="w-5 h-5"></i>
               </div>
-              <div class="badge-text-box">
-                <span class="badge-title">Healthy pets</span>
-                <span class="badge-subtitle">happier lives</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- 4 FEATURE CARDS ROW -->
-      <section class="features-grid-section" id="features">
-        <div class="features-grid-container">
-
-          <!-- Card 1: Book Appointments -->
-          <div class="feature-card" data-feature="appointments">
-            <div class="feature-icon-badge">
-              <img src="assets/icons/calendar-purple.svg" alt="Calendar icon" width="24" height="24">
-            </div>
-            <h3 class="feature-card-title">Book Appointments</h3>
-            <p class="feature-card-desc">Find trusted vets</p>
-          </div>
-
-          <!-- Card 2: Health Records -->
-          <div class="feature-card" data-feature="records">
-            <div class="feature-icon-badge">
-              <img src="assets/icons/records-purple.svg" alt="Health records icon" width="24" height="24">
-            </div>
-            <h3 class="feature-card-title">Health Records</h3>
-            <p class="feature-card-desc">Track your pet's history</p>
-          </div>
-
-          <!-- Card 3: AI Pet Assistant -->
-          <div class="feature-card" data-feature="ai">
-            <div class="feature-icon-badge">
-              <img src="assets/icons/ai-purple.svg" alt="AI assistant icon" width="24" height="24">
-            </div>
-            <h3 class="feature-card-title">AI Pet Assistant</h3>
-            <p class="feature-card-desc">Expert advice 24/7</p>
-          </div>
-
-          <!-- Card 4: Pet Care Services -->
-          <div class="feature-card" data-feature="services">
-            <div class="feature-icon-badge">
-              <img src="assets/icons/services-purple.svg" alt="Pet care services icon" width="24" height="24">
-            </div>
-            <h3 class="feature-card-title">Pet Care Services</h3>
-            <p class="feature-card-desc">Grooming, products & more</p>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- MIDDLE SPOTLIGHT SECTION: "Everything your pet needs. In one place." -->
-      <section class="spotlight-section" id="vets">
-        <div class="spotlight-card">
-          <div class="spotlight-inner">
-
-            <!-- Left: Smartphone App Mockup with Organic Petals & Foliage Leaves -->
-            <div class="spotlight-mockup-wrapper">
-
-              <!-- Rich vector organic background shapes and leaves exactly like the reference -->
-              <div class="spotlight-bg-vector">
-                <img src="assets/icons/spotlight-bg-shapes.svg" alt="Organic background curves and leaves"
-                  class="spotlight-vector-img">
-              </div>
-
-              <!-- Phone Device Mockup (30% cropped at bottom) -->
-              <div class="phone-frame">
-                <!-- Phone Speaker / Dynamic Island -->
-                <div class="phone-island">
-                  <div class="island-camera"></div>
-                  <div class="island-speaker"></div>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <span id="pillarPreviewTitle" class="font-display font-bold text-base text-slateDark">AI Predictive Healthcare</span>
+                  <span id="pillarPreviewScopePill" class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-900 text-amber-300">Day-One Core</span>
+                  <span id="pillarPreviewBadge" class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800">24/7 Clinical Sync</span>
                 </div>
-
-                <!-- Phone Screen Content -->
-                <div class="phone-screen">
-
-                  <!-- Status Bar -->
-                  <div class="screen-status-bar">
-                    <span class="status-time">9:41</span>
-                    <div class="status-indicators">
-                      <svg width="13" height="10" viewBox="0 0 16 12" fill="#1e293b">
-                        <path d="M1 9.5h2v2H1zm4-3h2v5H5zm4-3h2v8H9zm4-3h2v11h-2z" />
-                      </svg>
-                      <svg width="13" height="10" viewBox="0 0 16 12" fill="#1e293b">
-                        <path d="M8 2.5C4.5 2.5 1.5 4.5 0 6.5l8 9 8-9c-1.5-2-4.5-4-8-4z" />
-                      </svg>
-                      <div class="battery-icon"></div>
-                    </div>
-                  </div>
-
-                  <!-- App Header Bar -->
-                  <div class="app-header">
-                    <div class="app-logo">
-                      <img src="assets/icons/paw-purple.svg" alt="App Paw" width="16" height="16">
-                      <span class="app-name">GreenLane</span>
-                    </div>
-                    <div class="app-notification-bell">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2">
-                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                      </svg>
-                      <span class="bell-dot"></span>
-                    </div>
-                  </div>
-
-                  <!-- Pet Profile Header Inside App -->
-                  <div class="app-pet-profile">
-                    <div class="app-pet-info">
-                      <h4 class="app-greeting">Barkley</h4>
-                      <p class="app-subtext">Golden Retriever • 2 yrs</p>
-                    </div>
-                    <div class="app-pet-avatar">
-                      <img src="assets/images/golden-retriever.jpg" alt="Barkley the Dog">
-                      <span class="status-badge-online"></span>
-                    </div>
-                  </div>
-
-                  <!-- 4 App Action Tiles (2x2 Grid) -->
-                  <div class="app-actions-grid">
-                    <div class="app-tile">
-                      <div class="app-tile-icon purple-light">
-                        <img src="assets/icons/calendar-purple.svg" alt="Calendar" width="16" height="16">
-                      </div>
-                      <span class="app-tile-label">Book Appointment</span>
-                    </div>
-
-                    <div class="app-tile">
-                      <div class="app-tile-icon purple-light">
-                        <img src="assets/icons/records-purple.svg" alt="Records" width="16" height="16">
-                      </div>
-                      <span class="app-tile-label">Health Records</span>
-                    </div>
-
-                    <div class="app-tile">
-                      <div class="app-tile-icon purple-light">
-                        <img src="assets/icons/ai-purple.svg" alt="AI" width="16" height="16">
-                      </div>
-                      <span class="app-tile-label">AI Assistant</span>
-                    </div>
-
-                    <div class="app-tile">
-                      <div class="app-tile-icon purple-light">
-                        <img src="assets/icons/services-purple.svg" alt="Services" width="16" height="16">
-                      </div>
-                      <span class="app-tile-label">Grooming</span>
-                    </div>
-                  </div>
-
-                  <!-- App Upcoming Card -->
-                  <div class="app-upcoming-card">
-                    <div class="upcoming-header">
-                      <span class="upcoming-label">Upcoming appointment</span>
-                      <span class="upcoming-badge">In 2 days</span>
-                    </div>
-                    <div class="upcoming-body">
-                      <div class="vet-avatar">
-                        <img
-                          src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=80&q=80"
-                          alt="Dr. Emily Thorne">
-                      </div>
-                      <div class="vet-details">
-                        <span class="vet-name">Dr. Emily Thorne</span>
-                        <span class="vet-role">Annual Wellness Checkup</span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
+                <p id="pillarPreviewDesc" class="text-xs sm:text-sm text-slate-600 mt-0.5">
+                  Everyday care guidance, automated vaccination alerts, red-flag escalation prompts, and structured pre-visit notes.
+                </p>
               </div>
-
             </div>
+            <a
+              href="#ai-assistant"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-900 hover:text-emerald-700 bg-white px-4 py-2.5 rounded-full border border-emerald-200/80 shadow-2xs shrink-0 transition-all hover:border-amber-400"
+            >
+              <span>Ask AI About This</span>
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <!-- Right: Text & Purple Button -->
-            <div class="spotlight-content">
-              <h2 class="spotlight-title">
-                Everything your pet needs in one platform using AI
-              </h2>
-              <p class="spotlight-description">
-                From routine check-ups to urgent care, GreenLane Pet makes pet care simple, safe and stress-free.
+    <!-- 4. AI PET ASSISTANT INTERACTIVE SECTION -->
+    <section id="ai-assistant" class="py-16 lg:py-24 bg-cream/60 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Everyday Guidance vs. Urgent Vet Escalation Strip -->
+        <div class="mb-10 rounded-2xl bg-white border border-amber-200/80 shadow-soft p-4 sm:p-5 grid grid-cols-1 lg:grid-cols-12 gap-4 items-center reveal active">
+          <div class="lg:col-span-5 flex items-start gap-3 p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
+            <div class="w-8 h-8 rounded-lg bg-emerald-900 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <p class="text-xs font-extrabold uppercase tracking-wider text-emerald-900">
+                Everyday Guidance (AI Companion)
               </p>
-              <div class="spotlight-cta">
-                <button type="button" class="btn-primary-purple" id="exploreFeaturesBtn">
-                  <span>Explore Features</span>
-                  <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
+              <p class="text-xs text-slate-600 mt-0.5">
+                Vaccine schedules, routine prep, nutrition comparisons, and pre-visit notes to organize care smoothly.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 flex items-start gap-3 p-3 rounded-xl bg-amber-50/90 border border-amber-300/80">
+            <div class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="siren" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <p class="text-xs font-extrabold uppercase tracking-wider text-amber-950">
+                Urgent Red-Flag Escalation (Licensed Vet)
+              </p>
+              <p class="text-xs text-slate-700 mt-0.5">
+                Difficulty breathing, collapse, active seizures, uncontrolled bleeding, or suspected toxin ingestion requires immediate vet care.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2 flex lg:flex-col items-center lg:items-stretch justify-between gap-2">
+            <button
+              type="button"
+              onclick="triggerScenario('chocolate')"
+              class="flex-1 text-center text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 px-3 py-2.5 rounded-xl transition-colors shadow-2xs"
+            >
+              Test Red-Flag Check
+            </button>
+            <button
+              type="button"
+              onclick="openDemoModal('clinic')"
+              class="flex-1 text-center text-xs font-bold bg-emerald-900 hover:bg-emerald-800 text-white px-3 py-2 rounded-xl transition-colors"
+            >
+              Contact Vet / Clinic
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          <!-- Left Column -->
+          <div class="lg:col-span-4 space-y-5 reveal active">
+            <div class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-amber-600">
+              <span class="w-6 h-0.5 bg-amber-500 rounded-full"></span>
+              <span>AI PET ASSISTANT</span>
+            </div>
+
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slateDark leading-tight">
+              Your Pet’s<br />
+              Intelligent Companion
+            </h2>
+
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Get instant emergency triage, orchestrate multi-service bookings,
+              and compare vet-matched nutrition — all in one conversation.
+            </p>
+
+            <!-- 3 One-Tap Real-World AI Scenarios -->
+            <div class="space-y-2.5 pt-1">
+              <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                Test Real-World AI Scenarios:
+              </p>
+
+              <button
+                onclick="triggerScenario('chocolate')"
+                class="w-full text-left flex items-center gap-3 p-3 rounded-2xl bg-white hover:bg-amber-50/80 border border-slate-200/90 hover:border-amber-400 shadow-2xs transition-all group"
+              >
+                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                  <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="text-xs font-bold text-slateDark truncate">Emergency Triage: Ate dark chocolate</p>
+                  <p class="text-[11px] text-slate-500 truncate">Instant toxicity calculator &amp; urgent vet slot</p>
+                </div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-amber-600"></i>
+              </button>
+
+              <button
+                onclick="triggerScenario('routine')"
+                class="w-full text-left flex items-center gap-3 p-3 rounded-2xl bg-white hover:bg-emerald-50/80 border border-slate-200/90 hover:border-emerald-400 shadow-2xs transition-all group"
+              >
+                <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 group-hover:bg-emerald-900 group-hover:text-amber-400 transition-colors">
+                  <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="text-xs font-bold text-slateDark truncate">Routine Care: Annual booster &amp; grooming</p>
+                  <p class="text-[11px] text-slate-500 truncate">Smart calendar sync + bundled service booking</p>
+                </div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-emerald-700"></i>
+              </button>
+
+              <button
+                onclick="triggerScenario('renal')"
+                class="w-full text-left flex items-center gap-3 p-3 rounded-2xl bg-white hover:bg-amber-50/80 border border-slate-200/90 hover:border-amber-400 shadow-2xs transition-all group"
+              >
+                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                  <i data-lucide="scale" class="w-4 h-4"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="text-xs font-bold text-slateDark truncate">Smart Diet: Renal nutrition comparison</p>
+                  <p class="text-[11px] text-slate-500 truncate">AI-matched prescription &amp; partner food options</p>
+                </div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-amber-600"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Center Column: Smartphone Mockup -->
+          <div class="lg:col-span-4 flex justify-center relative reveal active">
+            <div class="w-full max-w-[335px] bg-slateDark rounded-[2.75rem] p-3 shadow-2xl border-[3px] border-slate-800 relative transform lg:-rotate-1 hover:rotate-0 transition-transform duration-500">
+              <div class="w-28 h-5 bg-slateDark rounded-b-2xl mx-auto absolute top-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
+                <div class="w-10 h-1 bg-slate-700 rounded-full"></div>
+              </div>
+
+              <div class="bg-white rounded-[2.15rem] overflow-hidden flex flex-col h-[560px] border border-slate-100">
+                <!-- Status Bar -->
+                <div class="px-6 pt-3 pb-1 flex items-center justify-between text-[11px] font-semibold text-slateDark">
+                  <span>9:41</span>
+                  <div class="flex items-center gap-1.5">
+                    <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+                    <i data-lucide="battery-full" class="w-4 h-4 text-emerald-600"></i>
+                  </div>
+                </div>
+
+                <!-- Header -->
+                <div class="px-4 py-2.5 border-b border-slate-100 bg-cream/80 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="w-7 h-7 rounded-lg bg-emerald-900 text-amber-400 flex items-center justify-center">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                          <path d="M12 13.5c-2.33 0-4.31 1.46-5.11 3.5-.42 1.07.37 2.25 1.52 2.25h7.18c1.15 0 1.94-1.18 1.52-2.25-.8-2.04-2.78-3.5-5.11-3.5zm-5.5-2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
+                        </svg>
+                      </div>
+                      <div>
+                        <p class="font-display font-bold text-xs text-slateDark">
+                          GreenLane <span class="text-emerald-600">Pet</span>
+                        </p>
+                        <p class="text-[10px] text-emerald-600 font-medium flex items-center gap-1">
+                          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                          AI Clinical &amp; Care Sync
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      onclick="resetChat()"
+                      title="Reset Chat"
+                      class="p-1.5 rounded-lg text-slate-400 hover:text-emerald-800 hover:bg-emerald-50 transition-colors"
+                    >
+                      <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                    </button>
+                  </div>
+
+                  <!-- Active Pet Profile -->
+                  <div class="flex items-center justify-between bg-white border border-emerald-200/70 rounded-full px-3 py-1 text-[10px]">
+                    <span class="font-bold text-slateDark flex items-center gap-1.5">
+                      <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                      Max · Golden Retriever, 3y (29 kg)
+                    </span>
+                    <span class="text-emerald-700 font-semibold">Synced</span>
+                  </div>
+                </div>
+
+                <!-- Chat Feed -->
+                <div
+                  id="chatMessages"
+                  class="flex-1 p-3.5 overflow-y-auto chat-scroll space-y-3 bg-gradient-to-b from-white to-cream/40"
+                >
+                  <div class="flex items-start gap-2">
+                    <div class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 text-xs font-bold border border-amber-200">
+                      AI
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-100 text-slateDark text-xs rounded-2xl rounded-tl-none px-3.5 py-2.5 leading-relaxed shadow-2xs">
+                      Hi! I’m synced with <strong>Max’s</strong> health profile.
+                      Tap a scenario or choose an action below:
+                    </div>
+                  </div>
+
+                  <div id="quickActionList" class="space-y-2 pl-2">
+                    <button
+                      onclick="triggerScenario('chocolate')"
+                      class="w-full text-left flex items-center gap-2.5 bg-amber-50/70 hover:bg-amber-100/80 border border-amber-300/80 rounded-xl px-3 py-2 text-xs font-semibold text-slateDark transition-all shadow-2xs group"
+                    >
+                      <span class="w-6 h-6 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center shrink-0">
+                        <i data-lucide="siren" class="w-3.5 h-3.5"></i>
+                      </span>
+                      <span>Red-Flag Escalation: Ate dark chocolate</span>
+                    </button>
+
+                    <button
+                      onclick="triggerScenario('routine')"
+                      class="w-full text-left flex items-center gap-2.5 bg-white hover:bg-emerald-50 border border-slate-200/90 hover:border-emerald-400 rounded-xl px-3 py-2 text-xs font-medium text-slateDark transition-all shadow-2xs group"
+                    >
+                      <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 group-hover:bg-emerald-900 group-hover:text-amber-400 transition-colors">
+                        <i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>
+                      </span>
+                      <span>Book annual booster &amp; grooming</span>
+                    </button>
+
+                    <button
+                      onclick="triggerScenario('renal')"
+                      class="w-full text-left flex items-center gap-2.5 bg-white hover:bg-amber-50 border border-slate-200/90 hover:border-amber-400 rounded-xl px-3 py-2 text-xs font-medium text-slateDark transition-all shadow-2xs group"
+                    >
+                      <span class="w-6 h-6 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                        <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+                      </span>
+                      <span>Compare renal diet options</span>
+                    </button>
+
+                    <button
+                      onclick="handlePresetAction('Check health records')"
+                      class="w-full text-left flex items-center gap-2.5 bg-white hover:bg-emerald-50 border border-slate-200/90 hover:border-emerald-400 rounded-xl px-3 py-2 text-xs font-medium text-slateDark transition-all shadow-2xs group"
+                    >
+                      <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 group-hover:bg-emerald-900 group-hover:text-amber-400 transition-colors">
+                        <i data-lucide="file-heart" class="w-3.5 h-3.5"></i>
+                      </span>
+                      <span>Check health records</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Input -->
+                <form
+                  id="chatForm"
+                  onsubmit="handleChatSubmit(event)"
+                  class="p-2.5 bg-white border-t border-slate-100 flex items-center gap-2"
+                >
+                  <input
+                    id="chatInput"
+                    type="text"
+                    placeholder="Ask anything about Max..."
+                    autocomplete="off"
+                    class="flex-1 text-xs bg-slate-100/90 focus:bg-white text-slateDark placeholder-slate-400 px-3.5 py-2.5 rounded-full border border-transparent focus:border-emerald-600 focus:outline-none transition-all"
+                  />
+                  <button
+                    type="submit"
+                    aria-label="Send Message"
+                    class="w-9 h-9 rounded-full bg-emerald-900 hover:bg-emerald-800 text-amber-400 flex items-center justify-center shrink-0 shadow-sm transition-transform active:scale-90"
+                  >
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                  </button>
+                </form>
+
+                <!-- Disclaimer -->
+                <div
+                  id="chatGuardrailBanner"
+                  class="px-3.5 py-2 bg-amber-50/95 border-t border-amber-200/80 flex items-center justify-between gap-2 text-[10px] text-amber-950"
+                >
+                  <p class="leading-tight">
+                    <strong>Boundary:</strong> AI guidance supports—never
+                    replaces—a licensed veterinarian. Red flags need immediate vet care.
+                  </p>
+                  <button
+                    type="button"
+                    onclick="openDemoModal('clinic')"
+                    class="shrink-0 font-bold text-emerald-900 underline hover:text-emerald-700"
+                  >
+                    Urgent Vet
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="lg:col-span-4 space-y-5 reveal active">
+            <div
+              class="relative rounded-3xl bg-gradient-to-br from-amber-50 via-cream to-emerald-50/70 border border-amber-200/60 p-6 sm:p-7 shadow-soft overflow-hidden"
+            >
+              <h3 class="font-display font-bold text-xl text-slateDark mb-4">
+                Day-One Core vs. Ecosystem
+              </h3>
+
+              <div class="space-y-4 relative z-10 text-xs">
+                <div class="rounded-2xl bg-white/90 border border-emerald-200/80 p-3.5 space-y-2">
+                  <p class="font-extrabold uppercase tracking-wider text-[10px] text-emerald-900 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                    Live on Day One (Core)
+                  </p>
+                  <ul class="space-y-1.5 text-slate-700 font-medium">
+                    <li class="flex items-center gap-2">
+                      <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-700 shrink-0"></i>
+                      <span>AI Pet Companion &amp; Triage Guardrails</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-700 shrink-0"></i>
+                      <span>Health Records, Vaccine Reminders &amp; Booking</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-700 shrink-0"></i>
+                      <span>Clinic Intake Summaries &amp; Reminder Automation</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="rounded-2xl bg-white/90 border border-amber-200/80 p-3.5 space-y-2">
+                  <p class="font-extrabold uppercase tracking-wider text-[10px] text-amber-800 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    Connected Ecosystem Network
+                  </p>
+                  <ul class="space-y-1.5 text-slate-700 font-medium">
+                    <li class="flex items-center gap-2">
+                      <i data-lucide="network" class="w-3.5 h-3.5 text-amber-600 shrink-0"></i>
+                      <span>Grooming, Walking, Training &amp; Boarding</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i data-lucide="network" class="w-3.5 h-3.5 text-amber-600 shrink-0"></i>
+                      <span>Nutrition, Smart Hardware &amp; Animal Welfare</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i data-lucide="network" class="w-3.5 h-3.5 text-amber-600 shrink-0"></i>
+                      <span>Partner Brands (Royal Canin, Zoetis, BI)</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <svg
+                class="w-28 h-28 text-amber-500/15 fill-current absolute -bottom-4 -right-4 pointer-events-none transform -rotate-12"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 13.5c-2.33 0-4.31 1.46-5.11 3.5-.42 1.07.37 2.25 1.52 2.25h7.18c1.15 0 1.94-1.18 1.52-2.25-.8-2.04-2.78-3.5-5.11-3.5zm-5.5-2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
+              </svg>
+            </div>
+
+            <!-- Health Timeline Preview -->
+            <div class="rounded-3xl bg-white border border-slate-200/80 p-5 shadow-soft">
+              <div class="flex items-center justify-between mb-3.5">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span class="font-display font-bold text-xs uppercase tracking-wider text-slateDark">AI Health Timeline · Max</span>
+                </div>
+                <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">Day-1 Core Sync</span>
+              </div>
+
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-amber-50/70 border border-amber-200/60">
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="syringe" class="w-4 h-4 text-amber-600 shrink-0"></i>
+                    <div>
+                      <p class="text-xs font-bold text-slateDark">DHPP Annual Booster</p>
+                      <p class="text-[10px] text-slate-500">GreenLane Vet Center · Auto-held</p>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-bold text-amber-700">In 5 days</span>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-emerald-50/60 border border-emerald-200/60">
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="utensils" class="w-4 h-4 text-emerald-700 shrink-0"></i>
+                    <div>
+                      <p class="text-xs font-bold text-slateDark">Royal Canin Joint Care Refill</p>
+                      <p class="text-[10px] text-slate-500">Connected Partner Diet · 29 kg</p>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-bold text-emerald-800">Nov 28</span>
+                </div>
+              </div>
+
+              <div class="mt-3.5 pt-3 border-t border-slate-100 flex items-start justify-between gap-2 text-[11px] text-slate-600 leading-snug">
+                <div class="flex items-start gap-2">
+                  <i data-lucide="shield-alert" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+                  <p>
+                    <strong>AI vs. Vet Boundary:</strong> AI guidance supports—never
+                    replaces—a licensed veterinarian. Seek immediate vet care for sudden collapse, breathing distress, or poisoning.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onclick="openDemoModal('clinic')"
+                  class="shrink-0 font-bold text-emerald-900 hover:underline"
+                >
+                  Vet Help
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4B. AI PLATFORM FEATURES & CONNECTED ECOSYSTEM -->
+    <section id="ai-features" class="py-16 lg:py-20 bg-white border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal active">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-widest text-amber-600">BALANCED FOR BOTH SIDES</span>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slateDark mt-1">
+              Built for Pet Parents &amp;
+              <span class="text-emerald-800">Veterinary Teams</span>
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 max-w-md">
+            Pet parents get organized care and calm answers; clinics and
+            partners get structured intake, fewer missed visits, and connected care flows.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="rounded-2xl bg-cream/80 border border-slate-200/80 p-5 space-y-2">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-900 text-amber-300">Pet Parents · Day 1</span>
+            <h3 class="font-display font-bold text-base text-slateDark pt-1">Guided Care &amp; Reminders</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Track vaccines, weight, and daily routines with clear everyday guidance and red-flag escalation prompts.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-cream/80 border border-slate-200/80 p-5 space-y-2">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-900 text-amber-300">Clinics · Day 1</span>
+            <h3 class="font-display font-bold text-base text-slateDark pt-1">Pre-Visit Triage Intake</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Receive organized symptom context and pet history ahead of appointments to cut front-desk phone load.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-cream/80 border border-slate-200/80 p-5 space-y-2">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900">Ecosystem · Network</span>
+            <h3 class="font-display font-bold text-base text-slateDark pt-1">Services &amp; Smart Gear</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Connect grooming, walking, boarding, and smart hardware telemetry into one shared pet care context.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-cream/80 border border-slate-200/80 p-5 space-y-2">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900">Partners · Network</span>
+            <h3 class="font-display font-bold text-base text-slateDark pt-1">Nutrition &amp; Welfare Sync</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Collaborate across veterinary nutritionists, animal welfare groups, and connected pet brands.
+            </p>
+          </div>
+        </div>
+
+        <!-- Connected Ecosystem Nodes & Trusted Partners -->
+        <div id="connected-ecosystem" class="mt-12 rounded-3xl bg-cream/70 border border-emerald-900/10 p-6 sm:p-8">
+          <div id="partners" class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200/70">
+            <div>
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-900">Connected Ecosystem &amp; Trusted Partners</span>
+              <p id="ecoNodeText" class="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl">
+                <strong id="ecoNodeTag" class="text-slateDark">Veterinary Clinics:</strong>
+                Two-way scheduling and pre-visit intake notes that keep care teams aligned with pet parents.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-4 text-xs font-display font-extrabold text-slate-700 shrink-0">
+              <span class="px-3 py-1.5 rounded-xl bg-white border border-slate-200/80">ROYAL CANIN</span>
+              <span class="px-3 py-1.5 rounded-xl bg-white border border-slate-200/80">zoetis</span>
+              <span class="px-3 py-1.5 rounded-xl bg-white border border-slate-200/80">Boehringer Ingelheim</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-6">
+            <button
+              type="button"
+              data-node="clinics"
+              onclick="selectEcosystemNode('clinics')"
+              class="eco-node p-3.5 rounded-2xl bg-white border-2 border-emerald-600 text-left transition-all"
+            >
+              <p class="text-xs font-bold text-slateDark">Veterinary Clinics</p>
+              <p class="text-[10px] text-emerald-700 font-semibold mt-0.5">Day-1 Core + Sync</p>
+            </button>
+            <button
+              type="button"
+              data-node="services"
+              onclick="selectEcosystemNode('services')"
+              class="eco-node p-3.5 rounded-2xl bg-white border border-slate-100 hover:border-amber-400 text-left transition-all"
+            >
+              <p class="text-xs font-bold text-slateDark">Pet Services</p>
+              <p class="text-[10px] text-slate-500 mt-0.5">Groom, walk &amp; stay</p>
+            </button>
+            <button
+              type="button"
+              data-node="brands"
+              onclick="selectEcosystemNode('brands')"
+              class="eco-node p-3.5 rounded-2xl bg-white border border-slate-100 hover:border-amber-400 text-left transition-all"
+            >
+              <p class="text-xs font-bold text-slateDark">Pet Brands</p>
+              <p class="text-[10px] text-slate-500 mt-0.5">Diets &amp; essentials</p>
+            </button>
+            <button
+              type="button"
+              data-node="community"
+              onclick="selectEcosystemNode('community')"
+              class="eco-node p-3.5 rounded-2xl bg-white border border-slate-100 hover:border-amber-400 text-left transition-all"
+            >
+              <p class="text-xs font-bold text-slateDark">Community</p>
+              <p class="text-[10px] text-slate-500 mt-0.5">Local care circles</p>
+            </button>
+            <button
+              type="button"
+              data-node="welfare"
+              onclick="selectEcosystemNode('welfare')"
+              class="eco-node p-3.5 rounded-2xl bg-white border border-slate-100 hover:border-amber-400 text-left transition-all"
+            >
+              <p class="text-xs font-bold text-slateDark">Animal Welfare</p>
+              <p class="text-[10px] text-slate-500 mt-0.5">Shelters &amp; adoption</p>
+            </button>
+            <button
+              type="button"
+              data-node="hardware"
+              onclick="selectEcosystemNode('hardware')"
+              class="eco-node p-3.5 rounded-2xl bg-white border border-slate-100 hover:border-amber-400 text-left transition-all"
+            >
+              <p class="text-xs font-bold text-slateDark">Smart Hardware</p>
+              <p class="text-[10px] text-slate-500 mt-0.5">Collars &amp; feeders</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 14-DAY WORKFLOW & ONBOARDING -->
+    <section id="workflow" class="py-16 lg:py-24 bg-white border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal active">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+          <div class="space-y-2">
+            <div class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-amber-600">
+              <span class="w-6 h-0.5 bg-amber-500 rounded-full"></span>
+              <span>HOW IT WORKS IN 14 DAYS</span>
+            </div>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slateDark">
+              Structured Care &amp;
+              <span class="text-emerald-800">Clinic Rollout Workflow</span>
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 max-w-2xl">
+              Follow each stage from data sync and AI triage rules to pilot validation and live analytics across clinics, care partners, and pet parents.
+            </p>
+          </div>
+
+          <!-- Region Preset Buttons -->
+          <div class="flex flex-wrap items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onclick="switchWorkflowRegion('be_eu')"
+              class="px-3.5 py-2 rounded-full text-xs font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200/80 transition-colors"
+            >
+              Belgium / EU
+            </button>
+            <button
+              type="button"
+              onclick="switchWorkflowRegion('bg_eu')"
+              class="px-3.5 py-2 rounded-full text-xs font-bold bg-cream hover:bg-amber-50 text-slate-700 border border-slate-200 transition-colors"
+            >
+              Bulgaria / EU
+            </button>
+            <button
+              type="button"
+              onclick="switchWorkflowRegion('in_highvol')"
+              class="px-3.5 py-2 rounded-full text-xs font-bold bg-cream hover:bg-amber-50 text-slate-700 border border-slate-200 transition-colors"
+            >
+              India High-Vol
+            </button>
+            <button
+              type="button"
+              onclick="switchWorkflowRegion('global')"
+              class="px-3.5 py-2 rounded-full text-xs font-bold bg-cream hover:bg-amber-50 text-slate-700 border border-slate-200 transition-colors"
+            >
+              Global
+            </button>
+          </div>
+        </div>
+
+        <div id="workflowStepTabs" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8"></div>
+
+        <!-- Active Step Detail Card -->
+        <div class="rounded-3xl bg-gradient-to-br from-cream via-white to-emerald-50/60 border border-slate-200/90 p-6 sm:p-8 shadow-soft grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-7 space-y-5">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span id="wfStepWindowPill" class="text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-900 text-amber-300">Days 1–3 · Phase 01</span>
+              <span id="wfRegionTag" class="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900">Belgium / EU</span>
+            </div>
+
+            <div>
+              <h3 id="wfStepTitle" class="font-display font-extrabold text-2xl text-slateDark">Data &amp; Schedule Sync</h3>
+              <p id="wfStepSummary" class="text-sm text-slate-600 mt-1.5 leading-relaxed">
+                Connect your clinic calendar or PIMS, service availability, and pet health/vaccine histories so the AI starts with accurate context.
+              </p>
+            </div>
+
+            <div
+              id="workflowRegionBadge"
+              class="rounded-2xl bg-white border border-emerald-200/70 px-4 py-3 text-xs font-medium text-slate-700 flex items-center gap-2.5"
+            >
+              <i data-lucide="globe" class="w-4 h-4 text-emerald-700 shrink-0"></i>
+              <span>Trilingual triage (EN/FR/NL), EU data residency &amp; PIMS/CRM webhook sync.</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+              <div class="rounded-2xl bg-white border border-slate-200/80 p-4 space-y-1.5">
+                <p class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-900">Vet Clinics</p>
+                <p id="wfClinicAction" class="text-xs text-slate-600 leading-relaxed">
+                  Sync appointment slots, practitioner hours, vaccine schedules, and CRM/webhook endpoints without disrupting live consultations.
+                </p>
+              </div>
+              <div class="rounded-2xl bg-white border border-slate-200/80 p-4 space-y-1.5">
+                <p class="text-[11px] font-extrabold uppercase tracking-wider text-amber-700">Care &amp; Brand Partners</p>
+                <p id="wfProviderAction" class="text-xs text-slate-600 leading-relaxed">
+                  Import grooming/boarding capacity, breed/coat duration rules, and safety waivers into one live schedule.
+                </p>
+              </div>
+              <div class="rounded-2xl bg-white border border-slate-200/80 p-4 space-y-1.5">
+                <p class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-800">Pet Parents</p>
+                <p id="wfParentAction" class="text-xs text-slate-600 leading-relaxed">
+                  Create a unified pet profile with past vaccines, weight history, and active diet or allergy notes.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 rounded-2xl bg-white border border-slate-200/80 p-6 space-y-5">
+            <div>
+              <p class="text-xs font-extrabold uppercase tracking-wider text-emerald-900 mb-3">Stage Deliverables &amp; Readiness</p>
+              <ul id="wfDeliverablesList" class="space-y-2.5 text-xs text-slate-700"></ul>
+            </div>
+
+            <div class="pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <span class="text-[11px] text-slate-500">Ready to map this stage to your team?</span>
+              <button
+                type="button"
+                onclick="jumpToDemoWithStep()"
+                class="inline-flex items-center justify-center gap-2 bg-emerald-900 hover:bg-emerald-800 text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors shrink-0"
+              >
+                <span>Configure in Demo</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-amber-400"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. PRICING SECTION -->
+    <section id="pricing" class="py-20 lg:py-24 bg-cream/70 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal active">
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+          <div class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-amber-600">
+            <span class="w-6 h-0.5 bg-amber-500 rounded-full"></span>
+            <span>TRANSPARENT ECOSYSTEM PRICING</span>
+            <span class="w-6 h-0.5 bg-amber-500 rounded-full"></span>
+          </div>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slateDark">
+            Plans That Scale With
+            <span class="text-emerald-800">Every Pet &amp; Practice</span>
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Start free as a pet parent, launch automated care for a single clinic or studio, or deploy multi-site AI workflows with live CRM &amp; PMS webhooks.
+          </p>
+
+          <div class="pt-3 flex flex-wrap items-center justify-center gap-4">
+            <div class="inline-flex items-center p-1 rounded-full bg-white border border-slate-200 shadow-2xs">
+              <button
+                id="btnBillingMonthly"
+                type="button"
+                onclick="setBillingCycle('monthly')"
+                class="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-900 transition-all"
+              >
+                Monthly
+              </button>
+              <button
+                id="btnBillingAnnual"
+                type="button"
+                onclick="setBillingCycle('annual')"
+                class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-emerald-900 text-white shadow-xs transition-all"
+              >
+                <span>Annual</span>
+                <span class="text-[10px] font-extrabold bg-amber-400 text-emerald-950 px-2 py-0.5 rounded-full">Save 20%</span>
+              </button>
+            </div>
+
+            <div class="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-3.5 py-1.5 shadow-2xs">
+              <i data-lucide="coins" class="w-4 h-4 text-amber-500"></i>
+              <label for="pricingCurrencySelect" class="sr-only">Select Currency</label>
+              <select
+                id="pricingCurrencySelect"
+                onchange="setPricingCurrency(this.value)"
+                class="text-xs sm:text-sm font-bold text-slateDark bg-transparent focus:outline-none cursor-pointer"
+              >
+                <option value="EUR_BE" selected="">EUR (€) · Belgium &amp; EU</option>
+                <option value="EUR_BG">EUR (€) / BGN · Bulgaria &amp; EU</option>
+                <option value="INR">INR (₹) · India</option>
+                <option value="USD">USD ($) · Global</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-7 items-stretch">
+          <!-- Tier 1 -->
+          <div class="rounded-3xl bg-white border border-slate-200/90 p-7 sm:p-8 shadow-soft flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full">
+                  For Pet Parents
+                </span>
+                <span class="text-xs font-semibold text-amber-700">Free Base + Optional Pass</span>
+              </div>
+
+              <h3 class="font-display font-extrabold text-2xl text-slateDark">Pet Parent Free / Plus</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1.5">
+                Digital pet passport, vaccine reminders, and AI triage guidance—upgrade to Plus for 24/7 priority care &amp; smart refills.
+              </p>
+
+              <div class="mt-6 pb-6 border-b border-slate-100">
+                <div class="flex items-baseline gap-2">
+                  <span class="font-display font-extrabold text-3xl sm:text-4xl text-slateDark">Free</span>
+                  <span class="text-xs font-semibold text-slate-500">/ base profile</span>
+                </div>
+                <p class="text-xs font-bold text-amber-700 mt-2">
+                  Plus Care Pass: <span id="priceParentPlus" class="text-slateDark">€3.90 / mo</span>
+                </p>
+              </div>
+
+              <ul class="mt-6 space-y-3 text-xs sm:text-sm text-slate-700">
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                  <span>Unlimited pet profiles, weight logs &amp; vaccine reminders</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                  <span>AI Pet Assistant symptom &amp; nutrition checks (with vet guardrails)</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                  <span>Plus: Priority clinic slot holding, multi-service booking &amp; auto-refill alerts</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-8 pt-2">
+              <button
+                type="button"
+                onclick="selectPlanAndStartDemo('Pet Parent Free / Plus', 'parent')"
+                class="w-full py-3.5 px-6 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-950 font-bold text-sm border border-emerald-200 transition-all flex items-center justify-center gap-2"
+              >
+                <span>Start Free Pet Profile</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 text-emerald-800"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tier 2 -->
+          <div class="rounded-3xl bg-emerald-950 text-white border-2 border-amber-400/80 p-7 sm:p-8 shadow-card flex flex-col justify-between relative">
+            <div class="absolute -top-3.5 right-6 bg-amber-400 text-emerald-950 text-[11px] font-extrabold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm">
+              Most Popular for Clinics &amp; Studios
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-300 bg-emerald-900 px-3 py-1 rounded-full">
+                  Clinics, Groomers &amp; Trainers
+                </span>
+              </div>
+
+              <h3 class="font-display font-extrabold text-2xl text-white">Clinic &amp; Care Starter</h3>
+              <p class="text-xs sm:text-sm text-emerald-100/85 mt-1.5">
+                Built for independent vet clinics, grooming salons, walkers, and trainers automating reminders, AI intake, and bookings.
+              </p>
+
+              <div class="mt-6 pb-6 border-b border-emerald-800/80">
+                <div class="flex items-baseline gap-2">
+                  <span id="priceStarterMain" class="font-display font-extrabold text-3xl sm:text-4xl text-amber-400">€119</span>
+                  <span id="priceStarterPeriod" class="text-xs text-emerald-200">/ mo billed annually</span>
+                </div>
+                <p id="priceStarterSub" class="text-xs text-emerald-300/80 mt-1.5">
+                  1 clinic or care location · AI intake, reminders &amp; booking.
+                </p>
+              </div>
+
+              <ul class="mt-6 space-y-3 text-xs sm:text-sm text-emerald-50">
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                  <span>AI pre-visit triage summaries &amp; digital pet health timeline sync</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                  <span>Automated vaccine, wellness &amp; grooming rebooking reminders</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                  <span>14-day guided onboarding + no-show &amp; retention analytics</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-8 pt-2">
+              <button
+                type="button"
+                onclick="selectPlanAndStartDemo('Clinic &amp; Care Starter', 'clinic')"
+                class="w-full py-3.5 px-6 rounded-full bg-amber-400 hover:bg-amber-300 text-emerald-950 font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2"
+              >
+                <span>Book Starter Demo</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tier 3 -->
+          <div class="rounded-3xl bg-white border border-slate-200/90 p-7 sm:p-8 shadow-soft flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full">
+                  Multi-Site &amp; Enterprise
+                </span>
+                <span class="text-xs font-semibold text-emerald-800">Custom Workflows</span>
+              </div>
+
+              <h3 class="font-display font-extrabold text-2xl text-slateDark">Ecosystem Pro / Multi-Site</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1.5">
+                For veterinary clinic groups, care networks, and pet brands needing custom AI triage rules, CRM/PMS webhooks, and SLA support.
+              </p>
+
+              <div class="mt-6 pb-6 border-b border-slate-100">
+                <div class="flex items-baseline gap-2">
+                  <span id="priceProMain" class="font-display font-extrabold text-3xl sm:text-4xl text-slateDark">€319</span>
+                  <span id="priceProPeriod" class="text-xs font-semibold text-slate-500">/ mo starting · billed annually</span>
+                </div>
+                <p id="priceProSub" class="text-xs font-semibold text-emerald-700 mt-1.5">
+                  Multi-site clinics, PMS/CRM webhooks &amp; dedicated onboarding.
+                </p>
+              </div>
+
+              <ul class="mt-6 space-y-3 text-xs sm:text-sm text-slate-700">
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                  <span>Custom AI triage protocols, brand nutrition rules &amp; multi-language packs</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                  <span>Real-time CRM, webhook &amp; PMS data sync + custom analytics events</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                  <span>Dedicated onboarding engineer, staff training &amp; priority SLA</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-8 pt-2">
+              <button
+                type="button"
+                onclick="selectPlanAndStartDemo('Ecosystem Pro / Multi-Site', 'partner')"
+                class="w-full py-3.5 px-6 rounded-full bg-emerald-900 hover:bg-emerald-800 text-white font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2"
+              >
+                <span>Request Pro Onboarding</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 text-amber-400"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. DEMO & ONBOARDING FLOW -->
+    <section id="demo" class="py-20 lg:py-24 bg-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal active">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <!-- Left Column -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="space-y-2.5">
+              <div class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-amber-600">
+                <span class="w-6 h-0.5 bg-amber-500 rounded-full"></span>
+                <span>LIVE DEMO &amp; ONBOARDING</span>
+              </div>
+              <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slateDark leading-tight">
+                Configure Your
+                <span class="text-emerald-800">AI Rollout</span> in 3 Steps
+              </h2>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+                Choose your track, region, and demo format. Submissions log directly to
+                <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded text-emerald-900">window.GreenLaneAnalytics</code>
+                and any configured CRM/webhook endpoint.
+              </p>
+            </div>
+
+            <div class="space-y-3">
+              <div id="demoStepIndicator1" class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-emerald-900 text-white shadow-sm">
+                <span class="w-7 h-7 rounded-full bg-amber-400 text-emerald-950 font-extrabold text-xs flex items-center justify-center shrink-0">1</span>
+                <div>
+                  <p class="text-xs font-bold">Track, Region &amp; Plan</p>
+                  <p id="demoSummaryStep1" class="text-[11px] text-emerald-200">Veterinary Clinic · Belgium / EU · Clinic &amp; Care Starter</p>
+                </div>
+              </div>
+
+              <div id="demoStepIndicator2" class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-cream border border-slate-200/80 text-slateDark">
+                <span class="w-7 h-7 rounded-full bg-amber-100 text-amber-800 font-extrabold text-xs flex items-center justify-center shrink-0">2</span>
+                <div>
+                  <p class="text-xs font-bold">Demo Format &amp; Focus</p>
+                  <p id="demoSummaryStep2" class="text-[11px] text-slate-500">15-min Live AI Walkthrough</p>
+                </div>
+              </div>
+
+              <div id="demoStepIndicator3" class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-cream border border-slate-200/80 text-slateDark">
+                <span class="w-7 h-7 rounded-full bg-amber-100 text-amber-800 font-extrabold text-xs flex items-center justify-center shrink-0">3</span>
+                <div>
+                  <p class="text-xs font-bold">Contact &amp; Launch Checklist</p>
+                  <p class="text-[11px] text-slate-500">Instant confirmation + CRM/webhook dispatch</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl bg-cream border border-amber-200/70 p-5 space-y-2.5">
+              <p class="text-xs font-bold uppercase tracking-wider text-emerald-900">What Happens After You Submit</p>
+              <ul class="space-y-2 text-xs text-slate-700">
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-700 shrink-0"></i>
+                  <span>Event <code class="bg-white px-1.5 py-0.5 rounded border border-slate-200">demo_onboarding_completed</code> dispatched</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-amber-600 shrink-0"></i>
+                  <span>Region-matched compliance pack unlocked</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-700 shrink-0"></i>
+                  <span>Direct inspection available inside the footer Analytics Console</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Form -->
+          <div class="lg:col-span-7 rounded-3xl bg-gradient-to-br from-cream via-white to-emerald-50/60 border border-slate-200/90 shadow-card p-6 sm:p-8 lg:p-10">
+            <form id="inlineDemoFlowForm" onsubmit="submitInlineDemoFlow(event)" class="space-y-6">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <label class="text-xs font-extrabold uppercase tracking-wider text-emerald-900">Step 1 · Select Your Track</label>
+                  <span id="demoSelectedPlanPill" class="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900">Plan: Clinic &amp; Care Starter</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <button
+                    type="button"
+                    data-track="clinic"
+                    onclick="selectDemoTrack('clinic')"
+                    class="demo-track-btn p-3.5 rounded-2xl border-2 border-emerald-900 bg-emerald-900 text-white text-left transition-all"
+                  >
+                    <p class="text-xs font-extrabold">Veterinary Clinic</p>
+                    <p class="text-[11px] text-emerald-200 mt-0.5">Triage, PIMS &amp; reminders</p>
+                  </button>
+
+                  <button
+                    type="button"
+                    data-track="partner"
+                    onclick="selectDemoTrack('partner')"
+                    class="demo-track-btn p-3.5 rounded-2xl border border-slate-200 bg-white hover:border-amber-400 text-slateDark text-left transition-all"
+                  >
+                    <p class="text-xs font-extrabold">Service / Brand Partner</p>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Grooming, boarding, diets</p>
+                  </button>
+
+                  <button
+                    type="button"
+                    data-track="parent"
+                    onclick="selectDemoTrack('parent')"
+                    class="demo-track-btn p-3.5 rounded-2xl border border-slate-200 bg-white hover:border-amber-400 text-slateDark text-left transition-all"
+                  >
+                    <p class="text-xs font-extrabold">Pet Parent Access</p>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Records, AI chat &amp; care</p>
+                  </button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                  <div>
+                    <label for="demoRegionSelect" class="block text-xs font-bold text-slate-700 mb-1.5">Region &amp; Language Pack</label>
+                    <select
+                      id="demoRegionSelect"
+                      onchange="syncDemoSummary()"
+                      class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-medium text-slateDark focus:border-emerald-700 focus:outline-none"
+                    >
+                      <option value="Belgium / EU (EN/FR/NL · GDPR)" selected="">Belgium / EU (EN/FR/NL · GDPR)</option>
+                      <option value="Bulgaria / EU Digital Health (BG/EN)">Bulgaria / EU Digital Health (BG/EN)</option>
+                      <option value="India / High-Volume Care (EN/HI)">India / High-Volume Care (EN/HI)</option>
+                      <option value="Global Standard (EN · ISO-27001)">Global Standard (EN · ISO-27001)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label for="demoPlanSelect" class="block text-xs font-bold text-slate-700 mb-1.5">Target Plan</label>
+                    <select
+                      id="demoPlanSelect"
+                      onchange="syncDemoSummary()"
+                      class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-medium text-slateDark focus:border-emerald-700 focus:outline-none"
+                    >
+                      <option value="Pet Parent Free / Plus">Pet Parent Free / Plus</option>
+                      <option value="Clinic &amp; Care Starter" selected="">Clinic &amp; Care Starter</option>
+                      <option value="Ecosystem Pro / Multi-Site">Ecosystem Pro / Multi-Site</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-3 pt-2 border-t border-slate-200/70">
+                <label class="block text-xs font-extrabold uppercase tracking-wider text-emerald-900">Step 2 · Preferred Demo Format</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <button
+                    type="button"
+                    data-format="15-min Live AI Walkthrough"
+                    onclick="selectDemoFormat('15-min Live AI Walkthrough')"
+                    class="demo-format-btn p-3 rounded-2xl border-2 border-amber-500 bg-amber-50/80 text-left transition-all"
+                  >
+                    <p class="text-xs font-extrabold text-slateDark">15-min Live AI Walkthrough</p>
+                    <p class="text-[11px] text-slate-600 mt-0.5">Triage, booking &amp; timeline</p>
+                  </button>
+
+                  <button
+                    type="button"
+                    data-format="Sandbox Pilot Setup"
+                    onclick="selectDemoFormat('Sandbox Pilot Setup')"
+                    class="demo-format-btn p-3 rounded-2xl border border-slate-200 bg-white hover:border-amber-400 text-left transition-all"
+                  >
+                    <p class="text-xs font-extrabold text-slateDark">Sandbox Pilot Setup</p>
+                    <p class="text-[11px] text-slate-600 mt-0.5">Test workflows &amp; webhooks</p>
+                  </button>
+
+                  <button
+                    type="button"
+                    data-format="Custom Clinic Workflow Audit"
+                    onclick="selectDemoFormat('Custom Clinic Workflow Audit')"
+                    class="demo-format-btn p-3 rounded-2xl border border-slate-200 bg-white hover:border-amber-400 text-left transition-all"
+                  >
+                    <p class="text-xs font-extrabold text-slateDark">Custom Clinic Workflow Audit</p>
+                    <p class="text-[11px] text-slate-600 mt-0.5">14-day rollout &amp; ROI plan</p>
+                  </button>
+                </div>
+              </div>
+
+              <div class="space-y-4 pt-2 border-t border-slate-200/70">
+                <label class="block text-xs font-extrabold uppercase tracking-wider text-emerald-900">Step 3 · Your Details</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="inlineDemoName" class="block text-xs font-semibold text-slate-700 mb-1">Full Name</label>
+                    <input
+                      id="inlineDemoName"
+                      type="text"
+                      required=""
+                      placeholder="Dr. Camille Laurent"
+                      class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:border-emerald-700 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label for="inlineDemoEmail" class="block text-xs font-semibold text-slate-700 mb-1">Email Address</label>
+                    <input
+                      id="inlineDemoEmail"
+                      type="email"
+                      required=""
+                      placeholder="camille@clinic-example.be"
+                      class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:border-emerald-700 focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="inlineDemoOrg" class="block text-xs font-semibold text-slate-700 mb-1">Clinic, Brand, or Pet Name (Optional)</label>
+                  <input
+                    id="inlineDemoOrg"
+                    type="text"
+                    placeholder="Wavre Vet &amp; Wellness / Max (3y Golden Retriever)"
+                    class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:border-emerald-700 focus:outline-none"
+                  />
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
+                  <button
+                    type="submit"
+                    class="inline-flex items-center justify-center gap-2.5 bg-emerald-900 hover:bg-emerald-800 text-white font-bold text-sm px-7 py-3.5 rounded-full shadow-lg shadow-emerald-900/15 transition-all active:scale-95"
+                  >
+                    <span>Launch Demo &amp; Onboarding Request</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-amber-400"></i>
+                  </button>
+
+                  <button
+                    type="button"
+                    onclick="openIntegrationConsole()"
+                    class="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-900 hover:text-emerald-700 underline"
+                  >
+                    <i data-lucide="terminal" class="w-3.5 h-3.5 text-amber-600"></i>
+                    <span>Inspect Analytics Payload</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Confirmation Panel -->
+            <div
+              id="inlineDemoConfirmation"
+              class="hidden rounded-2xl bg-white border border-emerald-200 p-6 space-y-4 shadow-soft"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
+                    <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-extrabold text-xl text-slateDark">Onboarding Request Logged</h3>
+                    <p id="demoConfirmMeta" class="text-xs text-slate-600"></p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onclick="resetInlineDemoFlow()"
+                  class="text-xs font-bold text-emerald-900 hover:underline shrink-0"
+                >
+                  Edit / New Request
+                </button>
+              </div>
+
+              <div class="rounded-xl bg-cream border border-amber-200/70 p-4 space-y-2">
+                <p class="text-xs font-bold text-slateDark">Immediate Next-Steps Checklist:</p>
+                <ul id="demoNextStepsList" class="space-y-1.5 text-xs text-slate-700"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. BOTTOM CTA BANNER -->
+    <section class="py-12 lg:py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal active">
+        <div class="relative rounded-[2rem] overflow-hidden bg-gradient-to-r from-emerald-100/90 via-emerald-50 to-amber-50/90 border border-emerald-200/60 shadow-card">
+          <svg class="absolute inset-0 w-full h-full object-cover pointer-events-none" viewBox="0 0 1200 320" preserveAspectRatio="none" aria-hidden="true">
+            <g fill="#064E3B" opacity="0.08">
+              <rect x="860" y="90" width="28" height="160" rx="2"></rect>
+              <rect x="895" y="65" width="35" height="185" rx="2"></rect>
+              <rect x="938" y="105" width="24" height="145" rx="2"></rect>
+              <rect x="970" y="50" width="40" height="200" rx="2"></rect>
+              <rect x="1018" y="85" width="30" height="165" rx="2"></rect>
+              <rect x="1055" y="110" width="36" height="140" rx="2"></rect>
+            </g>
+            <path d="M0,250 Q320,170 650,235 T1200,180 L1200,320 L0,320 Z" fill="#10B981" opacity="0.16"></path>
+            <path d="M0,285 Q450,235 820,255 T1200,220 L1200,320 L0,320 Z" fill="#064E3B" opacity="0.22"></path>
+          </svg>
+
+          <div class="relative z-10 px-6 py-12 sm:px-12 lg:px-16 lg:py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div class="max-w-xl space-y-3">
+              <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-900 bg-white/80 px-3 py-1 rounded-full">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+                <span>Start Free Today</span>
+              </span>
+              <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-slateDark">
+                Join the GreenLane Pet Ecosystem
+              </h2>
+              <div class="pt-2 flex flex-wrap items-center gap-3">
+                <button
+                  onclick="openDemoModal('parent')"
+                  class="inline-flex items-center gap-2.5 bg-emerald-900 hover:bg-emerald-800 text-white font-semibold px-7 py-3.5 rounded-full shadow-lg shadow-emerald-900/20 transition-all active:scale-95"
+                >
+                  <span>Get Started Free</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 text-amber-400"></i>
+                </button>
+                <button
+                  onclick="openDemoModal('clinic')"
+                  class="inline-flex items-center gap-2 bg-white/90 hover:bg-white text-emerald-950 font-semibold px-6 py-3.5 rounded-full border border-emerald-900/15 transition-all active:scale-95"
+                >
+                  <span>Partner With Us</span>
                 </button>
               </div>
             </div>
 
+            <!-- Person Walking Dog Illustration -->
+            <div class="self-end md:self-center shrink-0 pr-2 sm:pr-8">
+              <svg class="w-48 sm:w-60 h-auto text-emerald-900" viewBox="0 0 260 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Person walking dog silhouette">
+                <circle cx="35" cy="108" r="16" fill="#059669" opacity="0.35"></circle>
+                <rect x="33" y="120" width="4" height="18" fill="#064E3B" opacity="0.4"></rect>
+                <circle cx="232" cy="102" r="18" fill="#059669" opacity="0.3"></circle>
+                <rect x="230" y="116" width="4" height="22" fill="#064E3B" opacity="0.4"></rect>
+                <circle cx="105" cy="34" r="10" fill="#064E3B"></circle>
+                <path d="M97 48 C97 45, 114 45, 116 50 L124 76 L136 88 C138 90, 135 93, 132 91 L117 79 L114 96 L124 134 C125 137, 120 138, 118 135 L107 102 L95 135 C94 138, 89 137, 90 134 L100 92 L96 66 L87 82 C85 85, 81 83, 83 80 L94 52 Z" fill="#064E3B"></path>
+                <path d="M135 89 Q158 106 177 104" stroke="#064E3B" stroke-width="2" stroke-linecap="round"></path>
+                <path d="M174 103 C176 96, 183 94, 187 98 L192 103 L210 103 C215 103, 219 100, 222 96 C224 94, 226 96, 224 99 C221 104, 218 107, 215 109 L218 133 C218 135, 214 136, 213 133 L209 116 L193 116 L189 133 C188 136, 184 135, 185 132 L188 113 L181 109 C176 109, 173 106, 174 103 Z" fill="#064E3B"></path>
+                <path d="M179 97 L175 104 L181 103 Z" fill="#047857"></path>
+              </svg>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- BOTTOM BRAND ECOSYSTEM SECTION: "Same technology. Different needs." -->
-      <section class="ecosystem-section">
-        <div class="ecosystem-container">
-          <h3 class="ecosystem-heading">Same technology. Different needs.</h3>
-
-          <div class="ecosystem-brands-row">
-            <!-- Left Brand: GreenLane Health -->
-            <a href="#health" class="brand-pill-card brand-health">
-              <div class="brand-pill-icon">
-                <img src="assets/icons/greenlane-health-logo.png" alt="GreenLane Health Logo" width="32" height="32">
+    <!-- 9. FOOTER -->
+    <footer id="footer" class="bg-emerald-950 text-white pt-14 pb-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-emerald-800/60">
+          <div class="space-y-2">
+            <a href="#" class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl bg-amber-500 text-emerald-950 flex items-center justify-center">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 13.5c-2.33 0-4.31 1.46-5.11 3.5-.42 1.07.37 2.25 1.52 2.25h7.18c1.15 0 1.94-1.18 1.52-2.25-.8-2.04-2.78-3.5-5.11-3.5zm-5.5-2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
+                </svg>
               </div>
-              <span class="brand-pill-text">
-                <span class="text-greenlane">GreenLane</span> <span class="text-health">Health</span>
+              <span class="font-display font-extrabold text-xl tracking-tight text-white">
+                GreenLane<span class="text-amber-400">Pet</span>
               </span>
             </a>
-
-            <!-- Right Brand: GreenLane Pet -->
-            <a href="#pet" class="brand-pill-card brand-pet">
-              <div class="brand-pill-icon">
-                <img src="assets/icons/paw-purple.svg" alt="GreenLane Pet Paw Icon" width="28" height="28">
-              </div>
-              <span class="brand-pill-text">
-                <span class="text-greenlane">GreenLane</span> <span class="text-pet">Pet</span>
-              </span>
-            </a>
+            <p class="text-xs text-emerald-200/80 tracking-wide">
+              Health. Care. Services. Community.
+            </p>
           </div>
 
+          <nav class="flex flex-wrap items-center gap-6 sm:gap-8 text-sm text-emerald-100/80">
+            <a href="#home" class="hover:text-amber-400 transition-colors">Home</a>
+            <a href="#ai-features" class="hover:text-amber-400 transition-colors">Features</a>
+            <a href="#connected-ecosystem" class="hover:text-amber-400 transition-colors">Ecosystem</a>
+            <a href="#partners" class="hover:text-amber-400 transition-colors">Partners</a>
+            <a href="#ai-assistant" class="hover:text-amber-400 transition-colors">About</a>
+            <button onclick="openDemoModal()" class="hover:text-amber-400 transition-colors">Contact</button>
+          </nav>
+
+          <div class="flex items-center gap-3">
+            <a href="#footer" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-emerald-900/90 hover:bg-amber-500 text-white hover:text-emerald-950 flex items-center justify-center transition-colors">
+              <i data-lucide="linkedin" class="w-4 h-4"></i>
+            </a>
+            <a href="#footer" aria-label="YouTube" class="w-9 h-9 rounded-full bg-emerald-900/90 hover:bg-amber-500 text-white hover:text-emerald-950 flex items-center justify-center transition-colors">
+              <i data-lucide="youtube" class="w-4 h-4"></i>
+            </a>
+            <a href="#footer" aria-label="Twitter / X" class="w-9 h-9 rounded-full bg-emerald-900/90 hover:bg-amber-500 text-white hover:text-emerald-950 flex items-center justify-center transition-colors">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+            <a href="#footer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-emerald-900/90 hover:bg-amber-500 text-white hover:text-emerald-950 flex items-center justify-center transition-colors">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+          </div>
         </div>
-      </section>
 
-      <!-- GLOBAL CONTACT & OFFICES SECTION -->
-      <section class="contact-section" id="contact">
-        <div class="contact-container">
-
-          <div class="contact-header">
-            <h3 class="contact-heading">Get in Touch</h3>
-            <p class="contact-subheading">Our global team is here to support you and your pets across the globe.</p>
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-300/70">
+          <p>
+            © 2026 GreenLane Pet. All rights reserved. · AI guidance supports—but does not replace—licensed veterinary care.
+          </p>
+          <div class="flex flex-wrap items-center gap-5">
+            <a href="#footer" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#footer" class="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#footer" class="hover:text-white transition-colors">Veterinary Compliance</a>
+            <button
+              type="button"
+              onclick="openIntegrationConsole()"
+              class="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-semibold transition-colors"
+            >
+              <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+              <span>Analytics &amp; CRM Console (<span id="eventCounterBadge">1</span>)</span>
+            </button>
           </div>
-
-          <!-- Direct Communication Channels -->
-          <div class="contact-channels-grid">
-
-            <!-- Email -->
-            <a href="mailto:info@digimabble.com" class="contact-channel-card">
-              <div class="channel-icon-circle">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </div>
-              <div class="channel-info">
-                <span class="channel-label">Send us an email</span>
-                <span class="channel-value">info@digimabble.com</span>
-              </div>
-            </a>
-
-            <!-- Belgium Phone -->
-            <a href="tel:+32467859960" class="contact-channel-card">
-              <div class="channel-icon-circle">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                  </path>
-                </svg>
-              </div>
-              <div class="channel-info">
-                <span class="channel-label">Give us a call (Belgium)</span>
-                <span class="channel-value">+32 467 85 99 60</span>
-              </div>
-            </a>
-
-            <!-- India Phone -->
-            <a href="tel:+918197017799" class="contact-channel-card">
-              <div class="channel-icon-circle">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                  </path>
-                </svg>
-              </div>
-              <div class="channel-info">
-                <span class="channel-label">Give us a call (India)</span>
-                <span class="channel-value">+91 8197017799</span>
-              </div>
-            </a>
-
-          </div>
-
-          <!-- Global Locations 3-column Grid -->
-          <div class="locations-grid">
-
-            <!-- Belgium Office -->
-            <div class="location-card">
-              <div class="location-header">
-                <div class="location-pin-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0b7556" stroke-width="2.2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                </div>
-                <h4 class="location-country">Belgium</h4>
-              </div>
-              <p class="location-address">
-                Avenue Eiffel 8,<br>
-                1300 Wavre, Belgium
-              </p>
-            </div>
-
-            <!-- Estonia Office -->
-            <div class="location-card">
-              <div class="location-header">
-                <div class="location-pin-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0b7556" stroke-width="2.2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                </div>
-                <h4 class="location-country">Estonia</h4>
-              </div>
-              <p class="location-address">
-                Tartu mnt 67/1,<br>
-                10115 Tallinn, Estonia
-              </p>
-            </div>
-
-            <!-- India Office -->
-            <div class="location-card">
-              <div class="location-header">
-                <div class="location-pin-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0b7556" stroke-width="2.2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                </div>
-                <h4 class="location-country">India</h4>
-              </div>
-              <p class="location-address">
-                No.66/19, 8th street, Gopalapuram, Gandhinagar,<br>
-                Vellore - 632 006, Tamil Nadu, India
-              </p>
-            </div>
-
-          </div>
-
         </div>
-      </section>
-
-    </main>
-
-    <!-- Footer Copyright -->
-    <footer class="site-footer">
-      <div class="footer-container">
-        <p class="footer-copy">© 2026 GreenLane AI. Powered by Digi Mabble.</p>
       </div>
     </footer>
 
-  </div>
-
-  <!-- INTERACTIVE MODALS -->
-
-  <!-- Video Showcase Modal -->
-  <div class="modal-backdrop" id="videoModal">
-    <div class="modal-dialog modal-video">
-      <button class="modal-close" id="closeVideoModal" aria-label="Close modal">&times;</button>
-      <div class="video-container-inner">
-        <div class="video-mockup-player">
-          <div class="player-overlay">
-            <div class="player-play-btn" id="playToggleBtn">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-            <div class="player-info">
-              <h4>GreenLane Pet: Complete Care In Minutes</h4>
-              <p>See how thousands of pet parents schedule visits and track vet records effortlessly.</p>
-            </div>
-          </div>
-          <img src="assets/images/golden-retriever.jpg" alt="Video Preview Poster" class="video-poster-img">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Appointment Booking Modal -->
-  <div class="modal-backdrop" id="bookingModal">
-    <div class="modal-dialog modal-booking">
-      <button class="modal-close" id="closeBookingModal" aria-label="Close modal">&times;</button>
-      <div class="booking-header">
-        <div class="modal-icon-badge">
-          <img src="assets/icons/paw-purple.svg" alt="Paw" width="24" height="24">
-        </div>
-        <div>
-          <h3>Book an Appointment</h3>
-          <p>Schedule a visit with a licensed veterinarian in under 2 minutes.</p>
-        </div>
-      </div>
-
-      <form class="booking-form" id="appointmentForm" onsubmit="return false;">
-        <div class="form-group">
-          <label for="petName">Pet Name</label>
-          <input type="text" id="petName" placeholder="e.g. Barkley" value="Barkley" required>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="petType">Pet Type</label>
-            <select id="petType">
-              <option value="dog">Dog (Canine)</option>
-              <option value="cat">Cat (Feline)</option>
-              <option value="other">Other Pet</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="serviceType">Service Needed</label>
-            <select id="serviceType">
-              <option value="checkup">Routine Checkup</option>
-              <option value="vaccine">Vaccination & Booster</option>
-              <option value="urgent">Urgent / Illness Consultation</option>
-              <option value="grooming">Grooming & Hygiene</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="appointmentDate">Preferred Date</label>
-            <input type="date" id="appointmentDate" value="2026-11-10">
-          </div>
-          <div class="form-group">
-            <label for="appointmentTime">Preferred Time</label>
-            <select id="appointmentTime">
-              <option>10:00 AM</option>
-              <option>11:30 AM</option>
-              <option selected>02:00 PM</option>
-              <option>04:30 PM</option>
-            </select>
-          </div>
-        </div>
-
-        <button type="submit" class="btn-primary-green btn-full" id="confirmBookingBtn">Confirm Appointment</button>
-      </form>
-      <div class="booking-success" id="bookingSuccessMessage">
-        <div class="success-icon">✓</div>
-        <h4>Appointment Confirmed!</h4>
-        <p>A confirmation email and calendar invite has been sent to your inbox.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- AI Pet Assistant Chat Modal -->
-  <div class="modal-backdrop" id="aiModal">
-    <div class="modal-dialog modal-ai">
-      <button class="modal-close" id="closeAiModal" aria-label="Close modal">&times;</button>
-      <div class="ai-chat-header">
-        <div class="ai-avatar">
-          <img src="assets/icons/ai-purple.svg" alt="AI Icon" width="22" height="22">
-        </div>
-        <div>
-          <h4>GreenLane AI Pet Assistant</h4>
-          <span class="ai-status"><span class="dot-online"></span> Always Online (24/7 Veterinary Knowledge)</span>
-        </div>
-      </div>
-      <div class="ai-chat-messages" id="aiMessages">
-        <div class="chat-bubble ai-bubble">
-          Hello! I'm your GreenLane AI Pet Assistant. Ask me anything about Barkley's nutrition, behavior, checkups, or
-          symptoms!
-        </div>
-      </div>
-      <div class="ai-chat-input-bar">
-        <input type="text" id="aiInput" placeholder="Ask a question (e.g., 'Is peanut butter safe for dogs?')...">
-        <button type="button" id="aiSendBtn" aria-label="Send query">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
+    <!-- MODAL 1: DEMO MODAL -->
+    <div
+      id="demoModal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slateDark/60 backdrop-blur-xs"
+    >
+      <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative">
+        <button
+          onclick="closeDemoModal()"
+          aria-label="Close Modal"
+          class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors"
+        >
+          <i data-lucide="x" class="w-4 h-4"></i>
         </button>
+
+        <div id="demoFormContent">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-900 text-amber-400 flex items-center justify-center mb-4">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-display font-extrabold text-2xl text-slateDark">
+            Experience GreenLane Pet AI
+          </h3>
+          <p class="text-sm text-slate-600 mt-1">
+            Request early access for your pet family or book a live clinic &amp; partner ecosystem demo.
+          </p>
+
+          <form onsubmit="submitDemoForm(event)" class="mt-5 space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name</label>
+              <input
+                type="text"
+                required=""
+                placeholder="Alex Morgan"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-emerald-700 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Work or Personal Email</label>
+              <input
+                type="email"
+                required=""
+                placeholder="alex@example.com"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-emerald-700 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">I am joining as a...</label>
+              <select
+                id="demoRoleSelect"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-white focus:border-emerald-700 focus:outline-none"
+              >
+                <option value="parent">Pet Parent (Dogs, Cats &amp; More — Early Access)</option>
+                <option value="clinic">Veterinary Clinic / Hospital (Practice AI Demo)</option>
+                <option value="services">Grooming, Boarding &amp; Pet Services</option>
+                <option value="partner">Pet Brand / Smart Hardware Partner</option>
+              </select>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-emerald-900 hover:bg-emerald-800 text-white font-semibold py-3 rounded-full shadow-md transition-all flex items-center justify-center gap-2"
+            >
+              <span>Confirm Request</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-amber-400"></i>
+            </button>
+          </form>
+        </div>
+
+        <div id="demoSuccessContent" class="hidden text-center py-6 space-y-4">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+            <i data-lucide="check-circle-2" class="w-9 h-9"></i>
+          </div>
+          <h3 class="font-display font-extrabold text-2xl text-slateDark">You're on the Priority List!</h3>
+          <p class="text-sm text-slate-600">
+            Thank you for joining GreenLanePet. Our team has received your request.
+          </p>
+          <button
+            onclick="closeDemoModal()"
+            class="bg-emerald-900 text-white text-sm font-semibold px-6 py-2.5 rounded-full"
+          >
+            Back to Ecosystem
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <!-- MODAL 2: VIDEO TOUR -->
+    <div
+      id="videoModal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slateDark/75 backdrop-blur-xs"
+    >
+      <div class="bg-emerald-950 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-emerald-800 relative">
+        <div class="px-6 py-4 flex items-center justify-between border-b border-emerald-800/80">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+            <span class="font-display font-bold text-sm text-white">GreenLane Pet AI — 60-Second Ecosystem Tour</span>
+          </div>
+          <button
+            onclick="closeVideoModal()"
+            aria-label="Close Video Preview"
+            class="w-8 h-8 rounded-full bg-emerald-900 hover:bg-emerald-800 text-emerald-200 flex items-center justify-center"
+          >
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
 
+        <div class="p-6 sm:p-8 bg-gradient-to-br from-emerald-950 via-emerald-900 to-slateDark text-white space-y-6">
+          <div class="relative rounded-2xl overflow-hidden border border-emerald-700/60 aspect-video bg-slateDark flex flex-col justify-between p-5">
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-semibold">
+                AI TELEMETRY ENGINE v2.6
+              </span>
+              <span class="text-xs font-mono text-emerald-300">00:24 / 01:00</span>
+            </div>
+
+            <div class="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-3 my-auto">
+              <div class="bg-slateDark/80 backdrop-blur-md border border-emerald-500/30 rounded-xl p-3">
+                <p class="text-[11px] text-amber-400 font-bold">01. UNDERSTAND</p>
+                <p class="text-xs text-slate-200 mt-1">AI analyzes breed, wearable vitals &amp; diet logs in real time.</p>
+              </div>
+              <div class="bg-slateDark/80 backdrop-blur-md border border-emerald-500/30 rounded-xl p-3">
+                <p class="text-[11px] text-amber-400 font-bold">02. CONNECT</p>
+                <p class="text-xs text-slate-200 mt-1">Sync with vetted clinics, groomers &amp; sitters.</p>
+              </div>
+              <div class="bg-slateDark/80 backdrop-blur-md border border-emerald-500/30 rounded-xl p-3">
+                <p class="text-[11px] text-amber-400 font-bold">03. CARE</p>
+                <p class="text-xs text-slate-200 mt-1">Automated prescriptions, vaccine reminders &amp; triage.</p>
+              </div>
+            </div>
+
+            <div class="relative z-10 space-y-1.5">
+              <div class="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
+                <div class="w-2/5 h-full bg-gradient-to-r from-amber-400 to-emerald-400 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <p class="text-xs text-emerald-200">Ready to test the AI Assistant yourself?</p>
+            <button
+              onclick="closeVideoModal(); focusPhoneChat();"
+              class="bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold text-xs px-5 py-2.5 rounded-full transition-colors"
+            >
+              Launch Interactive AI Demo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 3: INTEGRATION CONSOLE -->
+    <div
+      id="integrationModal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slateDark/70 backdrop-blur-xs"
+    >
+      <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative space-y-5 max-h-[90vh] flex flex-col">
+        <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <div class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full mb-1">
+              <i data-lucide="webhook" class="w-3.5 h-3.5 text-amber-600"></i>
+              <span>Backend &amp; Analytics Hooks</span>
+            </div>
+            <h3 class="font-display font-extrabold text-xl text-slateDark">GreenLane Analytics &amp; CRM Event Stream</h3>
+            <p class="text-xs text-slate-500 mt-0.5">
+              Inspect live events dispatched via <code class="bg-slate-100 px-1.5 py-0.5 rounded text-emerald-900">window.GreenLaneAnalytics</code>.
+            </p>
+          </div>
+          <button
+            onclick="closeIntegrationConsole()"
+            aria-label="Close Integration Console"
+            class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center shrink-0"
+          >
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-cream p-3.5 rounded-2xl border border-amber-200/60">
+          <div class="sm:col-span-2">
+            <label for="webhookEndpointInput" class="block text-[11px] font-bold text-slate-700 mb-1">Webhook / CRM Endpoint URL (Optional)</label>
+            <input
+              id="webhookEndpointInput"
+              type="url"
+              placeholder="https://hooks.zapier.com/hooks/catch/... or https://api.yourcrm.com/leads"
+              oninput="updateWebhookEndpoint(this.value)"
+              class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs focus:border-emerald-700 focus:outline-none"
+            />
+          </div>
+          <div class="flex flex-col justify-end gap-1.5">
+            <button
+              type="button"
+              onclick="sendTestWebhookEvent()"
+              class="w-full bg-emerald-900 hover:bg-emerald-800 text-white text-xs font-semibold py-2 px-3 rounded-xl transition-colors"
+            >
+              Send Test Payload
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs">
+          <span class="font-bold text-slateDark">Captured Events (<span id="modalEventCount">1</span>)</span>
+          <button type="button" onclick="clearAnalyticsLog()" class="text-slate-500 hover:text-emerald-900 font-semibold">Clear Log</button>
+        </div>
+
+        <div
+          id="analyticsEventList"
+          class="flex-1 overflow-y-auto chat-scroll bg-slate-950 text-emerald-100 rounded-2xl p-4 font-mono text-[11px] space-y-2.5 min-h-[220px]"
+        ></div>
+      </div>
+    </div>
+
+    <!-- SCRIPT LOGIC -->
+    <script>
+      lucide.createIcons();
+
+      // 0. Integration Layer
+      const GREENLANE_INTEGRATION_CONFIG = {
+        WEBHOOK_URL: "",
+        CRM_ENDPOINT: "",
+        SOURCE_APP: "greenlanepet-landing-v2",
+        FORWARD_TO_DATA_LAYER: true,
+      };
+
+      const analyticsEventHistory = [];
+
+      function updateEventCounters() {
+        const total = analyticsEventHistory.length;
+        const badge = document.getElementById("eventCounterBadge");
+        const modalBadge = document.getElementById("modalEventCount");
+        if (badge) badge.textContent = String(total);
+        if (modalBadge) modalBadge.textContent = String(total);
+      }
+
+      function renderAnalyticsLog() {
+        const container = document.getElementById("analyticsEventList");
+        if (!container) return;
+
+        if (analyticsEventHistory.length === 0) {
+          container.innerHTML = '<p class="text-slate-400">No events captured yet.</p>';
+          return;
+        }
+
+        container.innerHTML = analyticsEventHistory
+          .slice()
+          .reverse()
+          .map(
+            (item) => `
+          <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-3 space-y-1">
+            <div class="flex items-center justify-between text-[10px]">
+              <span class="font-bold text-amber-400">${escapeHtml(item.eventName)}</span>
+              <span class="text-slate-400">${escapeHtml(item.timestamp)}</span>
+            </div>
+            <pre class="text-[10px] text-emerald-200/90 overflow-x-auto whitespace-pre-wrap">${escapeHtml(JSON.stringify(item.payload, null, 2))}</pre>
+          </div>
+        `
+          )
+          .join("");
+      }
+
+      window.GreenLaneAnalytics = {
+        config: GREENLANE_INTEGRATION_CONFIG,
+        track(eventName, payload = {}) {
+          const record = {
+            eventName,
+            timestamp: new Date().toISOString(),
+            source: GREENLANE_INTEGRATION_CONFIG.SOURCE_APP,
+            payload,
+          };
+          analyticsEventHistory.push(record);
+          updateEventCounters();
+          renderAnalyticsLog();
+          return record;
+        },
+      };
+
+      function openIntegrationConsole() {
+        renderAnalyticsLog();
+        const modal = document.getElementById("integrationModal");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        lucide.createIcons();
+      }
+
+      function closeIntegrationConsole() {
+        const modal = document.getElementById("integrationModal");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+
+      function updateWebhookEndpoint(url) {
+        GREENLANE_INTEGRATION_CONFIG.WEBHOOK_URL = url.trim();
+      }
+
+      function sendTestWebhookEvent() {
+        window.GreenLaneAnalytics.track("integration_test_ping", {
+          webhookConfigured: Boolean(GREENLANE_INTEGRATION_CONFIG.WEBHOOK_URL),
+          webhookUrl: GREENLANE_INTEGRATION_CONFIG.WEBHOOK_URL || "(local console only)",
+          activeAudience: currentAudience,
+        });
+      }
+
+      function clearAnalyticsLog() {
+        analyticsEventHistory.length = 0;
+        updateEventCounters();
+        renderAnalyticsLog();
+      }
+
+      window.GreenLaneAnalytics.track("landing_page_viewed", {
+        defaultAudience: "parent",
+        activePillar: "healthcare",
+        defaultRegion: "be_eu",
+        defaultCurrency: "EUR_BE",
+      });
+
+      // 1. Mobile Menu & Audience Switcher
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
+
+      let currentAudience = "parent";
+      const heroContentByAudience = {
+        parent: {
+          headline: `One Intelligent<br />Ecosystem<br />for <span class="bg-gradient-to-r from-amber-500 via-amber-500 to-emerald-600 bg-clip-text text-transparent">Every Pet</span>`,
+          subheadline: "AI care guidance, smart health reminders, and connected clinic & pet-service workflows—giving pet parents calm confidence and clinics effortless coordination.",
+          primaryCta: "Try AI Assistant",
+          secondaryCta: "For Clinics & Partners",
+          photoTitle: "AI Wellness Sync Active",
+          photoSub: "Day-1 Health Reminders & Care Notes Ready",
+          trustHtml: `
+            <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i><span>AI Supports—Never Replaces Vets</span></div>
+            <div class="flex items-center gap-2"><i data-lucide="bell-ring" class="w-4 h-4 text-amber-500"></i><span>Day-1 Health &amp; Vaccine Sync</span></div>
+            <div class="flex items-center gap-2"><i data-lucide="network" class="w-4 h-4 text-emerald-600"></i><span>Connected Care Network</span></div>
+          `,
+          badges: [
+            { icon: "heart-pulse", label: "Resting Vitals", val: '78 BPM · <span class="text-emerald-600">Normal</span>' },
+            { icon: "calendar-check-2", label: "Smart Reminder", val: "Booster Due in 5d" },
+            { icon: "shopping-bag", label: "AI Auto-Refill", val: "Joint & Coat Diet" },
+            { icon: "home", label: "Safe Boarding", val: "3 Verified Hosts" },
+          ],
+        },
+        clinic: {
+          headline: `Calm Triage &<br />Practice Flow<br />for <span class="bg-gradient-to-r from-amber-500 via-amber-500 to-emerald-600 bg-clip-text text-transparent">Modern Clinics</span>`,
+          subheadline: "Structured pre-visit intake, automated reminders, and connected care workflows that reduce front-desk load while keeping licensed vets in full control.",
+          primaryCta: "Book Clinic Demo",
+          secondaryCta: "For Pet Parents",
+          photoTitle: "Automated Triage & SOAP Ready",
+          photoSub: "Pre-Visit History & Vitals Synced to Clinic",
+          trustHtml: `
+            <div class="flex items-center gap-2"><i data-lucide="file-check-2" class="w-4 h-4 text-emerald-600"></i><span>Pre-Visit Intake Notes</span></div>
+            <div class="flex items-center gap-2"><i data-lucide="trending-down" class="w-4 h-4 text-amber-500"></i><span>-42% No-Show Rate</span></div>
+            <div class="flex items-center gap-2"><i data-lucide="lock" class="w-4 h-4 text-emerald-600"></i><span>GDPR &amp; Vet Guardrails</span></div>
+          `,
+          badges: [
+            { icon: "clipboard-check", label: "Automated Intake", val: "100% Pre-Triaged" },
+            { icon: "calendar-x", label: "No-Show Reduction", val: '-42% <span class="text-emerald-600">This Month</span>' },
+            { icon: "file-text", label: "AI SOAP Notes", val: "Saved 14.5 hrs/wk" },
+            { icon: "refresh-cw", label: "PIMS Sync", val: "Two-Way Live API" },
+          ],
+        },
+      };
+
+      function switchHeroAudience(role) {
+        currentAudience = role;
+        window.GreenLaneAnalytics.track("hero_audience_switched", { audience: role });
+        const data = heroContentByAudience[role];
+        const btnParent = document.getElementById("btnAudienceParent");
+        const btnClinic = document.getElementById("btnAudienceClinic");
+
+        if (role === "parent") {
+          btnParent.className = "flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-emerald-900 text-white shadow-xs";
+          btnClinic.className = "flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-emerald-900";
+        } else {
+          btnClinic.className = "flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-emerald-900 text-white shadow-xs";
+          btnParent.className = "flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-emerald-900";
+        }
+
+        document.getElementById("heroHeadline").innerHTML = data.headline;
+        document.getElementById("heroSubheadline").textContent = data.subheadline;
+        document.getElementById("heroPrimaryCtaText").textContent = data.primaryCta;
+        document.getElementById("heroSecondaryCtaText").textContent = data.secondaryCta;
+        document.getElementById("heroPhotoBannerTitle").textContent = data.photoTitle;
+        document.getElementById("heroPhotoBannerSub").textContent = data.photoSub;
+        document.getElementById("heroTrustMetrics").innerHTML = data.trustHtml;
+
+        data.badges.forEach((b, idx) => {
+          const i = idx + 1;
+          document.getElementById(`badge${i}Icon`).innerHTML = `<i data-lucide="${b.icon}" class="w-5 h-5"></i>`;
+          document.getElementById(`badge${i}Label`).textContent = b.label;
+          document.getElementById(`badge${i}Value`).innerHTML = b.val;
+        });
+
+        lucide.createIcons();
+      }
+
+      function handleHeroPrimaryCta() {
+        if (currentAudience === "clinic") {
+          openDemoModal("clinic");
+        } else {
+          document.getElementById("ai-assistant").scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
+      function handleHeroSecondaryCta() {
+        if (currentAudience === "clinic") {
+          switchHeroAudience("parent");
+          document.getElementById("ai-assistant").scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+          switchHeroAudience("clinic");
+          document.getElementById("workflow").scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+
+      // 2. 8 Pillars
+      const pillarsData = [
+        { id: "healthcare", name: "Healthcare", scope: "day_one", scopeLabel: "Day-One Core", icon: "heart-handshake", title: "AI Predictive Healthcare", badge: "24/7 Clinical Sync", desc: "Everyday care guidance, automated vaccination alerts, red-flag escalation prompts, and structured pre-visit notes." },
+        { id: "grooming", name: "Grooming", scope: "ecosystem", scopeLabel: "Connected Ecosystem", icon: "scissors", title: "Smart Coat & Grooming Scheduler", badge: "Ecosystem Service", desc: "Connected care extension that matches coat needs with partner groomers once your core pet profile is active." },
+        { id: "walking", name: "Walking", scope: "ecosystem", scopeLabel: "Connected Ecosystem", icon: "footprints", title: "GPS Activity & Walker Matching", badge: "Ecosystem Service", desc: "Connected network feature linking activity goals with verified walkers and smart tracking." },
+        { id: "training", name: "Training", scope: "ecosystem", scopeLabel: "Connected Ecosystem", icon: "graduation-cap", title: "AI Behavior & Obedience Coach", badge: "Ecosystem Care", desc: "Guided behavior routines tailored to breed traits and age milestones within the broader ecosystem." },
+        { id: "boarding", name: "Boarding", scope: "ecosystem", scopeLabel: "Connected Ecosystem", icon: "home", title: "Verified Stays & Care Handover", badge: "Ecosystem Service", desc: "Share feeding routines, medications, and vet contacts with connected boarding hosts during trips." },
+        { id: "nutrition", name: "Nutrition", scope: "day_one", scopeLabel: "Day-One Core", icon: "soup", title: "Precision AI Meal & Calorie Engine", badge: "Day-1 Guidance + Partners", desc: "Calculates daily portions and flags ingredient sensitivities on Day 1, with partner diet options as you connect." },
+        { id: "products", name: "Products", scope: "ecosystem", scopeLabel: "Connected Ecosystem", icon: "shopping-bag", title: "Curated Smart Gear & Essentials", badge: "Connected Brands", desc: "Connects vet-vetted supplies, smart hardware, and partner refills (Royal Canin, Zoetis, Boehringer Ingelheim)." },
+        { id: "community", name: "Community", scope: "ecosystem", scopeLabel: "Connected Ecosystem", icon: "users", title: "Local Pet Parent & Breed Circle", badge: "Connected Network", desc: "Connects pet parents, local care providers, and animal welfare groups across the wider community." },
+      ];
+
+      let activePillarId = "healthcare";
+      let pillarScopeFilter = "all";
+
+      function setPillarScopeFilter(scope) {
+        pillarScopeFilter = scope;
+        window.GreenLaneAnalytics.track("pillar_scope_filter_changed", { scope });
+
+        const allBtn = document.getElementById("scopeBtnAll");
+        const dayOneBtn = document.getElementById("scopeBtnDayOne");
+        const ecoBtn = document.getElementById("scopeBtnEcosystem");
+        const summaryEl = document.getElementById("scopeFilterSummary");
+
+        allBtn.className = scope === "all" ? "px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-900 text-white transition-all" : "px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-600 hover:text-emerald-900 transition-all";
+        dayOneBtn.className = scope === "day_one" ? "px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-900 text-white transition-all" : "px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-600 hover:text-emerald-900 transition-all";
+        ecoBtn.className = scope === "ecosystem" ? "px-3.5 py-1.5 rounded-full text-xs font-bold bg-amber-500 text-slate-950 transition-all" : "px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-600 hover:text-amber-800 transition-all";
+
+        if (scope === "day_one") {
+          summaryEl.innerHTML = "Showing <strong>Day-One Core</strong> capabilities available right away: AI assistant, health reminders, booking &amp; clinic triage.";
+        } else if (scope === "ecosystem") {
+          summaryEl.innerHTML = "Showing <strong>Connected Ecosystem</strong> extensions: grooming, walking, boarding, hardware, welfare &amp; partner brands.";
+        } else {
+          summaryEl.innerHTML = "<strong>Day-One Core</strong> powers AI guidance, reminders, booking &amp; clinic intake immediately; <strong>Connected Ecosystem</strong> links care services, hardware &amp; partners.";
+        }
+
+        const visiblePillars = scope === "all" ? pillarsData : pillarsData.filter((p) => p.scope === scope);
+        if (visiblePillars.length > 0 && !visiblePillars.some((p) => p.id === activePillarId)) {
+          selectPillar(visiblePillars[0].id, false);
+        } else {
+          renderPillarTabs();
+        }
+      }
+
+      function renderPillarTabs() {
+        const container = document.getElementById("pillarTabs");
+        const filtered = pillarScopeFilter === "all" ? pillarsData : pillarsData.filter((p) => p.scope === pillarScopeFilter);
+
+        container.className = filtered.length <= 2
+          ? "grid grid-cols-1 sm:grid-cols-2 gap-3"
+          : filtered.length <= 6
+            ? "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5"
+            : "grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2";
+
+        container.innerHTML = filtered
+          .map((pillar) => {
+            const isActive = pillar.id === activePillarId;
+            const isDayOne = pillar.scope === "day_one";
+            return `
+              <button
+                type="button"
+                onclick="selectPillar('${pillar.id}')"
+                class="flex flex-col items-center justify-center py-3 px-2 rounded-2xl transition-all duration-200 border relative ${
+                  isActive
+                    ? "bg-emerald-900 text-white border-emerald-900 shadow-md scale-[1.02]"
+                    : "bg-white hover:bg-cream text-slate-700 border-slate-100 hover:border-amber-200"
+                }"
+              >
+                <span class="text-[9px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded-full mb-1.5 ${
+                  isActive
+                    ? "bg-amber-400 text-emerald-950"
+                    : isDayOne
+                      ? "bg-emerald-50 text-emerald-800"
+                      : "bg-amber-50 text-amber-800"
+                }">${isDayOne ? "Day 1" : "Network"}</span>
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center mb-1.5 ${
+                  isActive ? "bg-amber-500 text-emerald-950" : "bg-emerald-50 text-emerald-700"
+                }">
+                  <i data-lucide="${pillar.icon}" class="w-4 h-4"></i>
+                </div>
+                <span class="text-xs font-semibold tracking-tight">${pillar.name}</span>
+              </button>
+            `;
+          })
+          .join("");
+        lucide.createIcons();
+      }
+
+      function selectPillar(id, shouldTrack = true) {
+        activePillarId = id;
+        const selected = pillarsData.find((p) => p.id === id);
+        if (!selected) return;
+
+        if (shouldTrack) {
+          window.GreenLaneAnalytics.track("care_pillar_selected", { pillarId: selected.id, pillarName: selected.name });
+        }
+
+        renderPillarTabs();
+        document.getElementById("pillarPreviewTitle").textContent = selected.title;
+        const scopePill = document.getElementById("pillarPreviewScopePill");
+        scopePill.textContent = selected.scopeLabel;
+        scopePill.className = selected.scope === "day_one"
+          ? "text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-900 text-amber-300"
+          : "text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500 text-slate-950";
+        document.getElementById("pillarPreviewBadge").textContent = selected.badge;
+        document.getElementById("pillarPreviewDesc").textContent = selected.desc;
+        document.getElementById("pillarPreviewIcon").innerHTML = `<i data-lucide="${selected.icon}" class="w-5 h-5"></i>`;
+        lucide.createIcons();
+      }
+
+      // 3. AI Chat Simulation
+      const chatMessages = document.getElementById("chatMessages");
+      const chatInput = document.getElementById("chatInput");
+
+      const scenarioData = {
+        chocolate: {
+          userPrompt: "Red-Flag Check: Max (29 kg) just ate ~40g of 70% dark chocolate!",
+          reply: "<strong>URGENT RED-FLAG ESCALATION ⚠️</strong><br/>For Max (29 kg), 40g of 70% dark chocolate reaches a moderate theobromine risk (~9.6 mg/kg).<br/>• <strong>Boundary:</strong> AI guidance supports—never replaces—a licensed veterinarian.<br/>• <strong>Immediate action:</strong> Contact your licensed vet or 24/7 emergency clinic right now before trying home remedies. I also prepared a pre-visit summary for <strong>GreenLane Vet Clinic</strong>.",
+          tag: "Red-Flag Escalation · Contact Vet Now",
+        },
+        routine: {
+          userPrompt: "Everyday Care: Book Max’s annual DHPP booster and coat grooming.",
+          reply: "<strong>Everyday Care Plan Ready ✅</strong><br/>• <strong>Day-One Core:</strong> DHPP booster reminder &amp; pre-visit note prepared for Saturday, Nov 22 at 10:00 AM.<br/>• <strong>Connected Ecosystem:</strong> Optional grooming slot held nearby at 11:30 AM.<br/><em>Note: Routine scheduling is automated; a licensed vet performs the clinical exam.</em>",
+          tag: "Everyday Care · Day-1 + Ecosystem",
+        },
+        renal: {
+          userPrompt: "Compare renal support diets compatible with Max’s chicken sensitivity.",
+          reply: "<strong>Everyday Diet Comparison (Non-Clinical):</strong><br/>1. <strong>Royal Canin Renal Support S</strong> (Hydrolyzed soy protein, low phosphorus 0.3%)<br/>2. <strong>Hill’s k/d Early Support</strong> (Controlled protein, Omega-3 enriched)<br/><em>Always confirm prescription or therapeutic diets with your licensed veterinarian first.</em>",
+          tag: "Everyday Diet Info · Vet Approval Required",
+        },
+      };
+
+      function triggerScenario(key) {
+        const scenario = scenarioData[key];
+        if (!scenario) return;
+        window.GreenLaneAnalytics.track("ai_scenario_triggered", { scenarioKey: key });
+        document.getElementById("ai-assistant").scrollIntoView({ behavior: "smooth", block: "center" });
+        setTimeout(() => {
+          appendUserMessage(scenario.userPrompt);
+          appendTypingIndicator();
+          setTimeout(() => {
+            appendAiMessage(scenario.reply, scenario.tag, true);
+          }, 700);
+        }, 250);
+      }
+
+      function appendUserMessage(text) {
+        const div = document.createElement("div");
+        div.className = "flex justify-end";
+        div.innerHTML = `<div class="bg-emerald-900 text-white text-xs rounded-2xl rounded-tr-none px-3.5 py-2.5 max-w-[84%] leading-relaxed shadow-2xs">${escapeHtml(text)}</div>`;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function appendTypingIndicator() {
+        const div = document.createElement("div");
+        div.id = "aiTyping";
+        div.className = "flex items-start gap-2";
+        div.innerHTML = `
+          <div class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 text-xs font-bold border border-amber-200">AI</div>
+          <div class="bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs rounded-2xl rounded-tl-none px-3.5 py-2.5 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 bg-emerald-600 rounded-full animate-bounce"></span>
+            <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-bounce" style="animation-delay:0.15s"></span>
+            <span class="w-1.5 h-1.5 bg-emerald-600 rounded-full animate-bounce" style="animation-delay:0.3s"></span>
+          </div>
+        `;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function appendAiMessage(text, tag = "GreenLane AI", allowHtml = false) {
+        const typing = document.getElementById("aiTyping");
+        if (typing) typing.remove();
+
+        const formatted = allowHtml ? text : escapeHtml(text);
+        const div = document.createElement("div");
+        div.className = "flex items-start gap-2";
+        div.innerHTML = `
+          <div class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 text-xs font-bold border border-amber-200">AI</div>
+          <div class="bg-emerald-50/95 border border-emerald-100 text-slateDark text-xs rounded-2xl rounded-tl-none px-3.5 py-2.5 max-w-[86%] leading-relaxed shadow-2xs space-y-1.5">
+            <span class="inline-block text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-md">${tag}</span>
+            <div class="space-y-1">${formatted}</div>
+          </div>
+        `;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function handlePresetAction(actionText) {
+        appendUserMessage(actionText);
+        appendTypingIndicator();
+        setTimeout(() => {
+          appendAiMessage("Max’s core vaccinations are <strong>Up to Date</strong> ✅. Next DHPP booster is due in <strong>5 days</strong>, and resting heart rate averaged <strong>78 BPM</strong> this week (Optimal).", "Wellness Score: 98/100", true);
+        }, 650);
+      }
+
+      function handleChatSubmit(event) {
+        event.preventDefault();
+        const text = chatInput.value.trim();
+        if (!text) return;
+        chatInput.value = "";
+        appendUserMessage(text);
+        appendTypingIndicator();
+        setTimeout(() => {
+          appendAiMessage("I’ve checked **Max’s** health profile! Would you like me to run an **AI symptom triage**, schedule his **DHPP booster**, or compare **nutrition plans**?", "Smart Companion", true);
+        }, 700);
+      }
+
+      function resetChat() {
+        chatMessages.innerHTML = `
+          <div class="flex items-start gap-2">
+            <div class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 text-xs font-bold border border-amber-200">AI</div>
+            <div class="bg-emerald-50 border border-emerald-100 text-slateDark text-xs rounded-2xl rounded-tl-none px-3.5 py-2.5 leading-relaxed shadow-2xs">
+              Hi! I’m synced with <strong>Max’s</strong> health profile. Tap a scenario or choose an action below:
+            </div>
+          </div>
+          <div class="space-y-2 pl-2">
+            <button onclick="triggerScenario('chocolate')" class="w-full text-left flex items-center gap-2.5 bg-white hover:bg-amber-50 border border-slate-200/90 hover:border-amber-400 rounded-xl px-3 py-2 text-xs font-medium text-slateDark transition-all shadow-2xs">
+              <span class="w-6 h-6 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0"><i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i></span>
+              <span>Emergency: Ate dark chocolate</span>
+            </button>
+            <button onclick="triggerScenario('routine')" class="w-full text-left flex items-center gap-2.5 bg-white hover:bg-emerald-50 border border-slate-200/90 hover:border-emerald-400 rounded-xl px-3 py-2 text-xs font-medium text-slateDark transition-all shadow-2xs">
+              <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0"><i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i></span>
+              <span>Book annual booster & grooming</span>
+            </button>
+            <button onclick="triggerScenario('renal')" class="w-full text-left flex items-center gap-2.5 bg-white hover:bg-amber-50 border border-slate-200/90 hover:border-amber-400 rounded-xl px-3 py-2 text-xs font-medium text-slateDark transition-all shadow-2xs">
+              <span class="w-6 h-6 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0"><i data-lucide="scale" class="w-3.5 h-3.5"></i></span>
+              <span>Compare renal diet options</span>
+            </button>
+            <button onclick="handlePresetAction('Check health records')" class="w-full text-left flex items-center gap-2.5 bg-white hover:bg-emerald-50 border border-slate-200/90 hover:border-emerald-400 rounded-xl px-3 py-2 text-xs font-medium text-slateDark transition-all shadow-2xs">
+              <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0"><i data-lucide="file-heart" class="w-3.5 h-3.5"></i></span>
+              <span>Check health records</span>
+            </button>
+          </div>
+        `;
+        lucide.createIcons();
+      }
+
+      function focusPhoneChat() {
+        document.getElementById("ai-assistant").scrollIntoView({ behavior: "smooth", block: "center" });
+        setTimeout(() => chatInput.focus(), 500);
+      }
+
+      function escapeHtml(str) {
+        const div = document.createElement("div");
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      // 4. Ecosystem Nodes
+      const ecosystemNodesInfo = {
+        clinics: { tag: "Veterinary Clinics", text: "Two-way PIMS integration with automated AI intake notes, digital prescriptions, and post-visit follow-ups." },
+        services: { tag: "Pet Services", text: "Instant booking and health-requirement sharing for verified groomers, trainers, walkers, and boutique boarding." },
+        brands: { tag: "Pet Brands", text: "AI-matched nutrition, preventative care subscriptions, and prescription diets tailored to each pet’s clinical profile." },
+        community: { tag: "Pet Community", text: "Verified local breed circles, safe playdate matching, neighborhood health alerts, and instant lost-pet radar." },
+        welfare: { tag: "Animal Welfare", text: "Seamless shelter-to-home medical record transfers and AI behavior matching to reduce adoption returns." },
+        hardware: { tag: "Smart Hardware", text: "Live telemetry sync from GPS collars, smart feeders, and activity monitors directly into the pet’s AI wellness engine." },
+      };
+
+      function selectEcosystemNode(key) {
+        const info = ecosystemNodesInfo[key];
+        if (!info) return;
+
+        document.querySelectorAll(".eco-node").forEach((btn) => {
+          if (btn.dataset.node === key) {
+            btn.classList.remove("border-slate-100", "border");
+            btn.classList.add("border-2", "border-emerald-600");
+          } else {
+            btn.classList.remove("border-2", "border-emerald-600");
+            btn.classList.add("border", "border-slate-100");
+          }
+        });
+
+        document.getElementById("ecoNodeTag").textContent = info.tag;
+        document.getElementById("ecoNodeText").textContent = info.text;
+      }
+
+      // 5. Workflow Section
+      const workflowRegions = {
+        be_eu: { label: "Belgium / EU", badgeText: "Trilingual triage (EN/FR/NL), EU data residency & PIMS/CRM webhook sync.", extraDeliverable: "EU GDPR data processing record & EN/FR/NL pet-parent triage prompts verified" },
+        bg_eu: { label: "Bulgaria / EU Health", badgeText: "EU digital health alignment, BG/EN bilingual care flows & multi-clinic readiness.", extraDeliverable: "BG/EN clinic reminder templates & EU cross-border record export enabled" },
+        in_highvol: { label: "India / High-Volume", badgeText: "High-throughput queue triage, rapid reminder bursts & multi-branch clinic routing.", extraDeliverable: "High-volume appointment queue rules & instant slot-fill alerts calibrated" },
+        global: { label: "Global Standard", badgeText: "ISO-27001 security baseline, multi-currency billing & flexible API/webhook hooks.", extraDeliverable: "Webhook signing secret, CRM lead mapping & role permissions confirmed" },
+      };
+
+      const workflowSteps = [
+        {
+          step: 1,
+          windowLabel: "Days 1–3 · Phase 01",
+          tabTitle: "Data & Schedule Sync",
+          tabSub: "Connect PIMS, calendars & pet profiles",
+          title: "Data & Schedule Sync",
+          summary: "Connect your clinic calendar or PIMS, service availability, and pet health/vaccine histories so the AI starts with accurate context.",
+          clinicAction: "Sync appointment slots, practitioner hours, vaccine schedules, and CRM/webhook endpoints without disrupting live consultations.",
+          providerAction: "Import grooming/boarding capacity, breed/coat duration rules, and safety waivers into one live schedule.",
+          parentAction: "Create a unified pet profile with past vaccines, weight history, and active diet or allergy notes.",
+          deliverables: ["Appointment calendar & service catalog connected", "Historical vaccine & care reminders imported cleanly"],
+        },
+        {
+          step: 2,
+          windowLabel: "Days 4–7 · Phase 02",
+          tabTitle: "AI Triage & Booking Rules",
+          tabSub: "Configure guardrails & routing",
+          title: "AI Triage & Booking Rules",
+          summary: "Tailor symptom intake questions, urgency routing thresholds, and automated booking rules while enforcing veterinary safety guardrails.",
+          clinicAction: "Define urgent vs. routine triage flags, pre-visit intake checklists, and automated slot confirmation rules.",
+          providerAction: "Set service add-ons, deposit/cancellation policies, and smart buffer times between appointments.",
+          parentAction: "Test one-tap symptom triage, multi-service booking, and nutrition comparison with clear vet guardrails.",
+          deliverables: ["Triage urgency thresholds & veterinary disclaimer active", "Booking & reminder message templates approved"],
+        },
+        {
+          step: 3,
+          windowLabel: "Days 8–11 · Phase 03",
+          tabTitle: "Staff/Vet Validation & Pilot",
+          tabSub: "Shadow-test on real workflows",
+          title: "Staff/Vet Validation & Pilot",
+          summary: "Run a controlled pilot with veterinary nurses, front-desk teams, and selected pet parents to refine intake clarity and handoffs.",
+          clinicAction: "Veterinarians and receptionists review AI pre-visit summaries and verify CRM/webhook event delivery.",
+          providerAction: "Walkers, groomers, and boarding hosts validate live booking handoffs and pet care notes.",
+          parentAction: "Pilot caregivers share feedback on reminder timing, chat clarity, and health timeline accuracy.",
+          deliverables: ["Staff & clinical leads complete 30-min walkthrough", "Sandbox/pilot bookings & webhook payloads verified"],
+        },
+        {
+          step: 4,
+          windowLabel: "Days 12–14 · Phase 04",
+          tabTitle: "Live Launch & Analytics",
+          tabSub: "Full rollout & ROI tracking",
+          title: "Live Launch & Analytics",
+          summary: "Switch on full pet-parent access, automated follow-up reminders, and weekly analytics to track hours saved and no-show reduction.",
+          clinicAction: "Monitor weekly admin hours saved, intake completion rates, and automated recall conversions.",
+          providerAction: "Track repeat bookings, smart product/diet refills, and partner ecosystem referrals.",
+          parentAction: "Enjoy continuous health reminders, instant care history, and seamless service booking.",
+          deliverables: ["Full production rollout live across target locations", "Weekly ROI, reminder & analytics dashboard active"],
+        },
+      ];
+
+      let activeWorkflowStep = 1;
+      let activeWorkflowRegion = "be_eu";
+
+      function renderWorkflowSection() {
+        const tabsEl = document.getElementById("workflowStepTabs");
+        const currentStepObj = workflowSteps.find((s) => s.step === activeWorkflowStep) || workflowSteps[0];
+        const currentRegObj = workflowRegions[activeWorkflowRegion] || workflowRegions.be_eu;
+
+        if (tabsEl) {
+          tabsEl.innerHTML = workflowSteps
+            .map((s) => {
+              const active = s.step === activeWorkflowStep;
+              return `
+                <button
+                  type="button"
+                  onclick="selectWorkflowStep(${s.step})"
+                  class="text-left p-4 rounded-2xl border transition-all ${
+                    active ? "bg-emerald-900 text-white border-emerald-900 shadow-md" : "bg-cream/80 hover:bg-cream text-slateDark border-slate-200/80"
+                  }"
+                >
+                  <div class="flex items-center justify-between text-[11px] font-bold mb-1">
+                    <span class="${active ? "text-amber-300" : "text-amber-700"}">STEP 0${s.step}</span>
+                    <span class="${active ? "text-emerald-200" : "text-slate-500"}">${s.windowLabel.split("·")[0].trim()}</span>
+                  </div>
+                  <p class="font-display font-bold text-sm">${s.tabTitle}</p>
+                  <p class="text-[11px] mt-0.5 ${active ? "text-emerald-100/80" : "text-slate-500"}">${s.tabSub}</p>
+                </button>
+              `;
+            })
+            .join("");
+        }
+
+        document.getElementById("wfStepWindowPill").textContent = currentStepObj.windowLabel;
+        document.getElementById("wfStepTitle").textContent = currentStepObj.title;
+        document.getElementById("wfStepSummary").textContent = currentStepObj.summary;
+        document.getElementById("wfClinicAction").textContent = currentStepObj.clinicAction;
+        document.getElementById("wfProviderAction").textContent = currentStepObj.providerAction;
+        document.getElementById("wfParentAction").textContent = currentStepObj.parentAction;
+        document.getElementById("wfRegionTag").textContent = currentRegObj.label;
+        document.getElementById("workflowRegionBadge").innerHTML = `
+          <i data-lucide="globe" class="w-4 h-4 text-emerald-700 shrink-0"></i>
+          <span>${escapeHtml(currentRegObj.badgeText)}</span>
+        `;
+
+        const allDeliverables = [...currentStepObj.deliverables, currentRegObj.extraDeliverable];
+        document.getElementById("wfDeliverablesList").innerHTML = allDeliverables
+          .map((item) => `
+            <li class="flex items-start gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+              <span>${escapeHtml(item)}</span>
+            </li>
+          `)
+          .join("");
+
+        lucide.createIcons();
+      }
+
+      function selectWorkflowStep(stepNum) {
+        activeWorkflowStep = stepNum;
+        renderWorkflowSection();
+      }
+
+      function switchWorkflowRegion(regionKey) {
+        activeWorkflowRegion = regionKey;
+        renderWorkflowSection();
+      }
+
+      function jumpToDemoWithStep() {
+        selectDemoFormat(activeWorkflowStep >= 3 ? "Sandbox Pilot Setup" : "Custom Clinic Workflow Audit");
+        document.getElementById("demo").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      // 6. Pricing Section
+      const pricingTable = {
+        EUR_BE: { symbol: "€", plusAnnual: "€3.90 / mo", plusMonthly: "€4.90 / mo", starterAnnual: "€119", starterMonthly: "€149", proAnnual: "€319", proMonthly: "€399", subStarter: "1 clinic or care location · AI intake, reminders & booking.", subPro: "Multi-site clinics, PMS/CRM webhooks & dedicated onboarding." },
+        EUR_BG: { symbol: "€", plusAnnual: "€3.50 / mo", plusMonthly: "€4.50 / mo", starterAnnual: "€99", starterMonthly: "€125", proAnnual: "€269", proMonthly: "€339", subStarter: "1 clinic or studio · EU digital health & automated reminders.", subPro: "Multi-location groups, custom triage & webhook sync." },
+        INR: { symbol: "₹", plusAnnual: "₹199 / mo", plusMonthly: "₹249 / mo", starterAnnual: "₹5,999", starterMonthly: "₹7,499", proAnnual: "₹15,999", proMonthly: "₹19,999", subStarter: "High-volume clinic or care studio · Queue triage & reminders.", subPro: "Multi-branch networks, custom workflows & priority onboarding." },
+        USD: { symbol: "$", plusAnnual: "$4.50 / mo", plusMonthly: "$5.90 / mo", starterAnnual: "$129", starterMonthly: "$159", proAnnual: "$349", proMonthly: "$439", subStarter: "1 clinic or care location · AI triage, intake & booking.", subPro: "Multi-site groups, CRM/PMS webhooks & dedicated SLA." },
+      };
+
+      let billingCycle = "annual";
+      let pricingCurrency = "EUR_BE";
+
+      function renderPricingSection() {
+        const cfg = pricingTable[pricingCurrency] || pricingTable.EUR_BE;
+        const isAnnual = billingCycle === "annual";
+
+        const btnM = document.getElementById("btnBillingMonthly");
+        const btnA = document.getElementById("btnBillingAnnual");
+        if (isAnnual) {
+          btnA.className = "inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-emerald-900 text-white shadow-xs transition-all";
+          btnM.className = "px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-900 transition-all";
+        } else {
+          btnM.className = "px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-emerald-900 text-white shadow-xs transition-all";
+          btnA.className = "inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-900 transition-all";
+        }
+
+        document.getElementById("priceParentPlus").textContent = isAnnual ? cfg.plusAnnual : cfg.plusMonthly;
+        document.getElementById("priceStarterMain").textContent = isAnnual ? cfg.starterAnnual : cfg.starterMonthly;
+        document.getElementById("priceStarterPeriod").textContent = isAnnual ? "/ mo billed annually" : "/ mo billed monthly";
+        document.getElementById("priceStarterSub").textContent = cfg.subStarter;
+
+        document.getElementById("priceProMain").textContent = isAnnual ? cfg.proAnnual : cfg.proMonthly;
+        document.getElementById("priceProPeriod").textContent = isAnnual ? "/ mo starting · billed annually" : "/ mo starting · billed monthly";
+        document.getElementById("priceProSub").textContent = cfg.subPro;
+      }
+
+      function setBillingCycle(cycle) {
+        billingCycle = cycle;
+        renderPricingSection();
+      }
+
+      function setPricingCurrency(currencyKey) {
+        pricingCurrency = currencyKey;
+        renderPricingSection();
+      }
+
+      function selectPlanAndStartDemo(planName, trackKey) {
+        selectDemoTrack(trackKey);
+        const planSelect = document.getElementById("demoPlanSelect");
+        if (planSelect) planSelect.value = planName;
+        syncDemoSummary();
+        document.getElementById("demo").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      // 7. Demo & Onboarding Flow
+      let selectedDemoTrack = "clinic";
+      let selectedDemoFormat = "15-min Live AI Walkthrough";
+      const trackLabels = { clinic: "Veterinary Clinic", partner: "Service / Brand Partner", parent: "Pet Parent Access" };
+
+      function selectDemoTrack(trackKey) {
+        selectedDemoTrack = trackKey;
+        document.querySelectorAll(".demo-track-btn").forEach((btn) => {
+          if (btn.dataset.track === trackKey) {
+            btn.className = "demo-track-btn p-3.5 rounded-2xl border-2 border-emerald-900 bg-emerald-900 text-white text-left transition-all";
+          } else {
+            btn.className = "demo-track-btn p-3.5 rounded-2xl border border-slate-200 bg-white hover:border-amber-400 text-slateDark text-left transition-all";
+          }
+        });
+        syncDemoSummary();
+      }
+
+      function selectDemoFormat(formatLabel) {
+        selectedDemoFormat = formatLabel;
+        document.querySelectorAll(".demo-format-btn").forEach((btn) => {
+          if (btn.dataset.format === formatLabel) {
+            btn.className = "demo-format-btn p-3 rounded-2xl border-2 border-amber-500 bg-amber-50/80 text-left transition-all";
+          } else {
+            btn.className = "demo-format-btn p-3 rounded-2xl border border-slate-200 bg-white hover:border-amber-400 text-left transition-all";
+          }
+        });
+        syncDemoSummary();
+      }
+
+      function syncDemoSummary() {
+        const regionVal = document.getElementById("demoRegionSelect")?.value || "Belgium / EU (EN/FR/NL · GDPR)";
+        const planVal = document.getElementById("demoPlanSelect")?.value || "Clinic & Care Starter";
+        const pill = document.getElementById("demoSelectedPlanPill");
+        if (pill) pill.textContent = `Plan: ${planVal}`;
+
+        const s1 = document.getElementById("demoSummaryStep1");
+        const s2 = document.getElementById("demoSummaryStep2");
+        if (s1) s1.textContent = `${trackLabels[selectedDemoTrack] || "Clinic"} · ${regionVal.split("(")[0].trim()} · ${planVal}`;
+        if (s2) s2.textContent = selectedDemoFormat;
+      }
+
+      function submitInlineDemoFlow(event) {
+        event.preventDefault();
+        const fullName = document.getElementById("inlineDemoName").value.trim();
+        const email = document.getElementById("inlineDemoEmail").value.trim();
+        const organization = document.getElementById("inlineDemoOrg").value.trim();
+        const region = document.getElementById("demoRegionSelect").value;
+        const plan = document.getElementById("demoPlanSelect").value;
+
+        window.GreenLaneAnalytics.track("demo_onboarding_completed", {
+          fullName, email, organization, track: selectedDemoTrack, region, plan, demoFormat: selectedDemoFormat
+        });
+
+        document.getElementById("inlineDemoFlowForm").classList.add("hidden");
+        const confEl = document.getElementById("inlineDemoConfirmation");
+        confEl.classList.remove("hidden");
+
+        document.getElementById("demoConfirmMeta").textContent = `${fullName} (${email}) · ${trackLabels[selectedDemoTrack]} · ${plan}`;
+        document.getElementById("demoNextStepsList").innerHTML = `
+          <li class="flex items-start gap-2">
+            <i data-lucide="check" class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5"></i>
+            <span>Region & compliance pack prepared for ${escapeHtml(region)}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i data-lucide="check" class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5"></i>
+            <span>Scheduled format: ${escapeHtml(selectedDemoFormat)}</span>
+          </li>
+        `;
+        lucide.createIcons();
+      }
+
+      function resetInlineDemoFlow() {
+        document.getElementById("inlineDemoConfirmation").classList.add("hidden");
+        document.getElementById("inlineDemoFlowForm").classList.remove("hidden");
+      }
+
+      // Modals
+      const demoModal = document.getElementById("demoModal");
+      const videoModal = document.getElementById("videoModal");
+
+      function openDemoModal(preselectRole = "parent") {
+        document.getElementById("demoFormContent").classList.remove("hidden");
+        document.getElementById("demoSuccessContent").classList.add("hidden");
+        const roleSelect = document.getElementById("demoRoleSelect");
+        if (roleSelect && preselectRole) roleSelect.value = preselectRole;
+        demoModal.classList.remove("hidden");
+        demoModal.classList.add("flex");
+        lucide.createIcons();
+      }
+
+      function closeDemoModal() {
+        demoModal.classList.add("hidden");
+        demoModal.classList.remove("flex");
+      }
+
+      function submitDemoForm(e) {
+        e.preventDefault();
+        document.getElementById("demoFormContent").classList.add("hidden");
+        document.getElementById("demoSuccessContent").classList.remove("hidden");
+        lucide.createIcons();
+      }
+
+      function openVideoModal() {
+        videoModal.classList.remove("hidden");
+        videoModal.classList.add("flex");
+        lucide.createIcons();
+      }
+
+      function closeVideoModal() {
+        videoModal.classList.add("hidden");
+        videoModal.classList.remove("flex");
+      }
+
+      // Init calls
+      renderPillarTabs();
+      selectPillar("healthcare", false);
+      renderWorkflowSection();
+      renderPricingSection();
+      syncDemoSummary();
+
+      // Observer
+      const revealElements = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("active");
+        });
+      }, { threshold: 0.12 });
+      revealElements.forEach((el) => revealObserver.observe(el));
+    </script>
+  </body>
 </html>

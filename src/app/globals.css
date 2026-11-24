@@ -1,43 +1,58 @@
 @import "tailwindcss";
 
+:root {
+  --font-plus-jakarta: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --color-brand-primary: #064E3B;
+  --color-brand-accent: #F59E0B;
+}
+
 @theme inline {
-  --font-sans: var(--font-plus-jakarta), var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: var(--font-plus-jakarta), var(--font-inter), sans-serif;
-  
-  /* Brand Colors */
-  --color-primary: #7c3aed;
-  --color-success: #a78bfa;
-  --color-warning: #edcb50;
+  --font-sans: 'Inter', var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', var(--font-plus-jakarta), system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', var(--font-plus-jakarta), system-ui, sans-serif;
+
+  /* Brand Colors - Emerald & Amber */
+  --color-primary: #064E3B;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
   --color-danger: #ed5050;
-  --color-accent: #fdb913;
-  --color-dark: #121519;
+  --color-accent: #FBBF24;
+  --color-dark: #0F172A;
+  --color-slateDark: #0F172A;
+  --color-cream: #FFFBF5;
 
-  /* Violet Brand Palette mapped to emerald */
-  --color-emerald-50: #f5f3ff;
-  --color-emerald-100: #ede9fe;
-  --color-emerald-200: #ddd6fe;
-  --color-emerald-300: #c4b5fd;
-  --color-emerald-400: #a78bfa;
-  --color-emerald-500: #8b5cf6;
-  --color-emerald-600: #7c3aed;
-  --color-emerald-700: #6d28d9;
-  --color-emerald-800: #5b21b6;
-  --color-emerald-900: #4c1d95;
-  --color-emerald-950: #2e1065;
+  /* Emerald Palette */
+  --color-emerald-50: #ECFDF5;
+  --color-emerald-100: #D1FAE5;
+  --color-emerald-200: #A7F3D0;
+  --color-emerald-300: #6ee7b7;
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10B981;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+  --color-emerald-800: #065F46;
+  --color-emerald-900: #064E3B;
+  --color-emerald-950: #022C22;
 
-  /* Violet Palette */
-  --color-violet-50: #f5f3ff;
-  --color-violet-100: #ede9fe;
-  --color-violet-200: #ddd6fe;
-  --color-violet-300: #c4b5fd;
-  --color-violet-400: #a78bfa;
-  --color-violet-500: #8b5cf6;
-  --color-violet-600: #7c3aed;
-  --color-violet-700: #6d28d9;
-  --color-violet-800: #5b21b6;
-  --color-violet-900: #4c1d95;
-  --color-violet-950: #2e1065;
-  
+  /* Amber Palette */
+  --color-amber-50: #FFFBEB;
+  --color-amber-100: #FEF3C7;
+  --color-amber-200: #FDE68A;
+  --color-amber-300: #FCD34D;
+  --color-amber-400: #FBBF24;
+  --color-amber-500: #F59E0B;
+  --color-amber-600: #D97706;
+  --color-amber-700: #B45309;
+  --color-amber-800: #92400E;
+  --color-amber-900: #78350F;
+  --color-amber-950: #451A03;
+
+  /* Shadows */
+  --shadow-soft: 0 10px 40px -10px rgba(6, 78, 59, 0.08);
+  --shadow-card: 0 20px 50px -12px rgba(6, 78, 59, 0.12);
+  --shadow-glow: 0 0 35px rgba(16, 185, 129, 0.22);
+
   /* Gray scale */
   --color-gray-100: #f6f9fc;
   --color-gray-200: #edf1f5;
@@ -85,16 +100,16 @@ html {
 
 @layer base {
   body {
-      margin: 0;
-      font-family: var(--ar-body-font-family);
-      font-size: var(--ar-body-font-size);
-      font-weight: var(--ar-body-font-weight);
-      line-height: var(--ar-body-line-height);
-      color: var(--ar-body-color);
-      text-align: var(--ar-body-text-align);
-      background-color: var(--ar-body-bg);
-      -webkit-text-size-adjust: 100%;
-      -webkit-tap-highlight-color: rgba(0,0,0,0)
+    margin: 0;
+    font-family: var(--ar-body-font-family);
+    font-size: var(--ar-body-font-size);
+    font-weight: var(--ar-body-font-weight);
+    line-height: var(--ar-body-line-height);
+    color: var(--ar-body-color);
+    text-align: var(--ar-body-text-align);
+    background-color: var(--ar-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
   }
 
   button,
@@ -102,76 +117,101 @@ html {
   input[type="button"],
   input[type="submit"],
   input[type="reset"] {
-      cursor: pointer;
+    cursor: pointer;
   }
 
   hr {
-      margin: 0 0;
-      color: var(--ar-border-color);
-      border: 0;
-      border-top: var(--ar-border-width) solid;
-      opacity: 1
+    margin: 0 0;
+    color: var(--ar-border-color);
+    border: 0;
+    border-top: var(--ar-border-width) solid;
+    opacity: 1
   }
 
-  h6,.h6,h5,.h5,h4,.h4,h3,.h3,h2,.h2,h1,.h1 {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      line-height: 1.3;
-      color: var(--ar-heading-color)
+  h6,
+  .h6,
+  h5,
+  .h5,
+  h4,
+  .h4,
+  h3,
+  .h3,
+  h2,
+  .h2,
+  h1,
+  .h1 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ar-heading-color)
   }
 
-  h1,.h1 {
-      font-size: calc(1.375rem + 1.5vw)
-  }
-
-  @media(min-width: 1200px) {
-      h1,.h1 {
-          font-size:2.5rem
-      }
-  }
-
-  h2,.h2 {
-      font-size: calc(1.325rem + 0.9vw)
-  }
-
-  @media(min-width: 1200px) {
-      h2,.h2 {
-          font-size:2rem
-      }
-  }
-
-  h3,.h3 {
-      font-size: calc(1.3rem + 0.6vw)
+  h1,
+  .h1 {
+    font-size: calc(1.375rem + 1.5vw)
   }
 
   @media(min-width: 1200px) {
-      h3,.h3 {
-          font-size:1.75rem
-      }
+
+    h1,
+    .h1 {
+      font-size: 2.5rem
+    }
   }
 
-  h4,.h4 {
-      font-size: calc(1.275rem + 0.3vw)
+  h2,
+  .h2 {
+    font-size: calc(1.325rem + 0.9vw)
   }
 
   @media(min-width: 1200px) {
-      h4,.h4 {
-          font-size:1.5rem
-      }
+
+    h2,
+    .h2 {
+      font-size: 2rem
+    }
   }
 
-  h5,.h5 {
-      font-size: 1.25rem
+  h3,
+  .h3 {
+    font-size: calc(1.3rem + 0.6vw)
   }
 
-  h6,.h6 {
-      font-size: 1rem
+  @media(min-width: 1200px) {
+
+    h3,
+    .h3 {
+      font-size: 1.75rem
+    }
+  }
+
+  h4,
+  .h4 {
+    font-size: calc(1.275rem + 0.3vw)
+  }
+
+  @media(min-width: 1200px) {
+
+    h4,
+    .h4 {
+      font-size: 1.5rem
+    }
+  }
+
+  h5,
+  .h5 {
+    font-size: 1.25rem
+  }
+
+  h6,
+  .h6 {
+    font-size: 1rem
   }
 
   p {
-      margin-top: 0;
-      margin-bottom: 1.125rem
+    margin-top: 0;
+    margin-bottom: 1.125rem
   }
 }
 
@@ -231,4 +271,80 @@ html {
 
 .brand-scroller::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+/* GreenLane Custom Utilities */
+.hero-gradient {
+  background: radial-gradient(circle at 75% 35%,
+      rgba(209, 250, 229, 0.65) 0%,
+      rgba(255, 251, 245, 0.85) 48%,
+      #ffffff 100%);
+}
+
+.glass-node {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 30px -6px rgba(6, 78, 59, 0.12);
+}
+
+.orbit-ring {
+  border: 1.5px dashed rgba(5, 150, 105, 0.25);
+}
+
+.chat-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: rgba(6, 78, 59, 0.2);
+  border-radius: 9999px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+.animate-float-slow {
+  animation: float 7s ease-in-out 1s infinite;
+}
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.04); }
+}
+
+.animate-pulse-soft {
+  animation: pulseSoft 3s ease-in-out infinite;
 }

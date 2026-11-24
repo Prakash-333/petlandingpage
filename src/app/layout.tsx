@@ -1,20 +1,6 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { Providers } from "./Providers";
 import "./globals.css";
-
-const plusJakartaSans = Plus_Jakarta_Sans({ 
-  subsets: ["latin"], 
-  variable: "--font-plus-jakarta",
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800"]
-});
-
-const inter = Inter({ 
-  subsets: ["latin"], 
-  variable: "--font-inter",
-  display: "swap" 
-});
 
 export const metadata: Metadata = {
   title: "GreenLane Pet — AI-Powered Pet Healthcare | Healthier Pets. Happier Lives.",
@@ -33,7 +19,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${plusJakartaSans.variable} ${inter.variable} font-sans antialiased bg-white text-[#111827]`} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-sans antialiased bg-white text-[#0F172A] overflow-x-hidden" suppressHydrationWarning>
         <Providers>
           {children}
         </Providers>

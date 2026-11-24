@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenLanePet — One Intelligent Ecosystem for Every Pet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest" crossorigin="anonymous"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              display: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            colors: {
+              emerald: {
+                50: "#ECFDF5",
+                100: "#D1FAE5",
+                200: "#A7F3D0",
+                500: "#10B981",
+                600: "#059669",
+                700: "#047857",
+                800: "#065F46",
+                900: "#064E3B",
+                950: "#022C22",
+              },
+              amber: {
+                50: "#FFFBEB",
+                100: "#FEF3C7",
+                400: "#FBBF24",
+                500: "#F59E0B",
+                600: "#D97706",
+              },
+              cream: "#FFFBF5",
+              slateDark: "#0F172A",
+            },
+            boxShadow: {
+              soft: "0 10px 40px -10px rgba(6, 78, 59, 0.08)",
+              card: "0 20px 50px -12px rgba(6, 78, 59, 0.12)",
+              glow: "0 0 35px rgba(16, 185, 129, 0.22)",
+            },
+            animation: {
+              float: "float 5s ease-in-out infinite",
+              "float-delayed": "float 6s ease-in-out 2s infinite",
+              "float-slow": "float 7s ease-in-out 1s infinite",
+              "pulse-soft": "pulseSoft 3s ease-in-out infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              pulseSoft: {
+                "0%, 100%": { opacity: 1, transform: "scale(1)" },
+                "50%": { opacity: 0.85, transform: "scale(1.04)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body { background-color: #ffffff; color: #0f172a; overflow-x: hidden; }
+      .hero-gradient { background: radial-gradient(circle at 75% 35%, rgba(209, 250, 229, 0.65) 0%, rgba(255, 251, 245, 0.85) 48%, #ffffff 100%); }
+      .glass-node { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 12px 30px -6px rgba(6, 78, 59, 0.12); }
+      .orbit-ring { border: 1.5px dashed rgba(5, 150, 105, 0.25); }
+      .chat-scroll::-webkit-scrollbar { width: 4px; }
+      .chat-scroll::-webkit-scrollbar-track { background: transparent; }
+      .chat-scroll::-webkit-scrollbar-thumb { background: rgba(6, 78, 59, 0.2); border-radius: 9999px; }
+      .reveal { opacity: 0; transform: translateY(22px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+  </head>
+  <body class="font-sans antialiased selection:bg-emerald-900 selection:text-white">
+    <div id="root">
+      <script>
+        // Redirect or load root
+        window.location.href = "/";
+      </script>
+    </div>
+  </body>
+</html>
