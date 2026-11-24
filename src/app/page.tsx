@@ -312,9 +312,9 @@ export default function GreenLaneLandingPage() {
       {/* 1. STICKY TOP NAVIGATION BAR */}
       <header id="navbar" className="sticky top-0 z-50 w-full transition-all duration-300 bg-white/85 backdrop-blur-md border-b border-emerald-900/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-20 gap-4">
             {/* Brand Logo */}
-            <a href="#" className="flex items-center gap-2.5 group">
+            <a href="#" className="flex items-center gap-2.5 shrink-0 group">
               <div className="w-10 h-10 rounded-xl bg-emerald-900 flex items-center justify-center text-white shadow-sm group-hover:bg-emerald-800 transition-colors">
                 <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 13.5c-2.33 0-4.31 1.46-5.11 3.5-.42 1.07.37 2.25 1.52 2.25h7.18c1.15 0 1.94-1.18 1.52-2.25-.8-2.04-2.78-3.5-5.11-3.5zm-5.5-2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
@@ -326,17 +326,21 @@ export default function GreenLaneLandingPage() {
             </a>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-              <a href="#home" className="text-emerald-900 font-semibold border-b-2 border-amber-500 pb-1">Home</a>
-              <a href="#ai-features" className="hover:text-emerald-900 transition-colors">AI Features</a>
+            <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-sm font-medium text-slate-600 whitespace-nowrap">
+              <a href="#home" className="inline-flex items-center text-emerald-900 font-semibold border-b-2 border-amber-500 py-1 transition-colors">
+                Home
+              </a>
+              <a href="#ai-features" className="inline-flex items-center hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent">
+                AI Features
+              </a>
 
               {/* Ecosystem Dropdown */}
               <div className="relative group">
-                <button type="button" className="flex items-center gap-1 hover:text-emerald-900 transition-colors py-2">
+                <button type="button" className="inline-flex items-center gap-1 hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent">
                   <span>AI Ecosystem</span>
                   <ChevronDown className="w-4 h-4 text-slate-400 group-hover:text-emerald-700 transition-transform group-hover:rotate-180" />
                 </button>
-                <div className="absolute left-0 mt-1 w-72 rounded-2xl bg-white shadow-card border border-slate-100 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0">
+                <div className="absolute left-0 mt-2 w-72 rounded-2xl bg-white shadow-card border border-slate-100 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50">
                   <a href="#pillars" className="flex items-start gap-3 p-3 rounded-xl hover:bg-emerald-50/80 transition-colors">
                     <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
                       <Sparkles className="w-4 h-4" />
@@ -367,23 +371,29 @@ export default function GreenLaneLandingPage() {
                 </div>
               </div>
 
-              <a href="#workflow" className="hover:text-emerald-900 transition-colors">14-Day AI Rollout</a>
-              <a href="#pricing" className="hover:text-emerald-900 transition-colors">Plans &amp; Pricing</a>
-              <a href="#demo" className="hover:text-emerald-900 transition-colors">Book AI Demo</a>
+              <a href="#workflow" className="inline-flex items-center hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent">
+                14-Day AI Rollout
+              </a>
+              <a href="#pricing" className="inline-flex items-center hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent">
+                Plans &amp; Pricing
+              </a>
+              <a href="#demo" className="inline-flex items-center hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent">
+                Book AI Demo
+              </a>
             </nav>
 
             {/* Right CTA */}
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               <button
                 onClick={() => handleOpenDemoModal('parent')}
-                className="hidden sm:inline-flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200/80 text-sm font-semibold px-4 py-2.5 rounded-full transition-all active:scale-95"
+                className="hidden xl:inline-flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200/80 text-xs xl:text-sm font-semibold px-3.5 xl:px-4 py-2.5 rounded-full transition-all active:scale-95 whitespace-nowrap"
               >
                 <span>Try Free AI Triage</span>
               </button>
 
               <button
                 onClick={() => handleOpenDemoModal('clinic')}
-                className="inline-flex items-center gap-2 bg-emerald-900 hover:bg-emerald-800 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
+                className="inline-flex items-center gap-1.5 sm:gap-2 bg-emerald-900 hover:bg-emerald-800 text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all active:scale-95 whitespace-nowrap"
               >
                 <span>Book Clinic AI Demo</span>
                 <ArrowRight className="w-4 h-4 text-amber-400" />
@@ -392,7 +402,8 @@ export default function GreenLaneLandingPage() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
+                className="lg:hidden p-2 sm:p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
+                aria-label="Toggle navigation menu"
               >
                 <Menu className="w-6 h-6" />
               </button>
@@ -402,27 +413,27 @@ export default function GreenLaneLandingPage() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-2 shadow-lg">
+          <div className="lg:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-2 shadow-lg">
             <a href="#home" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-900 font-semibold">Home</a>
+            <a href="#ai-features" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">AI Features</a>
             <a href="#pillars" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">8 AI Care Pillars</a>
             <a href="#ai-assistant" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">AI Pet Assistant</a>
-            <a href="#ai-features" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">AI Platform Features</a>
             <a href="#workflow" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">14-Day AI Rollout</a>
             <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">Plans &amp; Pricing</a>
             <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">Book AI Demo</a>
             <div className="pt-2 grid grid-cols-2 gap-2">
               <button
                 onClick={() => { setMobileMenuOpen(false); handleOpenDemoModal('parent'); }}
-                className="w-full flex items-center justify-center bg-amber-100 text-amber-900 font-semibold py-3 rounded-full text-sm"
+                className="w-full flex items-center justify-center bg-amber-100 text-amber-900 font-semibold py-3 rounded-full text-xs sm:text-sm text-center"
               >
                 Try Free AI Triage
               </button>
               <button
                 onClick={() => { setMobileMenuOpen(false); handleOpenDemoModal('clinic'); }}
-                className="w-full flex items-center justify-center gap-1.5 bg-emerald-900 text-white font-semibold py-3 rounded-full text-sm"
+                className="w-full flex items-center justify-center gap-1.5 bg-emerald-900 text-white font-semibold py-3 rounded-full text-xs sm:text-sm text-center"
               >
                 <span>Book Clinic AI Demo</span>
-                <ArrowRight className="w-4 h-4 text-amber-400" />
+                <ArrowRight className="w-4 h-4 text-amber-400 shrink-0" />
               </button>
             </div>
           </div>
@@ -682,70 +693,72 @@ export default function GreenLaneLandingPage() {
 
                     <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-emerald-950/35 to-transparent pointer-events-none"></div>
 
-                    <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-auto glass-node rounded-2xl px-3.5 py-2 flex items-center justify-center gap-3">
+                    <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-auto glass-node rounded-2xl px-3.5 py-2.5 flex items-center gap-2.5 shadow-sm">
                       <span className="relative flex h-2.5 w-2.5 shrink-0">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
                       </span>
-                      <div className="text-xs text-center flex flex-col justify-center">
-                        <p className="font-bold text-[#0F172A]">AI Wellness Sync Active</p>
-                        <p className="text-[11px] text-slate-500">Vitals, Diet &amp; Vaccine Schedule Optimal</p>
+                      <div className="flex flex-col justify-center text-left">
+                        <p className="font-bold text-xs text-[#0F172A] leading-none mb-1">AI Wellness Sync Active</p>
+                        <p className="text-[11px] text-slate-500 leading-none">Vitals, Diet &amp; Vaccine Schedule Optimal</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Floating Badges */}
-                <div className="hidden sm:flex glass-node rounded-2xl px-4 py-3 items-center justify-center gap-3 absolute -top-5 right-4 z-20 animate-float">
+                <div className="hidden sm:flex glass-node rounded-2xl px-3.5 py-2.5 items-center gap-2.5 absolute -top-5 right-4 z-20 animate-float shadow-sm">
                   <div className="w-10 h-10 rounded-xl bg-emerald-900 text-amber-400 flex items-center justify-center shrink-0 shadow-sm">
                     <Sparkles className="w-5 h-5 text-amber-400" />
                   </div>
-                  <div className="flex flex-col justify-center text-center">
-                    <div className="flex items-center justify-center gap-1.5">
+                  <div className="flex flex-col justify-center text-left">
+                    <div className="flex items-center gap-1.5 leading-none mb-1">
                       <span className="font-display font-bold text-sm text-[#0F172A]">GreenLane Pet AI</span>
                       <span className="px-1.5 py-0.5 text-[10px] font-bold bg-amber-100 text-amber-700 rounded-md">LIVE</span>
                     </div>
-                    <p className="text-[11px] font-medium text-emerald-700">Intelligent Companion &amp; Clinical Co-Pilot</p>
+                    <p className="text-[11px] font-medium text-emerald-700 leading-none">Intelligent Companion &amp; Clinical Co-Pilot</p>
                   </div>
                 </div>
 
-                <div className="glass-node rounded-2xl p-3 flex items-center justify-center gap-2.5 absolute -top-4 left-2 sm:-left-5 z-20 animate-float-delayed">
+                <div className="glass-node rounded-2xl px-3.5 py-2.5 flex items-center gap-2.5 absolute -top-4 left-2 sm:-left-5 z-20 animate-float-delayed shadow-sm">
                   <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
                     <HeartPulse className="w-5 h-5" />
                   </div>
-                  <div className="flex flex-col justify-center text-center">
-                    <p className="text-[11px] text-slate-500 font-medium">Resting Vitals</p>
-                    <p className="text-xs font-bold text-[#0F172A]">AI Baseline 78 BPM · <span className="text-emerald-600">Normal</span></p>
+                  <div className="flex flex-col justify-center text-left">
+                    <p className="text-[11px] text-slate-500 font-medium leading-none mb-1">Resting Vitals</p>
+                    <p className="text-xs font-bold text-[#0F172A] leading-none whitespace-nowrap">
+                      AI Baseline 78 BPM · <span className="text-emerald-600 font-semibold">Normal</span>
+                    </p>
                   </div>
                 </div>
 
-                <div className="hidden sm:flex glass-node rounded-2xl p-3 items-center justify-center gap-2.5 absolute top-1/2 -left-7 -translate-y-1/2 z-20 animate-float-slow">
+                <div className="hidden sm:flex glass-node rounded-2xl px-3.5 py-2.5 items-center gap-2.5 absolute top-1/2 -left-7 -translate-y-1/2 z-20 animate-float-slow shadow-sm">
                   <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-200/70">
                     <CalendarCheck2 className="w-5 h-5" />
                   </div>
-                  <div className="flex flex-col justify-center text-center">
-                    <p className="text-[11px] text-slate-500 font-medium">Smart AI Reminder</p>
-                    <p className="text-xs font-bold text-[#0F172A]">Booster Due in 5d</p>
+                  <div className="flex flex-col justify-center text-left">
+                    <p className="text-[11px] text-slate-500 font-medium leading-none mb-1">Smart AI Reminder</p>
+                    <p className="text-xs font-bold text-[#0F172A] leading-none whitespace-nowrap">Booster Due in 5d</p>
                   </div>
                 </div>
 
-                <div className="hidden sm:flex glass-node rounded-2xl p-3 items-center justify-center gap-2.5 absolute top-1/3 -right-5 z-20 animate-float">
+                <div className="hidden sm:flex glass-node rounded-2xl px-3.5 py-2.5 items-center gap-2.5 absolute top-1/3 -right-5 z-20 animate-float shadow-sm">
                   <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-200/70">
                     <ShoppingBag className="w-5 h-5" />
                   </div>
-                  <div className="flex flex-col justify-center text-center">
-                    <p className="text-[11px] text-slate-500 font-medium">AI Auto-Refill</p>
-                    <p className="text-xs font-bold text-[#0F172A]">Joint &amp; Coat Diet Refill Calculated</p>
+                  <div className="flex flex-col justify-center text-left">
+                    <p className="text-[11px] text-slate-500 font-medium leading-none mb-1">AI Auto-Refill</p>
+                    <p className="text-xs font-bold text-[#0F172A] leading-none whitespace-nowrap">Joint &amp; Coat Diet Refill Calculated</p>
                   </div>
                 </div>
 
-                <div className="glass-node rounded-2xl p-3 flex items-center justify-center gap-2.5 absolute -bottom-5 right-3 sm:-right-4 z-20 animate-float-delayed">
+                <div className="glass-node rounded-2xl px-3.5 py-2.5 flex items-center gap-2.5 absolute -bottom-5 right-3 sm:-right-4 z-20 animate-float-delayed shadow-sm">
                   <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-100">
                     <Home className="w-5 h-5" />
                   </div>
-                  <div className="flex flex-col justify-center text-center">
-                    <p className="text-[11px] text-slate-500 font-medium">Verified Stays</p>
-                    <p className="text-xs font-bold text-[#0F172A]">3 AI-Screened Boarding Hosts</p>
+                  <div className="flex flex-col justify-center text-left">
+                    <p className="text-[11px] text-slate-500 font-medium leading-none mb-1">Verified Stays</p>
+                    <p className="text-xs font-bold text-[#0F172A] leading-none whitespace-nowrap">3 AI-Screened Boarding Hosts</p>
                   </div>
                 </div>
               </div>
