@@ -303,12 +303,6 @@ export default function GreenLaneLandingPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#0f172a] font-sans antialiased selection:bg-emerald-900 selection:text-white">
-      {/* 0. TOP ANNOUNCEMENT BAR */}
-      <div className="bg-emerald-950 text-emerald-200 text-xs py-2 px-4 text-center border-b border-emerald-800/60 font-medium flex items-center justify-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
-        <span>⚡ Powered by GreenLane Pet AI · Now expanding across Belgium, Bulgaria &amp; India · Early access &amp; clinic demo slots open</span>
-      </div>
-
       {/* 1. STICKY TOP NAVIGATION BAR */}
       <header id="navbar" className="sticky top-0 z-50 w-full transition-all duration-300 bg-white/85 backdrop-blur-md border-b border-emerald-900/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -450,24 +444,25 @@ export default function GreenLaneLandingPage() {
             {/* Left Column */}
             <div className="lg:col-span-6 text-left space-y-6">
               {/* Dual-Audience Switcher Pill */}
-              <div className="inline-flex items-center p-1 rounded-full bg-white/95 border border-emerald-900/10 shadow-soft">
+              <div className="inline-flex items-center p-1 rounded-full bg-white/95 border border-emerald-900/10 shadow-soft max-w-full">
                 <button
                   type="button"
                   onClick={() => { setCurrentAudience('parent'); trackEvent('hero_audience_switched', { audience: 'parent' }); }}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${currentAudience === 'parent' ? 'bg-emerald-900 text-white shadow-xs' : 'text-slate-600 hover:text-emerald-900'
+                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all whitespace-nowrap ${currentAudience === 'parent' ? 'bg-emerald-900 text-white shadow-xs' : 'text-slate-600 hover:text-emerald-900'
                     }`}
                 >
-                  <Heart className="w-3.5 h-3.5 text-amber-400" />
+                  <Heart className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                   <span>For Pet Parents</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => { setCurrentAudience('clinic'); trackEvent('hero_audience_switched', { audience: 'clinic' }); }}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${currentAudience === 'clinic' ? 'bg-emerald-900 text-white shadow-xs' : 'text-slate-600 hover:text-emerald-900'
+                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${currentAudience === 'clinic' ? 'bg-emerald-900 text-white shadow-xs' : 'text-slate-600 hover:text-emerald-900'
                     }`}
                 >
-                  <Stethoscope className="w-3.5 h-3.5 text-emerald-700" />
-                  <span>For Vet Clinics &amp; Partners</span>
+                  <Stethoscope className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                  <span className="hidden sm:inline">For Vet Clinics &amp; Partners</span>
+                  <span className="sm:hidden">For Vet Clinics</span>
                 </button>
               </div>
 
@@ -752,7 +747,7 @@ export default function GreenLaneLandingPage() {
                   </div>
                 </div>
 
-                <div className="glass-node rounded-2xl px-3.5 py-2.5 flex items-center gap-2.5 absolute -bottom-5 right-3 sm:-right-4 z-20 animate-float-delayed shadow-sm">
+                <div className="hidden sm:flex glass-node rounded-2xl px-3.5 py-2.5 items-center gap-2.5 absolute -bottom-5 right-3 sm:-right-4 z-20 animate-float-delayed shadow-sm">
                   <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-100">
                     <Home className="w-5 h-5" />
                   </div>
@@ -781,11 +776,11 @@ export default function GreenLaneLandingPage() {
                   <strong>Connected AI Ecosystem</strong> links specialized care, smart hardware &amp; trusted partners.
                 </p>
               </div>
-              <div className="inline-flex items-center p-1 rounded-full bg-[#FFFBF5] border border-slate-200/90 shrink-0 self-start md:self-auto">
+              <div className="inline-flex items-center p-1 rounded-full bg-[#FFFBF5] border border-slate-200/90 shrink-0 self-start md:self-auto max-w-full overflow-x-auto">
                 <button
                   type="button"
                   onClick={() => setPillarScopeFilter('all')}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${pillarScopeFilter === 'all' ? 'bg-emerald-900 text-white' : 'text-slate-600 hover:text-emerald-900'
+                  className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap ${pillarScopeFilter === 'all' ? 'bg-emerald-900 text-white' : 'text-slate-600 hover:text-emerald-900'
                     }`}
                 >
                   All (8 Pillars)
@@ -793,7 +788,7 @@ export default function GreenLaneLandingPage() {
                 <button
                   type="button"
                   onClick={() => setPillarScopeFilter('day_one')}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${pillarScopeFilter === 'day_one' ? 'bg-emerald-900 text-white font-bold' : 'text-slate-600 hover:text-emerald-900'
+                  className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap ${pillarScopeFilter === 'day_one' ? 'bg-emerald-900 text-white font-bold' : 'text-slate-600 hover:text-emerald-900'
                     }`}
                 >
                   Day-One AI Core
@@ -801,7 +796,7 @@ export default function GreenLaneLandingPage() {
                 <button
                   type="button"
                   onClick={() => setPillarScopeFilter('ecosystem')}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${pillarScopeFilter === 'ecosystem' ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-600 hover:text-amber-800'
+                  className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap ${pillarScopeFilter === 'ecosystem' ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-600 hover:text-amber-800'
                     }`}
                 >
                   Connected AI Ecosystem
