@@ -301,20 +301,31 @@ export default function GreenLaneLandingPage() {
     setDemoSubmitted(true);
   };
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 120);
+  };
+
   return (
     <div className="min-h-screen bg-white text-[#0f172a] font-sans antialiased selection:bg-emerald-900 selection:text-white">
       {/* 1. STICKY TOP NAVIGATION BAR */}
       <header id="navbar" className="sticky top-0 z-50 w-full transition-all duration-300 bg-white/85 backdrop-blur-md border-b border-emerald-900/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 gap-4">
+          <div className="flex items-center justify-between h-16 sm:h-20 gap-3 sm:gap-4">
             {/* Brand Logo */}
-            <a href="#" className="flex items-center gap-2.5 shrink-0 group">
-              <div className="w-10 h-10 rounded-xl bg-emerald-900 flex items-center justify-center text-white shadow-sm group-hover:bg-emerald-800 transition-colors">
-                <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <a href="#" className="flex items-center gap-2 sm:gap-2.5 shrink-0 group">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-900 flex items-center justify-center text-white shadow-sm group-hover:bg-emerald-800 transition-colors">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 13.5c-2.33 0-4.31 1.46-5.11 3.5-.42 1.07.37 2.25 1.52 2.25h7.18c1.15 0 1.94-1.18 1.52-2.25-.8-2.04-2.78-3.5-5.11-3.5zm-5.5-2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
                 </svg>
               </div>
-              <span className="font-display font-extrabold text-xl tracking-tight text-[#0F172A]">
+              <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-[#0F172A]">
                 GreenLane<span className="text-emerald-600">Pet</span>
               </span>
             </a>
@@ -377,7 +388,7 @@ export default function GreenLaneLandingPage() {
             </nav>
 
             {/* Right CTA */}
-            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+            <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={() => handleOpenDemoModal('parent')}
                 className="hidden xl:inline-flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200/80 text-xs xl:text-sm font-semibold px-3.5 xl:px-4 py-2.5 rounded-full transition-all active:scale-95 whitespace-nowrap"
@@ -387,7 +398,7 @@ export default function GreenLaneLandingPage() {
 
               <button
                 onClick={() => handleOpenDemoModal('clinic')}
-                className="inline-flex items-center gap-1.5 sm:gap-2 bg-emerald-900 hover:bg-emerald-800 text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all active:scale-95 whitespace-nowrap"
+                className="hidden sm:inline-flex items-center gap-1.5 sm:gap-2 bg-emerald-900 hover:bg-emerald-800 text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all active:scale-95 whitespace-nowrap"
               >
                 <span>Book Clinic AI Demo</span>
                 <ArrowRight className="w-4 h-4 text-amber-400" />
@@ -396,10 +407,10 @@ export default function GreenLaneLandingPage() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 sm:p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
+                className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 hover:text-emerald-900 transition-colors focus:outline-none"
                 aria-label="Toggle navigation menu"
               >
-                <Menu className="w-6 h-6" />
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
           </div>
@@ -407,27 +418,29 @@ export default function GreenLaneLandingPage() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-2 shadow-lg">
-            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-900 font-semibold">Home</a>
-            <a href="#ai-features" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">AI Features</a>
-            <a href="#pillars" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">8 AI Care Pillars</a>
-            <a href="#ai-assistant" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">AI Pet Assistant</a>
-            <a href="#workflow" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">14-Day AI Rollout</a>
-            <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">Plans &amp; Pricing</a>
-            <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 font-medium">Book AI Demo</a>
-            <div className="pt-2 grid grid-cols-2 gap-2">
+          <div className="lg:hidden bg-white border-b border-slate-100 px-4 pt-3 pb-8 space-y-1.5 shadow-2xl max-h-[calc(100dvh-4.5rem)] overflow-y-auto overscroll-contain animate-in slide-in-from-top-2 duration-200">
+            <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="block px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-900 font-bold text-sm">Home</a>
+            <a href="#ai-features" onClick={(e) => scrollToSection(e, 'ai-features')} className="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium text-sm">AI Features</a>
+            <a href="#pillars" onClick={(e) => scrollToSection(e, 'pillars')} className="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium text-sm">8 AI Care Pillars</a>
+            <a href="#ai-assistant" onClick={(e) => scrollToSection(e, 'ai-assistant')} className="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium text-sm">AI Pet Assistant</a>
+            <a href="#workflow" onClick={(e) => scrollToSection(e, 'workflow')} className="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium text-sm">14-Day AI Rollout</a>
+            <a href="#pricing" onClick={(e) => scrollToSection(e, 'pricing')} className="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium text-sm">Plans &amp; Pricing</a>
+            <a href="#demo" onClick={(e) => scrollToSection(e, 'demo')} className="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium text-sm">Book AI Demo</a>
+            <div className="pt-3 flex flex-col sm:flex-row gap-2.5 pb-2">
               <button
-                onClick={() => { setMobileMenuOpen(false); handleOpenDemoModal('parent'); }}
-                className="w-full flex items-center justify-center bg-amber-100 text-amber-900 font-semibold py-3 rounded-full text-xs sm:text-sm text-center"
-              >
-                Try Free AI Triage
-              </button>
-              <button
+                type="button"
                 onClick={() => { setMobileMenuOpen(false); handleOpenDemoModal('clinic'); }}
-                className="w-full flex items-center justify-center gap-1.5 bg-emerald-900 text-white font-semibold py-3 rounded-full text-xs sm:text-sm text-center"
+                className="w-full flex items-center justify-center gap-2 bg-emerald-900 hover:bg-emerald-800 text-white font-semibold py-3 px-4 rounded-full text-sm shadow-sm transition-all active:scale-98"
               >
                 <span>Book Clinic AI Demo</span>
                 <ArrowRight className="w-4 h-4 text-amber-400 shrink-0" />
+              </button>
+              <button
+                type="button"
+                onClick={() => { setMobileMenuOpen(false); handleOpenDemoModal('parent'); }}
+                className="w-full flex items-center justify-center bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 font-semibold py-3 px-4 rounded-full text-sm transition-all active:scale-98"
+              >
+                Try Free AI Triage
               </button>
             </div>
           </div>
