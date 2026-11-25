@@ -1,7 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, PawPrint } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   onOpenDemo?: () => void;
@@ -24,9 +25,16 @@ export default function Navbar({ onOpenDemo }: NavbarProps) {
         <div className="flex items-center justify-between h-20">
           
           {/* Logo matching the reference design */}
-          <Link href="#home" className="flex items-center gap-2 group">
-            <div className="text-[#10b981] group-hover:scale-105 transition-transform">
-              <PawPrint className="w-7 h-7 stroke-[2.3] fill-[#10b981]/15 text-[#10b981]" />
+          <Link href="#home" className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <Image
+                src="/brand-logo.png"
+                alt="GreenLane Logo"
+                width={36}
+                height={36}
+                className="w-full h-full object-contain"
+                priority
+              />
             </div>
             <div className="flex items-baseline">
               <span className="font-bold text-xl sm:text-2xl tracking-tight text-[#0f2a24]">GreenLane</span>

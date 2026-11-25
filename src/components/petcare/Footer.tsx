@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { PawPrint } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   const links = [
@@ -15,15 +15,21 @@ export default function Footer() {
   return (
     <footer className="bg-[#043326] text-white py-8 lg:py-10 border-t border-[#03291f]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Main Footer Row - Single Bar Matching Reference */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8">
-          
+
           {/* Logo & Tagline - All Font in Pure White */}
           <Link href="#home" className="flex items-center gap-3 group">
-            {/* White Circular Paw Badge */}
-            <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#043326] shadow-sm group-hover:scale-105 transition-transform">
-              <PawPrint className="w-5 h-5 fill-[#043326] text-[#043326]" />
+            {/* White Circular Badge */}
+            <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center p-1 shadow-sm group-hover:scale-105 transition-transform">
+              <Image
+                src="/brand-logo.png"
+                alt="GreenLane Logo"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain"
+              />
             </div>
             <div>
               <div className="flex items-baseline gap-1">
@@ -86,7 +92,7 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
-            
+
             <p className="text-xs text-white font-medium">
               Part of GreenLane AI | A DigiMabble product
             </p>

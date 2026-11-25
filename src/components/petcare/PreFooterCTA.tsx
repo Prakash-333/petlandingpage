@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { ArrowRight, PawPrint, Heart } from 'lucide-react';
+import { ArrowRight, Heart } from 'lucide-react';
 
 interface PreFooterCTAProps {
   onOpenDemo?: () => void;
@@ -12,24 +12,30 @@ export default function PreFooterCTA({ onOpenDemo, onLearnMore }: PreFooterCTAPr
   return (
     <section className="pt-4 sm:pt-6 pb-8 sm:pb-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Streamlined Banner with Light Gradient Theme (Slim, Compact Vertical Height) */}
         <div className="relative rounded-3xl bg-gradient-to-r from-[#eaf6ef] via-[#f6fbf8] to-[#fbfdfc] border border-emerald-100/90 pt-2 sm:pt-2.5 px-6 sm:px-10 lg:px-12 pb-0 overflow-hidden shadow-sm">
-          
+
           {/* Layered Organic Pastel Background Blobs */}
           <div className="absolute top-1/2 -translate-y-1/2 left-1/3 w-[300px] h-[300px] bg-emerald-200/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
           <div className="absolute -top-10 right-1/4 w-[300px] h-[300px] bg-teal-100/35 rounded-full blur-3xl -z-10 pointer-events-none"></div>
           <div className="absolute -bottom-10 right-1/3 w-[260px] h-[260px] bg-amber-100/40 rounded-full blur-2xl -z-10 pointer-events-none"></div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-end">
-            
+
             {/* Left Content: Vertically Centered with Minimal Top Gap */}
             <div className="lg:col-span-5 space-y-2 z-10 py-3 sm:py-4 self-center">
-              
+
               {/* Brand Logo */}
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#10b981] to-[#059669] flex items-center justify-center shadow-xs text-white">
-                  <PawPrint className="w-3.5 h-3.5 fill-white text-white" />
+                <div className="w-6 h-6 flex items-center justify-center">
+                  <Image
+                    src="/brand-logo.png"
+                    alt="GreenLane Logo"
+                    width={24}
+                    height={24}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <div className="flex items-baseline gap-1">
                   <span className="font-bold text-sm sm:text-base tracking-tight text-[#0f2a24]">GreenLane</span>
@@ -66,7 +72,7 @@ export default function PreFooterCTA({ onOpenDemo, onLearnMore }: PreFooterCTAPr
 
             {/* Center: Playful Pets Cutout (Sleek Compact Height Grounded at Bottom) */}
             <div className="lg:col-span-4 flex justify-center items-end relative overflow-visible self-end">
-              
+
               {/* Organic Pastel Shapes Behind Pets */}
               <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none">
                 <div className="w-56 h-56 rounded-full bg-teal-100/60 blur-2xl absolute -left-4"></div>
@@ -95,7 +101,7 @@ export default function PreFooterCTA({ onOpenDemo, onLearnMore }: PreFooterCTAPr
                   <span className="block text-lg sm:text-xl font-serif italic font-semibold text-[#064e3b] leading-tight">
                     Better care
                   </span>
-                  
+
                   <div className="flex items-center gap-1.5 mt-0.5">
                     <div className="w-4 h-4 rounded-full bg-rose-100 flex items-center justify-center">
                       <Heart className="w-2.5 h-2.5 fill-rose-500 text-rose-500 animate-pulse" />
@@ -108,12 +114,12 @@ export default function PreFooterCTA({ onOpenDemo, onLearnMore }: PreFooterCTAPr
 
                 {/* Hand-drawn Looping Curved Arrow pointing to the pets */}
                 <div className="mt-1.5 flex justify-center lg:justify-start pl-3">
-                  <svg 
-                    className="w-12 h-6 text-emerald-600/80 -rotate-6" 
-                    viewBox="0 0 100 45" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2.5" 
+                  <svg
+                    className="w-12 h-6 text-emerald-600/80 -rotate-6"
+                    viewBox="0 0 100 45"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeDasharray="4 2"
                   >

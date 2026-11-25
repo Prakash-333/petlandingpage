@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import {
   ChevronDown,
   Sparkles,
@@ -44,7 +45,9 @@ import {
   FileHeart,
   Siren,
   PawPrint,
-  Award
+  Award,
+  PhoneCall,
+  ChevronUp
 } from 'lucide-react';
 
 export default function GreenLaneLandingPage() {
@@ -293,10 +296,10 @@ export default function GreenLaneLandingPage() {
   const currentRegionObj = workflowRegions[activeWorkflowRegion] || workflowRegions.be_eu;
 
   const pricingTable: Record<string, any> = {
-    EUR_BE: { plusAnnual: '€3.90 / mo', plusMonthly: '€4.90 / mo', starterAnnual: '€119', starterMonthly: '€149', proAnnual: '€319', proMonthly: '€399', subStarter: '1 clinic or care location · AI intake, reminders & booking.', subPro: 'Multi-site clinics, PMS/CRM webhooks & dedicated onboarding.' },
-    EUR_BG: { plusAnnual: '€3.50 / mo', plusMonthly: '€4.50 / mo', starterAnnual: '€99', starterMonthly: '€125', proAnnual: '€269', proMonthly: '€339', subStarter: '1 clinic or studio · EU digital health & automated reminders.', subPro: 'Multi-location groups, custom triage & webhook sync.' },
-    INR: { plusAnnual: '₹199 / mo', plusMonthly: '₹249 / mo', starterAnnual: '₹5,999', starterMonthly: '₹7,499', proAnnual: '₹15,999', proMonthly: '₹19,999', subStarter: 'High-volume clinic or care studio · Queue triage & reminders.', subPro: 'Multi-branch networks, custom workflows & priority onboarding.' },
-    USD: { plusAnnual: '$4.50 / mo', plusMonthly: '$5.90 / mo', starterAnnual: '$129', starterMonthly: '$159', proAnnual: '$349', proMonthly: '$439', subStarter: '1 clinic or care location · AI triage, intake & booking.', subPro: 'Multi-site groups, CRM/PMS webhooks & dedicated SLA.' },
+    EUR_BE: { plusAnnual: '€3.90 / mo', plusMonthly: '€4.90 / mo', starterAnnual: '€119', starterMonthly: '€149', proAnnual: '€319', proMonthly: '€399', subStarter: '1 clinic or care location', subPro: 'Multi-site clinics & PMS/CRM webhooks.' },
+    EUR_BG: { plusAnnual: '€3.50 / mo', plusMonthly: '€4.50 / mo', starterAnnual: '€99', starterMonthly: '€125', proAnnual: '€269', proMonthly: '€339', subStarter: '1 clinic or studio', subPro: 'Multi-location groups & custom triage.' },
+    INR: { plusAnnual: '₹199 / mo', plusMonthly: '₹249 / mo', starterAnnual: '₹5,999', starterMonthly: '₹7,499', proAnnual: '₹15,999', proMonthly: '₹19,999', subStarter: 'High-volume clinic or care studio', subPro: 'Multi-branch networks & custom workflows.' },
+    USD: { plusAnnual: '$4.50 / mo', plusMonthly: '$5.90 / mo', starterAnnual: '$129', starterMonthly: '$159', proAnnual: '$349', proMonthly: '$439', subStarter: '1 clinic or care location', subPro: 'Multi-site groups & CRM/PMS webhooks.' },
   };
 
   const currentPricing = pricingTable[pricingCurrency] || pricingTable.EUR_BE;
@@ -342,10 +345,15 @@ export default function GreenLaneLandingPage() {
           <div className="flex items-center justify-between h-16 sm:h-20 gap-3 sm:gap-4">
             {/* Brand Logo */}
             <a href="#" className="flex items-center gap-2.5 sm:gap-3 shrink-0 group">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-900 flex items-center justify-center text-white shadow-sm group-hover:bg-emerald-800 transition-colors">
-                <svg className="w-6 h-6 sm:w-7 sm:h-7 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 13.5c-2.33 0-4.31 1.46-5.11 3.5-.42 1.07.37 2.25 1.52 2.25h7.18c1.15 0 1.94-1.18 1.52-2.25-.8-2.04-2.78-3.5-5.11-3.5zm-5.5-2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
-                </svg>
+              <div className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center group-hover:scale-105 transition-transform">
+                <Image
+                  src="/brand-logo.png"
+                  alt="GreenLane Logo"
+                  width={44}
+                  height={44}
+                  className="w-full h-full object-contain"
+                  priority
+                />
               </div>
               <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-[#0F172A]">
                 GreenLane<span className="text-emerald-600">Pet</span>
@@ -553,48 +561,32 @@ export default function GreenLaneLandingPage() {
                   <Stethoscope className="w-4 h-4 text-amber-600" />
                   <span>{currentAudience === 'parent' ? 'For Clinics & Partners' : 'For Pet Parents'}</span>
                 </button>
-
-                <button
-                  onClick={() => setVideoModalOpen(true)}
-                  className="inline-flex items-center gap-2 bg-white hover:bg-[#FFFBF5] text-[#0F172A] font-semibold px-4 py-3.5 rounded-full border border-slate-200/90 shadow-2xs hover:border-amber-300 transition-all active:scale-95 group"
-                >
-                  <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                    <Play className="w-3 h-3 fill-current ml-0.5" />
-                  </span>
-                  <span className="text-sm">60s AI Tour</span>
-                </button>
               </div>
 
               {/* Trust Metrics */}
-              <div className="pt-3 flex flex-wrap items-center gap-5 text-xs sm:text-sm text-slate-500 border-t border-slate-200/60 max-w-xl">
+              <div className="pt-3 flex flex-nowrap items-center justify-start gap-2.5 sm:gap-3.5 text-xs sm:text-[15px] lg:text-[16px] text-slate-600 border-t border-slate-200/60 font-medium whitespace-nowrap overflow-hidden -ml-0.5">
                 {currentAudience === 'parent' ? (
                   <>
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 shrink-0" />
                       <span>AI Supports—Never Replaces Vets</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <BellRing className="w-4 h-4 text-amber-500" />
+                    <span className="text-slate-300 shrink-0">·</span>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <BellRing className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 shrink-0" />
                       <span>Day-1 AI Health &amp; Vaccine Sync</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Network className="w-4 h-4 text-emerald-600" />
-                      <span>Connected Care &amp; Clinic Network</span>
                     </div>
                   </>
                 ) : (
                   <>
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 shrink-0" />
                       <span>AI Pre-Visit Clinical Briefs</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <BellRing className="w-4 h-4 text-amber-500" />
+                    <span className="text-slate-300 shrink-0">·</span>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <BellRing className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 shrink-0" />
                       <span>-40% Front-Desk Admin Load</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Network className="w-4 h-4 text-emerald-600" />
-                      <span>GDPR, DPDP &amp; Vet Guardrails</span>
                     </div>
                   </>
                 )}
@@ -801,42 +793,58 @@ export default function GreenLaneLandingPage() {
       {/* 3. DAY-ONE CORE VS. CONNECTED ECOSYSTEM + 8 PILLARS */}
       <section id="pillars" className="relative z-20 -mt-10 sm:-mt-14 pb-4 sm:pb-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl shadow-card border border-slate-100 p-4 sm:p-5">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 mb-4 border-b border-slate-100">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-wider text-amber-700">
-                  Scope Clarity · Day-One AI Core vs. Connected AI Ecosystem
-                </p>
-                <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
-                  <strong>Day-One AI Core</strong> powers real-time triage, preventative health reminders &amp; clinic intake immediately;
-                  <strong>Connected AI Ecosystem</strong> links specialized care, smart hardware &amp; trusted partners.
-                </p>
-              </div>
-              <div className="inline-flex items-center p-1 rounded-full bg-[#FFFBF5] border border-slate-200/90 shrink-0 self-start md:self-auto max-w-full overflow-x-auto">
-                <button
-                  type="button"
-                  onClick={() => setPillarScopeFilter('all')}
-                  className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap ${pillarScopeFilter === 'all' ? 'bg-emerald-900 text-white' : 'text-slate-600 hover:text-emerald-900'
-                    }`}
-                >
-                  All (8 Pillars)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPillarScopeFilter('day_one')}
-                  className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap ${pillarScopeFilter === 'day_one' ? 'bg-emerald-900 text-white font-bold' : 'text-slate-600 hover:text-emerald-900'
-                    }`}
-                >
-                  Day-One AI Core
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPillarScopeFilter('ecosystem')}
-                  className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap ${pillarScopeFilter === 'ecosystem' ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-600 hover:text-amber-800'
-                    }`}
-                >
-                  Connected AI Ecosystem
-                </button>
+          <div className="bg-white rounded-3xl shadow-card border border-slate-100 p-5 sm:p-6">
+            {/* Header: Title, Description & Filter Tabs */}
+            <div className="pb-5 mb-5 border-b border-slate-100 space-y-4">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                <div className="flex-1">
+                  <p className="text-base sm:text-lg lg:text-[20px] font-bold uppercase tracking-wider text-amber-700">
+                    Scope Clarity · Day-One AI Core vs. Connected AI Ecosystem
+                  </p>
+                  <p className="text-sm sm:text-base lg:text-[17px] text-slate-700 mt-1 leading-relaxed">
+                    Day-One AI Core powers real-time triage, preventative health reminders &amp; clinic intake immediately; Connected AI Ecosystem links specialized care, smart hardware &amp; trusted partners.
+                  </p>
+                </div>
+
+                {/* Filter Pills */}
+                <div className="inline-flex items-center p-1.5 rounded-2xl bg-slate-100/80 border border-slate-200/80 shrink-0 self-start lg:self-center">
+                  <button
+                    type="button"
+                    onClick={() => setPillarScopeFilter('all')}
+                    className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap ${pillarScopeFilter === 'all'
+                      ? 'bg-white text-emerald-950 shadow-xs border border-slate-200/60'
+                      : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                  >
+                    <span>All</span>
+                    <span className={`text-[11px] px-1.5 py-0.2 rounded-full font-extrabold ${pillarScopeFilter === 'all' ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200/70 text-slate-600'
+                      }`}>
+                      8
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPillarScopeFilter('day_one')}
+                    className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${pillarScopeFilter === 'day_one'
+                      ? 'bg-emerald-900 text-white shadow-xs font-bold'
+                      : 'text-slate-600 hover:text-emerald-900'
+                      }`}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>Day-One Core</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPillarScopeFilter('ecosystem')}
+                    className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${pillarScopeFilter === 'ecosystem'
+                      ? 'bg-amber-400 text-slate-950 shadow-xs font-bold'
+                      : 'text-slate-600 hover:text-amber-800'
+                      }`}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                    <span>AI Ecosystem</span>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -850,9 +858,9 @@ export default function GreenLaneLandingPage() {
                     key={pillar.id}
                     type="button"
                     onClick={() => { setActivePillarId(pillar.id); trackEvent('care_pillar_selected', { pillar: pillar.id }); }}
-                    className={`flex flex-col items-center justify-center py-3.5 px-2 rounded-2xl transition-all duration-200 border relative ${isActive
-                      ? 'bg-emerald-900 text-white border-emerald-900 shadow-md scale-[1.02]'
-                      : 'bg-white hover:bg-[#FFFBF5] text-slate-700 border-slate-100 hover:border-amber-200 hover:shadow-xs'
+                    className={`flex flex-col items-center justify-center py-3.5 px-2 rounded-xl transition-all duration-200 border-2 relative ${isActive
+                      ? 'bg-emerald-900 text-white border-emerald-950 shadow-md scale-[1.02]'
+                      : 'bg-white hover:bg-[#FFFBF5] text-slate-700 border-slate-300 hover:border-amber-400 hover:shadow-xs'
                       }`}
                   >
                     <span className={`text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full mb-2 ${isActive
@@ -876,33 +884,33 @@ export default function GreenLaneLandingPage() {
             </div>
 
             {/* Dynamic Preview Drawer */}
-            <div className="mt-6 border-t border-slate-100 px-5 sm:px-7 pt-6 pb-5 rounded-2xl bg-gradient-to-r from-[#FFFBF5] via-white to-emerald-50/60 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 transition-all duration-300">
+            <div className="mt-6 border-t border-slate-100 px-5 sm:px-7 pt-6 pb-6 rounded-2xl bg-gradient-to-r from-[#FFFBF5] via-white to-emerald-50/60 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 transition-all duration-300">
               <div className="flex items-start sm:items-center gap-4 pt-1 sm:pt-2">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-900 text-amber-400 flex items-center justify-center shrink-0 shadow-sm mt-1 sm:mt-0">
-                  {React.createElement(selectedPillar.icon, { className: 'w-6 h-6' })}
+                <div className="w-14 h-14 rounded-2xl bg-emerald-900 text-amber-400 flex items-center justify-center shrink-0 shadow-sm mt-1 sm:mt-0">
+                  {React.createElement(selectedPillar.icon, { className: 'w-7 h-7' })}
                 </div>
-                <div className="pt-2 sm:pt-3 space-y-1.5">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-display font-bold text-base sm:text-lg text-[#0F172A]">{selectedPillar.title}</span>
-                    <span className={`text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${selectedPillar.scope === 'day_one' ? 'bg-emerald-900 text-amber-300' : 'bg-amber-500 text-slate-950'
+                <div className="pt-1 sm:pt-2 space-y-2">
+                  <div className="flex flex-wrap items-center gap-2.5">
+                    <span className="font-display font-bold text-lg sm:text-xl text-[#0F172A]">{selectedPillar.title}</span>
+                    <span className={`text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full ${selectedPillar.scope === 'day_one' ? 'bg-emerald-900 text-amber-300' : 'bg-amber-500 text-slate-950'
                       }`}>
                       {selectedPillar.scopeLabel}
                     </span>
-                    <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800">
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-900">
                       {selectedPillar.badge}
                     </span>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed max-w-3xl">
                     {selectedPillar.desc}
                   </p>
                 </div>
               </div>
               <a
                 href="#ai-assistant"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-900 hover:text-emerald-700 bg-white px-5 py-3 rounded-full border border-emerald-200/80 shadow-2xs shrink-0 transition-all hover:border-amber-400 self-start md:self-auto mt-2 md:mt-0"
+                className="inline-flex items-center gap-2 text-sm font-bold text-emerald-900 hover:text-emerald-700 bg-white px-6 py-3.5 rounded-full border border-emerald-200/80 shadow-xs shrink-0 transition-all hover:border-amber-400 hover:shadow-sm self-start md:self-auto mt-2 md:mt-0 active:scale-95"
               >
                 <span>Ask AI About This</span>
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                <Sparkles className="w-4 h-4 text-amber-500" />
               </a>
             </div>
           </div>
@@ -913,49 +921,51 @@ export default function GreenLaneLandingPage() {
       <section id="ai-assistant" className="pt-4 sm:pt-6 pb-8 sm:pb-12 bg-[#FFFBF5]/60 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Everyday Guidance vs Urgent Vet Escalation */}
-          <div className="mb-8 lg:mb-10 rounded-2xl bg-white border border-amber-200/80 shadow-soft p-4 sm:p-5 grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-            <div className="lg:col-span-5 flex items-start gap-3 p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
-              <div className="w-8 h-8 rounded-lg bg-emerald-900 text-amber-400 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
-                <Bot className="w-4 h-4" />
+          <div className="mb-8 lg:mb-10 rounded-2xl bg-white border border-amber-200/80 shadow-soft p-5 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+            <div className="lg:col-span-5 flex items-start gap-3.5 p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
+              <div className="w-10 h-10 rounded-xl bg-emerald-900 text-amber-400 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                <Bot className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-xs font-extrabold uppercase tracking-wider text-emerald-900">
+                <p className="text-sm sm:text-base lg:text-[18px] font-bold text-emerald-950 leading-none mb-1">
                   Everyday Guidance (AI Companion)
                 </p>
-                <p className="text-xs text-slate-600 mt-0.5">
+                <p className="text-xs sm:text-sm lg:text-[16px] text-slate-600 leading-snug">
                   Vaccine schedules, routine prep, nutrition comparisons, and pre-visit notes to organize care smoothly.
                 </p>
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex items-start gap-3 p-3 rounded-xl bg-amber-50/90 border border-amber-300/80">
-              <div className="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
-                <Stethoscope className="w-4 h-4" />
+            <div className="lg:col-span-5 flex items-start gap-3.5 p-3.5 rounded-xl bg-amber-50/90 border border-amber-300/80">
+              <div className="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                <Stethoscope className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-xs font-extrabold uppercase tracking-wider text-amber-950">
-                  Urgent Red-Flag Escalation (Licensed Vet)
+                <p className="text-sm sm:text-base lg:text-[18px] font-bold text-amber-950 whitespace-nowrap leading-none mb-1">
+                  Urgent Vet Escalation (Red-Flag)
                 </p>
-                <p className="text-xs text-slate-700 mt-0.5">
+                <p className="text-xs sm:text-sm lg:text-[16px] text-slate-700 leading-snug">
                   Difficulty breathing, collapse, active seizures, uncontrolled bleeding, or suspected toxin ingestion requires immediate vet care.
                 </p>
               </div>
             </div>
 
-            <div className="lg:col-span-2 flex lg:flex-col items-center lg:items-stretch justify-between gap-2">
+            <div className="lg:col-span-2 flex flex-col sm:flex-row lg:flex-col items-stretch justify-center gap-2.5 h-full">
               <button
                 type="button"
                 onClick={() => handleTriggerScenario('chocolate')}
-                className="flex-1 text-center text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 px-3 py-2.5 rounded-xl transition-colors shadow-2xs"
+                className="w-full inline-flex items-center justify-center gap-1.5 text-center text-xs font-bold bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 px-4 py-2.5 rounded-xl transition-all shadow-xs hover:shadow-sm"
               >
-                Test Red-Flag Check
+                <ShieldAlert className="w-3.5 h-3.5 text-slate-950 shrink-0" />
+                <span className="whitespace-nowrap">Test Red-Flag Check</span>
               </button>
               <button
                 type="button"
                 onClick={() => handleOpenDemoModal('clinic')}
-                className="flex-1 text-center text-xs font-bold bg-emerald-900 hover:bg-emerald-800 text-white px-3 py-2 rounded-xl transition-colors"
+                className="w-full inline-flex items-center justify-center gap-1.5 text-center text-xs font-bold bg-emerald-900 hover:bg-emerald-800 active:scale-95 text-white px-4 py-2.5 rounded-xl transition-all shadow-xs hover:shadow-sm"
               >
-                Contact Vet / Clinic
+                <CalendarPlus className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span className="whitespace-nowrap">Contact Vet / Clinic</span>
               </button>
             </div>
           </div>
@@ -963,65 +973,65 @@ export default function GreenLaneLandingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
             {/* Left 4 cols */}
             <div className="lg:col-span-4 space-y-5">
-              <div className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-amber-600">
+              <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-widest uppercase text-amber-700">
                 <span className="w-6 h-0.5 bg-amber-500 rounded-full"></span>
                 <span>AI PET ASSISTANT &amp; CLINICAL CO-PILOT</span>
               </div>
 
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#0F172A] leading-tight">
+              <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[40px] text-[#0F172A] leading-tight">
                 Your Pet’s<br />
-                24/7 AI Health Companion
+                <span className="text-emerald-950">24/7 AI Health Companion</span>
               </h2>
 
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              <p className="text-slate-700 text-base lg:text-[18px] leading-relaxed">
                 Get instant emergency triage with veterinary guardrails, orchestrate multi-service care schedules, and compare prescription nutrition—all through a single proactive AI conversation.
               </p>
 
-              <div className="space-y-2.5 pt-1">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+              <div className="space-y-3 pt-1">
+                <p className="text-xs sm:text-sm font-bold text-slate-600 uppercase tracking-wider">
                   Test Real-World AI Scenarios:
                 </p>
 
                 <button
                   onClick={() => handleTriggerScenario('chocolate')}
-                  className="w-full text-left flex items-center gap-3 p-3 rounded-2xl bg-white hover:bg-amber-50/80 border border-slate-200/90 hover:border-amber-400 shadow-2xs transition-all group"
+                  className="w-full text-left flex items-center gap-3 p-3.5 rounded-xl bg-white hover:bg-amber-50/80 border border-slate-200/90 hover:border-amber-400 shadow-2xs transition-all group"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                    <AlertTriangle className="w-4 h-4" />
+                  <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                    <AlertTriangle className="w-5 h-5" />
                   </div>
-                  <div className="min-w-0 flex-1 flex flex-col justify-center pt-2">
-                    <p className="text-xs font-bold text-[#0F172A] truncate leading-none mb-1.5">Emergency Triage: Ate dark chocolate</p>
-                    <p className="text-[11px] text-slate-500 truncate leading-none">Instant toxicity calculator &amp; urgent vet slot</p>
+                  <div className="min-w-0 flex-1 flex flex-col justify-center pt-1.5">
+                    <p className="text-sm lg:text-[16px] font-bold text-[#0F172A] truncate leading-none mb-1.5">Emergency Triage: Ate dark chocolate</p>
+                    <p className="text-xs sm:text-[13px] text-slate-500 truncate leading-none">Instant toxicity calculator &amp; urgent vet slot</p>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600" />
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 shrink-0" />
                 </button>
 
                 <button
                   onClick={() => handleTriggerScenario('routine')}
-                  className="w-full text-left flex items-center gap-3 p-3 rounded-2xl bg-white hover:bg-emerald-50/80 border border-slate-200/90 hover:border-emerald-400 shadow-2xs transition-all group"
+                  className="w-full text-left flex items-center gap-3 p-3.5 rounded-xl bg-white hover:bg-emerald-50/80 border border-slate-200/90 hover:border-emerald-400 shadow-2xs transition-all group"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 group-hover:bg-emerald-900 group-hover:text-amber-400 transition-colors">
-                    <CalendarPlus className="w-4 h-4" />
+                  <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 group-hover:bg-emerald-900 group-hover:text-amber-400 transition-colors">
+                    <CalendarPlus className="w-5 h-5" />
                   </div>
-                  <div className="min-w-0 flex-1 flex flex-col justify-center pt-2">
-                    <p className="text-xs font-bold text-[#0F172A] truncate leading-none mb-1.5">Routine Care: Annual booster &amp; grooming</p>
-                    <p className="text-[11px] text-slate-500 truncate leading-none">Smart calendar sync + bundled service booking</p>
+                  <div className="min-w-0 flex-1 flex flex-col justify-center pt-1.5">
+                    <p className="text-sm lg:text-[16px] font-bold text-[#0F172A] truncate leading-none mb-1.5">Routine Care: Annual booster &amp; grooming</p>
+                    <p className="text-xs sm:text-[13px] text-slate-500 truncate leading-none">Smart calendar sync + bundled service booking</p>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-700" />
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-700 shrink-0" />
                 </button>
 
                 <button
                   onClick={() => handleTriggerScenario('renal')}
-                  className="w-full text-left flex items-center gap-3 p-3 rounded-2xl bg-white hover:bg-amber-50/80 border border-slate-200/90 hover:border-amber-400 shadow-2xs transition-all group"
+                  className="w-full text-left flex items-center gap-3 p-3.5 rounded-xl bg-white hover:bg-amber-50/80 border border-slate-200/90 hover:border-amber-400 shadow-2xs transition-all group"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                    <Scale className="w-4 h-4" />
+                  <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                    <Scale className="w-5 h-5" />
                   </div>
-                  <div className="min-w-0 flex-1 flex flex-col justify-center pt-2">
-                    <p className="text-xs font-bold text-[#0F172A] truncate leading-none mb-1.5">Smart Diet: Renal nutrition comparison</p>
-                    <p className="text-[11px] text-slate-500 truncate leading-none">AI-matched prescription &amp; partner food options</p>
+                  <div className="min-w-0 flex-1 flex flex-col justify-center pt-1.5">
+                    <p className="text-sm lg:text-[16px] font-bold text-[#0F172A] truncate leading-none mb-1.5">Smart Diet: Renal nutrition comparison</p>
+                    <p className="text-xs sm:text-[13px] text-slate-500 truncate leading-none">AI-matched prescription &amp; partner food options</p>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600" />
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 shrink-0" />
                 </button>
               </div>
             </div>
@@ -1140,42 +1150,42 @@ export default function GreenLaneLandingPage() {
             </div>
 
             {/* Right 4 cols */}
-            <div className="lg:col-span-4 space-y-3.5">
+            <div className="lg:col-span-4 space-y-4">
               <div className="relative rounded-2xl bg-gradient-to-br from-amber-50 via-[#FFFBF5] to-emerald-50/70 border border-amber-200/60 p-4 sm:p-5 shadow-soft overflow-hidden">
-                <h3 className="font-display font-bold text-base sm:text-lg text-[#0F172A] mb-3">
+                <h3 className="font-display font-bold text-base sm:text-lg lg:text-[20px] text-[#0F172A] mb-3">
                   Day-One AI Core vs. Connected Ecosystem
                 </h3>
 
-                <div className="space-y-2.5 relative z-10 text-xs">
-                  <div className="rounded-xl bg-white/90 border border-emerald-200/80 p-2.5 sm:p-3 space-y-1.5">
-                    <p className="font-extrabold uppercase tracking-wider text-[10px] text-emerald-900 flex items-center gap-1.5">
+                <div className="space-y-3 relative z-10 text-xs">
+                  <div className="rounded-xl bg-white/90 border border-emerald-200/80 p-3 sm:p-3.5 space-y-2">
+                    <p className="font-extrabold uppercase tracking-wider text-xs sm:text-[13px] text-emerald-900 flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
                       Live on Day One (Core)
                     </p>
-                    <ul className="space-y-1 text-slate-700 font-medium text-[11px] sm:text-xs">
-                      <li className="flex items-center gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                    <ul className="space-y-1.5 text-slate-700 font-medium text-xs sm:text-[13px] lg:text-[14px]">
+                      <li className="flex items-center gap-2">
+                        <Check className="w-4 h-4 text-emerald-700 shrink-0" />
                         <span>24/7 AI Companion &amp; Emergency Triage Guardrails</span>
                       </li>
-                      <li className="flex items-center gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                      <li className="flex items-center gap-2">
+                        <Check className="w-4 h-4 text-emerald-700 shrink-0" />
                         <span>Digital Health Passports, Vaccine Reminders &amp; Booking</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="rounded-xl bg-white/90 border border-amber-200/80 p-2.5 sm:p-3 space-y-1.5">
-                    <p className="font-extrabold uppercase tracking-wider text-[10px] text-amber-800 flex items-center gap-1.5">
+                  <div className="rounded-xl bg-white/90 border border-amber-200/80 p-3 sm:p-3.5 space-y-2">
+                    <p className="font-extrabold uppercase tracking-wider text-xs sm:text-[13px] text-amber-800 flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-amber-500"></span>
                       Connected Ecosystem Network
                     </p>
-                    <ul className="space-y-1 text-slate-700 font-medium text-[11px] sm:text-xs">
-                      <li className="flex items-center gap-1.5">
-                        <Network className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                    <ul className="space-y-1.5 text-slate-700 font-medium text-xs sm:text-[13px] lg:text-[14px]">
+                      <li className="flex items-center gap-2">
+                        <Network className="w-4 h-4 text-amber-600 shrink-0" />
                         <span>AI Grooming, Walking, Training &amp; Boarding</span>
                       </li>
-                      <li className="flex items-center gap-1.5">
-                        <Network className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                      <li className="flex items-center gap-2">
+                        <Network className="w-4 h-4 text-amber-600 shrink-0" />
                         <span>Prescription Nutrition &amp; Smart Wearables Telemetry</span>
                       </li>
                     </ul>
@@ -1184,46 +1194,46 @@ export default function GreenLaneLandingPage() {
               </div>
 
               {/* Health Timeline Preview */}
-              <div className="rounded-2xl bg-white border border-slate-200/80 p-4 shadow-soft">
-                <div className="flex items-center justify-between mb-2.5">
+              <div className="rounded-2xl bg-white border border-slate-200/80 p-4 sm:p-5 shadow-soft">
+                <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span className="font-display font-bold text-xs uppercase tracking-wider text-[#0F172A]">AI Health Timeline · Max</span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span className="font-display font-bold text-xs sm:text-sm uppercase tracking-wider text-[#0F172A]">AI Health Timeline · Max</span>
                   </div>
-                  <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Day-1 AI Core Sync</span>
+                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">Day-1 AI Core Sync</span>
                 </div>
 
                 <div className="rounded-xl border border-slate-200/80 divide-y divide-slate-100 overflow-hidden bg-white">
-                  <div className="flex items-center justify-between p-2.5 bg-amber-50/40 hover:bg-amber-50/70 transition-colors">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-                        <Syringe className="w-3.5 h-3.5" />
+                  <div className="flex items-center justify-between p-3 bg-amber-50/40 hover:bg-amber-50/70 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                        <Syringe className="w-4 h-4" />
                       </div>
                       <div className="flex flex-col justify-center text-left">
-                        <p className="text-xs font-bold text-[#0F172A] leading-none mb-0.5">DHPP Annual Booster</p>
-                        <p className="text-[10px] text-slate-500 leading-none">GreenLane Vet Center · Auto-held</p>
+                        <p className="text-xs sm:text-sm font-bold text-[#0F172A] leading-none mb-1">DHPP Annual Booster</p>
+                        <p className="text-[11px] sm:text-xs text-slate-500 leading-none">GreenLane Vet Center · Auto-held</p>
                       </div>
                     </div>
-                    <span className="text-[10px] font-bold text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded-md">In 5 days</span>
+                    <span className="text-xs font-bold text-amber-800 bg-amber-100/80 px-2.5 py-1 rounded-md">In 5 days</span>
                   </div>
 
-                  <div className="flex items-center justify-between p-2.5 bg-emerald-50/30 hover:bg-emerald-50/60 transition-colors">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                        <Utensils className="w-3.5 h-3.5" />
+                  <div className="flex items-center justify-between p-3 bg-emerald-50/30 hover:bg-emerald-50/60 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                        <Utensils className="w-4 h-4" />
                       </div>
                       <div className="flex flex-col justify-center text-left">
-                        <p className="text-xs font-bold text-[#0F172A] leading-none mb-0.5">Royal Canin Joint Care Refill</p>
-                        <p className="text-[10px] text-slate-500 leading-none">Connected Partner Diet · 29 kg</p>
+                        <p className="text-xs sm:text-sm font-bold text-[#0F172A] leading-none mb-1">Royal Canin Joint Care Refill</p>
+                        <p className="text-[11px] sm:text-xs text-slate-500 leading-none">Connected Partner Diet · 29 kg</p>
                       </div>
                     </div>
-                    <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded-md">Nov 28</span>
+                    <span className="text-xs font-bold text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-md">Nov 28</span>
                   </div>
                 </div>
 
-                <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between gap-2 text-[10px] text-slate-600 leading-snug">
+                <div className="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-between gap-2 text-xs sm:text-[13px] text-slate-600 leading-snug">
                   <div className="flex items-center gap-1.5">
-                    <ShieldAlert className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                    <ShieldAlert className="w-4 h-4 text-amber-600 shrink-0" />
                     <p>
                       <strong>Vet Boundary:</strong> AI guidance supports licensed vet care.
                     </p>
@@ -1462,25 +1472,25 @@ export default function GreenLaneLandingPage() {
       <section id="pricing" className="pt-16 sm:pt-20 pb-8 sm:pb-12 bg-[#FFFBF5]/70 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-            <div className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-amber-600">
+            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-widest uppercase text-amber-700">
               <span className="w-6 h-0.5 bg-amber-500 rounded-full"></span>
               <span>TRANSPARENT AI ECOSYSTEM PRICING</span>
               <span className="w-6 h-0.5 bg-amber-500 rounded-full"></span>
             </div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#0F172A]">
+            <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[40px] text-[#0F172A] leading-tight">
               Plans That Scale With{' '}
               <span className="text-emerald-800">Every Pet &amp; Practice</span>
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base">
+            <p className="text-slate-700 text-base lg:text-[18px] leading-relaxed">
               Start free as a pet parent, launch automated care for a single clinic or studio, or deploy multi-site AI workflows with live CRM &amp; PMS webhooks.
             </p>
 
-            <div className="pt-3 flex flex-wrap items-center justify-center gap-4">
+            <div className="pt-3 flex items-center justify-center">
               <div className="inline-flex items-center p-1 rounded-full bg-white border border-slate-200 shadow-2xs">
                 <button
                   type="button"
                   onClick={() => setBillingCycle('monthly')}
-                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${!isAnnual ? 'bg-emerald-900 text-white font-bold shadow-xs' : 'text-slate-600 hover:text-emerald-900'
+                  className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all ${!isAnnual ? 'bg-emerald-900 text-white font-bold shadow-xs' : 'text-slate-600 hover:text-emerald-900'
                     }`}
                 >
                   Monthly
@@ -1488,35 +1498,21 @@ export default function GreenLaneLandingPage() {
                 <button
                   type="button"
                   onClick={() => setBillingCycle('annual')}
-                  className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${isAnnual ? 'bg-emerald-900 text-white shadow-xs' : 'text-slate-600 hover:text-emerald-900'
+                  className={`inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all ${isAnnual ? 'bg-emerald-900 text-white shadow-xs' : 'text-slate-600 hover:text-emerald-900'
                     }`}
                 >
                   <span>Annual</span>
                   <span className="text-[10px] font-extrabold bg-amber-400 text-emerald-950 px-2 py-0.5 rounded-full">Save 20%</span>
                 </button>
               </div>
-
-              <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-3.5 py-1.5 shadow-2xs">
-                <Coins className="w-4 h-4 text-amber-500" />
-                <select
-                  value={pricingCurrency}
-                  onChange={(e) => setPricingCurrency(e.target.value)}
-                  className="text-xs sm:text-sm font-bold text-[#0F172A] bg-transparent focus:outline-none cursor-pointer"
-                >
-                  <option value="EUR_BE">EUR (€) · Belgium &amp; EU</option>
-                  <option value="EUR_BG">EUR (€) / BGN · Bulgaria &amp; EU</option>
-                  <option value="INR">INR (₹) · India</option>
-                  <option value="USD">USD ($) · Global</option>
-                </select>
-              </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 items-stretch">
             {/* Tier 1 */}
-            <div className="rounded-3xl bg-white border border-slate-200/90 p-7 sm:p-8 shadow-soft flex flex-col justify-between">
+            <div className="rounded-3xl bg-white border-2 border-slate-300 hover:border-emerald-700/60 p-7 sm:p-8 shadow-card hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
               <div className="flex flex-col flex-1">
-                <div className="h-[180px] lg:h-[195px] flex flex-col justify-start">
+                <div className="h-[185px] lg:h-[205px] flex flex-col justify-start">
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full">
                       For Pet Parents
@@ -1524,24 +1520,21 @@ export default function GreenLaneLandingPage() {
                     <span className="text-xs font-semibold text-amber-700">Free Base + Optional Pass</span>
                   </div>
 
-                  <h3 className="font-display font-extrabold text-2xl text-[#0F172A] leading-tight">GreenLane AI Plus</h3>
-                  <p className="text-xs font-bold text-amber-700 mt-0.5">For Pet Parents &amp; Families</p>
-                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
-                    Free digital pet passport, vaccine reminders &amp; AI triage—upgrade for 24/7 continuous health tracking, priority slots &amp; smart refills.
+                  <h3 className="font-display font-extrabold text-2xl lg:text-[26px] text-[#0F172A] leading-tight">GreenLane AI Plus</h3>
+                  <p className="text-xs sm:text-sm font-bold text-amber-700 mt-1">For Pet Parents &amp; Families</p>
+                  <p className="text-sm lg:text-[15px] text-slate-600 mt-2 leading-relaxed">
+                    Free digital pet passport, vaccine reminders and AI triage with continuous health tracking, priority slots, and smart refills.
                   </p>
                 </div>
 
-                <div className="mt-6 h-[88px] pb-6 border-b border-slate-100 flex flex-col justify-center">
+                <div className="mt-6 h-[56px] pb-3 border-b border-slate-100 flex flex-col justify-center">
                   <div className="flex items-baseline gap-2">
                     <span className="font-display font-extrabold text-3xl sm:text-4xl text-[#0F172A]">Free</span>
                     <span className="text-xs font-semibold text-slate-500">/ base profile</span>
                   </div>
-                  <p className="text-xs font-bold text-amber-700 mt-2">
-                    Plus Care Pass: <span className="text-[#0F172A]">{isAnnual ? currentPricing.plusAnnual : currentPricing.plusMonthly}</span>
-                  </p>
                 </div>
 
-                <ul className="mt-6 space-y-3.5 text-xs sm:text-sm text-slate-700 flex-1">
+                <ul className="mt-5 space-y-3.5 text-xs sm:text-sm lg:text-[15px] text-slate-700 flex-1">
                   <li className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
@@ -1571,7 +1564,7 @@ export default function GreenLaneLandingPage() {
                     setDemoPlan('GreenLane AI Plus (Pet Parents)');
                     document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className="w-full py-3.5 px-6 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-950 font-bold text-sm border border-emerald-200 transition-all flex items-center justify-center gap-2"
+                  className="w-full py-3.5 px-6 rounded-full bg-emerald-50 hover:bg-emerald-100 active:scale-95 text-emerald-950 font-bold text-sm lg:text-base border border-emerald-200 transition-all flex items-center justify-center gap-2"
                 >
                   <span>Start Free AI Pet Profile</span>
                   <ArrowRight className="w-4 h-4 text-emerald-800" />
@@ -1581,36 +1574,35 @@ export default function GreenLaneLandingPage() {
 
             {/* Tier 2 */}
             <div className="rounded-3xl bg-emerald-950 text-white border-2 border-amber-400/80 p-7 sm:p-8 shadow-card flex flex-col justify-between relative">
-              <div className="absolute -top-3.5 right-6 bg-amber-400 text-emerald-950 text-[11px] font-extrabold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm">
+              <div className="absolute -top-3.5 right-6 bg-amber-400 text-emerald-950 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm">
                 Most Popular for Clinics &amp; Studios
               </div>
 
               <div className="flex flex-col flex-1">
-                <div className="h-[180px] lg:h-[195px] flex flex-col justify-start">
+                <div className="h-[185px] lg:h-[205px] flex flex-col justify-start">
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span className="text-xs font-bold uppercase tracking-wider text-amber-300 bg-emerald-900 px-3 py-1 rounded-full">
                       Clinics, Groomers &amp; Trainers
                     </span>
                   </div>
 
-                  <h3 className="font-display font-extrabold text-2xl text-white leading-tight">Clinic AI Starter</h3>
-                  <p className="text-xs font-bold text-amber-300 mt-0.5">Single Clinic or Care Studio</p>
-                  <p className="text-xs sm:text-sm text-emerald-100/85 mt-2 leading-relaxed">
-                    Built for independent vet clinics, grooming salons, and care studios automating reminders, AI pre-visit intake, and seamless bookings.
+                  <h3 className="font-display font-extrabold text-2xl lg:text-[26px] text-white leading-tight">Clinic AI Starter</h3>
+                  <p className="text-xs sm:text-sm font-bold text-amber-300 mt-1">Single Clinic or Care Studio</p>
+                  <p className="text-sm lg:text-[15px] text-emerald-100/90 mt-2 leading-relaxed">
+                    Built for independent clinics, salons, and care studios automating reminders, AI pre-visit intake, and seamless bookings.
                   </p>
                 </div>
 
-                <div className="mt-6 h-[88px] pb-6 border-b border-emerald-800/80 flex flex-col justify-center">
+                <div className="mt-6 h-[56px] pb-3 border-b border-emerald-800/80 flex flex-col justify-center">
                   <div className="flex items-baseline gap-2">
                     <span className="font-display font-extrabold text-3xl sm:text-4xl text-amber-400">
                       {isAnnual ? currentPricing.starterAnnual : currentPricing.starterMonthly}
                     </span>
-                    <span className="text-xs text-emerald-200">{isAnnual ? '/ mo billed annually' : '/ mo billed monthly'}</span>
+                    <span className="text-xs sm:text-sm text-emerald-200">{isAnnual ? '/ mo billed annually' : '/ mo billed monthly'}</span>
                   </div>
-                  <p className="text-xs text-emerald-300/80 mt-2">{currentPricing.subStarter}</p>
                 </div>
 
-                <ul className="mt-6 space-y-3.5 text-xs sm:text-sm text-emerald-50 flex-1">
+                <ul className="mt-5 space-y-3.5 text-xs sm:text-sm lg:text-[15px] text-emerald-50 flex-1">
                   <li className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
@@ -1640,7 +1632,7 @@ export default function GreenLaneLandingPage() {
                     setDemoPlan('Clinic AI Starter');
                     document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className="w-full py-3.5 px-6 rounded-full bg-amber-400 hover:bg-amber-300 text-emerald-950 font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2"
+                  className="w-full py-3.5 px-6 rounded-full bg-amber-400 hover:bg-amber-300 active:scale-95 text-emerald-950 font-extrabold text-sm lg:text-base shadow-md transition-all flex items-center justify-center gap-2"
                 >
                   <span>Book Clinic AI Demo</span>
                   <ArrowRight className="w-4 h-4" />
@@ -1649,9 +1641,9 @@ export default function GreenLaneLandingPage() {
             </div>
 
             {/* Tier 3 */}
-            <div className="rounded-3xl bg-white border border-slate-200/90 p-7 sm:p-8 shadow-soft flex flex-col justify-between">
+            <div className="rounded-3xl bg-white border-2 border-slate-300 hover:border-emerald-700/60 p-7 sm:p-8 shadow-card hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
               <div className="flex flex-col flex-1">
-                <div className="h-[180px] lg:h-[195px] flex flex-col justify-start">
+                <div className="h-[185px] lg:h-[205px] flex flex-col justify-start">
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full">
                       Multi-Site &amp; Enterprise
@@ -1659,24 +1651,23 @@ export default function GreenLaneLandingPage() {
                     <span className="text-xs font-semibold text-emerald-800">Custom Workflows</span>
                   </div>
 
-                  <h3 className="font-display font-extrabold text-2xl text-[#0F172A] leading-tight">Practice AI Pro</h3>
-                  <p className="text-xs font-bold text-emerald-700 mt-0.5">Multi-Location &amp; Hospital Networks</p>
-                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
-                    For veterinary clinic groups, hospital networks, and pet brands requiring custom AI triage, PMS/CRM webhooks, and SLA support.
+                  <h3 className="font-display font-extrabold text-2xl lg:text-[26px] text-[#0F172A] leading-tight">Practice AI Pro</h3>
+                  <p className="text-xs sm:text-sm font-bold text-emerald-700 mt-1">Multi-Location &amp; Hospital Networks</p>
+                  <p className="text-sm lg:text-[15px] text-slate-600 mt-2 leading-relaxed">
+                    For veterinary clinic groups, hospital networks, and pet brands requiring custom AI triage protocols and workflows.
                   </p>
                 </div>
 
-                <div className="mt-6 h-[88px] pb-6 border-b border-slate-100 flex flex-col justify-center">
+                <div className="mt-6 h-[56px] pb-3 border-b border-slate-100 flex flex-col justify-center">
                   <div className="flex items-baseline gap-2">
                     <span className="font-display font-extrabold text-3xl sm:text-4xl text-[#0F172A]">
                       {isAnnual ? currentPricing.proAnnual : currentPricing.proMonthly}
                     </span>
-                    <span className="text-xs font-semibold text-slate-500">/ mo starting · billed annually</span>
+                    <span className="text-xs sm:text-sm font-semibold text-slate-500">/ mo starting · billed annually</span>
                   </div>
-                  <p className="text-xs font-semibold text-emerald-700 mt-2">{currentPricing.subPro}</p>
                 </div>
 
-                <ul className="mt-6 space-y-3.5 text-xs sm:text-sm text-slate-700 flex-1">
+                <ul className="mt-5 space-y-3.5 text-xs sm:text-sm lg:text-[15px] text-slate-700 flex-1">
                   <li className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
@@ -1706,7 +1697,7 @@ export default function GreenLaneLandingPage() {
                     setDemoPlan('Practice AI Pro (Multi-Location & Hospital Networks)');
                     document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className="w-full py-3.5 px-6 rounded-full bg-emerald-900 hover:bg-emerald-800 text-white font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2"
+                  className="w-full py-3.5 px-6 rounded-full bg-emerald-900 hover:bg-emerald-800 active:scale-95 text-white font-bold text-sm lg:text-base shadow-sm transition-all flex items-center justify-center gap-2"
                 >
                   <span>Request Enterprise AI Onboarding</span>
                   <ArrowRight className="w-4 h-4 text-amber-400" />
@@ -1723,61 +1714,61 @@ export default function GreenLaneLandingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5 space-y-6">
               <div className="space-y-2.5">
-                <div className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-amber-600">
+                <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-widest uppercase text-amber-700">
                   <span className="w-6 h-0.5 bg-amber-500 rounded-full"></span>
                   <span>LIVE DEMO &amp; ONBOARDING</span>
                 </div>
-                <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#0F172A] leading-tight">
+                <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[40px] text-[#0F172A] leading-tight">
                   Configure Your{' '}
                   <span className="text-emerald-800">AI Rollout</span> in 3 Steps
                 </h2>
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                <p className="text-base lg:text-[18px] text-slate-700 leading-relaxed">
                   Choose your track, region, and demo format. Submissions log directly to{' '}
-                  <code className="text-xs bg-slate-100 px-1.5 py-0.5 rounded text-emerald-900">window.GreenLaneAnalytics</code>{' '}
+                  <code className="text-xs sm:text-sm bg-slate-100 px-1.5 py-0.5 rounded text-emerald-900 font-mono">window.GreenLaneAnalytics</code>{' '}
                   and any configured CRM/webhook endpoint.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-emerald-900 text-white shadow-sm">
-                  <span className="w-7 h-7 rounded-full bg-amber-400 text-emerald-950 font-extrabold text-xs flex items-center justify-center shrink-0">1</span>
-                  <div className="flex flex-col justify-center text-left pt-2">
-                    <p className="text-xs font-bold leading-none mb-1.5">Track, Region &amp; Plan</p>
-                    <p className="text-[11px] text-emerald-200 leading-none">
+                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-emerald-900 text-white shadow-sm">
+                  <span className="w-8 h-8 rounded-full bg-amber-400 text-emerald-950 font-extrabold text-sm flex items-center justify-center shrink-0">1</span>
+                  <div className="flex flex-col justify-center text-left pt-1">
+                    <p className="text-sm sm:text-base font-bold leading-snug mb-1">Track, Region &amp; Plan</p>
+                    <p className="text-xs sm:text-sm text-emerald-200 leading-snug">
                       {demoTrack === 'clinic' ? 'Veterinary Clinic' : demoTrack === 'partner' ? 'Service Partner' : 'Pet Parent'} · {demoRegion.split('(')[0].trim()} · {demoPlan}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#FFFBF5] border border-slate-200/80 text-[#0F172A]">
-                  <span className="w-7 h-7 rounded-full bg-amber-100 text-amber-800 font-extrabold text-xs flex items-center justify-center shrink-0">2</span>
-                  <div className="flex flex-col justify-center text-left pt-2">
-                    <p className="text-xs font-bold leading-none mb-1.5">Demo Format &amp; Focus</p>
-                    <p className="text-[11px] text-slate-500 leading-none">{demoFormat}</p>
+                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-[#FFFBF5] border border-slate-200/80 text-[#0F172A]">
+                  <span className="w-8 h-8 rounded-full bg-amber-100 text-amber-800 font-extrabold text-sm flex items-center justify-center shrink-0">2</span>
+                  <div className="flex flex-col justify-center text-left pt-1">
+                    <p className="text-sm sm:text-base font-bold leading-snug mb-1">Demo Format &amp; Focus</p>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-snug">{demoFormat}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#FFFBF5] border border-slate-200/80 text-[#0F172A]">
-                  <span className="w-7 h-7 rounded-full bg-amber-100 text-amber-800 font-extrabold text-xs flex items-center justify-center shrink-0">3</span>
-                  <div className="flex flex-col justify-center text-left pt-2">
-                    <p className="text-xs font-bold leading-none mb-1.5">Contact &amp; Launch Checklist</p>
-                    <p className="text-[11px] text-slate-500 leading-none">Instant confirmation + CRM/webhook dispatch</p>
+                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-[#FFFBF5] border border-slate-200/80 text-[#0F172A]">
+                  <span className="w-8 h-8 rounded-full bg-amber-100 text-amber-800 font-extrabold text-sm flex items-center justify-center shrink-0">3</span>
+                  <div className="flex flex-col justify-center text-left pt-1">
+                    <p className="text-sm sm:text-base font-bold leading-snug mb-1">Contact &amp; Launch Checklist</p>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-snug">Instant confirmation + CRM/webhook dispatch</p>
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-2xl bg-[#FFFBF5] border border-amber-200/70 p-5 space-y-2.5">
-                <p className="text-xs font-bold uppercase tracking-wider text-emerald-900">What Happens After You Submit</p>
-                <ul className="space-y-2 text-xs text-slate-700">
-                  <li className="flex items-center gap-2">
+              <div className="rounded-2xl bg-[#FFFBF5] border border-amber-200/70 p-5 space-y-3">
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-900">What Happens After You Submit</p>
+                <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                  <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                    <span>Event <code className="bg-white px-1.5 py-0.5 rounded border border-slate-200">demo_onboarding_completed</code> dispatched</span>
+                    <span>Event <code className="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono text-xs">demo_onboarding_completed</code> dispatched</span>
                   </li>
-                  <li className="flex items-center gap-2">
+                  <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-amber-600 shrink-0" />
                     <span>Region-matched compliance pack unlocked</span>
                   </li>
-                  <li className="flex items-center gap-2">
+                  <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
                     <span>Direct inspection available inside the footer Analytics Console</span>
                   </li>
@@ -1786,13 +1777,13 @@ export default function GreenLaneLandingPage() {
             </div>
 
             {/* Form */}
-            <div className="lg:col-span-7 rounded-3xl bg-gradient-to-br from-[#FFFBF5] via-white to-emerald-50/60 border border-slate-200/90 shadow-card p-6 sm:p-8 lg:p-10">
+            <div className="lg:col-span-7 rounded-3xl bg-gradient-to-br from-[#FFFBF5] via-white to-emerald-50/60 border border-slate-200/90 sm:border-2 sm:border-slate-300 shadow-card p-6 sm:p-8 lg:p-10">
               {!demoSubmitted ? (
                 <form onSubmit={handleDemoSubmit} className="space-y-6">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <label className="text-xs font-extrabold uppercase tracking-wider text-emerald-900">Step 1 · Select Your Track</label>
-                      <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900">Plan: {demoPlan}</span>
+                      <label className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-emerald-900">Step 1 · Select Your Track</label>
+                      <span className="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900">Plan: {demoPlan}</span>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -1805,14 +1796,14 @@ export default function GreenLaneLandingPage() {
                           key={t.key}
                           type="button"
                           onClick={() => setDemoTrack(t.key)}
-                          className={`px-3.5 pt-4 pb-3 rounded-2xl text-left transition-all flex flex-col justify-center ${demoTrack === t.key
-                            ? 'border-2 border-emerald-900 bg-emerald-900 text-white'
-                            : 'border border-slate-200 bg-white hover:border-amber-400 text-[#0F172A]'
+                          className={`px-3.5 pt-4 pb-3 rounded-xl text-left transition-all flex flex-col justify-center ${demoTrack === t.key
+                            ? 'border sm:border-2 border-emerald-900 bg-emerald-900 text-white'
+                            : 'border border-slate-200 sm:border-2 sm:border-slate-300 bg-white hover:border-amber-400 text-[#0F172A]'
                             }`}
                         >
-                          <div className="pt-2">
-                            <p className="text-xs font-extrabold leading-none mb-1.5">{t.title}</p>
-                            <p className={`text-[11px] leading-none ${demoTrack === t.key ? 'text-emerald-200' : 'text-slate-500'}`}>{t.sub}</p>
+                          <div className="pt-1">
+                            <p className="text-xs sm:text-sm font-extrabold leading-snug mb-1">{t.title}</p>
+                            <p className={`text-[13px] leading-snug ${demoTrack === t.key ? 'text-emerald-200' : 'text-slate-600'}`}>{t.sub}</p>
                           </div>
                         </button>
                       ))}
@@ -1821,8 +1812,8 @@ export default function GreenLaneLandingPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                       {/* Region & Language Pack Custom Dropdown */}
                       <div ref={regionDropdownRef} className="relative">
-                        <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
-                          <Globe className="w-3.5 h-3.5 text-emerald-700" />
+                        <label className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                          <Globe className="w-4 h-4 text-emerald-700" />
                           <span>Region &amp; Language Pack</span>
                         </label>
                         <button
@@ -1831,17 +1822,15 @@ export default function GreenLaneLandingPage() {
                             setRegionDropdownOpen(!regionDropdownOpen);
                             setPlanDropdownOpen(false);
                           }}
-                          className={`w-full flex items-center justify-between pl-3.5 pr-3 py-2.5 rounded-xl border bg-white text-xs sm:text-sm font-semibold text-[#0F172A] shadow-2xs transition-all text-left ${
-                            regionDropdownOpen
-                              ? 'border-emerald-700 ring-2 ring-emerald-800/10'
-                              : 'border-slate-200/90 hover:border-emerald-600'
-                          }`}
+                          className={`w-full flex items-center justify-between pl-3.5 pr-3 py-2.5 rounded-xl border border-slate-200 sm:border-2 sm:border-slate-300 bg-white text-xs sm:text-sm font-semibold text-[#0F172A] shadow-2xs transition-all text-left ${regionDropdownOpen
+                            ? 'border-emerald-700 ring-2 ring-emerald-800/10'
+                            : 'hover:border-emerald-600'
+                            }`}
                         >
                           <span className="truncate">{demoRegion}</span>
                           <ChevronDown
-                            className={`w-4 h-4 text-emerald-800 shrink-0 transition-transform duration-200 ${
-                              regionDropdownOpen ? 'rotate-180' : ''
-                            }`}
+                            className={`w-4 h-4 text-emerald-800 shrink-0 transition-transform duration-200 ${regionDropdownOpen ? 'rotate-180' : ''
+                              }`}
                           />
                         </button>
 
@@ -1882,20 +1871,19 @@ export default function GreenLaneLandingPage() {
                                     setDemoRegion(opt.value);
                                     setRegionDropdownOpen(false);
                                   }}
-                                  className={`w-full text-left p-2.5 rounded-xl transition-all flex items-start justify-between gap-2 ${
-                                    isSelected
-                                      ? 'bg-emerald-50 text-emerald-950 font-bold'
-                                      : 'hover:bg-slate-50 text-slate-800'
-                                  }`}
+                                  className={`w-full text-left p-2.5 rounded-xl transition-all flex items-start justify-between gap-2 ${isSelected
+                                    ? 'bg-emerald-50 text-emerald-950 font-bold'
+                                    : 'hover:bg-slate-50 text-slate-800'
+                                    }`}
                                 >
                                   <div className="min-w-0 flex-1">
                                     <div className="flex items-center gap-2">
-                                      <p className="text-xs font-bold text-[#0F172A]">{opt.title}</p>
-                                      <span className="text-[10px] font-extrabold uppercase px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800">
+                                      <p className="text-xs sm:text-sm font-bold text-[#0F172A]">{opt.title}</p>
+                                      <span className="text-[10px] sm:text-[11px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800">
                                         {opt.badge}
                                       </span>
                                     </div>
-                                    <p className="text-[11px] text-slate-500 truncate mt-0.5">{opt.desc}</p>
+                                    <p className="text-xs text-slate-500 truncate mt-0.5">{opt.desc}</p>
                                   </div>
                                   {isSelected && <Check className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />}
                                 </button>
@@ -1907,8 +1895,8 @@ export default function GreenLaneLandingPage() {
 
                       {/* Target Plan Custom Dropdown */}
                       <div ref={planDropdownRef} className="relative">
-                        <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
-                          <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                        <label className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                          <Sparkles className="w-4 h-4 text-amber-600" />
                           <span>Target Plan</span>
                         </label>
                         <button
@@ -1917,17 +1905,15 @@ export default function GreenLaneLandingPage() {
                             setPlanDropdownOpen(!planDropdownOpen);
                             setRegionDropdownOpen(false);
                           }}
-                          className={`w-full flex items-center justify-between pl-3.5 pr-3 py-2.5 rounded-xl border bg-white text-xs sm:text-sm font-semibold text-[#0F172A] shadow-2xs transition-all text-left ${
-                            planDropdownOpen
-                              ? 'border-emerald-700 ring-2 ring-emerald-800/10'
-                              : 'border-slate-200/90 hover:border-emerald-600'
-                          }`}
+                          className={`w-full flex items-center justify-between pl-3.5 pr-3 py-2.5 rounded-xl border border-slate-200 sm:border-2 sm:border-slate-300 bg-white text-xs sm:text-sm font-semibold text-[#0F172A] shadow-2xs transition-all text-left ${planDropdownOpen
+                            ? 'border-emerald-700 ring-2 ring-emerald-800/10'
+                            : 'hover:border-emerald-600'
+                            }`}
                         >
                           <span className="truncate">{demoPlan}</span>
                           <ChevronDown
-                            className={`w-4 h-4 text-emerald-800 shrink-0 transition-transform duration-200 ${
-                              planDropdownOpen ? 'rotate-180' : ''
-                            }`}
+                            className={`w-4 h-4 text-emerald-800 shrink-0 transition-transform duration-200 ${planDropdownOpen ? 'rotate-180' : ''
+                              }`}
                           />
                         </button>
 
@@ -1962,20 +1948,19 @@ export default function GreenLaneLandingPage() {
                                     setDemoPlan(opt.value);
                                     setPlanDropdownOpen(false);
                                   }}
-                                  className={`w-full text-left p-2.5 rounded-xl transition-all flex items-start justify-between gap-2 ${
-                                    isSelected
-                                      ? 'bg-amber-50 text-amber-950 font-bold'
-                                      : 'hover:bg-slate-50 text-slate-800'
-                                  }`}
+                                  className={`w-full text-left p-2.5 rounded-xl transition-all flex items-start justify-between gap-2 ${isSelected
+                                    ? 'bg-amber-50 text-amber-950 font-bold'
+                                    : 'hover:bg-slate-50 text-slate-800'
+                                    }`}
                                 >
                                   <div className="min-w-0 flex-1">
                                     <div className="flex items-center gap-2">
-                                      <p className="text-xs font-bold text-[#0F172A]">{opt.title}</p>
-                                      <span className="text-[10px] font-extrabold uppercase px-1.5 py-0.2 rounded bg-amber-100 text-amber-900">
+                                      <p className="text-xs sm:text-sm font-bold text-[#0F172A]">{opt.title}</p>
+                                      <span className="text-[10px] sm:text-[11px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-100 text-amber-900">
                                         {opt.badge}
                                       </span>
                                     </div>
-                                    <p className="text-[11px] text-slate-500 truncate mt-0.5">{opt.desc}</p>
+                                    <p className="text-xs text-slate-500 truncate mt-0.5">{opt.desc}</p>
                                   </div>
                                   {isSelected && <Check className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />}
                                 </button>
@@ -1987,8 +1972,8 @@ export default function GreenLaneLandingPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-3 pt-2 border-t border-slate-200/70">
-                    <label className="block text-xs font-extrabold uppercase tracking-wider text-emerald-900">Step 2 · Preferred Demo Format</label>
+                  <div className="space-y-3 pt-2 border-t border-slate-200/80 sm:border-slate-300/80">
+                    <label className="block text-xs sm:text-sm font-extrabold uppercase tracking-wider text-emerald-900">Step 2 · Preferred Demo Format</label>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                       {[
                         { label: '15-min Live AI Walkthrough', sub: 'AI triage, booking & timeline' },
@@ -1999,74 +1984,65 @@ export default function GreenLaneLandingPage() {
                           key={f.label}
                           type="button"
                           onClick={() => setDemoFormat(f.label)}
-                          className={`px-3.5 pt-4 pb-3 rounded-2xl text-left transition-all flex flex-col justify-center ${demoFormat === f.label
-                            ? 'border-2 border-amber-500 bg-amber-50/80'
-                            : 'border border-slate-200 bg-white hover:border-amber-400'
+                          className={`px-3.5 pt-4 pb-3 rounded-xl text-left transition-all flex flex-col justify-center ${demoFormat === f.label
+                            ? 'border sm:border-2 border-amber-500 bg-amber-50/80'
+                            : 'border border-slate-200 sm:border-2 sm:border-slate-300 bg-white hover:border-amber-400'
                             }`}
                         >
-                          <div className="pt-2">
-                            <p className="text-xs font-extrabold text-[#0F172A] leading-none mb-1.5">{f.label}</p>
-                            <p className="text-[11px] text-slate-600 leading-none">{f.sub}</p>
+                          <div className="pt-1">
+                            <p className="text-xs sm:text-sm font-extrabold text-[#0F172A] leading-snug mb-1">{f.label}</p>
+                            <p className="text-[13px] text-slate-600 leading-snug">{f.sub}</p>
                           </div>
                         </button>
                       ))}
                     </div>
                   </div>
 
-                  <div className="space-y-4 pt-2 border-t border-slate-200/70">
-                    <label className="block text-xs font-extrabold uppercase tracking-wider text-emerald-900">Step 3 · Your Details</label>
+                  <div className="space-y-4 pt-2 border-t border-slate-200/80 sm:border-slate-300/80">
+                    <label className="block text-xs sm:text-sm font-extrabold uppercase tracking-wider text-emerald-900">Step 3 · Your Details</label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1">Full Name</label>
+                        <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-1">Full Name</label>
                         <input
                           type="text"
                           required
                           value={demoFormData.name}
                           onChange={(e) => setDemoFormData({ ...demoFormData, name: e.target.value })}
                           placeholder="Dr. Camille Laurent"
-                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:border-emerald-700 focus:outline-none"
+                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 sm:border-slate-300 bg-white text-sm focus:border-emerald-700 focus:outline-none"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1">Email Address</label>
+                        <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-1">Email Address</label>
                         <input
                           type="email"
                           required
                           value={demoFormData.email}
                           onChange={(e) => setDemoFormData({ ...demoFormData, email: e.target.value })}
                           placeholder="camille@clinic-example.be"
-                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:border-emerald-700 focus:outline-none"
+                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 sm:border-slate-300 bg-white text-sm focus:border-emerald-700 focus:outline-none"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">Clinic, Brand, or Pet Name (Optional)</label>
+                      <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-1">Clinic, Brand, or Pet Name (Optional)</label>
                       <input
                         type="text"
                         value={demoFormData.org}
                         onChange={(e) => setDemoFormData({ ...demoFormData, org: e.target.value })}
                         placeholder="Wavre Vet &amp; Wellness / Max (3y Golden Retriever)"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:border-emerald-700 focus:outline-none"
+                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 sm:border-slate-300 bg-white text-sm focus:border-emerald-700 focus:outline-none"
                       />
                     </div>
 
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
+                    <div className="pt-1">
                       <button
                         type="submit"
-                        className="inline-flex items-center justify-center gap-2.5 bg-emerald-900 hover:bg-emerald-800 text-white font-bold text-sm px-7 py-3.5 rounded-full shadow-lg shadow-emerald-900/15 transition-all active:scale-95"
+                        className="inline-flex items-center justify-center gap-2.5 bg-emerald-900 hover:bg-emerald-800 text-white font-bold text-sm sm:text-base px-7 py-3.5 rounded-full shadow-lg shadow-emerald-900/15 transition-all active:scale-95"
                       >
-                        <span>Launch AI Demo &amp; Onboarding Request</span>
+                        <span>Contact</span>
                         <ArrowRight className="w-4 h-4 text-amber-400" />
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setIntegrationModalOpen(true)}
-                        className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-900 hover:text-emerald-700 underline"
-                      >
-                        <Terminal className="w-3.5 h-3.5 text-amber-600" />
-                        <span>Inspect Analytics Payload</span>
                       </button>
                     </div>
                   </div>
@@ -2121,7 +2097,7 @@ export default function GreenLaneLandingPage() {
       {/* 8. BOTTOM CTA BANNER */}
       <section className="pt-2 sm:pt-4 pb-12 lg:pb-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-r from-emerald-100/90 via-emerald-50 to-amber-50/90 border border-emerald-200/60 shadow-card">
+          <div className="relative rounded-xl overflow-hidden bg-gradient-to-r from-emerald-100/90 via-emerald-50 to-amber-50/90 border border-emerald-200/60 shadow-card">
             <svg className="absolute inset-0 w-full h-full object-cover pointer-events-none" viewBox="0 0 1200 320" preserveAspectRatio="none" aria-hidden="true">
               <g fill="#064E3B" opacity="0.08">
                 <rect x="860" y="90" width="28" height="160" rx="2"></rect>
@@ -2136,28 +2112,28 @@ export default function GreenLaneLandingPage() {
             </svg>
 
             <div className="relative z-10 px-6 py-12 sm:px-12 lg:px-16 lg:py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-              <div className="max-w-xl space-y-3">
-                <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-900 bg-white/80 px-3 py-1 rounded-full">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+              <div className="max-w-2xl space-y-4">
+                <span className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-widest uppercase text-emerald-900 bg-white/85 px-3.5 py-1.5 rounded-full shadow-2xs">
+                  <Sparkles className="w-4 h-4 text-amber-500" />
                   <span>Start Free Today · Powered by GreenLane AI</span>
                 </span>
-                <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#0F172A]">
+                <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[40px] text-[#0F172A] leading-tight">
                   One AI-Powered Ecosystem for Every Pet. One Calm Workflow for Care Teams.
                 </h2>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-base lg:text-[18px] text-slate-700 leading-relaxed">
                   Join thousands of pet parents, veterinary clinics, and care specialists across Belgium, Bulgaria, India, and globally who trust GreenLane AI for smarter, proactive pet care.
                 </p>
                 <div className="pt-2 flex flex-wrap items-center gap-3">
                   <button
                     onClick={() => handleOpenDemoModal('parent')}
-                    className="inline-flex items-center gap-2.5 bg-emerald-900 hover:bg-emerald-800 text-white font-semibold px-7 py-3.5 rounded-full shadow-lg shadow-emerald-900/20 transition-all active:scale-95"
+                    className="inline-flex items-center gap-2.5 bg-emerald-900 hover:bg-emerald-800 text-white font-bold text-sm sm:text-base px-7 py-3.5 rounded-full shadow-lg shadow-emerald-900/20 transition-all active:scale-95"
                   >
                     <span>Try Free AI Triage</span>
                     <ArrowRight className="w-4 h-4 text-amber-400" />
                   </button>
                   <button
                     onClick={() => handleOpenDemoModal('clinic')}
-                    className="inline-flex items-center gap-2 bg-white/90 hover:bg-white text-emerald-950 font-semibold px-6 py-3.5 rounded-full border border-emerald-900/15 transition-all active:scale-95"
+                    className="inline-flex items-center gap-2 bg-white/90 hover:bg-white text-emerald-950 font-bold text-sm sm:text-base px-6 py-3.5 rounded-full border border-emerald-900/15 transition-all active:scale-95"
                   >
                     <span>Book Clinic AI Demo</span>
                   </button>
@@ -2184,77 +2160,132 @@ export default function GreenLaneLandingPage() {
       </section>
 
       {/* 9. FOOTER */}
-      <footer id="footer" className="bg-emerald-950 text-white pt-14 pb-10">
+      <footer id="footer" className="bg-[#0B132B] text-white pt-14 pb-12 relative overflow-hidden border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-emerald-800/60">
-            <div className="space-y-2">
-              <a href="#" className="flex items-center gap-3 group">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-amber-400 text-emerald-950 flex items-center justify-center shadow-sm group-hover:bg-amber-300 transition-colors">
-                  <svg className="w-6 h-6 sm:w-7 sm:h-7 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 13.5c-2.33 0-4.31 1.46-5.11 3.5-.42 1.07.37 2.25 1.52 2.25h7.18c1.15 0 1.94-1.18 1.52-2.25-.8-2.04-2.78-3.5-5.11-3.5zm-5.5-2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm3.5 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
-                  </svg>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-12 border-b border-slate-800/80">
+            {/* Column 1: Brand Info */}
+            <div className="lg:col-span-4 space-y-4">
+              <a href="#" className="inline-block group">
+                <div className="w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform">
+                  <Image
+                    src="/brand-logo.png"
+                    alt="GreenLane Logo"
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
-                <span className="font-display font-extrabold text-xl sm:text-2xl tracking-tight text-white">
-                  GreenLane<span className="text-amber-400">Pet</span>
-                </span>
               </a>
-              <p className="text-xs text-emerald-200/80 tracking-wide">
-                Intelligent Health. Proactive Care. Connected Services. Thriving Community.
+
+              <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
+                AI platform for the connected healthcare ecosystem. Connecting patients, providers, workflows and intelligent systems to help healthcare organizations operate smarter.
               </p>
             </div>
 
-            <nav className="flex flex-wrap items-center gap-6 sm:gap-8 text-sm text-emerald-100/80">
-              <a href="#home" className="hover:text-amber-400 transition-colors">Home</a>
-              <a href="#ai-features" className="hover:text-amber-400 transition-colors">AI Features</a>
-              <a href="#connected-ecosystem" className="hover:text-amber-400 transition-colors">AI Ecosystem</a>
-              <a href="#workflow" className="hover:text-amber-400 transition-colors">14-Day AI Rollout</a>
-              <a href="#pricing" className="hover:text-amber-400 transition-colors">Plans &amp; Pricing</a>
-              <button onClick={() => handleOpenDemoModal('clinic')} className="hover:text-amber-400 transition-colors">Book AI Demo</button>
-            </nav>
+            {/* Column 2: Socials */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="font-bold text-base text-white">Socials</h4>
+              <div className="flex items-center gap-2.5">
+                <a
+                  href="#footer"
+                  aria-label="Facebook"
+                  className="w-9 h-9 rounded-full bg-[#182338] hover:bg-[#22304d] text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </a>
+                <a
+                  href="#footer"
+                  aria-label="Instagram"
+                  className="w-9 h-9 rounded-full bg-[#182338] hover:bg-[#22304d] text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                >
+                  <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+                <a
+                  href="#footer"
+                  aria-label="LinkedIn"
+                  className="w-9 h-9 rounded-full bg-[#182338] hover:bg-[#22304d] text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
 
-            <div className="flex items-center gap-3">
-              <a href="#footer" aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-emerald-900/90 hover:bg-amber-500 text-white hover:text-emerald-950 flex items-center justify-center transition-colors">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-              </a>
-              <a href="#footer" aria-label="YouTube" className="w-9 h-9 rounded-full bg-emerald-900/90 hover:bg-amber-500 text-white hover:text-emerald-950 flex items-center justify-center transition-colors">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                </svg>
-              </a>
-              <a href="#footer" aria-label="Twitter / X" className="w-9 h-9 rounded-full bg-emerald-900/90 hover:bg-amber-500 text-white hover:text-emerald-950 flex items-center justify-center transition-colors">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-              <a href="#footer" aria-label="Facebook" className="w-9 h-9 rounded-full bg-emerald-900/90 hover:bg-amber-500 text-white hover:text-emerald-950 flex items-center justify-center transition-colors">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </a>
+            {/* Column 3: Platform */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="font-bold text-base text-white">Platform</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><a href="#home" className="hover:text-emerald-400 transition-colors">Why GreenLane</a></li>
+                <li><a href="#scope-clarity" className="hover:text-emerald-400 transition-colors">Problem</a></li>
+                <li><a href="#triage-demo" className="hover:text-emerald-400 transition-colors">Solution</a></li>
+                <li><a href="#connected-ecosystem" className="hover:text-emerald-400 transition-colors">Capabilities</a></li>
+                <li><a href="#workflow" className="hover:text-emerald-400 transition-colors">How It Works</a></li>
+                <li><a href="#pricing" className="hover:text-emerald-400 transition-colors">Pricing</a></li>
+              </ul>
+            </div>
+
+            {/* Column 4: Legal */}
+            <div className="lg:col-span-1 space-y-3">
+              <h4 className="font-bold text-base text-white">Legal</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><a href="#footer" className="hover:text-emerald-400 transition-colors">GDPR Compliance</a></li>
+                <li><a href="#footer" className="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+                <li><a href="#footer" className="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
+                <li><a href="#footer" className="hover:text-emerald-400 transition-colors">Cookie Settings</a></li>
+              </ul>
+            </div>
+
+            {/* Column 5: Support */}
+            <div className="lg:col-span-1 space-y-3">
+              <h4 className="font-bold text-base text-white">Support</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><a href="#demo" className="hover:text-emerald-400 transition-colors">Contact</a></li>
+              </ul>
+            </div>
+
+            {/* Column 6: Stay Connected */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="font-bold text-base text-white">Stay Connected</h4>
+              <form onSubmit={(e) => e.preventDefault()} className="space-y-2.5">
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#182338] border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+                />
+                <button
+                  type="submit"
+                  className="w-full py-2.5 px-4 rounded-lg bg-[#00D084] hover:bg-[#00BA76] text-white font-bold text-sm tracking-wider uppercase transition-colors shadow-sm"
+                >
+                  Subscribe
+                </button>
+              </form>
             </div>
           </div>
 
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-300/70">
+          {/* Bottom Bar */}
+          <div className="pt-6 text-center text-xs text-slate-500">
             <p>
-              © 2026 GreenLane Pet. All rights reserved. · AI guidance supports—but does not replace—licensed veterinary care.
+              © 2026 GreenLane Pet. All rights reserved.
             </p>
-            <div className="flex flex-wrap items-center gap-5">
-              <a href="#footer" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#footer" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#footer" className="hover:text-white transition-colors">Veterinary Compliance</a>
-              <button
-                type="button"
-                onClick={() => setIntegrationModalOpen(true)}
-                className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-semibold transition-colors"
-              >
-                <Terminal className="w-3.5 h-3.5" />
-                <span>Analytics &amp; CRM Console ({analyticsEvents.length})</span>
-              </button>
-            </div>
           </div>
         </div>
+
+        {/* Scroll-to-Top Yellow Button */}
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Back to top"
+          className="fixed bottom-6 right-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 flex items-center justify-center shadow-xl transition-all hover:scale-105 active:scale-95"
+        >
+          <ChevronUp className="w-6 h-6 stroke-[2.5]" />
+        </button>
       </footer>
 
       {/* MODAL 1: DEMO MODAL */}

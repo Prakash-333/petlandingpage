@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   title: "GreenLane Pet — AI-Powered Pet Healthcare | Healthier Pets. Happier Lives.",
   description: "GreenLane Pet is the AI platform that connects pet owners, veterinarians and care teams — making pet healthcare smarter, simpler and more proactive.",
   icons: {
-    icon: "/petcare/paw-black.svg",
-    shortcut: "/petcare/paw-black.svg",
-    apple: "/petcare/paw-black.svg",
+    icon: "/brand-logo.png",
+    shortcut: "/brand-logo.png",
+    apple: "/brand-logo.png",
   }
 };
 
