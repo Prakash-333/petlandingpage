@@ -15,7 +15,7 @@ export default function TermsAndConditions() {
             <p>These Terms and Conditions (“Terms”) govern the sale and use of services provided by:</p>
             <p className="font-bold text-[#121519] mt-2">Digi Mabble IT Solutions</p>
             <p>Avenue Eiffel 8, 1300 Wavre, Belgium</p>
-            <p>Website: <a href="https://digimabbleai.com" className="text-emerald-500 hover:underline">https://digimabbleai.com</a></p>
+            <p>Website: <a href="https://digimabbleai.com" className="text-violet-500 hover:underline">https://digimabbleai.com</a></p>
             <p>Email: info@digimabble.com</p>
             <p className="mt-3">
               The Company operates in Belgium and provides digital, SaaS and AI-based solutions to business clients, including the GreenLane platform.
@@ -116,7 +116,7 @@ export default function TermsAndConditions() {
         <div>
           <h2 className="text-[18px] md:text-[20px] font-bold text-[#121519] mb-3">Contact</h2>
           <p className="text-[14px] md:text-[15px]">
-            For any questions regarding these Terms, please reach out through our <a href="/#contact" className="text-emerald-500 font-bold hover:underline">Contact Page</a>.
+            For any questions regarding these Terms, please reach out through our <a href="/#contact" className="text-violet-500 font-bold hover:underline">Contact Page</a>.
           </p>
         </div>
       </section>

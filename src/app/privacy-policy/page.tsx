@@ -24,8 +24,8 @@ export default function PrivacyPolicy() {
           <div className="text-[14px] md:text-[15px]">
             <p className="font-bold text-[#121519]">Digi Mabble IT Solutions</p>
             <p>Avenue Eiffel 8, 1300 Wavre, Belgium</p>
-            <p>Website: <a href="https://digimabbleai.com" className="text-emerald-500 hover:underline">https://digimabbleai.com</a></p>
-            <p>Contact: <a href="/#contact" className="text-emerald-500 hover:underline">GreenLane Contact Page</a></p>
+            <p>Website: <a href="https://digimabbleai.com" className="text-violet-500 hover:underline">https://digimabbleai.com</a></p>
+            <p>Contact: <a href="/#contact" className="text-violet-500 hover:underline">GreenLane Contact Page</a></p>
             <p className="mt-3">
               Digi Mabble IT Solutions acts as the Data Controller for personal data processed under this Privacy Policy.
             </p>
@@ -119,7 +119,7 @@ export default function PrivacyPolicy() {
 
         <div>
           <h2 className="text-[18px] md:text-[20px] font-bold text-[#121519] mb-3">Your Rights (GDPR)</h2>
-          <p className="text-[14px] md:text-[15px]">You have the right to access, rectify, erase, or restrict processing of your data. Requests can be made via our <a href="/#contact" className="text-emerald-500 font-bold hover:underline">Contact Page</a>.</p>
+          <p className="text-[14px] md:text-[15px]">You have the right to access, rectify, erase, or restrict processing of your data. Requests can be made via our <a href="/#contact" className="text-violet-500 font-bold hover:underline">Contact Page</a>.</p>
         </div>
 
         <div>
@@ -129,7 +129,7 @@ export default function PrivacyPolicy() {
 
         <div>
           <h2 className="text-[18px] md:text-[20px] font-bold text-[#121519] mb-3">Contact</h2>
-          <p className="text-[14px] md:text-[15px]">For any questions, please reach out through our <a href="/#contact" className="text-emerald-500 font-bold hover:underline">Contact Page</a>.</p>
+          <p className="text-[14px] md:text-[15px]">For any questions, please reach out through our <a href="/#contact" className="text-violet-500 font-bold hover:underline">Contact Page</a>.</p>
         </div>
       </section>
     </LegalLayout>

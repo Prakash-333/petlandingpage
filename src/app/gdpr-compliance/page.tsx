@@ -62,7 +62,7 @@ export default function GDPRCompliance() {
         <div>
           <h2 className="text-[18px] md:text-[20px] font-bold text-[#121519] mb-3">Contact</h2>
           <p className="text-[14px] md:text-[15px]">
-            For any GDPR-related inquiries or to request our Data Processing Agreement (DPA), please contact our Data Protection Officer through our <a href="/#contact" className="text-emerald-500 font-bold hover:underline">Contact Page</a>.
+            For any GDPR-related inquiries or to request our Data Processing Agreement (DPA), please contact our Data Protection Officer through our <a href="/#contact" className="text-violet-500 font-bold hover:underline">Contact Page</a>.
           </p>
         </div>
       </section>

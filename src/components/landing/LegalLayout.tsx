@@ -21,10 +21,10 @@ export default function LegalLayout({ title, lastUpdated, children }: LegalLayou
   });
 
   return (
-    <div className="relative selection:bg-emerald-100 selection:text-emerald-500 bg-white font-sans overflow-x-hidden">
+    <div className="relative selection:bg-violet-100 selection:text-violet-500 bg-white font-sans overflow-x-hidden">
       {/* Scroll Progress Bar */}
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 origin-left z-[2000] bg-emerald-500"
+        className="fixed top-0 left-0 right-0 h-1 origin-left z-[2000] bg-violet-500"
         style={{ scaleX }}
       />
 
@@ -41,7 +41,7 @@ export default function LegalLayout({ title, lastUpdated, children }: LegalLayou
               <h1 className="text-[32px] md:text-[48px] font-bold text-[#121519] mb-4 leading-tight tracking-tight">
                 {title}
               </h1>
-              <p className="text-[14px] font-bold text-emerald-500 uppercase tracking-widest">
+              <p className="text-[14px] font-bold text-violet-500 uppercase tracking-widest">
                 Last Updated: {lastUpdated}
               </p>
             </div>

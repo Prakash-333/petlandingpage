@@ -3,7 +3,7 @@
 :root {
   --font-plus-jakarta: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --color-brand-primary: #064E3B;
+  --color-brand-primary: #9333EA;
   --color-brand-accent: #F59E0B;
 }
 
@@ -12,9 +12,9 @@
   --font-display: 'Plus Jakarta Sans', var(--font-plus-jakarta), system-ui, sans-serif;
   --font-heading: 'Plus Jakarta Sans', var(--font-plus-jakarta), system-ui, sans-serif;
 
-  /* Brand Colors - Emerald & Amber */
-  --color-primary: #064E3B;
-  --color-success: #10B981;
+  /* Brand Colors - Violet & Amber */
+  --color-primary: #9333EA;
+  --color-success: #A855F7;
   --color-warning: #F59E0B;
   --color-danger: #ed5050;
   --color-accent: #FBBF24;
@@ -22,18 +22,31 @@
   --color-slateDark: #0F172A;
   --color-cream: #FFFBF5;
 
-  /* Emerald Palette */
-  --color-emerald-50: #ECFDF5;
-  --color-emerald-100: #D1FAE5;
-  --color-emerald-200: #A7F3D0;
-  --color-emerald-300: #6ee7b7;
-  --color-emerald-400: #34d399;
-  --color-emerald-500: #10B981;
-  --color-emerald-600: #059669;
-  --color-emerald-700: #047857;
-  --color-emerald-800: #065F46;
-  --color-emerald-900: #064E3B;
-  --color-emerald-950: #022C22;
+  /* #9333EA Violet Palette (rgb(147, 51, 234)) */
+  --color-violet-50: #FAF5FF;
+  --color-violet-100: #F3E8FF;
+  --color-violet-200: #E9D5FF;
+  --color-violet-300: #D8B4FE;
+  --color-violet-400: #C084FC;
+  --color-violet-500: #A855F7;
+  --color-violet-600: #9333EA;
+  --color-violet-700: #7E22CE;
+  --color-violet-800: #6B21A8;
+  --color-violet-900: #7E22CE;
+  --color-violet-950: #581C87;
+
+  /* Emerald Palette mapped to #9333EA palette for full ecosystem compatibility */
+  --color-emerald-50: #FAF5FF;
+  --color-emerald-100: #F3E8FF;
+  --color-emerald-200: #E9D5FF;
+  --color-emerald-300: #D8B4FE;
+  --color-emerald-400: #C084FC;
+  --color-emerald-500: #A855F7;
+  --color-emerald-600: #9333EA;
+  --color-emerald-700: #7E22CE;
+  --color-emerald-800: #6B21A8;
+  --color-emerald-900: #7E22CE;
+  --color-emerald-950: #581C87;
 
   /* Amber Palette */
   --color-amber-50: #FFFBEB;
@@ -48,10 +61,10 @@
   --color-amber-900: #78350F;
   --color-amber-950: #451A03;
 
-  /* Shadows */
-  --shadow-soft: 0 10px 40px -10px rgba(6, 78, 59, 0.08);
-  --shadow-card: 0 20px 50px -12px rgba(6, 78, 59, 0.12);
-  --shadow-glow: 0 0 35px rgba(16, 185, 129, 0.22);
+  /* Shadows - Soft #9333EA Violet Ambient */
+  --shadow-soft: 0 10px 40px -10px rgba(147, 51, 234, 0.12);
+  --shadow-card: 0 20px 50px -12px rgba(147, 51, 234, 0.16);
+  --shadow-glow: 0 0 35px rgba(147, 51, 234, 0.28);
 
   /* Gray scale */
   --color-gray-100: #f6f9fc;
@@ -277,7 +290,7 @@ html {
 /* GreenLane Custom Utilities */
 .hero-gradient {
   background: radial-gradient(circle at 75% 35%,
-      rgba(209, 250, 229, 0.65) 0%,
+      rgba(243, 232, 255, 0.75) 0%,
       rgba(255, 251, 245, 0.85) 48%,
       #ffffff 100%);
 }
@@ -287,11 +300,11 @@ html {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 12px 30px -6px rgba(6, 78, 59, 0.12);
+  box-shadow: 0 12px 30px -6px rgba(147, 51, 234, 0.14);
 }
 
 .orbit-ring {
-  border: 1.5px dashed rgba(5, 150, 105, 0.25);
+  border: 1.5px dashed rgba(147, 51, 234, 0.35);
 }
 
 .chat-scroll::-webkit-scrollbar {
@@ -303,7 +316,7 @@ html {
 }
 
 .chat-scroll::-webkit-scrollbar-thumb {
-  background: rgba(6, 78, 59, 0.2);
+  background: rgba(147, 51, 234, 0.25);
   border-radius: 9999px;
 }
 

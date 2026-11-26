@@ -18,7 +18,7 @@ export async function downloadReceiptPDF(data: ReceiptData) {
     });
 
     // Header Background
-    doc.setFillColor(5, 150, 105); // emerald-600
+    doc.setFillColor(147, 51, 234); // rgb(147, 51, 234) / #9333EA
     doc.rect(0, 0, 210, 28, 'F');
 
     // Header Text
@@ -55,7 +55,7 @@ export async function downloadReceiptPDF(data: ReceiptData) {
     doc.text(data.date, 55, 76);
 
     // Status: Paid
-    doc.setTextColor(5, 150, 105);
+    doc.setTextColor(147, 51, 234);
     doc.text('PAID (SUCCESSFUL)', 55, 84);
 
     // Table Header
@@ -81,9 +81,9 @@ export async function downloadReceiptPDF(data: ReceiptData) {
     doc.line(16, 125, 194, 125);
 
     // Total Box
-    doc.setFillColor(236, 253, 245);
+    doc.setFillColor(250, 245, 255);
     doc.rect(125, 135, 69, 14, 'F');
-    doc.setTextColor(5, 150, 105);
+    doc.setTextColor(147, 51, 234);
     doc.setFontSize(12);
     doc.setFont('helvetica', 'bold');
     doc.text('Total Paid:', 130, 144);
