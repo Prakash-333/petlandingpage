@@ -371,38 +371,44 @@ export default function GreenLaneLandingPage() {
 
               {/* Ecosystem Dropdown */}
               <div className="relative group">
-                <button type="button" className="inline-flex items-center gap-1 hover:text-violet-900 transition-colors py-1 border-b-2 border-transparent">
+                <button type="button" className="inline-flex items-center gap-1.5 hover:text-violet-900 transition-colors py-1 border-b-2 border-transparent group-hover:border-amber-500 group-hover:text-violet-900 font-medium">
                   <span>AI Ecosystem</span>
-                  <ChevronDown className="w-4 h-4 text-slate-400 group-hover:text-violet-700 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-violet-700 transition-transform duration-200 group-hover:rotate-180" />
                 </button>
-                <div className="absolute left-0 mt-2 w-72 rounded-2xl bg-white shadow-card border border-slate-100 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50">
-                  <a href="#pillars" className="flex items-start gap-3 p-3 rounded-xl hover:bg-violet-50/80 transition-colors">
-                    <div className="w-8 h-8 rounded-lg bg-violet-100 text-violet-800 flex items-center justify-center shrink-0 mt-0.5">
-                      <Sparkles className="w-4 h-4" />
+                <div className="absolute left-0 top-full pt-2 w-[340px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
+                  <div className="rounded-2xl bg-white shadow-2xl border border-slate-200/90 p-2 space-y-1">
+                    <div className="px-3 pt-2 pb-1.5 border-b border-slate-100 flex items-center justify-between">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Platform Navigation</span>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">3 Hubs</span>
                     </div>
-                    <div>
-                      <p className="text-sm font-semibold text-[#0F172A]">Day-One AI Core vs. Ecosystem</p>
-                      <p className="text-xs text-slate-500">Live triage &amp; intake vs. connected partner care</p>
-                    </div>
-                  </a>
-                  <a href="#ai-assistant" className="flex items-start gap-3 p-3 rounded-xl hover:bg-amber-50/80 transition-colors">
-                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-0.5">
-                      <Bot className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-[#0F172A]">24/7 AI Triage &amp; Guardrails</p>
-                      <p className="text-xs text-slate-500">Everyday guidance vs. urgent vet escalation</p>
-                    </div>
-                  </a>
-                  <a href="#connected-ecosystem" className="flex items-start gap-3 p-3 rounded-xl hover:bg-violet-50/80 transition-colors">
-                    <div className="w-8 h-8 rounded-lg bg-violet-100 text-violet-800 flex items-center justify-center shrink-0 mt-0.5">
-                      <Network className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-[#0F172A]">Connected Partner Network</p>
-                      <p className="text-xs text-slate-500">Clinics, smart hardware, diets &amp; welfare</p>
-                    </div>
-                  </a>
+                    <a href="#pillars" className="group/item flex items-start gap-3 p-2.5 rounded-xl hover:bg-violet-50/90 transition-all">
+                      <div className="w-9 h-9 rounded-xl bg-violet-100 text-violet-800 group-hover/item:bg-violet-900 group-hover/item:text-amber-400 flex items-center justify-center shrink-0 mt-0.5 transition-colors shadow-2xs">
+                        <Sparkles className="w-4.5 h-4.5" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold text-[#0F172A] group-hover/item:text-violet-950 leading-tight m-0 mb-1">Day-One AI Core vs. Ecosystem</p>
+                        <p className="text-xs text-slate-500 group-hover/item:text-slate-600 leading-snug m-0 mb-0">Live triage &amp; intake vs. connected partner care</p>
+                      </div>
+                    </a>
+                    <a href="#ai-assistant" className="group/item flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/90 transition-all">
+                      <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 group-hover/item:bg-amber-400 group-hover/item:text-slate-950 flex items-center justify-center shrink-0 mt-0.5 transition-colors shadow-2xs">
+                        <Bot className="w-4.5 h-4.5" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold text-[#0F172A] group-hover/item:text-amber-950 leading-tight m-0 mb-1">24/7 AI Triage &amp; Guardrails</p>
+                        <p className="text-xs text-slate-500 group-hover/item:text-slate-600 leading-snug m-0 mb-0">Everyday guidance vs. urgent vet escalation</p>
+                      </div>
+                    </a>
+                    <a href="#connected-ecosystem" className="group/item flex items-start gap-3 p-2.5 rounded-xl hover:bg-violet-50/90 transition-all">
+                      <div className="w-9 h-9 rounded-xl bg-violet-100 text-violet-800 group-hover/item:bg-violet-900 group-hover/item:text-amber-400 flex items-center justify-center shrink-0 mt-0.5 transition-colors shadow-2xs">
+                        <Network className="w-4.5 h-4.5" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold text-[#0F172A] group-hover/item:text-violet-950 leading-tight m-0 mb-1">Connected Partner Network</p>
+                        <p className="text-xs text-slate-500 group-hover/item:text-slate-600 leading-snug m-0 mb-0">Clinics, smart hardware, diets &amp; welfare</p>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -723,7 +729,7 @@ export default function GreenLaneLandingPage() {
                       </span>
                       <div className="flex flex-col justify-center text-left pt-2.5">
                         <p className="font-bold text-xs text-[#0F172A] leading-none mb-1.5">AI Wellness Sync Active</p>
-                        <p className="text-[11px] text-slate-500 leading-none">Vitals, Diet &amp; Vaccine Schedule Optimal</p>
+                        <p className="text-[11px] text-violet-700 font-medium leading-none">Vitals, Diet &amp; Vaccine Schedule Optimal</p>
                       </div>
                     </div>
                   </div>
@@ -737,7 +743,10 @@ export default function GreenLaneLandingPage() {
                   <div className="flex flex-col justify-center text-left pt-2.5">
                     <div className="flex items-center gap-1.5 leading-none mb-1.5">
                       <span className="font-display font-bold text-sm text-[#0F172A]">GreenLane Pet AI</span>
-                      <span className="px-1.5 py-0.5 text-[10px] font-bold bg-amber-100 text-amber-700 rounded-md">LIVE</span>
+                      <span className="px-1.5 py-0.5 text-[10px] font-bold bg-amber-100 text-amber-800 rounded-md flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                        LIVE
+                      </span>
                     </div>
                     <p className="text-[11px] font-medium text-violet-700 leading-none">Intelligent Companion &amp; Clinical Co-Pilot</p>
                   </div>
@@ -748,9 +757,9 @@ export default function GreenLaneLandingPage() {
                     <HeartPulse className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col justify-center text-left pt-2.5">
-                    <p className="text-[11px] text-slate-500 font-medium leading-none mb-1.5">Resting Vitals</p>
-                    <p className="text-xs font-bold text-[#0F172A] leading-none whitespace-nowrap">
-                      AI Baseline 78 BPM · <span className="text-violet-600 font-semibold">Normal</span>
+                    <p className="text-[11px] text-black font-bold leading-none mb-1.5">Resting Vitals</p>
+                    <p className="text-xs font-bold text-violet-700 leading-none whitespace-nowrap">
+                      AI Baseline 78 BPM · <span className="text-violet-700 font-semibold">Normal</span>
                     </p>
                   </div>
                 </div>
@@ -760,8 +769,8 @@ export default function GreenLaneLandingPage() {
                     <CalendarCheck2 className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col justify-center text-left pt-2.5">
-                    <p className="text-[11px] text-slate-500 font-medium leading-none mb-1.5">Smart AI Reminder</p>
-                    <p className="text-xs font-bold text-[#0F172A] leading-none whitespace-nowrap">Booster Due in 5d</p>
+                    <p className="text-[11px] text-black font-bold leading-none mb-1.5">Smart AI Reminder</p>
+                    <p className="text-xs font-bold text-violet-700 leading-none whitespace-nowrap">Booster Due in 5d</p>
                   </div>
                 </div>
 
@@ -770,8 +779,8 @@ export default function GreenLaneLandingPage() {
                     <ShoppingBag className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col justify-center text-left pt-2.5">
-                    <p className="text-[11px] text-slate-500 font-medium leading-none mb-1.5">AI Auto-Refill</p>
-                    <p className="text-xs font-bold text-[#0F172A] leading-none whitespace-nowrap">Joint &amp; Coat Diet Refill Calculated</p>
+                    <p className="text-[11px] text-black font-bold leading-none mb-1.5">AI Auto-Refill</p>
+                    <p className="text-xs font-bold text-violet-700 leading-none whitespace-nowrap">Joint &amp; Coat Diet Refill Calculated</p>
                   </div>
                 </div>
 
@@ -780,8 +789,8 @@ export default function GreenLaneLandingPage() {
                     <Home className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col justify-center text-left pt-2.5">
-                    <p className="text-[11px] text-slate-500 font-medium leading-none mb-1.5">Verified Stays</p>
-                    <p className="text-xs font-bold text-[#0F172A] leading-none whitespace-nowrap">3 AI-Screened Boarding Hosts</p>
+                    <p className="text-[11px] text-black font-bold leading-none mb-1.5">Verified Stays</p>
+                    <p className="text-xs font-bold text-violet-700 leading-none whitespace-nowrap">3 AI-Screened Boarding Hosts</p>
                   </div>
                 </div>
               </div>
@@ -837,7 +846,7 @@ export default function GreenLaneLandingPage() {
                     type="button"
                     onClick={() => setPillarScopeFilter('ecosystem')}
                     className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${pillarScopeFilter === 'ecosystem'
-                      ? 'bg-amber-400 text-slate-950 shadow-xs font-bold'
+                      ? 'bg-amber-600 text-white shadow-xs font-bold'
                       : 'text-slate-600 hover:text-amber-800'
                       }`}
                   >
@@ -865,9 +874,7 @@ export default function GreenLaneLandingPage() {
                   >
                     <span className={`text-[12px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full mb-2 ${isActive
                       ? 'bg-amber-400 text-violet-950'
-                      : isDayOne
-                        ? 'bg-violet-50 text-violet-800'
-                        : 'bg-amber-50 text-amber-800'
+                      : isDayOne ? 'bg-violet-50 text-violet-800' : 'bg-amber-50 text-amber-800'
                       }`}>
                       {isDayOne ? 'Day 1' : 'Network'}
                     </span>
@@ -954,7 +961,7 @@ export default function GreenLaneLandingPage() {
               <button
                 type="button"
                 onClick={() => handleTriggerScenario('chocolate')}
-                className="w-full inline-flex items-center justify-center gap-1.5 text-center text-xs font-bold bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 px-4 py-2.5 rounded-xl transition-all shadow-xs hover:shadow-sm"
+                className="w-full inline-flex items-center justify-center gap-1.5 text-center text-xs font-bold bg-amber-500 hover:bg-amber-500 active:scale-95 text-slate-950 px-4 py-2.5 rounded-xl transition-all shadow-xs hover:shadow-sm"
               >
                 <ShieldAlert className="w-3.5 h-3.5 text-slate-950 shrink-0" />
                 <span className="whitespace-nowrap">Test Red-Flag Check</span>
@@ -988,7 +995,7 @@ export default function GreenLaneLandingPage() {
               </p>
 
               <div className="space-y-3 pt-1">
-                <p className="text-xs sm:text-sm font-bold text-slate-600 uppercase tracking-wider">
+                <p className="text-[13px] sm:text-[14px] font-bold text-slate-600 uppercase tracking-wider m-0 mb-1">
                   Test Real-World AI Scenarios:
                 </p>
 
@@ -999,9 +1006,9 @@ export default function GreenLaneLandingPage() {
                   <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
                     <AlertTriangle className="w-5 h-5" />
                   </div>
-                  <div className="min-w-0 flex-1 flex flex-col justify-center pt-1.5">
-                    <p className="text-sm lg:text-[16px] font-bold text-[#0F172A] truncate leading-none mb-1.5">Emergency Triage: Ate dark chocolate</p>
-                    <p className="text-xs sm:text-[13px] text-slate-500 truncate leading-none">Instant toxicity calculator &amp; urgent vet slot</p>
+                  <div className="min-w-0 flex-1 flex flex-col justify-center">
+                    <p className="text-[15px] sm:text-base font-bold text-[#0F172A] leading-tight m-0 mb-1">Emergency Triage: Ate dark chocolate</p>
+                    <p className="text-[13px] text-slate-500 leading-tight m-0 mb-0">Instant toxicity calculator &amp; urgent vet slot</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 shrink-0" />
                 </button>
@@ -1013,9 +1020,9 @@ export default function GreenLaneLandingPage() {
                   <div className="w-10 h-10 rounded-xl bg-violet-100 text-violet-800 flex items-center justify-center shrink-0 group-hover:bg-violet-900 group-hover:text-amber-400 transition-colors">
                     <CalendarPlus className="w-5 h-5" />
                   </div>
-                  <div className="min-w-0 flex-1 flex flex-col justify-center pt-1.5">
-                    <p className="text-sm lg:text-[16px] font-bold text-[#0F172A] truncate leading-none mb-1.5">Routine Care: Annual booster &amp; grooming</p>
-                    <p className="text-xs sm:text-[13px] text-slate-500 truncate leading-none">Smart calendar sync + bundled service booking</p>
+                  <div className="min-w-0 flex-1 flex flex-col justify-center">
+                    <p className="text-[15px] sm:text-base font-bold text-[#0F172A] leading-tight m-0 mb-1">Routine Care: Annual booster &amp; grooming</p>
+                    <p className="text-[13px] text-slate-500 leading-tight m-0 mb-0">Smart calendar sync + bundled service booking</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-violet-700 shrink-0" />
                 </button>
@@ -1029,7 +1036,7 @@ export default function GreenLaneLandingPage() {
                   <div className="w-8 h-1 bg-slate-700 rounded-full"></div>
                 </div>
 
-                <div className="bg-white rounded-[2.25rem] overflow-hidden flex flex-col h-[560px] border border-slate-100">
+                <div className="bg-white rounded-[2.25rem] overflow-hidden flex flex-col h-[600px] border border-slate-100">
                   {/* Status Bar */}
                   <div className="px-6 pt-3 pb-1 flex items-center justify-between text-[11px] font-semibold text-[#0F172A]">
                     <span>9:41</span>
@@ -1149,6 +1156,11 @@ export default function GreenLaneLandingPage() {
                       <ArrowUpRight className="w-4 h-4" />
                     </button>
                   </form>
+
+                  {/* Home Bar Indicator */}
+                  <div className="pb-2 pt-0.5 bg-white flex justify-center items-center">
+                    <div className="w-28 h-1 bg-slate-300 rounded-full"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1202,9 +1214,9 @@ export default function GreenLaneLandingPage() {
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-violet-500 animate-pulse"></span>
-                    <span className="font-display font-bold text-xs sm:text-sm uppercase tracking-wider text-[#0F172A]">AI Health Timeline · Max</span>
+                    <span className="font-display font-bold text-xs sm:text-sm uppercase tracking-wider text-[#0F172A]">AI Health Timeline</span>
                   </div>
-                  <span className="text-xs font-semibold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-full">Day-1 AI Core Sync</span>
+                  <span className="text-xs font-semibold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-full">Day-1 AI Core</span>
                 </div>
 
                 <div className="rounded-xl border border-slate-200/80 divide-y divide-slate-100 overflow-hidden bg-white">
@@ -1215,7 +1227,7 @@ export default function GreenLaneLandingPage() {
                       </div>
                       <div className="flex flex-col justify-center text-left">
                         <p className="text-xs sm:text-sm font-bold text-[#0F172A] leading-none mb-1">DHPP Annual Booster</p>
-                        <p className="text-[11px] sm:text-xs text-slate-500 leading-none">GreenLane Vet Center · Auto-held</p>
+                        <p className="text-[13px] text-slate-500 leading-none">GreenLane Vet Center · Auto-held</p>
                       </div>
                     </div>
                     <span className="text-xs font-bold text-amber-800 bg-amber-100/80 px-2.5 py-1 rounded-md">In 5 days</span>
@@ -1228,7 +1240,7 @@ export default function GreenLaneLandingPage() {
                       </div>
                       <div className="flex flex-col justify-center text-left">
                         <p className="text-xs sm:text-sm font-bold text-[#0F172A] leading-none mb-1">Royal Canin Joint Care Refill</p>
-                        <p className="text-[11px] sm:text-xs text-slate-500 leading-none">Connected Partner Diet · 29 kg</p>
+                        <p className="text-[13px] text-slate-500 leading-none">Connected Partner Diet · 29 kg</p>
                       </div>
                     </div>
                     <span className="text-xs font-bold text-violet-800 bg-violet-100/80 px-2.5 py-1 rounded-md">Nov 28</span>
@@ -1347,14 +1359,14 @@ export default function GreenLaneLandingPage() {
                   key={node.key}
                   type="button"
                   onClick={() => { setSelectedEcoNode(node.key); trackEvent('ecosystem_node_selected', { node: node.key }); }}
-                  className={`p-3 sm:p-3.5 rounded-xl text-center flex flex-col items-center justify-center transition-all min-h-[86px] ${
+                  className={`p-3.5 sm:p-4 rounded-xl text-center flex flex-col items-center justify-center transition-all min-h-[92px] ${
                     selectedEcoNode === node.key
                       ? 'bg-violet-50/60 border-2 border-violet-600 shadow-xs'
                       : 'bg-white border-2 border-slate-300 hover:border-violet-300 hover:shadow-xs'
                   }`}
                 >
-                  <p className="text-[14px] sm:text-[15px] font-bold text-[#0F172A] leading-tight m-0 mb-0">{node.label}</p>
-                  <p className={`text-xs sm:text-[13px] mt-1.5 leading-tight m-0 mb-0 ${
+                  <p className="text-[15px] sm:text-base font-bold text-[#0F172A] leading-tight m-0 mb-0">{node.label}</p>
+                  <p className={`text-sm sm:text-[15px] mt-1.5 leading-tight m-0 mb-0 ${
                     selectedEcoNode === node.key ? 'text-violet-700 font-semibold' : 'text-slate-500'
                   }`}>
                     {node.sub}
@@ -1391,16 +1403,16 @@ export default function GreenLaneLandingPage() {
                 <div className="w-10 h-10 rounded-xl bg-violet-100 text-violet-800 flex items-center justify-center mb-2.5 shadow-2xs">
                   <ShieldCheck className="w-5 h-5 text-violet-700" />
                 </div>
-                <p className="text-sm font-bold text-[#0F172A] leading-snug">Zero Live Disruption</p>
-                <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">2-way PIMS sync without downtime during clinic hours</p>
+                <p className="text-[15px] sm:text-base font-bold text-[#0F172A] leading-tight m-0 mb-0">Zero Live Disruption</p>
+                <p className="text-sm sm:text-[15px] text-slate-600 mt-1.5 leading-tight m-0 mb-0">2-way PIMS sync without downtime during clinic hours</p>
               </div>
 
               <div className="rounded-xl bg-white border-2 border-slate-300 p-4 sm:p-5 shadow-sm flex flex-col items-center justify-center text-center hover:border-violet-300 hover:shadow-md transition-all">
                 <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mb-2.5 shadow-2xs">
                   <Sparkles className="w-5 h-5 text-amber-600" />
                 </div>
-                <p className="text-sm font-bold text-[#0F172A] leading-snug">Shadow-Tested Pilot</p>
-                <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">Vets validate pre-intake before pet parents interact</p>
+                <p className="text-[15px] sm:text-base font-bold text-[#0F172A] leading-tight m-0 mb-0">Shadow-Tested Pilot</p>
+                <p className="text-sm sm:text-[15px] text-slate-600 mt-1.5 leading-tight m-0 mb-0">Vets validate pre-intake before pet parents interact</p>
               </div>
             </div>
           </div>
@@ -1414,19 +1426,19 @@ export default function GreenLaneLandingPage() {
                   key={s.step}
                   type="button"
                   onClick={() => { setActiveWorkflowStep(s.step); trackEvent('workflow_step_selected', { step: s.step }); }}
-                  className={`text-center flex flex-col items-center justify-center p-4.5 rounded-xl border-2 transition-all ${
+                  className={`text-center flex flex-col items-center justify-center p-3.5 sm:p-4 rounded-xl border-2 transition-all min-h-[96px] ${
                     active
                       ? 'bg-violet-900 text-white border-violet-700 shadow-lg ring-2 ring-violet-500/30'
                       : 'bg-white hover:bg-slate-50 text-[#0F172A] border-slate-300 shadow-sm hover:border-violet-400 hover:shadow-md'
                   }`}
                 >
-                  <div className="flex items-center justify-center gap-1.5 text-xs font-bold leading-tight">
+                  <div className="flex items-center justify-center gap-1.5 text-xs font-bold leading-tight mb-1">
                     <span className={active ? 'text-amber-300' : 'text-amber-700'}>STEP 0{s.step}</span>
                     <span className={active ? 'text-violet-200/80' : 'text-slate-400'}>·</span>
                     <span className={active ? 'text-violet-200' : 'text-slate-500'}>{s.windowLabel.split('·')[0].trim()}</span>
                   </div>
-                  <p className="font-display font-bold text-sm sm:text-base leading-tight mt-1">{s.tabTitle}</p>
-                  <p className={`text-xs sm:text-[13px] leading-tight mt-0.5 ${active ? 'text-violet-100/80' : 'text-slate-500'}`}>{s.tabSub}</p>
+                  <p className="font-display font-bold text-[15px] sm:text-base leading-tight m-0 mb-0">{s.tabTitle}</p>
+                  <p className={`text-sm sm:text-[15px] leading-tight mt-1 m-0 mb-0 ${active ? 'text-violet-100/80' : 'text-slate-500'}`}>{s.tabSub}</p>
                 </button>
               );
             })}
@@ -1597,19 +1609,19 @@ export default function GreenLaneLandingPage() {
 
                 <ul className="mt-5 space-y-3.5 text-xs sm:text-sm lg:text-[15px] text-slate-700 flex-1">
                   <li className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
                     </div>
                     <span>Unlimited pet profiles, digital health history &amp; automated vaccine reminders</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
                     </div>
                     <span>24/7 AI symptom triage, toxicity checker &amp; food safety assistant</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
                     </div>
                     <span>Plus: Priority clinic slot holding, multi-service bookings &amp; auto-refill delivery alerts</span>
@@ -1665,19 +1677,19 @@ export default function GreenLaneLandingPage() {
 
                 <ul className="mt-5 space-y-3.5 text-xs sm:text-sm lg:text-[15px] text-violet-50 flex-1">
                   <li className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
                     </div>
                     <span>AI pre-visit clinical triage briefs &amp; digital pet health timeline sync</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
                     </div>
                     <span>Automated multi-channel vaccine, wellness &amp; grooming rebooking reminders</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
                     </div>
                     <span>14-day guided AI onboarding + no-show reduction &amp; retention analytics</span>
@@ -1693,7 +1705,7 @@ export default function GreenLaneLandingPage() {
                     setDemoPlan('Clinic AI Starter');
                     document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className="w-full py-3.5 px-6 rounded-full bg-amber-400 hover:bg-amber-300 active:scale-95 text-violet-950 font-extrabold text-sm lg:text-base shadow-md transition-all flex items-center justify-center gap-2"
+                  className="w-full py-3.5 px-6 rounded-full bg-amber-500 hover:bg-amber-300 active:scale-95 text-violet-950 font-extrabold text-sm lg:text-base shadow-md transition-all flex items-center justify-center gap-2"
                 >
                   <span>Book Clinic AI Demo</span>
                   <ArrowRight className="w-4 h-4" />
@@ -1730,19 +1742,19 @@ export default function GreenLaneLandingPage() {
 
                 <ul className="mt-5 space-y-3.5 text-xs sm:text-sm lg:text-[15px] text-slate-700 flex-1">
                   <li className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
                     </div>
                     <span>Custom AI triage protocols, brand nutrition engines &amp; multi-language packs</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
                     </div>
                     <span>Real-time PMS/CRM webhook integrations, EMR sync &amp; custom analytics streams</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       <Check className="w-3 h-3 stroke-[2.5]" />
                     </div>
                     <span>Dedicated AI implementation engineer, staff training workshops &amp; 99.9% uptime SLA</span>
@@ -1793,9 +1805,9 @@ export default function GreenLaneLandingPage() {
               <div className="space-y-3">
                 <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-violet-900 text-white shadow-sm">
                   <span className="w-8 h-8 rounded-full bg-amber-400 text-violet-950 font-extrabold text-sm flex items-center justify-center shrink-0">1</span>
-                  <div className="flex flex-col justify-center text-left pt-1">
-                    <p className="text-sm sm:text-base font-bold leading-snug mb-1">Track, Region &amp; Plan</p>
-                    <p className="text-xs sm:text-sm text-violet-200 leading-snug">
+                  <div className="flex flex-col justify-center text-left">
+                    <p className="text-[15px] sm:text-base font-bold leading-tight m-0 mb-1">Track, Region &amp; Plan</p>
+                    <p className="text-sm sm:text-[15px] text-violet-200 leading-tight m-0 mb-0">
                       {demoTrack === 'clinic' ? 'Veterinary Clinic' : demoTrack === 'partner' ? 'Service Partner' : 'Pet Parent'} · {demoRegion.split('(')[0].trim()} · {demoPlan}
                     </p>
                   </div>
@@ -1803,27 +1815,27 @@ export default function GreenLaneLandingPage() {
 
                 <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-[#FFFBF5] border border-slate-200/80 text-[#0F172A]">
                   <span className="w-8 h-8 rounded-full bg-amber-100 text-amber-800 font-extrabold text-sm flex items-center justify-center shrink-0">2</span>
-                  <div className="flex flex-col justify-center text-left pt-1">
-                    <p className="text-sm sm:text-base font-bold leading-snug mb-1">Demo Format &amp; Focus</p>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-snug">{demoFormat}</p>
+                  <div className="flex flex-col justify-center text-left">
+                    <p className="text-[15px] sm:text-base font-bold leading-tight m-0 mb-1">Demo Format &amp; Focus</p>
+                    <p className="text-sm sm:text-[15px] text-slate-600 leading-tight m-0 mb-0">{demoFormat}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-[#FFFBF5] border border-slate-200/80 text-[#0F172A]">
                   <span className="w-8 h-8 rounded-full bg-amber-100 text-amber-800 font-extrabold text-sm flex items-center justify-center shrink-0">3</span>
-                  <div className="flex flex-col justify-center text-left pt-1">
-                    <p className="text-sm sm:text-base font-bold leading-snug mb-1">Contact &amp; Launch Checklist</p>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-snug">Instant confirmation + CRM/webhook dispatch</p>
+                  <div className="flex flex-col justify-center text-left">
+                    <p className="text-[15px] sm:text-base font-bold leading-tight m-0 mb-1">Contact &amp; Launch Checklist</p>
+                    <p className="text-sm sm:text-[15px] text-slate-600 leading-tight m-0 mb-0">Instant confirmation + CRM/webhook dispatch</p>
                   </div>
                 </div>
               </div>
 
               <div className="rounded-2xl bg-[#FFFBF5] border border-amber-200/70 p-5 space-y-3">
-                <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-violet-900">What Happens After You Submit</p>
-                <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                <p className="text-sm sm:text-base font-bold uppercase tracking-wider text-violet-900 m-0 mb-0">What Happens After You Submit</p>
+                <ul className="space-y-2.5 text-sm sm:text-[15px] text-slate-700">
                   <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-violet-700 shrink-0" />
-                    <span>Event <code className="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono text-xs">demo_onboarding_completed</code> dispatched</span>
+                    <span>Event <code className="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono text-xs sm:text-sm">demo_onboarding_completed</code> dispatched</span>
                   </li>
                   <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-amber-600 shrink-0" />
@@ -1843,7 +1855,7 @@ export default function GreenLaneLandingPage() {
                 <form onSubmit={handleDemoSubmit} className="space-y-6">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <label className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-violet-900">Step 1 · Select Your Track</label>
+                      <label className="text-sm sm:text-base font-extrabold uppercase tracking-wider text-violet-900">Step 1 · Select Your Track</label>
                       <span className="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900">Plan: {demoPlan}</span>
                     </div>
 
@@ -1857,14 +1869,14 @@ export default function GreenLaneLandingPage() {
                           key={t.key}
                           type="button"
                           onClick={() => setDemoTrack(t.key)}
-                          className={`px-3.5 pt-4 pb-3 rounded-xl text-left transition-all flex flex-col justify-center ${demoTrack === t.key
+                          className={`p-3.5 sm:p-4 rounded-xl text-left transition-all flex flex-col justify-center min-h-[92px] ${demoTrack === t.key
                             ? 'border sm:border-2 border-violet-900 bg-violet-900 text-white'
                             : 'border border-slate-200 sm:border-2 sm:border-slate-300 bg-white hover:border-amber-400 text-[#0F172A]'
                             }`}
                         >
-                          <div className="pt-1">
-                            <p className="text-xs sm:text-sm font-extrabold leading-snug mb-1">{t.title}</p>
-                            <p className={`text-[13px] leading-snug ${demoTrack === t.key ? 'text-violet-200' : 'text-slate-600'}`}>{t.sub}</p>
+                          <div>
+                            <p className="text-[15px] sm:text-base font-bold leading-tight m-0 mb-1">{t.title}</p>
+                            <p className={`text-sm sm:text-[15px] leading-tight m-0 mb-0 ${demoTrack === t.key ? 'text-violet-200' : 'text-slate-600'}`}>{t.sub}</p>
                           </div>
                         </button>
                       ))}
@@ -2034,7 +2046,7 @@ export default function GreenLaneLandingPage() {
                   </div>
 
                   <div className="space-y-3 pt-2 border-t border-slate-200/80 sm:border-slate-300/80">
-                    <label className="block text-xs sm:text-sm font-extrabold uppercase tracking-wider text-violet-900">Step 2 · Preferred Demo Format</label>
+                    <label className="block text-sm sm:text-base font-extrabold uppercase tracking-wider text-violet-900">Step 2 · Preferred Demo Format</label>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                       {[
                         { label: '15-min Live AI Walkthrough', sub: 'AI triage, booking & timeline' },
@@ -2045,14 +2057,14 @@ export default function GreenLaneLandingPage() {
                           key={f.label}
                           type="button"
                           onClick={() => setDemoFormat(f.label)}
-                          className={`px-3.5 pt-4 pb-3 rounded-xl text-left transition-all flex flex-col justify-center ${demoFormat === f.label
+                          className={`p-3.5 sm:p-4 rounded-xl text-left transition-all flex flex-col justify-center min-h-[92px] ${demoFormat === f.label
                             ? 'border sm:border-2 border-amber-500 bg-amber-50/80'
                             : 'border border-slate-200 sm:border-2 sm:border-slate-300 bg-white hover:border-amber-400'
                             }`}
                         >
-                          <div className="pt-1">
-                            <p className="text-xs sm:text-sm font-extrabold text-[#0F172A] leading-snug mb-1">{f.label}</p>
-                            <p className="text-[13px] text-slate-600 leading-snug">{f.sub}</p>
+                          <div>
+                            <p className="text-[15px] sm:text-base font-bold text-[#0F172A] leading-tight m-0 mb-1">{f.label}</p>
+                            <p className="text-sm sm:text-[15px] text-slate-600 leading-tight m-0 mb-0">{f.sub}</p>
                           </div>
                         </button>
                       ))}
@@ -2060,7 +2072,7 @@ export default function GreenLaneLandingPage() {
                   </div>
 
                   <div className="space-y-4 pt-2 border-t border-slate-200/80 sm:border-slate-300/80">
-                    <label className="block text-xs sm:text-sm font-extrabold uppercase tracking-wider text-violet-900">Step 3 · Your Details</label>
+                    <label className="block text-sm sm:text-base font-extrabold uppercase tracking-wider text-violet-900">Step 3 · Your Details</label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-1">Full Name</label>
@@ -2332,8 +2344,8 @@ export default function GreenLaneLandingPage() {
 
           {/* Bottom Bar */}
           <div className="pt-6 text-center text-xs text-slate-500">
-            <p>
-              © 2026 GreenLane Pet. All rights reserved.
+            <p className="m-0 mb-0">
+              2026 © Green Lane , All Rights Reserved | Designed by Digi Mabble
             </p>
           </div>
         </div>
@@ -2343,7 +2355,7 @@ export default function GreenLaneLandingPage() {
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           aria-label="Back to top"
-          className="fixed bottom-6 right-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 flex items-center justify-center shadow-xl transition-all hover:scale-105 active:scale-95"
+          className="fixed bottom-6 right-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-amber-600 hover:bg-amber-500 text-white shadow-amber-900/20 flex items-center justify-center shadow-xl transition-all hover:scale-105 active:scale-95"
         >
           <ChevronUp className="w-6 h-6 stroke-[2.5]" />
         </button>
@@ -2422,7 +2434,7 @@ export default function GreenLaneLandingPage() {
           <div className="bg-violet-950 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-violet-800 relative">
             <div className="px-6 py-4 flex items-center justify-between border-b border-violet-800/80">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
                 <span className="font-display font-bold text-sm text-white">GreenLane Pet AI — 60-Second Ecosystem Tour</span>
               </div>
               <button onClick={() => setVideoModalOpen(false)} className="w-8 h-8 rounded-full bg-violet-900 hover:bg-violet-800 text-violet-200 flex items-center justify-center">
